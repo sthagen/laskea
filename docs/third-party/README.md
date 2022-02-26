@@ -7,7 +7,7 @@ SHA256 checksum ([0d891aab ...](https://raw.githubusercontent.com/sthagen/laskea
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
 
-### Licenses of the Direct Dependencies
+### Direct Dependencies
 
 | Name                                                                          | Version | License                 | Author             | Description                                                             |
 |:------------------------------------------------------------------------------|:--------|:------------------------|:-------------------|:------------------------------------------------------------------------|
@@ -17,7 +17,7 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [pydantic](https://github.com/samuelcolvin/pydantic)                          | 1.9.0   | MIT License             | Samuel Colvin      | Data validation and settings management using python 3.6 type hinting   |
 | [typer](https://github.com/tiangolo/typer)                                    | 0.4.0   | MIT License             | Sebastián Ramírez  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
 
-### Licenses of All Indirect Dependencies
+### Indirect Dependencies
 
 | Name                                                               | Version   | License                              | Author                 | Description                                                                                             |
 |:-------------------------------------------------------------------|:----------|:-------------------------------------|:-----------------------|:--------------------------------------------------------------------------------------------------------|
