@@ -10,7 +10,7 @@ Experimental.
 
 [![license](https://img.shields.io/github/license/sthagen/laskea.svg?style=flat)](https://github.com/sthagen/laskea/blob/default/LICENSE)
 [![version](https://img.shields.io/pypi/v/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
-[![downloads](https://pepy.tech/badge/laskea/month)](https://pepy.tech/project/turvallisuusneuvonta)
+[![downloads](https://pepy.tech/badge/laskea/month)](https://pepy.tech/project/laskea)
 [![wheel](https://img.shields.io/pypi/wheel/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 [![supported-versions](https://img.shields.io/pypi/pyversions/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 [![supported-implementations](https://img.shields.io/pypi/implementation/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
