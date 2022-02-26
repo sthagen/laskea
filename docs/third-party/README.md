@@ -8,30 +8,30 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 
 ### Licenses of the Direct Dependencies
 
-| Name                 | Version | License                 | Author             | URL                                                   | Description                                                             |
-|----------------------|---------|-------------------------|--------------------|-------------------------------------------------------|-------------------------------------------------------------------------|
-| atlassian-python-api | 3.20.1  | Apache Software License | Matt Harasymczuk   | https://github.com/atlassian-api/atlassian-python-api | Python Atlassian REST API Wrapper                                       |
-| cogapp               | 3.3.0   | MIT License             | Ned Batchelder     | http://nedbatchelder.com/code/cog                     | Cog: A content generator for executing Python snippets in source files. |
-| jmespath             | 0.10.0  | MIT License             | James Saryerwinnie | https://github.com/jmespath/jmespath.py               | JSON Matching Expressions                                               |
-| pydantic             | 1.9.0   | MIT License             | Samuel Colvin      | https://github.com/samuelcolvin/pydantic              | Data validation and settings management using python 3.6 type hinting   |
-| typer                | 0.4.0   | MIT License             | Sebastián Ramírez  | https://github.com/tiangolo/typer                     | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
+| Name                                                                          | Version | License                 | Author             | Description                                                             |
+|:------------------------------------------------------------------------------|:--------|:------------------------|:-------------------|:------------------------------------------------------------------------|
+| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | 3.20.1  | Apache Software License | Matt Harasymczuk   | Python Atlassian REST API Wrapper                                       |
+| [cogapp](http://nedbatchelder.com/code/cog)                                   | 3.3.0   | MIT License             | Ned Batchelder     | Cog: A content generator for executing Python snippets in source files. |
+| [jmespath](https://github.com/jmespath/jmespath.py)                           | 0.10.0  | MIT License             | James Saryerwinnie | JSON Matching Expressions                                               |
+| [pydantic](https://github.com/samuelcolvin/pydantic)                          | 1.9.0   | MIT License             | Samuel Colvin      | Data validation and settings management using python 3.6 type hinting   |
+| [typer](https://github.com/tiangolo/typer)                                    | 0.4.0   | MIT License             | Sebastián Ramírez  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
 
 ### Licenses of All Indirect Dependencies
 
-| Name               | Version   | License                              | Author                 | URL                                           | Description                                                                                             |
-|--------------------|-----------|--------------------------------------|------------------------|-----------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| Deprecated         | 1.2.13    | MIT License                          | Laurent LAPORTE        | https://github.com/tantale/deprecated         | Python @deprecated decorator to deprecate old python classes, functions or methods.                     |
-| certifi            | 2021.10.8 | Mozilla Public License 2.0 (MPL 2.0) | Kenneth Reitz          | https://certifiio.readthedocs.io/en/latest/   | Python package for providing Mozilla's CA Bundle.                                                       |
-| charset-normalizer | 2.0.12    | MIT License                          | Ahmed TAHRI @Ousret    | https://github.com/ousret/charset_normalizer  | The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet. |
-| click              | 8.0.4     | BSD License                          | Armin Ronacher         | https://palletsprojects.com/p/click/          | Composable command line interface toolkit                                                               |
-| idna               | 3.3       | BSD License                          | Kim Davies             | https://github.com/kjd/idna                   | Internationalized Domain Names in Applications (IDNA)                                                   |
-| oauthlib           | 3.2.0     | BSD License                          | The OAuthlib Community | https://github.com/oauthlib/oauthlib          | A generic, spec-compliant, thorough implementation of the OAuth request-signing logic                   |
-| requests           | 2.27.1    | Apache Software License              | Kenneth Reitz          | https://requests.readthedocs.io               | Python HTTP for Humans.                                                                                 |
-| requests-oauthlib  | 1.3.1     | BSD License                          | Kenneth Reitz          | https://github.com/requests/requests-oauthlib | OAuthlib authentication support for Requests.                                                           |
-| six                | 1.16.0    | MIT License                          | Benjamin Peterson      | https://github.com/benjaminp/six              | Python 2 and 3 compatibility utilities                                                                  |
-| typing-extensions  | 4.1.1     | Python Software Foundation License   | UNKNOWN                | UNKNOWN                                       | Backported and Experimental Type Hints for Python 3.6+                                                  |
-| urllib3            | 1.26.8    | MIT License                          | Andrey Petrov          | https://urllib3.readthedocs.io/               | HTTP library with thread-safe connection pooling, file post, and more.                                  |
-| wrapt              | 1.13.3    | BSD License                          | Graham Dumpleton       | https://github.com/GrahamDumpleton/wrapt      | Module for decorators, wrappers and monkey patching.                                                    |
+| Name                                                               | Version   | License                              | Author                 | Description                                                                                             |
+|:-------------------------------------------------------------------|:----------|:-------------------------------------|:-----------------------|:--------------------------------------------------------------------------------------------------------|
+| [Deprecated](https://github.com/tantale/deprecated)                | 1.2.13    | MIT License                          | Laurent LAPORTE        | Python @deprecated decorator to deprecate old python classes, functions or methods.                     |
+| [certifi](https://certifiio.readthedocs.io/en/latest/)             | 2021.10.8 | Mozilla Public License 2.0 (MPL 2.0) | Kenneth Reitz          | Python package for providing Mozilla's CA Bundle.                                                       |
+| [charset-normalizer](https://github.com/ousret/charset_normalizer) | 2.0.12    | MIT License                          | Ahmed TAHRI @Ousret    | The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet. |
+| [click](https://palletsprojects.com/p/click/)                      | 8.0.4     | BSD License                          | Armin Ronacher         | Composable command line interface toolkit                                                               |
+| [idna](https://github.com/kjd/idna)                                | 3.3       | BSD License                          | Kim Davies             | Internationalized Domain Names in Applications (IDNA)                                                   |
+| [oauthlib](https://github.com/oauthlib/oauthlib)                   | 3.2.0     | BSD License                          | The OAuthlib Community | A generic, spec-compliant, thorough implementation of the OAuth request-signing logic                   |
+| [requests](https://requests.readthedocs.io)                        | 2.27.1    | Apache Software License              | Kenneth Reitz          | Python HTTP for Humans.                                                                                 |
+| [requests-oauthlib](https://github.com/requests/requests-oauthlib) | 1.3.1     | BSD License                          | Kenneth Reitz          | OAuthlib authentication support for Requests.                                                           |
+| [six](https://github.com/benjaminp/six)                            | 1.16.0    | MIT License                          | Benjamin Peterson      | Python 2 and 3 compatibility utilities                                                                  |
+| [typing-extensions](https://github.com/python/typing)              | 4.1.1     | Python Software Foundation License   | UNKNOWN                | Backported and Experimental Type Hints for Python 3.6+                                                  |
+| [urllib3](https://urllib3.readthedocs.io/)                         | 1.26.8    | MIT License                          | Andrey Petrov          | HTTP library with thread-safe connection pooling, file post, and more.                                  |
+| [wrapt](https://github.com/GrahamDumpleton/wrapt)                  | 1.13.3    | BSD License                          | Graham Dumpleton       | Module for decorators, wrappers and monkey patching.                                                    |
  
 ## Dependency Tree(s)
 
