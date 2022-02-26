@@ -1,5 +1,12 @@
 [
     {
+        "key": "antlr4-python3-runtime",
+        "package_name": "antlr4-python3-runtime",
+        "installed_version": "4.9.3",
+        "required_version": "4.9.3",
+        "dependencies": []
+    },
+    {
         "key": "atlassian-python-api",
         "package_name": "atlassian-python-api",
         "installed_version": "3.20.1",
