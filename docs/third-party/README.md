@@ -1,7 +1,7 @@
 # Third Party Dependencies
 
 The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with
-SHA256 checksum ([0d891aab ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:0d891aab5a0651e2c8cd3c62bcc2ef83531c73f7636c6f469dac8182774d769d")).
+SHA256 checksum ([6887e065 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:6887e065ab31eba044b70cf8fbd9e763d84297ce14fbd0a556ac431138318ae9")).
 
 ## Licenses 
 
@@ -9,13 +9,14 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 
 ### Direct Dependencies
 
-| Name                                                                          | Version | License                 | Author             | Description (from packaging data)                                       |
-|:------------------------------------------------------------------------------|:--------|:------------------------|:-------------------|:------------------------------------------------------------------------|
-| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | 3.20.1  | Apache Software License | Matt Harasymczuk   | Python Atlassian REST API Wrapper                                       |
-| [cogapp](http://nedbatchelder.com/code/cog)                                   | 3.3.0   | MIT License             | Ned Batchelder     | Cog: A content generator for executing Python snippets in source files. |
-| [jmespath](https://github.com/jmespath/jmespath.py)                           | 0.10.0  | MIT License             | James Saryerwinnie | JSON Matching Expressions                                               |
-| [pydantic](https://github.com/samuelcolvin/pydantic)                          | 1.9.0   | MIT License             | Samuel Colvin      | Data validation and settings management using python 3.6 type hinting   |
-| [typer](https://github.com/tiangolo/typer)                                    | 0.4.0   | MIT License             | Sebastián Ramírez  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
+| Name                                                                          | Version | License                 | Author                                   | Description (from packaging data)                                       |
+|:------------------------------------------------------------------------------|:--------|:------------------------|:-----------------------------------------|:------------------------------------------------------------------------|
+| [antlr4-python3-runtime](http://www.antlr.org)                                | 4.9.3   | BSD                     | Eric Vergnaud, Terence Parr, Sam Harwell | ANTLR 4.9.3 runtime for Python 3.7                                      |
+| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | 3.20.1  | Apache Software License | Matt Harasymczuk                         | Python Atlassian REST API Wrapper                                       |
+| [cogapp](http://nedbatchelder.com/code/cog)                                   | 3.3.0   | MIT License             | Ned Batchelder                           | Cog: A content generator for executing Python snippets in source files. |
+| [jmespath](https://github.com/jmespath/jmespath.py)                           | 0.10.0  | MIT License             | James Saryerwinnie                       | JSON Matching Expressions                                               |
+| [pydantic](https://github.com/samuelcolvin/pydantic)                          | 1.9.0   | MIT License             | Samuel Colvin                            | Data validation and settings management using python 3.6 type hinting   |
+| [typer](https://github.com/tiangolo/typer)                                    | 0.4.0   | MIT License             | Sebastián Ramírez                        | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
 
 ### Indirect Dependencies
 
@@ -45,6 +46,7 @@ JSON file with the complete package dependency tree info of: [the full dependenc
 ### Console Representation
 
 ```console
+antlr4-python3-runtime==4.9.3
 atlassian-python-api==3.20.1
   - deprecated [required: Any, installed: 1.2.13]
     - wrapt [required: >=1.10,<2, installed: 1.13.3]
