@@ -1,0 +1,34 @@
+[tool.pyflow]
+name = "laskea"
+py_version = "3.8"
+version = "2022.2.26"
+authors = ["Stefan Hagen <stefan@hagen.link>"]
+
+[tool.pyflow.scripts]
+
+[tool.pyflow.dependencies]
+atlassian-python-api = "3.20.1"
+jmespath = "^0.10.0"
+pydantic = "^1.9.0"
+typer = "^0.4.0"
+
+[tool.pyflow.dev-dependencies]
+black = "^21.10b0"
+coverage = "^6.1.2"
+flake8 = "^4.0.1"
+flake8-quotes = "^3.3.1"
+hypothesis = "´6.36.1"
+isort = "^5.10.1"
+mkautodoc = "^0.1.0"
+mkdocstrings = "^0.16.2"
+mypy = "^0.910"
+pycodestyle = "^2.8.0"
+pyflakes = "^2.4.0"
+pygments = "^2.10.0"
+pytest = "^6.2.5"
+pytest-asyncio = "^0.16.0"
+pytest-cov = "^3.0.0"
+pytest-mock = "^3.6.1"
+pytest-sugar = "^0.9.4"
+pytest-toolbox = "^0.4"
+types-jmespath = "^0.10.1"
