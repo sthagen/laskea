@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Local artifacts
+
+*~
+.idea
+local_publi.sh
