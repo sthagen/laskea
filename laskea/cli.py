@@ -6,7 +6,7 @@ import typer
 
 import laskea
 
-APP_NAME = 'Calculate (Finnish: laskea) some parts..'
+APP_NAME = 'Calculate (Finnish: laskea) some parts.'
 APP_ALIAS = 'laskea'
 app = typer.Typer(
     add_completion=False,
