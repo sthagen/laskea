@@ -2,6 +2,8 @@
 
 Calculate (Finnish: laskea) some parts.
 
+Third party dependencies are documented in the folder [docs/third-party](docs/third-party/README.md).
+
 ## Status
 
 Experimental.
