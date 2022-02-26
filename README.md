@@ -14,9 +14,3 @@ Experimental.
 [![supported-implementations](https://img.shields.io/pypi/implementation/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 
 **Note**: The default branch is default.
-
-## Status
-
-Experimental.
-
-**Note**: The default branch is default.
