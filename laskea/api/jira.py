@@ -1,21 +1,18 @@
-
 # -*- coding: utf-8 -*-
 # pylint: disable=expression-not-assigned,line-too-long
 """JIRA proxy connector API for code generation."""
 import copy
 import json
 import os
+from typing import no_type_check
 
-from atlassian import Jira  # noqa
 import jmespath
-
+from atlassian import Jira  # type: ignore # noqa
 
 API_BASE_URL = 'https://example.com'
 APP_NAME = 'ASCIINATOR'
 
-DEFAULT_COLUMN_FIELDS = (
-    'Key', 'Summary', ('Priority', 'P'), 'Status', 'Custom Field Wun', 'Custom Field Other (CFO)'
-)
+DEFAULT_COLUMN_FIELDS = ('Key', 'Summary', ('Priority', 'P'), 'Status', 'Custom Field Wun', 'Custom Field Other (CFO)')
 
 WUN_ID = 'customfield_11501'
 ANOTHER_ID = 'customfield_13901'
@@ -48,6 +45,7 @@ def login(user: str = '', token: str = '', url: str = '') -> Jira:
     return Jira(url=url, username=user, password=token)
 
 
+@no_type_check
 def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
     """EggLayingWoolMilkDear."""
 
@@ -78,13 +76,15 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
 
         for field in KNOWN_CI_FIELDS.keys():
             if field in candidate:
-                completed_column_fields.append({
-                    'path': KNOWN_CI_FIELDS[field][1],
-                    'id': KNOWN_CI_FIELDS[field][0],
-                    'concept': concept,
-                    'label': label,
-                    'field': field,
-                })
+                completed_column_fields.append(
+                    {
+                        'path': KNOWN_CI_FIELDS[field][1],
+                        'id': KNOWN_CI_FIELDS[field][0],
+                        'concept': concept,
+                        'label': label,
+                        'field': field,
+                    }
+                )
 
     if not completed_column_fields:
         return {
@@ -95,7 +95,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
 
     # dynamics below
     try:
-        handle.user(handle.username)["name"] == handle.username
+        handle.user(handle.username)['name'] == handle.username
     except RuntimeError as err:
         return {
             'jql_text': jql_text,
@@ -122,6 +122,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
     }
 
 
+@no_type_check
 def markdown_table(handle: Jira, jql_text: str, column_fields=None) -> str:
     """Yes we can ... document later."""
     data = query(handle, jql_text, column_fields)

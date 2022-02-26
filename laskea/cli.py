@@ -2,13 +2,9 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=line-too-long
 """Commandline API gateway for laskea."""
-import sys
-from typing import List, Union
-
 import typer
 
 import laskea
-import laskea.laskea as fill
 
 APP_NAME = 'Calculate (Finnish: laskea) some parts..'
 APP_ALIAS = 'laskea'

@@ -3,6 +3,6 @@
 """Calculate (Finnish: laskea) some parts."""
 
 
-def init():
+def init() -> None:
     """Minimize boilerplate in the target documents."""
     pass
