@@ -9,7 +9,7 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 
 ### Direct Dependencies
 
-| Name                                                                          | Version | License                 | Author             | Description                                                             |
+| Name                                                                          | Version | License                 | Author             | Description (from packaging data)                                       |
 |:------------------------------------------------------------------------------|:--------|:------------------------|:-------------------|:------------------------------------------------------------------------|
 | [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | 3.20.1  | Apache Software License | Matt Harasymczuk   | Python Atlassian REST API Wrapper                                       |
 | [cogapp](http://nedbatchelder.com/code/cog)                                   | 3.3.0   | MIT License             | Ned Batchelder     | Cog: A content generator for executing Python snippets in source files. |
@@ -19,7 +19,7 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 
 ### Indirect Dependencies
 
-| Name                                                               | Version   | License                              | Author                 | Description                                                                                             |
+| Name                                                               | Version   | License                              | Author                 | Description (from packaging data)                                                                       |
 |:-------------------------------------------------------------------|:----------|:-------------------------------------|:-----------------------|:--------------------------------------------------------------------------------------------------------|
 | [Deprecated](https://github.com/tantale/deprecated)                | 1.2.13    | MIT License                          | Laurent LAPORTE        | Python @deprecated decorator to deprecate old python classes, functions or methods.                     |
 | [certifi](https://certifiio.readthedocs.io/en/latest/)             | 2021.10.8 | Mozilla Public License 2.0 (MPL 2.0) | Kenneth Reitz          | Python package for providing Mozilla's CA Bundle.                                                       |
