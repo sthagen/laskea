@@ -1,0 +1,162 @@
+import functools
+import json
+import pathlib
+import pkg_resources
+import string
+import subprocess
+from typing import List, Tuple
+"""
+| Name                                                                          | Version | License                 | Author                                   | Description (from packaging data)                                       |
+|:------------------------------------------------------------------------------|:--------|:------------------------|:-----------------------------------------|:------------------------------------------------------------------------|
+| [antlr4-python3-runtime](http://www.antlr.org)                                | 4.9.3   | BSD                     | Eric Vergnaud, Terence Parr, Sam Harwell | ANTLR 4.9.3 runtime for Python 3.7                                      |
+| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | 3.20.1  | Apache Software License | Matt Harasymczuk                         | Python Atlassian REST API Wrapper                                       |
+| [cogapp](http://nedbatchelder.com/code/cog)                                   | 3.3.0   | MIT License             | Ned Batchelder                           | Cog: A content generator for executing Python snippets in source files. |
+| [jmespath](https://github.com/jmespath/jmespath.py)                           | 0.10.0  | MIT License             | James Saryerwinnie                       | JSON Matching Expressions                                               |
+| [pydantic](https://github.com/samuelcolvin/pydantic)                          | 1.9.0   | MIT License             | Samuel Colvin                            | Data validation and settings management using python 3.6 type hinting   |
+| [typer](https://github.com/tiangolo/typer)                                    | 0.4.0   | MIT License             | Sebastián Ramírez                        | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
+"""
+__all__ = ['dependency_tree_console_text', 'direct_dependencies_table', 'indirect_dependencies_table']
+
+ENCODING = 'utf-8'
+TP_PATH = pathlib.Path('docs', 'third-party')
+
+TABLE_KEYS = (('Name', 'URL'), 'Version', 'License', 'Author', 'Description')
+HEADER_LABELS = ('Name', 'Version', 'License', 'Author', 'Description (from packaging data)')
+FALLBACK_URLS = {
+    'typing-extensions': 'https://github.com/python/typing/blob/master/typing_extensions/README.rst',
+}
+TARGET = """\
+__version__ = '$version$+parent.$revision$'\
+"""
+
+
+@functools.lru_cache()
+def _fetch_direct_dependency_names():
+    with pathlib.Path('requirements.txt').open() as requirements_txt:
+        install_requires = [
+            str(requirement)
+            for requirement
+            in pkg_resources.parse_requirements(requirements_txt)
+        ]
+    return install_requires
+
+
+def _generate_dependency_information() -> None:
+    """Use pip-licenses for creation of diverse databases and graphs."""
+    install_requires = _fetch_direct_dependency_names()
+    tokens = set(list(string.ascii_letters + '-_'))
+    direct_names = [''.join(c for c in term if c in tokens) for term in install_requires]
+    direct_vector = [
+        'pip-licenses', '--format', 'json', '-p', *direct_names,
+        '--with-authors', '--with-description', '--with-urls', '--with-license-file', '--with-notice-file',
+        '--output-file', str(TP_PATH / 'direct-dependency-licenses.json')]
+    noise = subprocess.run(direct_vector, capture_output=True, encoding=ENCODING, text=True).stdout.strip()
+    if not noise.startswith('created path: ') or not noise.endswith('direct-dependency-licenses.json'):
+        raise RuntimeError(noise)
+
+    indirect_names = [  # TODO(sthagen) these indirect deps may diverge ...
+        'certifi',
+        'charset-normalizer',
+        'click',
+        'deprecated',
+        'idna',
+        'oauthlib',
+        'requests',
+        'requests-oauthlib',
+        'six',
+        'typing-extensions',
+        'urllib3',
+        'wrapt',
+    ]
+    full_vector = [
+        'pip-licenses', '--format', 'json', '-p', *direct_names, *indirect_names,
+        '--with-authors', '--with-description', '--with-urls', '--with-license-file', '--with-notice-file',
+        '--output-file', str(TP_PATH / 'all-dependency-licenses.json')]
+    noise = subprocess.run(full_vector, capture_output=True, encoding=ENCODING, text=True).stdout.strip()
+    if not noise.startswith('created path: ') or not noise.endswith('all-dependency-licenses.json'):
+        raise RuntimeError(noise)
+
+    """
+    pipdeptree --packages antlr4-python3-runtime,atlassian-python-api,cogapp,jmespath,pydantic,typer --graph-output svg > docs/third-party/package-dependency-tree.svg
+    pipdeptree --packages antlr4-python3-runtime,atlassian-python-api,cogapp,jmespath,pydantic,typer --json-tree --warn silence > docs/third-party/package-dependency-tree.json
+    """
+    base_vector = ['pipdeptree', '--packages', ','.join(direct_names)]
+    jobs = (
+        (TP_PATH / 'package-dependency-tree.dot.txt', base_vector + ['--graph-output', 'dot']),
+        (TP_PATH / 'package-dependency-tree.svg', base_vector + ['--graph-output', 'dot']),
+        (TP_PATH / 'package-dependency-tree.json', base_vector + ['--json-tree', '--warn', 'silence']),
+        (TP_PATH / 'package-dependency-tree.console.txt', base_vector + ['--warn', 'silence']),
+    )
+    for target, vector in jobs:
+        plot = subprocess.run(vector, capture_output=True, encoding=ENCODING, text=True).stdout.strip()
+        target.write_text(plot, encoding=ENCODING)
+
+
+@functools.lru_cache()
+def _fetch_dependencies(direct_only: bool = True):
+    db = 'direct-dependency-licenses.json' if direct_only else 'all-dependency-licenses.json'
+    dep_json_path = pathlib.Path('docs', 'third-party') / db
+    with open(dep_json_path, 'rt', encoding=ENCODING) as handle:
+        data = json.load(handle)
+    return data
+
+
+def _markdown_table(table: List[Tuple[str, str, str, str, str]], header_labels=HEADER_LABELS) -> str:
+    """Create the gfm table as string."""
+    columns = header_labels
+    col_wid = {key: len(key) for key in columns}
+    for slot, record in enumerate(table):
+        for key, cell in zip(columns, record):
+            col_wid[key] = max(len(cell), col_wid[key])
+
+    header_cells = [key.ljust(col_wid[key]) for key in columns]
+    header = f'| {" | ".join(header_cells)} |'
+
+    separator_cells = ['-' * (col_wid[key] + 1) for key in columns]
+    separator = f'|:{"|:".join(separator_cells)}|'
+
+    rows = [f'| {" | ".join(str(v).ljust(col_wid[k]) for k, v in zip(columns, line))} |' for line in table]
+
+    return '\n'.join([header] + [separator] + rows)
+
+
+def _extract_rows(data):
+    rows = []
+    for record in data:
+        nam = record['Name']
+        url = record.get('URL', '')
+        if url == 'UNKNOWN':
+            url = FALLBACK_URLS.get(nam, '')
+        nam_e = f'[{nam}]({url})' if url else nam
+
+        ver = record['Version']
+        ver_sion = f'[{ver}](https://pypi.org/project/{nam}/{ver}/)'
+        lic = record['License']
+        aut = record['Author']
+        des = record['Description']
+        rows.append((nam_e, ver_sion, lic, aut, des))
+    rows.sort()
+    return rows
+
+
+def direct_dependencies_table() -> None:
+    """Fill in the data from the direct dependencies."""
+    _generate_dependency_information()
+    print(_markdown_table(_extract_rows(_fetch_dependencies(direct_only=True))))
+
+
+def indirect_dependencies_table() -> None:
+    """Fill in the data from the indirect dependencies."""
+    direct_data = _fetch_dependencies(direct_only=True)
+    direct_names = tuple(record['Name'] for record in direct_data)
+    indirect_only_data = [rec for rec in _fetch_dependencies(direct_only=False) if rec['Name'] not in direct_names]
+    print(_markdown_table(_extract_rows(indirect_only_data)))
+
+
+def dependency_tree_console_text():
+    """Fill in the pipdeptree console output minus any warnings."""
+    console_tree = (TP_PATH / 'package-dependency-tree.console.txt').read_text(encoding=ENCODING).strip()
+    fence = '````'
+    print(f'{fence}console')
+    print(console_tree)
+    print(fence)

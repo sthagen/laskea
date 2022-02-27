@@ -2,24 +2,23 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.4.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.4",
-  "serialNumber": "urn:uuid:e9a0f0ad-92a5-43d0-b6de-51e628818d32",
+  "serialNumber": "urn:uuid:eb28600e-4a6a-40b1-acc1-99f6c8af98ff",
   "version": 1,
   "metadata": {
-    "timestamp": "2022-02-27T14:20:30.404093+00:00",
+    "timestamp": "2022-02-27T16:35:16.808917+00:00",
     "tools": [
-      {
-        "vendor": "CycloneDX",
-        "name": "cyclonedx-bom",
-        "version": "3.0.0"
-      },
       {
         "vendor": "CycloneDX",
         "name": "cyclonedx-python-lib",
         "version": "2.0.0",
         "externalReferences": [
           {
-            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/blob/main/LICENSE",
-            "type": "license"
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/actions",
+            "type": "build-system"
+          },
+          {
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib",
+            "type": "vcs"
           },
           {
             "url": "https://pypi.org/project/cyclonedx-python-lib/",
@@ -30,71 +29,72 @@
             "type": "documentation"
           },
           {
-            "url": "https://cyclonedx.org",
-            "type": "website"
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/blob/main/LICENSE",
+            "type": "license"
           },
           {
-            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/actions",
-            "type": "build-system"
-          },
-          {
-            "url": "https://github.com/CycloneDX/cyclonedx-python-lib",
-            "type": "vcs"
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/blob/main/CHANGELOG.md",
+            "type": "release-notes"
           },
           {
             "url": "https://github.com/CycloneDX/cyclonedx-python-lib/issues",
             "type": "issue-tracker"
           },
           {
-            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/blob/main/CHANGELOG.md",
-            "type": "release-notes"
+            "url": "https://cyclonedx.org",
+            "type": "website"
           }
         ]
+      },
+      {
+        "vendor": "CycloneDX",
+        "name": "cyclonedx-bom",
+        "version": "3.0.0"
       }
     ]
   },
   "components": [
     {
       "type": "library",
-      "bom-ref": "875918b9-7dca-4391-8879-84f4653219fb",
-      "name": "antlr4-python3-runtime",
-      "version": "4.9.3",
-      "purl": "pkg:pypi/antlr4-python3-runtime@4.9.3"
-    },
-    {
-      "type": "library",
-      "bom-ref": "59c2eabb-9443-4d68-9e36-0e28b4b54851",
-      "name": "atlassian-python-api",
-      "version": "3.20.1",
-      "purl": "pkg:pypi/atlassian-python-api@3.20.1"
-    },
-    {
-      "type": "library",
-      "bom-ref": "7b0298c6-3d25-46c5-90b6-88d4bbb3c227",
-      "name": "cogapp",
-      "version": "3.3.0",
-      "purl": "pkg:pypi/cogapp@3.3.0"
-    },
-    {
-      "type": "library",
-      "bom-ref": "9ab80484-6959-4d06-b980-c4f05b2b4ee8",
+      "bom-ref": "6a831193-5dbc-4e79-b4bd-6d55bf3d50d3",
       "name": "pydantic",
       "version": "1.9.0",
       "purl": "pkg:pypi/pydantic@1.9.0"
     },
     {
       "type": "library",
-      "bom-ref": "72ee6d16-7d07-4f56-a991-81eca80a5b48",
-      "name": "typer",
-      "version": "0.4.0",
-      "purl": "pkg:pypi/typer@0.4.0"
-    },
-    {
-      "type": "library",
-      "bom-ref": "4c99f238-d809-454c-a639-47623cf72a5d",
+      "bom-ref": "f49cab95-9d7c-47a6-881c-d398aea01bd0",
       "name": "jmespath",
       "version": "0.10.0",
       "purl": "pkg:pypi/jmespath@0.10.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "b0d0f890-0b48-4a8d-9828-ecc65e40886b",
+      "name": "cogapp",
+      "version": "3.3.0",
+      "purl": "pkg:pypi/cogapp@3.3.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "47841f4f-afbe-4124-99be-7b83db6a34c5",
+      "name": "atlassian-python-api",
+      "version": "3.20.1",
+      "purl": "pkg:pypi/atlassian-python-api@3.20.1"
+    },
+    {
+      "type": "library",
+      "bom-ref": "77d37feb-b064-4fcd-9634-2e418f85b7d2",
+      "name": "antlr4-python3-runtime",
+      "version": "4.9.3",
+      "purl": "pkg:pypi/antlr4-python3-runtime@4.9.3"
+    },
+    {
+      "type": "library",
+      "bom-ref": "86e5d733-a07f-4800-a922-72a07762c6c8",
+      "name": "typer",
+      "version": "0.4.0",
+      "purl": "pkg:pypi/typer@0.4.0"
     }
   ]
 }

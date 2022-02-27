@@ -1,52 +1,57 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([27921a58 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:27921a58d7a00ee0e8b8d07f68cf1eb43f4f9e4b1b9ff193fd6871dabaf2977f")).
-<!--[[[end]]] (checksum: 7b76bdcb8196240bd5f71e85c0dac6c7)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([f984fe37 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:f984fe37c49a012d47f5a813d16eabc8ba4dc823b3b6c651a4026aa664f6d695")).
+<!--[[[end]]] (checksum: f6a6817b5b34a5f5c2de17403c56d74c)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
 
 ### Direct Dependencies
 
-| Name                                                                          | Version | License                 | Author                                   | Description (from packaging data)                                       |
-|:------------------------------------------------------------------------------|:--------|:------------------------|:-----------------------------------------|:------------------------------------------------------------------------|
-| [antlr4-python3-runtime](http://www.antlr.org)                                | 4.9.3   | BSD                     | Eric Vergnaud, Terence Parr, Sam Harwell | ANTLR 4.9.3 runtime for Python 3.7                                      |
-| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | 3.20.1  | Apache Software License | Matt Harasymczuk                         | Python Atlassian REST API Wrapper                                       |
-| [cogapp](http://nedbatchelder.com/code/cog)                                   | 3.3.0   | MIT License             | Ned Batchelder                           | Cog: A content generator for executing Python snippets in source files. |
-| [jmespath](https://github.com/jmespath/jmespath.py)                           | 0.10.0  | MIT License             | James Saryerwinnie                       | JSON Matching Expressions                                               |
-| [pydantic](https://github.com/samuelcolvin/pydantic)                          | 1.9.0   | MIT License             | Samuel Colvin                            | Data validation and settings management using python 3.6 type hinting   |
-| [typer](https://github.com/tiangolo/typer)                                    | 0.4.0   | MIT License             | Sebastián Ramírez                        | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
+<!--[[[fill direct_dependencies_table()]]]-->
+| Name                                                                          | Version                                                         | License                 | Author             | Description (from packaging data)                                       |
+|:------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------|:-------------------|:------------------------------------------------------------------------|
+| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | [3.20.1](https://pypi.org/project/atlassian-python-api/3.20.1/) | Apache Software License | Matt Harasymczuk   | Python Atlassian REST API Wrapper                                       |
+| [cogapp](http://nedbatchelder.com/code/cog)                                   | [3.3.0](https://pypi.org/project/cogapp/3.3.0/)                 | MIT License             | Ned Batchelder     | Cog: A content generator for executing Python snippets in source files. |
+| [jmespath](https://github.com/jmespath/jmespath.py)                           | [0.10.0](https://pypi.org/project/jmespath/0.10.0/)             | MIT License             | James Saryerwinnie | JSON Matching Expressions                                               |
+| [pydantic](https://github.com/samuelcolvin/pydantic)                          | [1.9.0](https://pypi.org/project/pydantic/1.9.0/)               | MIT License             | Samuel Colvin      | Data validation and settings management using python 3.6 type hinting   |
+| [typer](https://github.com/tiangolo/typer)                                    | [0.4.0](https://pypi.org/project/typer/0.4.0/)                  | MIT License             | Sebastián Ramírez  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
+<!--[[[end]]] (checksum: 8e21b5668bd5cf7a77284ea235129522)-->
 
 ### Indirect Dependencies
 
-| Name                                                               | Version   | License                              | Author                 | Description (from packaging data)                                                                       |
-|:-------------------------------------------------------------------|:----------|:-------------------------------------|:-----------------------|:--------------------------------------------------------------------------------------------------------|
-| [Deprecated](https://github.com/tantale/deprecated)                | 1.2.13    | MIT License                          | Laurent LAPORTE        | Python @deprecated decorator to deprecate old python classes, functions or methods.                     |
-| [certifi](https://certifiio.readthedocs.io/en/latest/)             | 2021.10.8 | Mozilla Public License 2.0 (MPL 2.0) | Kenneth Reitz          | Python package for providing Mozilla's CA Bundle.                                                       |
-| [charset-normalizer](https://github.com/ousret/charset_normalizer) | 2.0.12    | MIT License                          | Ahmed TAHRI @Ousret    | The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet. |
-| [click](https://palletsprojects.com/p/click/)                      | 8.0.4     | BSD License                          | Armin Ronacher         | Composable command line interface toolkit                                                               |
-| [idna](https://github.com/kjd/idna)                                | 3.3       | BSD License                          | Kim Davies             | Internationalized Domain Names in Applications (IDNA)                                                   |
-| [oauthlib](https://github.com/oauthlib/oauthlib)                   | 3.2.0     | BSD License                          | The OAuthlib Community | A generic, spec-compliant, thorough implementation of the OAuth request-signing logic                   |
-| [requests](https://requests.readthedocs.io)                        | 2.27.1    | Apache Software License              | Kenneth Reitz          | Python HTTP for Humans.                                                                                 |
-| [requests-oauthlib](https://github.com/requests/requests-oauthlib) | 1.3.1     | BSD License                          | Kenneth Reitz          | OAuthlib authentication support for Requests.                                                           |
-| [six](https://github.com/benjaminp/six)                            | 1.16.0    | MIT License                          | Benjamin Peterson      | Python 2 and 3 compatibility utilities                                                                  |
-| [typing-extensions](https://github.com/python/typing)              | 4.1.1     | Python Software Foundation License   | UNKNOWN                | Backported and Experimental Type Hints for Python 3.6+                                                  |
-| [urllib3](https://urllib3.readthedocs.io/)                         | 1.26.8    | MIT License                          | Andrey Petrov          | HTTP library with thread-safe connection pooling, file post, and more.                                  |
-| [wrapt](https://github.com/GrahamDumpleton/wrapt)                  | 1.13.3    | BSD License                          | Graham Dumpleton       | Module for decorators, wrappers and monkey patching.                                                    |
- 
+<!--[[[fill indirect_dependencies_table()]]]-->
+| Name                                                                                           | Version                                                       | License                              | Author                 | Description (from packaging data)                                                                       |
+|:-----------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:-------------------------------------|:-----------------------|:--------------------------------------------------------------------------------------------------------|
+| [Deprecated](https://github.com/tantale/deprecated)                                            | [1.2.13](https://pypi.org/project/Deprecated/1.2.13/)         | MIT License                          | Laurent LAPORTE        | Python @deprecated decorator to deprecate old python classes, functions or methods.                     |
+| [certifi](https://certifiio.readthedocs.io/en/latest/)                                         | [2021.10.8](https://pypi.org/project/certifi/2021.10.8/)      | Mozilla Public License 2.0 (MPL 2.0) | Kenneth Reitz          | Python package for providing Mozilla's CA Bundle.                                                       |
+| [charset-normalizer](https://github.com/ousret/charset_normalizer)                             | [2.0.12](https://pypi.org/project/charset-normalizer/2.0.12/) | MIT License                          | Ahmed TAHRI @Ousret    | The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet. |
+| [click](https://palletsprojects.com/p/click/)                                                  | [8.0.4](https://pypi.org/project/click/8.0.4/)                | BSD License                          | Armin Ronacher         | Composable command line interface toolkit                                                               |
+| [idna](https://github.com/kjd/idna)                                                            | [3.3](https://pypi.org/project/idna/3.3/)                     | BSD License                          | Kim Davies             | Internationalized Domain Names in Applications (IDNA)                                                   |
+| [oauthlib](https://github.com/oauthlib/oauthlib)                                               | [3.2.0](https://pypi.org/project/oauthlib/3.2.0/)             | BSD License                          | The OAuthlib Community | A generic, spec-compliant, thorough implementation of the OAuth request-signing logic                   |
+| [requests-oauthlib](https://github.com/requests/requests-oauthlib)                             | [1.3.1](https://pypi.org/project/requests-oauthlib/1.3.1/)    | BSD License                          | Kenneth Reitz          | OAuthlib authentication support for Requests.                                                           |
+| [requests](https://requests.readthedocs.io)                                                    | [2.27.1](https://pypi.org/project/requests/2.27.1/)           | Apache Software License              | Kenneth Reitz          | Python HTTP for Humans.                                                                                 |
+| [six](https://github.com/benjaminp/six)                                                        | [1.16.0](https://pypi.org/project/six/1.16.0/)                | MIT License                          | Benjamin Peterson      | Python 2 and 3 compatibility utilities                                                                  |
+| [typing-extensions](https://github.com/python/typing/blob/master/typing_extensions/README.rst) | [4.1.1](https://pypi.org/project/typing-extensions/4.1.1/)    | Python Software Foundation License   | UNKNOWN                | Backported and Experimental Type Hints for Python 3.6+                                                  |
+| [urllib3](https://urllib3.readthedocs.io/)                                                     | [1.26.8](https://pypi.org/project/urllib3/1.26.8/)            | MIT License                          | Andrey Petrov          | HTTP library with thread-safe connection pooling, file post, and more.                                  |
+| [wrapt](https://github.com/GrahamDumpleton/wrapt)                                              | [1.13.3](https://pypi.org/project/wrapt/1.13.3/)              | BSD License                          | Graham Dumpleton       | Module for decorators, wrappers and monkey patching.                                                    |
+ <!--[[[end]]] (checksum: 665fc64eade84863662fe37d2780bd36)-->
+
 ## Dependency Tree(s)
 
 JSON file with the complete package dependency tree info of: [the full dependency tree](package-dependency-tree.json)
 
 ### Rendered SVG
 
+Base graphviz file in dot format: [Trees of the direct dependencies](package-dependency-tree.dot.txt)
+
 ![Trees of the direct dependencies](package-dependency-tree.svg)
 
 ### Console Representation
 
-```console
-antlr4-python3-runtime==4.9.3
+<!--[[[fill dependency_tree_console_text()]]]-->
+````console
 atlassian-python-api==3.20.1
   - deprecated [required: Any, installed: 1.2.13]
     - wrapt [required: >=1.10,<2, installed: 1.13.3]
@@ -70,4 +75,5 @@ pydantic==1.9.0
   - typing-extensions [required: >=3.7.4.3, installed: 4.1.1]
 typer==0.4.0
   - click [required: >=7.1.1,<9.0.0, installed: 8.0.4]
-```
+````
+<!--[[[end]]] (checksum: 83731647caaec7255f7b74cd72e57db9)-->
