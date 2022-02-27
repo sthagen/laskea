@@ -6,7 +6,7 @@ __all__ = ['git_describe', 'version_sync']
 
 ENCODING = 'utf-8'
 TARGET = """\
-__version__ = '$version$+sha1.$revision$'\
+__version__ = '$version$+parent.$revision$'\
 """
 
 
