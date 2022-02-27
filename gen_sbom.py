@@ -12,7 +12,7 @@ The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/
 
 def sbom_sha256():
     """Fill in the data."""
-    with open(pathlib.Path('..', '..', 'sbom.json.sha256'), 'rt', encoding=ENCODING) as handle:
+    with open(pathlib.Path('sbom.json.sha256'), 'rt', encoding=ENCODING) as handle:
         hash_full = handle.read().strip()
     hash_8 = hash_full[:8]
     print(TARGET.replace('$hash_8$', hash_8).replace('$hash_full$', hash_full))

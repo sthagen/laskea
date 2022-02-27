@@ -2,8 +2,8 @@ SHELL = /bin/bash
 package = shagen/laskea
 
 .DEFAULT_GOAL := all
-isort = isort laskea tests
-black = black -S -l 120 --target-version py38 laskea tests
+isort = isort --skip-glob 'laskea/api/jql*' laskea tests
+black = black -S -l 120 --target-version py38 --exclude 'laskea/api/jql*' laskea tests
 
 .PHONY: install
 install:
@@ -28,13 +28,13 @@ init:
 .PHONY: lint
 lint:
 	python setup.py check -ms
-	flake8 laskea/ tests/
+	flake8 --exclude 'laskea/api/jql*' laskea/ tests/
 	$(isort) --check-only --df
 	$(black) --check --diff
 
 .PHONY: mypy
 mypy:
-	mypy laskea
+	mypy --exclude 'laskea/api/jql*' laskea
 
 .PHONY: test
 test: clean
@@ -50,8 +50,12 @@ all: lint mypy testcov
 
 .PHONY: sbom
 sbom:
-	@docs/third-party/gen-sbom
-	@cd docs/third-party && cog -P -r -c --check --markers="[[fill ]]] [[[end]]]" -p "from gen_sbom import *" README.md
+	@./gen-sbom
+	@cog -I. -P -c -r --check --markers="[[fill ]]] [[[end]]]" -p "from gen_sbom import *" docs/third-party/README.md
+
+.PHONY: version
+version:
+	@cog -I. -P -c -r --check --markers="[[fill ]]] [[[end]]]" -p "from gen_version import *" pyproject.toml laskea/__init__.py
 
 .PHONY: clean
 clean:
