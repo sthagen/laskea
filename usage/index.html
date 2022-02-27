@@ -302,6 +302,16 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Usage
+  </span>
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -310,6 +320,79 @@
   </span>
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    Help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    Update
+  </a>
+  
+    <nav class="md-nav" aria-label="Update">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help_1" class="md-nav__link">
+    Help
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify" class="md-nav__link">
+    Verify
+  </a>
+  
+    <nav class="md-nav" aria-label="Verify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help_2" class="md-nav__link">
+    Help
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    Version
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -398,6 +481,68 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    Help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    Update
+  </a>
+  
+    <nav class="md-nav" aria-label="Update">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help_1" class="md-nav__link">
+    Help
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify" class="md-nav__link">
+    Verify
+  </a>
+  
+    <nav class="md-nav" aria-label="Verify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help_2" class="md-nav__link">
+    Help
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    Version
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -411,6 +556,67 @@
 
 
 <h1 id="example-usage">Example Usage</h1>
+<h2 id="help">Help</h2>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea
+<span class="go">Usage: laskea [OPTIONS] COMMAND [ARGS]...</span>
+
+<span class="go">  Calculate (Finnish: laskea) some parts.</span>
+
+<span class="go">Options:</span>
+<span class="go">  -V, --version  Display the laskea version and exit</span>
+<span class="go">  -h, --help     Show this message and exit.</span>
+
+<span class="go">Commands:</span>
+<span class="go">  update   Fill in some parts of the input document.</span>
+<span class="go">  verify   Answer the question if the input document is in good shape.</span>
+<span class="go">  version  Display the laskea version and exit.</span>
+</code></pre></div>
+<h2 id="update">Update</h2>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea update tests/fixtures/basic/empty.md
+<span class="go">using configuration ({})</span>
+<span class="go">Would act on command =&#39;update&#39;, inp =&#39;tests/fixtures/basic/empty.md&#39;, and config =&#39;/Users/ruth/.laskea.json&#39;</span>
+<span class="go">NotImplemented (yet)</span>
+</code></pre></div>
+<h3 id="help_1">Help</h3>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea update -h
+<span class="go">Usage: laskea update [OPTIONS] [SOURCE]</span>
+
+<span class="go">  Fill in some parts of the input document.</span>
+
+<span class="go">Arguments:</span>
+<span class="go">  [SOURCE]  [default: ]</span>
+
+<span class="go">Options:</span>
+<span class="go">  -i, --input &lt;sourcepath&gt;   Path to input file</span>
+<span class="go">  -c, --config &lt;configpath&gt;  Path to config file (default is</span>
+<span class="gp">                             $</span>HOME/.laskea.json<span class="o">)</span>
+<span class="go">  -h, --help                 Show this message and exit.</span>
+</code></pre></div>
+<h2 id="verify">Verify</h2>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea verify tests/fixtures/basic/empty.md
+<span class="go">using configuration ({})</span>
+<span class="go">Would act on command =&#39;verify&#39;, inp =&#39;tests/fixtures/basic/empty.md&#39;, and config =&#39;/Users/ruth/.laskea.json&#39;</span>
+<span class="go">NotImplemented (yet)</span>
+</code></pre></div>
+<h3 id="help_2">Help</h3>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea verify -h
+<span class="go">Usage: laskea verify [OPTIONS] [SOURCE]</span>
+
+<span class="go">  Answer the question if the input document is in good shape.</span>
+
+<span class="go">Arguments:</span>
+<span class="go">  [SOURCE]  [default: ]</span>
+
+<span class="go">Options:</span>
+<span class="go">  -i, --input &lt;sourcepath&gt;   Path to input file</span>
+<span class="go">  -c, --config &lt;configpath&gt;  Path to config file (default is</span>
+<span class="gp">                             $</span>HOME/.laskea.json<span class="o">)</span>
+<span class="go">  -h, --help                 Show this message and exit.</span>
+</code></pre></div>
+<h2 id="version">Version</h2>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea version
+<span class="go">Calculate (Finnish: laskea) some parts. version 2022.2.27+parent.5fdd0a49</span>
+</code></pre></div>
 
 
 
