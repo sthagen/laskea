@@ -16,4 +16,4 @@ Experimental.
 [![supported-versions](https://img.shields.io/pypi/pyversions/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 [![supported-implementations](https://img.shields.io/pypi/implementation/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 
-**Note**: The default branch is default.
+**Note**: The default branch is `default`.

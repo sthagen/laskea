@@ -15,4 +15,4 @@ Third party dependencies are documented in the folder [third-party](third-party/
 
 Experimental.
 
-**Note**: The default branch is default.
+**Note**: The default branch is `default`.
