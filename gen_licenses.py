@@ -83,7 +83,7 @@ def _generate_dependency_information() -> None:
     base_vector = ['pipdeptree', '--packages', ','.join(direct_names)]
     jobs = (
         (TP_PATH / 'package-dependency-tree.dot.txt', base_vector + ['--graph-output', 'dot']),
-        (TP_PATH / 'package-dependency-tree.svg', base_vector + ['--graph-output', 'dot']),
+        (TP_PATH / 'package-dependency-tree.svg', base_vector + ['--graph-output', 'svg']),
         (TP_PATH / 'package-dependency-tree.json', base_vector + ['--json-tree', '--warn', 'silence']),
         (TP_PATH / 'package-dependency-tree.console.txt', base_vector + ['--warn', 'silence']),
     )
