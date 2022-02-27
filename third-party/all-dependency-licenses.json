@@ -12,18 +12,6 @@
     "Version": "1.2.13"
   },
   {
-    "Author": "Eric Vergnaud, Terence Parr, Sam Harwell",
-    "Description": "ANTLR 4.9.3 runtime for Python 3.7",
-    "License": "BSD",
-    "LicenseFile": "UNKNOWN",
-    "LicenseText": "UNKNOWN",
-    "Name": "antlr4-python3-runtime",
-    "NoticeFile": "UNKNOWN",
-    "NoticeText": "UNKNOWN",
-    "URL": "http://www.antlr.org",
-    "Version": "4.9.3"
-  },
-  {
     "Author": "Matt Harasymczuk",
     "Description": "Python Atlassian REST API Wrapper",
     "License": "Apache Software License",
