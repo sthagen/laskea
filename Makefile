@@ -52,6 +52,7 @@ all: lint mypy testcov
 sbom:
 	@docs/third-party/gen-sbom
 	@cd docs/third-party && cog -P -r -c --check --markers="[[fill ]]] [[[end]]]" -p "from gen_sbom import *" README.md
+
 .PHONY: clean
 clean:
 	@rm -rf `find . -name __pycache__`
