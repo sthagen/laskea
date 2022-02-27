@@ -46,7 +46,7 @@ JSON file with the complete package dependency tree info of: [the full dependenc
 
 Base graphviz file in dot format: [Trees of the direct dependencies](package-dependency-tree.dot.txt)
 
-![Trees of the direct dependencies](package-dependency-tree.svg)
+<img src="/sthagen/laskea/raw/default/docs/third-party/package-dependency-tree.svg" alt="Trees of the direct dependencies" title="Trees of the direct dependencies"/>
 
 ### Console Representation
 
