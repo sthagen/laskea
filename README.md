@@ -8,7 +8,8 @@ Third party dependencies are documented in the folder [docs/third-party](docs/th
 
 Experimental.
 
-[![license](https://img.shields.io/github/license/sthagen/laskea.svg?style=flat)](https://github.com/sthagen/laskea/blob/default/LICENSE)
+[License: MIT](https://github.com/sthagen/laskea/blob/default/LICENSE)
+
 [![version](https://img.shields.io/pypi/v/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 [![downloads](https://pepy.tech/badge/laskea/month)](https://pepy.tech/project/laskea)
 [![wheel](https://img.shields.io/pypi/wheel/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
