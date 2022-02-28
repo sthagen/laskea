@@ -25,6 +25,10 @@ KNOWN_CI_FIELDS = {
     'custom field other': (ANOTHER_ID, f'issues[].fields.{ANOTHER_ID}[].value'),
 }
 
+BASE_USER = os.getenv(f'{APP_NAME}_USER', '')
+BASE_PASS = os.getenv(f'{APP_NAME}_TOKEN', '')
+BASE_URL = os.getenv(f'{APP_NAME}_BASE_URL', '')
+
 
 def mock(number: int) -> int:
     """Intermediate for starting the dev env in a valid state."""
@@ -34,11 +38,11 @@ def mock(number: int) -> int:
 def login(user: str = '', token: str = '', url: str = '') -> Jira:
     """LatAli"""
     if not user:
-        user = os.getenv(f'{APP_NAME}_USER', '')
+        user = BASE_USER
     if not token:
-        token = os.getenv(f'{APP_NAME}_TOKEN', '')
+        token = BASE_PASS
     if not url:
-        url = os.getenv(f'{APP_NAME}_BASE_URL', '')
+        url = BASE_URL
     if not user or not token or not url:
         raise ValueError('User, Token, and URL are all required for login.')
 
@@ -111,7 +115,10 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
     slot_count = len(columns[pairs[0][0]])
     rows = []
     for slot in range(slot_count):
-        rows.append({key: seq[slot] for key, seq in columns.items()})
+        try:
+            rows.append({key: seq[slot] for key, seq in columns.items()})
+        except IndexError:
+            pass
 
     return {
         'jql_text': jql_text,
@@ -137,6 +144,8 @@ def markdown_table(handle: Jira, jql_text: str, column_fields=None) -> str:
     col_wid = {key: len(key) for key in columns}
     for slot, record in enumerate(table):
         for key, cell in record.items():
+            if key.lower() == 'key':
+                table[slot][key] = f'[{cell}]({BASE_URL.strip("/")}/browse/{cell})'
             if not isinstance(cell, str):
                 table[slot][key] = '<br>'.join(cell)
             col_wid[key] = max(len(table[slot][key]), col_wid[key])
@@ -148,5 +157,6 @@ def markdown_table(handle: Jira, jql_text: str, column_fields=None) -> str:
     separator = f'|:{"|:".join(separator_cells)}|'
 
     rows = [f'| {" | ".join(str(v).ljust(col_wid[k]) for k, v in line.items())} |' for line in table]
-
-    return '\n'.join([header] + [separator] + rows)
+    issues = len(table)
+    summary = f'\n\n{issues} issue{"" if issues == 1 else "s"}'
+    return '\n'.join([header] + [separator] + rows) + summary
