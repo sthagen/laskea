@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.2.28
+
+* Enhanced laskea.api.jira for use as a library via code generator
+
 ## 2022.2.27
 
 * Documented usage examples (for now primarily shenannigans)
