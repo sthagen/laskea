@@ -3,6 +3,8 @@
 ## 2022.3.1
 
 * Fixed laskea.api.jira matrix construction (library mode)
+* Added cog api integration for update
+* Moved all inputs to environment (no file based configuration yet)
 
 ## 2022.2.28
 
