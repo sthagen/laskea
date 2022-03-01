@@ -1,5 +1,4 @@
 """Gateway to fill in the generated tables into the documents."""
-import os
 import laskea.api.jira as asciinator
 
 __all__ = ['COLUMNS', 'table']
