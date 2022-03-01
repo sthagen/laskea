@@ -17,12 +17,12 @@ DEFAULT_COLUMN_FIELDS = ('Key', 'Summary', ('Priority', 'P'), 'Status', 'Custom 
 WUN_ID = 'customfield_11501'
 ANOTHER_ID = 'customfield_13901'
 KNOWN_CI_FIELDS = {
-    'key': ('key', ('issues[].key',)),
-    'summary': ('summary', ('issues[].fields.summary',)),
-    'priority': ('priority', ('issues[].fields.priority.name',)),
-    'status': ('status', ('issues[].fields.status.name',)),
-    'custom field name': (WUN_ID, (f'issues[].fields.{WUN_ID}',)),
-    'custom field other': (ANOTHER_ID, (f'issues[].fields.{ANOTHER_ID}', '[].value')),
+    'key': ('key', ('key',)),
+    'summary': ('summary', 'fields.summary'),
+    'priority': ('priority', 'fields.priority.name'),
+    'status': ('status', 'fields.status.name'),
+    'custom field name': (WUN_ID, f'fields.{WUN_ID}'),
+    'custom field other': (ANOTHER_ID, f'fields.{ANOTHER_ID}[].value'),
 }
 
 BASE_USER = os.getenv(f'{APP_NAME}_USER', '')
@@ -82,7 +82,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
             if field in candidate:
                 completed_column_fields.append(
                     {
-                        'paths': KNOWN_CI_FIELDS[field][1],
+                        'path': KNOWN_CI_FIELDS[field][1],
                         'id': KNOWN_CI_FIELDS[field][0],
                         'concept': concept,
                         'label': label,
@@ -109,30 +109,8 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
         }
 
     issues = handle.jql(jql_text)
-
-    pairs = [(col['label'], col['paths']) for col in completed_column_fields]
-    columns = {}
-    for label, paths in pairs:
-
-        path_count = len(paths)
-        if path_count not in (1, 2):
-            raise IndexError(f'only 1 or 2 paths per column supported but found {path_count}')  # TODO(sthagen) not here
-
-        if path_count == 1:
-            val = jmespath.search(paths[0], issues)
-        else:
-            val = [jmespath.search(paths[1], tmp) for tmp in jmespath.search(paths[0], issues)]
-
-        columns[label] = val
-
-    slot_count = len(columns[pairs[0][0]])
-    rows = []
-    for slot in range(slot_count):
-        try:
-            rows.append({key: seq[slot] for key, seq in columns.items()})
-        except IndexError:
-            pass
-
+    pairs = [(col['label'], col['path']) for col in completed_column_fields]
+    rows = [{label: jmespath.search(path, issue) or [''] for label, path in pairs} for issue in issues['issues']]
     return {
         'jql_text': jql_text,
         'column_fields': column_fields,
