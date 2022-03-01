@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.3.1
+
+* Fixed laskea.api.jira matrix construction (library mode)
+
 ## 2022.2.28
 
 * Enhanced laskea.api.jira for use as a library via code generator
