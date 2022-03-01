@@ -2,17 +2,24 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=line-too-long
 """Commandline API gateway for laskea."""
+import os
 import pathlib
 import sys
 from typing import List, Union
 
 import typer
+from cogapp import Cog  # type: ignore
 
 import laskea
 import laskea.laskea as fill
 
+# from laskea import login, query, table
+
 APP_NAME = 'Calculate (Finnish: laskea) some parts.'
 APP_ALIAS = 'laskea'
+DEFAULT_MARKERS = '[[[fill ]]] [[[end]]]'
+BASE_MARKERS = os.getenv(f'{APP_NAME}_MARKERS', DEFAULT_MARKERS)
+
 app = typer.Typer(
     add_completion=False,
     context_settings={'help_option_names': ['-h', '--help']},
@@ -59,11 +66,25 @@ def update(
     """
     Fill in some parts of the input document.
     """
-    command = 'update'
+    # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
+    # command = 'update'
     incoming = inp if inp else source
-    config = conf if conf else pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
-    action = [command, str(incoming), str(config)]
-    return sys.exit(fill.main(action))
+    if not incoming:
+        print('Usage: asciinator source-files')
+        sys.exit(2)
+    # config = conf if conf else pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
+    # action = [command, str(incoming), str(config)]
+    vector = [
+        APP_NAME,
+        '-P',
+        '-c',
+        '-r',
+        f'--markers={BASE_MARKERS}',
+        '-p',
+        'from laskea import *',
+        *(incoming.split(' ')),
+    ]
+    return sys.exit(Cog().main(vector))
 
 
 @app.command('verify')

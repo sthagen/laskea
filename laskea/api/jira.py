@@ -28,8 +28,8 @@ KNOWN_CI_FIELDS = {
 BASE_USER = os.getenv(f'{APP_NAME}_USER', '')
 BASE_PASS = os.getenv(f'{APP_NAME}_TOKEN', '')
 BASE_URL = os.getenv(f'{APP_NAME}_BASE_URL', '')
-BASE_COLS = json.loads(os.getenv(f'{APP_NAME}_BASE_COLS', json.dumps(DEFAULT_COLUMN_FIELDS)))
-BASE_MAPS = json.loads(os.getenv(f'{APP_NAME}_BASE_MAPS', json.dumps(KNOWN_CI_FIELDS)))
+BASE_COL_FIELDS = json.loads(os.getenv(f'{APP_NAME}_COL_FIELDS', json.dumps(DEFAULT_COLUMN_FIELDS)))
+BASE_COL_MAPS = json.loads(os.getenv(f'{APP_NAME}_COL_MAPS', json.dumps(KNOWN_CI_FIELDS)))
 
 
 def mock(number: int) -> int:
@@ -56,7 +56,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
     """EggLayingWoolMilkDear."""
 
     if not column_fields:
-        column_fields = BASE_COLS
+        column_fields = BASE_COL_FIELDS
 
     if not jql_text.strip():
         return {
@@ -80,12 +80,12 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
                     'error': f'The column ({entry}) is neither a string nor a pair of (concept, label)',
                 }
 
-        for field in BASE_MAPS.keys():
+        for field in BASE_COL_MAPS.keys():
             if field in candidate:
                 completed_column_fields.append(
                     {
-                        'path': BASE_MAPS[field][1],
-                        'id': BASE_MAPS[field][0],
+                        'path': BASE_COL_MAPS[field][1],
+                        'id': BASE_COL_MAPS[field][0],
                         'concept': concept,
                         'label': label,
                         'field': field,
