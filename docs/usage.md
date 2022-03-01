@@ -76,5 +76,5 @@ Options:
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.2.28+parent.39977ab5
+Calculate (Finnish: laskea) some parts. version 2022.3.1+parent.989851d8
 ```
