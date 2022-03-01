@@ -12,22 +12,24 @@ from atlassian import Jira  # type: ignore # noqa
 API_BASE_URL = 'https://example.com'
 APP_NAME = 'ASCIINATOR'
 
-DEFAULT_COLUMN_FIELDS = ('Key', 'Summary', ('Priority', 'P'), 'Status', 'Custom Field Wun', 'Custom Field Other (CFO)')
+DEFAULT_COLUMN_FIELDS = ['Key', 'Summary', ['Priority', 'P'], 'Status', 'Custom Field Wun', 'Custom Field Other (CFO)']
 
 WUN_ID = 'customfield_11501'
 ANOTHER_ID = 'customfield_13901'
 KNOWN_CI_FIELDS = {
-    'key': ('key', ('key',)),
-    'summary': ('summary', 'fields.summary'),
-    'priority': ('priority', 'fields.priority.name'),
-    'status': ('status', 'fields.status.name'),
-    'custom field name': (WUN_ID, f'fields.{WUN_ID}'),
-    'custom field other': (ANOTHER_ID, f'fields.{ANOTHER_ID}[].value'),
+    'key': ['key', 'key'],
+    'summary': ['summary', 'fields.summary'],
+    'priority': ['priority', 'fields.priority.name'],
+    'status': ['status', 'fields.status.name'],
+    'custom field name': [WUN_ID, f'fields.{WUN_ID}'],
+    'custom field other': [ANOTHER_ID, f'fields.{ANOTHER_ID}[].value'],
 }
 
 BASE_USER = os.getenv(f'{APP_NAME}_USER', '')
 BASE_PASS = os.getenv(f'{APP_NAME}_TOKEN', '')
 BASE_URL = os.getenv(f'{APP_NAME}_BASE_URL', '')
+BASE_COLS = json.loads(os.getenv(f'{APP_NAME}_BASE_COLS', json.dumps(DEFAULT_COLUMN_FIELDS)))
+BASE_MAPS = json.loads(os.getenv(f'{APP_NAME}_BASE_MAPS', json.dumps(KNOWN_CI_FIELDS)))
 
 
 def mock(number: int) -> int:
@@ -54,7 +56,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
     """EggLayingWoolMilkDear."""
 
     if not column_fields:
-        column_fields = DEFAULT_COLUMN_FIELDS
+        column_fields = BASE_COLS
 
     if not jql_text.strip():
         return {
@@ -78,12 +80,12 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
                     'error': f'The column ({entry}) is neither a string nor a pair of (concept, label)',
                 }
 
-        for field in KNOWN_CI_FIELDS.keys():
+        for field in BASE_MAPS.keys():
             if field in candidate:
                 completed_column_fields.append(
                     {
-                        'path': KNOWN_CI_FIELDS[field][1],
-                        'id': KNOWN_CI_FIELDS[field][0],
+                        'path': BASE_MAPS[field][1],
+                        'id': BASE_MAPS[field][0],
                         'concept': concept,
                         'label': label,
                         'field': field,

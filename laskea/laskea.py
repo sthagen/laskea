@@ -5,7 +5,11 @@ import json
 import os
 import pathlib
 import sys
-from typing import List, Optional, Tuple, Union
+from typing import Dict, List, Optional, Tuple, Union, no_type_check
+
+from atlassian import Jira  # type: ignore # noqa
+
+import laskea.api.jira as api
 
 DEBUG_VAR = 'LASKEA_DEBUG'
 DEBUG = os.getenv(DEBUG_VAR)
@@ -14,6 +18,17 @@ ENCODING = 'utf-8'
 ENCODING_ERRORS_POLICY = 'ignore'
 
 DEFAULT_CONFIG_NAME = '.laskea.json'
+
+DB: Dict[str, Union[None, Jira]] = {'handle': None}
+
+
+@no_type_check
+def table(query_text: str = '') -> str:
+    """Public document interface."""
+    if not DB.get('handle', None):
+        DB['handle'] = api.login()
+
+    return api.markdown_table(DB['handle'], query_text)
 
 
 def init() -> None:
