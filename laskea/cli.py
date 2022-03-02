@@ -18,7 +18,7 @@ import laskea.laskea as fill
 
 APP_NAME = 'Calculate (Finnish: laskea) some parts.'
 APP_ALIAS = 'laskea'
-DEFAULT_MARKERS = '[[[fill ]]] [[[end]]]'
+DEFAULT_MARKERS = '"[[[fill ]]] [[[end]]]"'
 BASE_MARKERS = os.getenv(f'{APP_NAME}_MARKERS', DEFAULT_MARKERS)
 
 app = typer.Typer(
@@ -81,7 +81,8 @@ def update(
         '-P',
         '-c',
         '-r',
-        f'--markers={BASE_MARKERS}',
+        '--markers', 
+        BASE_MARKERS,
         '-p',
         'from laskea import *',
     ] + paths
