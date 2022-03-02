@@ -216,7 +216,7 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
     return configuration, str(cp)
 
 
-@no_type_Check
+@no_type_check
 def report_context(command: str, vector: List[str]) -> None:
     """DRY."""
     print(f'Command: ({command})', file=sys.stderr)
