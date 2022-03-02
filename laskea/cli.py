@@ -67,9 +67,26 @@ def update(
         help=f'Path to config file (default is $HOME/{fill.DEFAULT_CONFIG_NAME})',
         metavar='<configpath>',
     ),
+    verbose: bool = typer.Option(
+        False,
+        '-v',
+        '--verbose',
+        help='Verbose output (default is False)',
+    ),    
 ) -> int:
     """
     Fill in some parts of the input document.
+    
+    You can set some options per evironment variables:
+    
+    * ASCIINATOR_USER='remote-user'
+    * ASCIINATOR_TOKEN='remote-secret'
+    * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
+    * ASCIINATORR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
+    * ASCIINATOR_DEBUG='AnythingTruthy'
+    
     """
     # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'update'
@@ -92,7 +109,7 @@ def update(
 
     cog = Cog()
 
-    if DEBUG:
+    if DEBUG or verbose:
         print(f'Command: ({command})', file=sys.stderr)
         print(f'Environment(variable values):', file=sys.stderr)
         app_env_user = f'{APP_ENV}_USER'
@@ -144,9 +161,26 @@ def verify(
         help=f'Path to config file (default is $HOME/{fill.DEFAULT_CONFIG_NAME})',
         metavar='<configpath>',
     ),
+    verbose: bool = typer.Option(
+        False,
+        '-v',
+        '--verbose',
+        help='Verbose output (default is False)',
+    ),    
 ) -> int:
     """
     Answer the question if the input document is in good shape.
+    
+    You can set some options per evironment variables:
+    
+    * ASCIINATOR_USER='remote-user'
+    * ASCIINATOR_TOKEN='remote-secret'
+    * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
+    * ASCIINATORR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
+    * ASCIINATOR_DEBUG='AnythingTruthy'
+
     """
     # cog -I. -P -c --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'verify'
@@ -170,7 +204,7 @@ def verify(
 
     cog = Cog()
 
-    if DEBUG:
+    if DEBUG or verbose:
         print(f'Command: ({command})', file=sys.stderr)
         print(f'Environment(variable values):', file=sys.stderr)
         app_env_user = f'{APP_ENV}_USER'
