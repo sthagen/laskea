@@ -216,6 +216,55 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
     return configuration, str(cp)
 
 
+@no_type_Check
+def report_context(command: str, vector: List[str]) -> None:
+    """DRY."""
+    print(f'Command: ({command})', file=sys.stderr)
+    print(f'Environment(variable values):', file=sys.stderr)
+    app_env_user = f'{APP_ENV}_USER'
+    app_env_token = f'{APP_ENV}_TOKEN'
+    app_env_base_url = f'{APP_ENV}_BASE_URL'
+    app_env_col_fields = f'{APP_ENV}_COL_FIELDS'
+    app_env_col_maps = f'{APP_ENV}_COL_MAPS'
+    app_env_markers = f'{APP_ENV}_MARKERS'
+    empty = ''
+    print(f'- {APP_ENV}_USER: ({os.getenv(app_env_user, empty)})', file=sys.stderr)
+    print(f'- {APP_ENV}_TOKEN: ({FAKE_SECRET if len(os.getenv(app_env_token, empty)) else empty})', file=sys.stderr)
+    print(f'- {APP_ENV}_BASE_URL: ({os.getenv(app_env_base_url, empty)})', file=sys.stderr)
+    print(f'- {APP_ENV}_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
+    print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
+    print(f'- {APP_ENV}_MARKERS: ({os.getenv(app_env_markers, empty)})', file=sys.stderr)
+    print(f'Effective(variable values):', file=sys.stderr)
+    print(f'- RemoteUser: ({api.BASE_USER})', file=sys.stderr)
+    print(f'- RemoteToken: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
+    print(f'- RemoteBaseURL: ({api.BASE_URL})', file=sys.stderr)
+    print(f'- ColumnFields(table): ({api.BASE_COL_FIELDS})', file=sys.stderr)
+    print(f'- ColumnMaps(remote->table): ({api.BASE_COL_MAPS})', file=sys.stderr)
+    print(f'- Markers(pattern): ({BASE_MARKERS})', file=sys.stderr)
+    print(f'- CallVector: ({vector})', file=sys.stderr)
+
+
+@no_type_check
+def report_sources_of_effective_configuration(source_of: Dict[str, str], cp: str) -> None:
+    """DRY."""
+    print(f'Configuration source after loading from {cp}:')
+    print('# --- BEGIN ---')
+    print(json.dumps(source_of, indent=2))
+    print('# --- E N D ---')
+
+
+@no_type_check
+def safe_report_configuration_discovered(configuration: Dict[str, object], cp: str) -> None:
+    """DRY."""
+    print(f'Loaded configuration from {cp}:')
+    print('# --- BEGIN ---')
+    fake_configuration = copy.deepcopy(configuration)
+    if jmespath.search('remote.token', fake_configuration):
+        fake_configuration['remote']['token'] = FAKE_SECRET
+    print(json.dumps(fake_configuration, indent=2))
+    print('# --- E N D ---')
+
+
 @app.command('update')
 def update(
     source: str = typer.Argument(default=''),
@@ -261,24 +310,14 @@ def update(
 
     if configuration is not None:
         if DEBUG or verbose:
-            print(f'Loaded configuration from {cp}:')
-            print('# --- BEGIN ---')
-            fake_configuration = copy.deepcopy(configuration)
-            if jmespath.search('remote.token', fake_configuration):
-                fake_configuration['remote']['token'] = FAKE_SECRET
-            print(json.dumps(fake_configuration, indent=2))
-            print('# --- E N D ---')
-            del fake_configuration
+            safe_report_configuration_discovered(configuration, cp)
 
         source_of = _spike_load_configuration(configuration)
 
         if DEBUG or verbose:
-            print(f'Configuration source after loading from {cp}:')
-            print('# --- BEGIN ---')
-            print(json.dumps(source_of, indent=2))
-            print('# --- E N D ---')
+            report_sources_of_effective_configuration(source_of, cp)
 
-        print('Configuration interface requested - NotImplemented')
+        print('Configuration interface requested - Experimental!')
 
     incoming = inp if inp else source
     paths = glob.glob(incoming)
@@ -300,29 +339,7 @@ def update(
     cog = Cog()
 
     if DEBUG or verbose:
-        print(f'Command: ({command})', file=sys.stderr)
-        print(f'Environment(variable values):', file=sys.stderr)
-        app_env_user = f'{APP_ENV}_USER'
-        app_env_token = f'{APP_ENV}_TOKEN'
-        app_env_base_url = f'{APP_ENV}_BASE_URL'
-        app_env_col_fields = f'{APP_ENV}_COL_FIELDS'
-        app_env_col_maps = f'{APP_ENV}_COL_MAPS'
-        app_env_markers = f'{APP_ENV}_MARKERS'
-        empty = ''
-        print(f'- {APP_ENV}_USER: ({os.getenv(app_env_user, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}_TOKEN: ({FAKE_SECRET if len(os.getenv(app_env_token, empty)) else empty})', file=sys.stderr)
-        print(f'- {APP_ENV}_BASE_URL: ({os.getenv(app_env_base_url, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}_MARKERS: ({os.getenv(app_env_markers, empty)})', file=sys.stderr)
-        print(f'Effective(variable values):', file=sys.stderr)
-        print(f'- RemoteUser: ({api.BASE_USER})', file=sys.stderr)
-        print(f'- RemoteToken: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
-        print(f'- RemoteBaseURL: ({api.BASE_URL})', file=sys.stderr)
-        print(f'- ColumnFields(table): ({api.BASE_COL_FIELDS})', file=sys.stderr)
-        print(f'- ColumnMaps(remote->table): ({api.BASE_COL_MAPS})', file=sys.stderr)
-        print(f'- Markers(pattern): ({BASE_MARKERS})', file=sys.stderr)
-        print(f'- CallVector: ({vector})', file=sys.stderr)
+        report_context(command, vector)
 
     try:
         cog.callableMain(vector)
@@ -379,24 +396,14 @@ def verify(
 
     if configuration is not None:
         if DEBUG or verbose:
-            print(f'Loaded configuration from {cp}:')
-            print('# --- BEGIN ---')
-            fake_configuration = copy.deepcopy(configuration)
-            if jmespath.search('remote.token', fake_configuration):
-                fake_configuration['remote']['token'] = FAKE_SECRET
-            print(json.dumps(fake_configuration, indent=2))
-            print('# --- E N D ---')
-            del fake_configuration
+            safe_report_configuration_discovered(configuration, cp)
 
         source_of = _spike_load_configuration(configuration)
 
         if DEBUG or verbose:
-            print(f'Configuration source after loading from {cp}:')
-            print('# --- BEGIN ---')
-            print(json.dumps(source_of, indent=2))
-            print('# --- E N D ---')
+            report_sources_of_effective_configuration(source_of, cp)
 
-        print('Configuration interface requested - NotImplemented')
+        print('Configuration interface requested - Experimental!')
 
     incoming = inp if inp else source
     if not incoming:
@@ -419,29 +426,7 @@ def verify(
     cog = Cog()
 
     if DEBUG or verbose:
-        print(f'Command: ({command})', file=sys.stderr)
-        print(f'Environment(variable values):', file=sys.stderr)
-        app_env_user = f'{APP_ENV}_USER'
-        app_env_token = f'{APP_ENV}_TOKEN'
-        app_env_base_url = f'{APP_ENV}_BASE_URL'
-        app_env_col_fields = f'{APP_ENV}_COL_FIELDS'
-        app_env_col_maps = f'{APP_ENV}_COL_MAPS'
-        app_env_markers = f'{APP_ENV}_MARKERS'
-        empty = ''
-        print(f'- {APP_ENV}_USER: ({os.getenv(app_env_user, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}_TOKEN: ({FAKE_SECRET if len(os.getenv(app_env_token, empty)) else empty})', file=sys.stderr)
-        print(f'- {APP_ENV}_BASE_URL: ({os.getenv(app_env_base_url, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}_MARKERS: ({os.getenv(app_env_markers, empty)})', file=sys.stderr)
-        print(f'Effective(variable values):', file=sys.stderr)
-        print(f'- RemoteUser: ({api.BASE_USER})', file=sys.stderr)
-        print(f'- RemoteToken: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
-        print(f'- RemoteBaseURL: ({api.BASE_URL})', file=sys.stderr)
-        print(f'- ColumnFields(table): ({api.BASE_COL_FIELDS})', file=sys.stderr)
-        print(f'- ColumnMaps(remote->table): ({api.BASE_COL_MAPS})', file=sys.stderr)
-        print(f'- Markers(pattern): ({BASE_MARKERS})', file=sys.stderr)
-        print(f'- CallVector: ({vector})', file=sys.stderr)
+        report_context(command, vector)
 
     try:
         cog.callableMain(vector)
