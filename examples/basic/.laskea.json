@@ -1,0 +1,39 @@
+{
+  "table": {
+    "column": {
+      "fields": [
+        "Key",
+        "Summary",
+        "Custom Field Name",
+        "Custom Field Other"
+      ],
+      "field_map": {
+        "key": [
+          "key",
+          "key"
+        ],
+        "summary": [
+          "summary",
+          "fields.summary"
+        ],
+        "custom field name": [
+          "customfield_11501",
+          "fields.customfield_11501"
+        ],
+        "custom field other": [
+          "customfield_13901",
+          "fields.customfield_13901[].value"
+        ]
+      }
+    }
+  },
+  "remote": {
+    "user": "someuser",
+    "token": "",
+    "base_url": "https://remote-jira-instance.example.com/"
+  },
+  "local": {
+    "markers": "[[[fill ]]] [[[end]]]",
+    "verbose": false
+  }
+}
