@@ -217,6 +217,7 @@ def verify(
 
     cog.options.bPrintOutput = True
     print(f'? {cog.options.bPrintOutput=} (default=False)', file=sys.stderr)
+    cog.outl = print
     try:
         cog.callableMain(vector)
     except CogUsageError as err:
