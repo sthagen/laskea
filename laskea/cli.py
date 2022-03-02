@@ -140,7 +140,7 @@ def verify(
         '-c',
         f'--markers={BASE_MARKERS}',
         '-p',
-        "'from laskea import *'",
+        'from laskea import *',
     ] + paths
 
     cog = Cog()
