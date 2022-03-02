@@ -347,27 +347,28 @@ def verify(
     """
     # cog -I. -P -c --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'verify'
-    configuration, conf_source = None, ''
-    if conf:
-        cp = pathlib.Path(conf)
-        if not cp.is_file() or not cp.stat().st_size:
-            print(f'Given configuration path is no file or empty')
-            sys.exit(2)
-        print(f'Reading configuration file {cp} as requested...')
-        configuration = json.load(cp.open())
-    else:
-        cp = pathlib.Path(fill.DEFAULT_CONFIG_NAME)
-        if not cp.is_file() or not cp.stat().st_size:
-            print(f'Configuration path {cp} in current working directory is no file or empty')
-            cp = pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
-            if not cp.is_file() or not cp.stat().st_size:
-                print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
-            else:
-                print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
-                configuration = json.load(cp.open())
-        else:
-            print(f'Reading configuration file {cp} from current working directory at {pathlib.Path.cwd()}...')
-            configuration = json.load(cp.open())
+    configuration, cp = discover_configuration(conf)
+
+    if configuration is not None:
+        if DEBUG or verbose:
+            print(f'Loaded configuration from {cp}:')
+            print('# --- BEGIN ---')
+            fake_configuration = copy.deepcopy(configuration)
+            if jmespath.search('remote.token', fake_configuration):
+                fake_configuration['remote']['token'] = FAKE_SECRET
+            print(json.dumps(fake_configuration, indent=2))
+            print('# --- E N D ---')
+            del fake_configuration
+
+        source_of = _spike_load_configuration(configuration)
+
+        if DEBUG or verbose:
+            print(f'Configuration source after loading from {cp}:')
+            print('# --- BEGIN ---')
+            print(json.dumps(source_of, indent=2))
+            print('# --- E N D ---')
+
+        print('Configuration interface requested - NotImplemented')
 
     if configuration is not None:
         if DEBUG or verbose:
