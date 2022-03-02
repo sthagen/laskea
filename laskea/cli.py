@@ -25,6 +25,48 @@ DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
 DEFAULT_MARKERS = '[[[fill ]]] [[[end]]]'
 BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
 
+TEMPLATE_EXAMPLE = """\
+{
+  "table": {
+    "column": {
+      "fields": [
+        "Key",
+        "Summary",
+        "Custom Field Name",
+        "Custom Field Other"
+      ],
+      "field_map": {
+        "key": [
+          "key",
+          "key"
+        ],
+        "summary": [
+          "summary",
+          "fields.summary"
+        ],
+        "custom field name": [
+          "customfield_11501",
+          "fields.customfield_11501"
+        ],
+        "custom field other": [
+          "customfield_13901",
+          "fields.customfield_13901[].value"
+        ]
+      }
+    }
+  },
+  "remote": {
+    "user": "",
+    "token": "",
+    "base_url": "https://remote-jira-instance.example.com/"
+  },
+  "local": {
+    "markers": "[[[fill ]]] [[[end]]]",
+    "verbose": false
+  }
+}
+"""
+
 app = typer.Typer(
     add_completion=False,
     context_settings={'help_option_names': ['-h', '--help']},
@@ -48,6 +90,22 @@ def callback(
     if version:
         typer.echo(f'{APP_NAME} version {laskea.__version__}')
         raise typer.Exit()
+
+
+@app.command('template')
+def app_template() -> int:
+    """
+    Write a template of a well-formed JSON configuration to standard out and exit
+    
+    The strategy for looking up configurations is to start at the current working
+    directory trying to read a file with the name `.laskea.json` else try to read
+    same named file in the user folder (home).
+    
+    In case an explicit path is given to the config option of commands that offer
+    it, only that path is considered.
+    """
+    sys.stdout.write(TEMPLATE_EXAMPLE)
+    return sys.exit(0)
 
 
 @app.command('update')
@@ -78,14 +136,15 @@ def update(
     Fill in some parts of the input document.
     
     You can set some options per evironment variables:
-    
-    * ASCIINATOR_USER='remote-user'
-    * ASCIINATOR_TOKEN='remote-secret'
-    * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
-    * ASCIINATORR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
-    * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
-    * ASCIINATOR_DEBUG='AnythingTruthy'
+
+    \b
+    * {APP_ENV}_USER='remote-user'
+    * {APP_ENV}_TOKEN='remote-secret'
+    * {APP_ENV}_BASE_URL='https://remote-jira-instance.example.com/'
+    * {APP_ENV}_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+    * {APP_ENV}_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * {APP_ENV}_MARKERS='[[[fill ]]] [[[end]]]'
+    * {APP_ENV}_DEBUG='AnythingTruthy'
     
     """
     # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
@@ -173,13 +232,14 @@ def verify(
     
     You can set some options per evironment variables:
     
-    * ASCIINATOR_USER='remote-user'
-    * ASCIINATOR_TOKEN='remote-secret'
-    * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
-    * ASCIINATORR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
-    * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
-    * ASCIINATOR_DEBUG='AnythingTruthy'
+    \b
+    * {APP_ENV}_USER='remote-user'
+    * {APP_ENV}_TOKEN='remote-secret'
+    * {APP_ENV}_BASE_URL='https://remote-jira-instance.example.com/'
+    * {APP_ENV}_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+    * {APP_ENV}_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * {APP_ENV}_MARKERS='[[[fill ]]] [[[end]]]'
+    * {APP_ENV}_DEBUG='AnythingTruthy'
 
     """
     # cog -I. -P -c --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
