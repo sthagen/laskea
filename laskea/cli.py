@@ -272,7 +272,7 @@ def create_and_report_effective_configuration(cp: str) -> None:
         'table': {
             'column': {
                 'fields': copy.deepcopy(api.BASE_COL_FIELDS),
-                'field_map': copy.deepcopy(api.base_COL_MAPS),
+                'field_map': copy.deepcopy(api.BASE_COL_MAPS),
             },
         },
         'remote': {
