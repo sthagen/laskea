@@ -87,7 +87,7 @@ def update(
         '-r',
         f'--markers={BASE_MARKERS}',
         '-p',
-        'from laskea import *',
+        "'from laskea import *'",
     ] + paths
     if DEBUG:
         print(f'ACTION: ({command})')
@@ -140,7 +140,7 @@ def verify(
         '-c',
         f'--markers={BASE_MARKERS}',
         '-p',
-        'from laskea import *',
+        "'from laskea import *'",
     ] + paths
     if DEBUG:
         print(f'ACTION: ({command})')
