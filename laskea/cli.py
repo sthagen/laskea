@@ -120,38 +120,38 @@ def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str
     
     source_of = {}
 
-    column_fields = jmespath.search('table.column.fields[]')
+    column_fields = jmespath.search('table.column.fields[]', configuration)
     if column_fields:
         source_of['column_fields'] = 'config'
         api.BASE_COL_FIELDS = copy.deepcopy(column_fields)
 
-    field_map = jmespath.search('table.column.field_map')
+    field_map = jmespath.search('table.column.field_map', configuration)
     if field_map:
         source_of['field_map'] = 'config'
         api.BASE_COL_MAPS = copy.deepcopy(field_map)
 
-    remote_user = jmespath.search('remote_user')
+    remote_user = jmespath.search('remote_user', configuration)
     if remote_user:
         source_of['remote_user'] = 'config'
         api.BASE_USER = remote_user
 
-    remote_token = jmespath.search('remote.token')
+    remote_token = jmespath.search('remote.token', configuration)
     if remote_token:
         source_of['remote_token'] = 'config'
         api.BASE_TOKEN = remote_token
 
-    remote_base_url = jmespath.search('remote.base_url')
+    remote_base_url = jmespath.search('remote.base_url', configuration)
     if remote_base_url:
         source_of['remote_base_url'] = 'config'
         api.BASE_URL = remote_base_url
 
-    local_markers = jmespath.search('local.markers')
+    local_markers = jmespath.search('local.markers', configuration)
     if local_markers:
         source_of['local_markers'] = 'config'
         global BASE_MARKERS
         BASE_MARKERS = local_markers
 
-    verbose = bool(jmespath.search('local.verbose'))
+    verbose = bool(jmespath.search('local.verbose'), configuration)
     if verbose:
         source_of['verbose'] = 'config'
         global DEBUG
