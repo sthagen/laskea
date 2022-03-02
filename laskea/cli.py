@@ -190,7 +190,8 @@ def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str
 
 @no_type_check
 def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
-    """Try to retrieve the configuration following the (explicit, local, home)-strategy."""
+    """Try to retrieve the configuration following the "(explicit, local, parents, home)
+    first wun wins" strategy."""
     configuration = None
     if conf:
         cp = pathlib.Path(conf)
@@ -200,18 +201,22 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
         print(f'Reading configuration file {cp} as requested...')
         configuration = json.load(cp.open())
     else:
-        cp = pathlib.Path(fill.DEFAULT_CONFIG_NAME)
-        if not cp.is_file() or not cp.stat().st_size:
-            print(f'Configuration path {cp} in current working directory is no file or empty')
-            cp = pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
-            if not cp.is_file() or not cp.stat().st_size:
-                print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
-            else:
-                print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
+        cn = fill.DEFAULT_CONFIG_NAME
+        cwd = pathlib.Path.cwd().resolve()
+        for pp in cwd.parents:
+            cp = pp / cn
+            if cp.is_file() and cp.stat().st_size:
+                print(f'Reading from discovered configuration path {cp}')
                 configuration = json.load(cp.open())
-        else:
-            print(f'Reading configuration file {cp} from current working directory at {pathlib.Path.cwd()}...')
+                return configuration, str(cp)
+
+        cp = pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
+        if cp.is_file() and cp.stat().st_size:
+            print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
             configuration = json.load(cp.open())
+            return configuration, str(cp)
+
+        print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
 
     return configuration, str(cp)
 
