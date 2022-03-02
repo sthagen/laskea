@@ -10,7 +10,7 @@ from typing import List, Union
 
 import typer
 from cogapp import Cog, CogUsageError  # type: ignore
-from cogapp.cogapp import CogOptions  # type: ignore
+from cogapp.cogapp import CogError, CogOptions  # type: ignore
 
 import laskea
 import laskea.api.jira as api
@@ -154,10 +154,12 @@ def verify(
 
     cog = Cog()
     try:
-        cog.main(vector)
-    except CogUsageError as err:
+        cog.options.parseArgs(vector)
+    except CogError as err:
+        print(f'CodeGen option parsing error:')
         print(str(err))
-        return sys.exit(1)
+        return sys.exit(2)
+
     print(f'CodeGen option states of {cog.options}):')
     print(f'- {cog.options.args=} (default=[])')
     print(f'- {cog.options.includePath=} (default=[])')
@@ -181,6 +183,13 @@ def verify(
     print(f"- {cog.options.sPrologue=} (default='')")
     print(f'- {cog.options.bPrintOutput=} (default=False)')
     print(f'- {cog.options.bCheck=} (default=False)')
+
+    try:
+        cog.main(vector)
+    except CogUsageError as err:
+        print(f'CodeGen processing usage error:')
+        print(str(err))
+        return sys.exit(1)
 
     return sys.exit(0)
 
