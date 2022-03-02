@@ -7,7 +7,6 @@ import pathlib
 import sys
 from typing import Dict, List, Optional, Tuple, Union, no_type_check
 
-import cog
 from atlassian import Jira  # type: ignore # noqa
 
 import laskea.api.jira as api
@@ -29,7 +28,7 @@ def table(query_text: str = '') -> str:
     if not DB.get('handle', None):
         DB['handle'] = api.login()
 
-    cog.outl(api.markdown_table(DB['handle'], query_text))
+    print(api.markdown_table(DB['handle'], query_text))
 
 
 def init() -> None:
