@@ -351,7 +351,7 @@ def update(
         print('Configuration interface requested - Experimental!')
 
         create_and_report_effective_configuration(cp)
-    
+
     incoming = inp if inp else source
     paths = glob.glob(incoming)
     if not paths:
@@ -406,7 +406,7 @@ def verify(
         '-v',
         '--verbose',
         help='Verbose output (default is False)',
-    ),    
+    ),
 ) -> int:
     """
     Answer the question if the input document is in good shape.
