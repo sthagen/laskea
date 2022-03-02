@@ -269,6 +269,11 @@ def verify(
             configuration = json.load(cp.open())
 
     if configuration is not None:
+        if DEBUG or verbose:
+            print(f'Loaded configuration from {cp}:')
+            print('# --- BEGIN ---')
+            print(json.dumps(configuration, indent=2))
+            print('# --- E N D ---')
         print('Configuration interface requested - NotImplemented')
 
     incoming = inp if inp else source
