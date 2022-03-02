@@ -11,6 +11,7 @@ from atlassian import Jira  # type: ignore # noqa
 
 API_BASE_URL = 'https://example.com'
 APP_NAME = 'ASCIINATOR'
+APP_ENV = APP_NAME
 
 DEFAULT_COLUMN_FIELDS = ['Key', 'Summary', ['Priority', 'P'], 'Status', 'Custom Field Wun', 'Custom Field Other (CFO)']
 
@@ -25,11 +26,11 @@ KNOWN_CI_FIELDS = {
     'custom field other': [ANOTHER_ID, f'fields.{ANOTHER_ID}[].value'],
 }
 
-BASE_USER = os.getenv(f'{APP_NAME}_USER', '')
-BASE_PASS = os.getenv(f'{APP_NAME}_TOKEN', '')
-BASE_URL = os.getenv(f'{APP_NAME}_BASE_URL', '')
-BASE_COL_FIELDS = json.loads(os.getenv(f'{APP_NAME}_COL_FIELDS', json.dumps(DEFAULT_COLUMN_FIELDS)))
-BASE_COL_MAPS = json.loads(os.getenv(f'{APP_NAME}_COL_MAPS', json.dumps(KNOWN_CI_FIELDS)))
+BASE_USER = os.getenv(f'{APP_ENV}_USER', '')
+BASE_PASS = os.getenv(f'{APP_ENV}_TOKEN', '')
+BASE_URL = os.getenv(f'{APP_ENV}_BASE_URL', '')
+BASE_COL_FIELDS = json.loads(os.getenv(f'{APP_ENV}_COL_FIELDS', json.dumps(DEFAULT_COLUMN_FIELDS)))
+BASE_COL_MAPS = json.loads(os.getenv(f'{APP_ENV}_COL_MAPS', json.dumps(KNOWN_CI_FIELDS)))
 
 
 def mock(number: int) -> int:
