@@ -130,7 +130,7 @@ def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str
         source_of['field_map'] = 'config'
         api.BASE_COL_MAPS = copy.deepcopy(field_map)
 
-    remote_user = jmespath.search('remote_user', configuration)
+    remote_user = jmespath.search('remote.user', configuration)
     if remote_user:
         source_of['remote_user'] = 'config'
         api.BASE_USER = remote_user
