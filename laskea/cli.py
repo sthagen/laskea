@@ -9,7 +9,8 @@ import sys
 from typing import List, Union
 
 import typer
-from cogapp import Cog, CogOptions, CogError  # type: ignore
+from cogapp import Cog, CogUsageError  # type: ignore
+from cogapp.cogapp import CogOptions  # type: ignore
 
 import laskea
 import laskea.api.jira as api
