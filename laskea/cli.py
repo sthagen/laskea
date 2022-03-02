@@ -72,12 +72,12 @@ def update(
     incoming = inp if inp else source
     paths = glob.glob(incoming)
     if not paths:
-        print('Usage: asciinator source-files')
+        print('Usage: asciinator "source-files*md"')
         sys.exit(2)
     # config = conf if conf else pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
     # action = [command, str(incoming), str(config)]
     vector = [
-        APP_NAME,
+        APP_ALIAS,
         '-P',
         '-c',
         '-r',
