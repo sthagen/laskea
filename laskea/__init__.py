@@ -3,8 +3,8 @@ from laskea.api.jira import login, markdown_table, query
 from laskea.laskea import table
 
 # [[[fill git_describe()]]]
-__version__ = '2022.3.2+parent.1ebac42c-dirty'
-# [[[end]]] (checksum: 4c55ab6f780f925f04aece24776e62ff)
+__version__ = '2022.3.2+parent.f99aa559'
+# [[[end]]] (checksum: 49924d52a2e326cf6e443c04627907bc)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
