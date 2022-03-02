@@ -66,6 +66,7 @@ $ laskea template
 ### Help
 
 ```console
+$ laskea template --help
 Usage: laskea template [OPTIONS]
 
   Write a template of a well-formed JSON configuration to standard out and
@@ -86,8 +87,7 @@ Options:
 
 ```console
 $ laskea update tests/fixtures/basic/empty.md
-Configuration path .laskea.json in current working directory is no file or empty
-Reading configuration file /home/ofsomeone/.laskea.json from home directory at /home/ofsomeone ...
+Reading from discovered configuration path /home/ofsomeone/.laskea.json
 Configuration interface requested - Experimental!
 Effective configuration combining /home/ofsomeone/.laskea.json and environment variables:
 # --- BEGIN ---
@@ -169,5 +169,5 @@ Options:
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.3.2+parent.abadcafe
+Calculate (Finnish: laskea) some parts. version 2022.3.2+parent.f99aa559
 ```
