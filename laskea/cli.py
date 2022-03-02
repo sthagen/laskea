@@ -4,6 +4,7 @@
 """Commandline API gateway for laskea."""
 import copy
 import glob
+import jmespath
 import json
 import os
 import pathlib
