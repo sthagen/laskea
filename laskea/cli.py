@@ -22,7 +22,7 @@ APP_NAME = 'Calculate (Finnish: laskea) some parts.'
 APP_ALIAS = 'laskea'
 APP_ENV = 'ASCIINATOR'
 DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
-DEFAULT_MARKERS = '"[[[fill ]]] [[[end]]]"'
+DEFAULT_MARKERS = '[[[fill ]]] [[[end]]]'
 BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
 
 app = typer.Typer(
