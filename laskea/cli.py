@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=line-too-long
 """Commandline API gateway for laskea."""
+import glob
 import os
 import pathlib
 import sys
@@ -69,7 +70,8 @@ def update(
     # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     # command = 'update'
     incoming = inp if inp else source
-    if not incoming:
+    paths = glob.glob(incoming)
+    if not paths:
         print('Usage: asciinator source-files')
         sys.exit(2)
     # config = conf if conf else pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
@@ -82,8 +84,7 @@ def update(
         f'--markers={BASE_MARKERS}',
         '-p',
         'from laskea import *',
-        f'"{incoming}"',
-    ]
+    ] + paths
     return sys.exit(Cog().main(vector))
 
 
