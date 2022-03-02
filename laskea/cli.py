@@ -71,7 +71,7 @@ def update(
     Fill in some parts of the input document.
     """
     # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
-    # command = 'update'
+    command = 'update'
     incoming = inp if inp else source
     paths = glob.glob(incoming)
     if not paths:
@@ -89,6 +89,7 @@ def update(
         'from laskea import *',
     ] + paths
     if DEBUG:
+        print(f'ACTION: ({command})')
         print(f'ASCIINATOR_USER: ({api.BASE_USER})')
         print(f'ASCIINATOR_TOKEN: ({"*" * len(api.BASE_PASS)})')
         print(f'ASCIINATOR_BASE_URL: ({api.BASE_URL})')
@@ -121,13 +122,36 @@ def verify(
     """
     Answer the question if the input document is in good shape.
     """
+    # cog -I. -P -c --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'verify'
     incoming = inp if inp else source
     if not incoming:
         callback(False)
-    config = conf if conf else pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
-    action = [command, str(incoming), str(config)]
-    return sys.exit(fill.main(action))
+    paths = glob.glob(incoming)
+    if not paths:
+        print('Usage: asciinator "source-files*md"')
+        sys.exit(2)
+    # config = conf if conf else pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
+    # action = [command, str(incoming), str(config)]
+    vector = [
+        APP_ALIAS,
+        '-P',
+        '-c',
+        f'--markers={BASE_MARKERS}',
+        '-p',
+        'from laskea import *',
+    ] + paths
+    if DEBUG:
+        print(f'ACTION: ({command})')
+        print(f'ASCIINATOR_USER: ({api.BASE_USER})')
+        print(f'ASCIINATOR_TOKEN: ({"*" * len(api.BASE_PASS)})')
+        print(f'ASCIINATOR_BASE_URL: ({api.BASE_URL})')
+        print(f'ASCIINATOR_COL_FIELDS: ({api.BASE_COL_FIELDS})')
+        print(f'ASCIINATOR_COL_MAPS: ({api.BASE_COL_MAPS})')
+        print(f'ASCIINATOR_MARKERS: ({BASE_MARKERS})')
+        print(f'Vector: ({vector})')
+
+    return sys.exit(Cog().main(vector))
 
 
 @app.command('version')
