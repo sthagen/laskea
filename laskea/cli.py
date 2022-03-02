@@ -317,11 +317,11 @@ def update(
         '-v',
         '--verbose',
         help='Verbose output (default is False)',
-    ),    
+    ),
 ) -> int:
     """
     Fill in some parts of the input document.
-    
+
     You can set some options per evironment variables:
 
     \b
@@ -329,10 +329,11 @@ def update(
     * ASCIINATOR_TOKEN='remote-secret'
     * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
     * ASCIINATOR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
+      "custom field name": ["customfield_123", "fields.customfield_123"]}'
     * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
     * ASCIINATOR_DEBUG='AnythingTruthy'
-    
+
     """
     # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'update'
@@ -376,7 +377,7 @@ def update(
     try:
         cog.callableMain(vector)
     except CogUsageError as err:
-        print(f'CodeGen processing usage error:', file=sys.stderr)
+        print('CodeGen processing usage error:', file=sys.stderr)
         print(str(err))
         return sys.exit(1)
 
@@ -409,15 +410,16 @@ def verify(
 ) -> int:
     """
     Answer the question if the input document is in good shape.
-    
+
     You can set some options per evironment variables:
-    
+
     \b
     * ASCIINATOR_USER='remote-user'
     * ASCIINATOR_TOKEN='remote-secret'
     * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
     * ASCIINATOR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
+      "custom field name": ["customfield_123", "fields.customfield_123"]}'
     * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
     * ASCIINATOR_DEBUG='AnythingTruthy'
 
@@ -465,7 +467,7 @@ def verify(
     try:
         cog.callableMain(vector)
     except CogUsageError as err:
-        print(f'CodeGen processing usage error:', file=sys.stderr)
+        print('CodeGen processing usage error:', file=sys.stderr)
         print(str(err))
         return sys.exit(1)
 
