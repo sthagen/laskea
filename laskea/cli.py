@@ -127,7 +127,7 @@ def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str
     column_fields = os.getenv(f'{APP_ENV}_COL_FIELDS', '')
     if column_fields:
         source_of['column_fields'] = 'env'
-        api.BASE_COL_FIELDS = column_fields
+        api.BASE_COL_FIELDS = json.loads(column_fields)
 
     field_map = jmespath.search('table.column.field_map', configuration)
     if field_map:
@@ -136,7 +136,7 @@ def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str
     field_map = os.getenv(f'{APP_ENV}_COL_MAPS', '')
     if field_map:
         source_of['field_map'] = 'env'
-        api.BASE_COL_MAPS = field_map
+        api.BASE_COL_MAPS = json.loads(field_map)
 
     remote_user = jmespath.search('remote.user', configuration)
     if remote_user:
