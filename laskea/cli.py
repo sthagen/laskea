@@ -9,7 +9,7 @@ import json
 import os
 import pathlib
 import sys
-from typing import List, Union, no_type_check
+from typing import Dict, List, Union, no_type_check
 
 import typer
 from cogapp import Cog, CogUsageError  # type: ignore
@@ -276,7 +276,7 @@ def update(
         print(f'- {APP_ENV}_USER: ({os.getenv(app_env_user, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_TOKEN: ({FAKE_SECRET if len(os.getenv(app_env_token, empty)) else empty})', file=sys.stderr)
         print(f'- {APP_ENV}_BASE_URL: ({os.getenv(app_env_base_url, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}R_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
+        print(f'- {APP_ENV}_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_MARKERS: ({os.getenv(app_env_markers, empty)})', file=sys.stderr)
         print(f'Effective(variable values):', file=sys.stderr)
@@ -406,7 +406,7 @@ def verify(
         print(f'- {APP_ENV}_USER: ({os.getenv(app_env_user, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_TOKEN: ({FAKE_SECRET if len(os.getenv(app_env_token, empty)) else empty})', file=sys.stderr)
         print(f'- {APP_ENV}_BASE_URL: ({os.getenv(app_env_base_url, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}R_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
+        print(f'- {APP_ENV}_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_MARKERS: ({os.getenv(app_env_markers, empty)})', file=sys.stderr)
         print(f'Effective(variable values):', file=sys.stderr)
