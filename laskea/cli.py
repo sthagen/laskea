@@ -349,6 +349,8 @@ def update(
 
         print('Configuration interface requested - Experimental!')
 
+        create_and_report_effective_configuration(cp)
+    
     incoming = inp if inp else source
     paths = glob.glob(incoming)
     if not paths:
@@ -434,6 +436,8 @@ def verify(
             report_sources_of_effective_configuration(source_of, cp)
 
         print('Configuration interface requested - Experimental!')
+
+        create_and_report_effective_configuration(cp)
 
     incoming = inp if inp else source
     if not incoming:
