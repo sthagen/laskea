@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=line-too-long
 """Commandline API gateway for laskea."""
+import copy
 import glob
 import json
 import os
