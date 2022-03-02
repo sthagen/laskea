@@ -9,17 +9,20 @@ import sys
 from typing import List, Union
 
 import typer
-from cogapp import Cog  # type: ignore
+from cogapp import Cog, CogOptions, CogError  # type: ignore
 
 import laskea
+import laskea.api.jira as api
 import laskea.laskea as fill
 
 # from laskea import login, query, table
 
 APP_NAME = 'Calculate (Finnish: laskea) some parts.'
 APP_ALIAS = 'laskea'
+APP_ENV = 'ASCIINATOR'
+DEBUG = bool(os.getenv(f'{APP_ENV]_DEBUG', ''))
 DEFAULT_MARKERS = '"[[[fill ]]] [[[end]]]"'
-BASE_MARKERS = os.getenv(f'{APP_NAME}_MARKERS', DEFAULT_MARKERS)
+BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
 
 app = typer.Typer(
     add_completion=False,
@@ -81,11 +84,19 @@ def update(
         '-P',
         '-c',
         '-r',
-        '--markers', 
-        BASE_MARKERS,
+        f'--markers={BASE_MARKERS}',
         '-p',
         'from laskea import *',
     ] + paths
+    if DEBUG:
+        print(f'ASCIINATOR_USER: ({api.BASE_USER})')
+        print(f'ASCIINATOR_TOKEN: ({"*" * len(api.BASE_PASS)})')
+        print(f'ASCIINATOR_BASE_URL: ({api.BASE_URL})')
+        print(f'ASCIINATOR_COL_FIELDS: ({api.BASE_COL_FIELDS})')
+        print(f'ASCIINATOR_COL_MAPS: ({api.BASE_COL_MAPS})')
+        print(f'ASCIINATOR_MARKERS: ({BASE_MARKERS})')
+        print(f'Vector: ({vector})')
+
     return sys.exit(Cog().main(vector))
 
 
