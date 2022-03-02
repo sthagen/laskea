@@ -9,7 +9,7 @@ import json
 import os
 import pathlib
 import sys
-from typing import Dict, List, Union, no_type_check
+from typing import Dict, List, Tuple, Union, no_type_check
 
 import typer
 from cogapp import Cog, CogUsageError  # type: ignore
