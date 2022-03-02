@@ -3,6 +3,7 @@
 # pylint: disable=line-too-long
 """Commandline API gateway for laskea."""
 import glob
+import json
 import os
 import pathlib
 import sys
