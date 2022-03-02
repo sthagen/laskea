@@ -94,12 +94,18 @@ def update(
 
     if DEBUG:
         print(f'Environment(variables):', file=sys.stderr)
-        print(f'- {APP_ENV}_USER: ({os.getenv(f'{APP_ENV}_USER', '')})', file=sys.stderr)
-        print(f'- {APP_ENV}_TOKEN: ({"*" * len(os.getenv(f'{APP_ENV}_TOKEN', '')})', file=sys.stderr)
-        print(f'- {APP_ENV}_BASE_URL: ({os.getenv(f'{APP_ENV}_BASE_URL', '')})', file=sys.stderr)
-        print(f'- {APP_ENV}R_COL_FIELDS: ({os.getenv(f'{APP_ENV}_COL_FIELDS', '')})', file=sys.stderr)
-        print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(f'{APP_ENV}_COL_MAPS', '')})', file=sys.stderr)
-        print(f'- {APP_ENV}_MARKERS: ({os.getenv(f'{APP_ENV}_MARKERS', '')})', file=sys.stderr)
+        app_env_user = f'{APP_ENV}_USER'
+        app_env_token = f'{APP_ENV}_TOKEN'
+        app_env_base_url = f'{APP_ENV}_BASE_URL'
+        app_env_col_fields = f'{APP_ENV}_COL_FIELDS'
+        app_env_col_maps = f'{APP_ENV}_COL_MAPS'
+        app_env_markers = f'{APP_ENV}_MARKERS'
+        print(f'- {APP_ENV}_USER: ({os.getenv(app_env_user, '')})', file=sys.stderr)
+        print(f'- {APP_ENV}_TOKEN: ({"*" * len(os.getenv(app_env_token, '')})', file=sys.stderr)
+        print(f'- {APP_ENV}_BASE_URL: ({os.getenv(app_env_base_url, '')})', file=sys.stderr)
+        print(f'- {APP_ENV}R_COL_FIELDS: ({os.getenv(app_env_col_fields, '')})', file=sys.stderr)
+        print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, '')})', file=sys.stderr)
+        print(f'- {APP_ENV}_MARKERS: ({os.getenv(app_env_markers, '')})', file=sys.stderr)
         print(f'Command: ({command})', file=sys.stderr)
         print(f'- RemoteUser: ({api.BASE_USER})', file=sys.stderr)
         print(f'- RemoteToken: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
@@ -164,12 +170,18 @@ def verify(
 
     if DEBUG:
         print(f'Environment(variables):', file=sys.stderr)
-        print(f'- {APP_ENV}_USER: ({os.getenv(f'{APP_ENV}_USER', '')})', file=sys.stderr)
-        print(f'- {APP_ENV}_TOKEN: ({"*" * len(os.getenv(f'{APP_ENV}_TOKEN', '')})', file=sys.stderr)
-        print(f'- {APP_ENV}_BASE_URL: ({os.getenv(f'{APP_ENV}_BASE_URL', '')})', file=sys.stderr)
-        print(f'- {APP_ENV}R_COL_FIELDS: ({os.getenv(f'{APP_ENV}_COL_FIELDS', '')})', file=sys.stderr)
-        print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(f'{APP_ENV}_COL_MAPS', '')})', file=sys.stderr)
-        print(f'- {APP_ENV}_MARKERS: ({os.getenv(f'{APP_ENV}_MARKERS', '')})', file=sys.stderr)
+        app_env_user = f'{APP_ENV}_USER'
+        app_env_token = f'{APP_ENV}_TOKEN'
+        app_env_base_url = f'{APP_ENV}_BASE_URL'
+        app_env_col_fields = f'{APP_ENV}_COL_FIELDS'
+        app_env_col_maps = f'{APP_ENV}_COL_MAPS'
+        app_env_markers = f'{APP_ENV}_MARKERS'
+        print(f'- {APP_ENV}_USER: ({os.getenv(app_env_user, '')})', file=sys.stderr)
+        print(f'- {APP_ENV}_TOKEN: ({"*" * len(os.getenv(app_env_token, '')})', file=sys.stderr)
+        print(f'- {APP_ENV}_BASE_URL: ({os.getenv(app_env_base_url, '')})', file=sys.stderr)
+        print(f'- {APP_ENV}R_COL_FIELDS: ({os.getenv(app_env_col_fields, '')})', file=sys.stderr)
+        print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, '')})', file=sys.stderr)
+        print(f'- {APP_ENV}_MARKERS: ({os.getenv(app_env_markers, '')})', file=sys.stderr)
         print(f'Command: ({command})', file=sys.stderr)
         print(f'- RemoteUser: ({api.BASE_USER})', file=sys.stderr)
         print(f'- RemoteToken: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
