@@ -189,6 +189,30 @@ def verify(
         return sys.exit(2)
 
     if DEBUG:
+        print(f'CodeGen option states of {cog.options}):', file=sys.stderr)
+        print(f'- {cog.options.args=} (default=[])', file=sys.stderr)
+        print(f'- {cog.options.includePath=} (default=[])', file=sys.stderr)
+        print(f'- {cog.options.defines=} (default={{}})', file=sys.stderr)
+        print(f'- {cog.options.bShowVersion=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.sMakeWritableCmd=} (default=None)', file=sys.stderr)
+        print(f'- {cog.options.bReplace=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.bNoGenerate=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.sOutputName=} (default=None)', file=sys.stderr)
+        print(f'- {cog.options.bWarnEmpty=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.bHashOutput=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.bDeleteCode=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.bEofCanBeEnd=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.sSuffix=} (default=None)', file=sys.stderr)
+        print(f'- {cog.options.bNewlines=} (default=False)', file=sys.stderr)
+        print(f"- {cog.options.sBeginSpec=} (default='[[[cog')", file=sys.stderr)
+        print(f"- {cog.options.sEndSpec=} (default=']]]')", file=sys.stderr)
+        print(f"- {cog.options.sEndOutput=} (default='[[[end]]]')", file=sys.stderr)
+        print(f'- {cog.options.sEncoding=} (default="utf-8")', file=sys.stderr)
+        print(f'- {cog.options.verbosity=} (default=2)', file=sys.stderr)
+        print(f"- {cog.options.sPrologue=} (default='')", file=sys.stderr)
+        print(f'- {cog.options.bPrintOutput=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.bCheck=} (default=False)', file=sys.stderr)
+
         print(' Calling cog.callableMain(vector)', file=sys.stderr)
 
     try:
