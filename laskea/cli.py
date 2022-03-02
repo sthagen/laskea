@@ -160,7 +160,7 @@ def verify(
         print(str(err))
         return sys.exit(2)
 
-    cog.processArguments(vector)
+    cog.processArguments(paths)
     
     print(f'CodeGen option states of {cog.options}):')
     print(f'- {cog.options.args=} (default=[])')
