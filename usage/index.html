@@ -344,11 +344,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
-    Update
+  <a href="#template" class="md-nav__link">
+    Template
   </a>
   
-    <nav class="md-nav" aria-label="Update">
+    <nav class="md-nav" aria-label="Template">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -364,11 +364,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verify" class="md-nav__link">
-    Verify
+  <a href="#update" class="md-nav__link">
+    Update
   </a>
   
-    <nav class="md-nav" aria-label="Verify">
+    <nav class="md-nav" aria-label="Update">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -495,11 +495,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
-    Update
+  <a href="#template" class="md-nav__link">
+    Template
   </a>
   
-    <nav class="md-nav" aria-label="Update">
+    <nav class="md-nav" aria-label="Template">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -515,11 +515,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verify" class="md-nav__link">
-    Verify
+  <a href="#update" class="md-nav__link">
+    Update
   </a>
   
-    <nav class="md-nav" aria-label="Verify">
+    <nav class="md-nav" aria-label="Update">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -567,42 +567,133 @@
 <span class="go">  -h, --help     Show this message and exit.</span>
 
 <span class="go">Commands:</span>
-<span class="go">  update   Fill in some parts of the input document.</span>
-<span class="go">  verify   Answer the question if the input document is in good shape.</span>
-<span class="go">  version  Display the laskea version and exit.</span>
+<span class="go">  template  Write a template of a well-formed JSON configuration to...</span>
+<span class="go">  update    Fill in some parts of the input document.</span>
+<span class="go">  version   Display the laskea version and exit.</span>
+</code></pre></div>
+<h2 id="template">Template</h2>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea template
+<span class="go">{</span>
+<span class="go">  &quot;table&quot;: {</span>
+<span class="go">    &quot;column&quot;: {</span>
+<span class="go">      &quot;fields&quot;: [</span>
+<span class="go">        &quot;Key&quot;,</span>
+<span class="go">        &quot;Summary&quot;,</span>
+<span class="go">        &quot;Custom Field Name&quot;,</span>
+<span class="go">        &quot;Custom Field Other&quot;</span>
+<span class="go">      ],</span>
+<span class="go">      &quot;field_map&quot;: {</span>
+<span class="go">        &quot;key&quot;: [</span>
+<span class="go">          &quot;key&quot;,</span>
+<span class="go">          &quot;key&quot;</span>
+<span class="go">        ],</span>
+<span class="go">        &quot;summary&quot;: [</span>
+<span class="go">          &quot;summary&quot;,</span>
+<span class="go">          &quot;fields.summary&quot;</span>
+<span class="go">        ],</span>
+<span class="go">        &quot;custom field name&quot;: [</span>
+<span class="go">          &quot;customfield_11501&quot;,</span>
+<span class="go">          &quot;fields.customfield_11501&quot;</span>
+<span class="go">        ],</span>
+<span class="go">        &quot;custom field other&quot;: [</span>
+<span class="go">          &quot;customfield_13901&quot;,</span>
+<span class="go">          &quot;fields.customfield_13901[].value&quot;</span>
+<span class="go">        ]</span>
+<span class="go">      }</span>
+<span class="go">    }</span>
+<span class="go">  },</span>
+<span class="go">  &quot;remote&quot;: {</span>
+<span class="go">    &quot;user&quot;: &quot;&quot;,</span>
+<span class="go">    &quot;token&quot;: &quot;&quot;,</span>
+<span class="go">    &quot;base_url&quot;: &quot;https://remote-jira-instance.example.com/&quot;</span>
+<span class="go">  },</span>
+<span class="go">  &quot;local&quot;: {</span>
+<span class="go">    &quot;markers&quot;: &quot;[[[fill ]]] [[[end]]]&quot;,</span>
+<span class="go">    &quot;verbose&quot;: false</span>
+<span class="go">  }</span>
+<span class="go">}</span>
+</code></pre></div>
+<h3 id="help_1">Help</h3>
+<div class="highlight"><pre><span></span><code><span class="go">Usage: laskea template [OPTIONS]</span>
+
+<span class="go">  Write a template of a well-formed JSON configuration to standard out and</span>
+<span class="go">  exit</span>
+
+<span class="go">  The strategy for looking up configurations is to start at the current</span>
+<span class="go">  working directory trying to read a file with the name `.laskea.json` else</span>
+<span class="go">  try to read same named file in the user folder (home).</span>
+
+<span class="go">  In case an explicit path is given to the config option of commands that</span>
+<span class="go">  offer it, only that path is considered.</span>
+
+<span class="go">Options:</span>
+<span class="go">  -h, --help  Show this message and exit.</span>
 </code></pre></div>
 <h2 id="update">Update</h2>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea update tests/fixtures/basic/empty.md
-<span class="go">using configuration ({})</span>
-<span class="go">Would act on command =&#39;update&#39;, inp =&#39;tests/fixtures/basic/empty.md&#39;, and config =&#39;/Users/ruth/.laskea.json&#39;</span>
-<span class="go">NotImplemented (yet)</span>
+<span class="go">Configuration path .laskea.json in current working directory is no file or empty</span>
+<span class="go">Reading configuration file /home/ofsomeone/.laskea.json from home directory at /home/ofsomeone ...</span>
+<span class="go">Configuration interface requested - Experimental!</span>
+<span class="go">Effective configuration combining /home/ofsomeone/.laskea.json and environment variables:</span>
+<span class="gp"># </span>--- BEGIN ---
+<span class="go">{</span>
+<span class="go">  &quot;table&quot;: {</span>
+<span class="go">    &quot;column&quot;: {</span>
+<span class="go">      &quot;fields&quot;: [</span>
+<span class="go">        &quot;Key&quot;,</span>
+<span class="go">        &quot;Summary&quot;,</span>
+<span class="go">        &quot;Foo&quot;,</span>
+<span class="go">        &quot;Bar&quot;</span>
+<span class="go">      ],</span>
+<span class="go">      &quot;field_map&quot;: {</span>
+<span class="go">        &quot;key&quot;: [</span>
+<span class="go">          &quot;key&quot;,</span>
+<span class="go">          &quot;key&quot;</span>
+<span class="go">        ],</span>
+<span class="go">        &quot;summary&quot;: [</span>
+<span class="go">          &quot;summary&quot;,</span>
+<span class="go">          &quot;fields.summary&quot;</span>
+<span class="go">        ],</span>
+<span class="go">        &quot;foo&quot;: [</span>
+<span class="go">          &quot;customfield_11501&quot;,</span>
+<span class="go">          &quot;fields.customfield_11501&quot;</span>
+<span class="go">        ],</span>
+<span class="go">        &quot;bar&quot;: [</span>
+<span class="go">          &quot;customfield_13901&quot;,</span>
+<span class="go">          &quot;fields.customfield_13901[].value&quot;</span>
+<span class="go">        ]</span>
+<span class="go">      }</span>
+<span class="go">    }</span>
+<span class="go">  },</span>
+<span class="go">  &quot;remote&quot;: {</span>
+<span class="go">    &quot;user&quot;: &quot;someuser&quot;,</span>
+<span class="go">    &quot;token&quot;: &quot;&quot;,</span>
+<span class="go">    &quot;base_url&quot;: &quot;https://some.server.example.com/&quot;</span>
+<span class="go">  },</span>
+<span class="go">  &quot;local&quot;: {</span>
+<span class="go">    &quot;markers&quot;: &quot;[[[fill ]]] [[[end]]]&quot;,</span>
+<span class="go">    &quot;verbose&quot;: false</span>
+<span class="go">  }</span>
+<span class="go">}</span>
+<span class="gp"># </span>--- E N D ---
+<span class="go">Cogging tests/fixtures/basic/empty.md</span>
 </code></pre></div>
-<h3 id="help_1">Help</h3>
+<h3 id="help_2">Help</h3>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea update -h
 <span class="go">Usage: laskea update [OPTIONS] [SOURCE]</span>
 
 <span class="go">  Fill in some parts of the input document.</span>
 
-<span class="go">Arguments:</span>
-<span class="go">  [SOURCE]  [default: ]</span>
+<span class="go">  You can set some options per evironment variables:</span>
 
-<span class="go">Options:</span>
-<span class="go">  -i, --input &lt;sourcepath&gt;   Path to input file</span>
-<span class="go">  -c, --config &lt;configpath&gt;  Path to config file (default is</span>
-<span class="gp">                             $</span>HOME/.laskea.json<span class="o">)</span>
-<span class="go">  -h, --help                 Show this message and exit.</span>
-</code></pre></div>
-<h2 id="verify">Verify</h2>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea verify tests/fixtures/basic/empty.md
-<span class="go">using configuration ({})</span>
-<span class="go">Would act on command =&#39;verify&#39;, inp =&#39;tests/fixtures/basic/empty.md&#39;, and config =&#39;/Users/ruth/.laskea.json&#39;</span>
-<span class="go">NotImplemented (yet)</span>
-</code></pre></div>
-<h3 id="help_2">Help</h3>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea verify -h
-<span class="go">Usage: laskea verify [OPTIONS] [SOURCE]</span>
-
-<span class="go">  Answer the question if the input document is in good shape.</span>
+<span class="go">  * ASCIINATOR_USER=&#39;remote-user&#39;</span>
+<span class="go">  * ASCIINATOR_TOKEN=&#39;remote-secret&#39;</span>
+<span class="go">  * ASCIINATOR_BASE_URL=&#39;https://remote-jira-instance.example.com/&#39;</span>
+<span class="go">  * ASCIINATOR_COL_FIELDS: &#39;[&quot;Key&quot;, &quot;Summary&quot;, &quot;Custom Field Name&quot;]&#39;</span>
+<span class="go">  * ASCIINATOR_COL_MAPS=&#39;{&quot;key&quot;: [&quot;key&quot;, &quot;key&quot;], &quot;summary&quot;: [&quot;summary&quot;, &quot;fields.summary&quot;],</span>
+<span class="go">    &quot;custom field name&quot;: [&quot;customfield_123&quot;, &quot;fields.customfield_123&quot;]}&#39;</span>
+<span class="go">  * ASCIINATOR_MARKERS=&#39;[[[fill ]]] [[[end]]]&#39;</span>
+<span class="go">  * ASCIINATOR_DEBUG=&#39;AnythingTruthy&#39;</span>
 
 <span class="go">Arguments:</span>
 <span class="go">  [SOURCE]  [default: ]</span>
@@ -611,11 +702,13 @@
 <span class="go">  -i, --input &lt;sourcepath&gt;   Path to input file</span>
 <span class="go">  -c, --config &lt;configpath&gt;  Path to config file (default is</span>
 <span class="gp">                             $</span>HOME/.laskea.json<span class="o">)</span>
+<span class="go">  -n, --dry-run              Dry run (default is False)</span>
+<span class="go">  -v, --verbose              Verbose output (default is False)</span>
 <span class="go">  -h, --help                 Show this message and exit.</span>
 </code></pre></div>
 <h2 id="version">Version</h2>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea version
-<span class="go">Calculate (Finnish: laskea) some parts. version 2022.3.1+parent.989851d8</span>
+<span class="go">Calculate (Finnish: laskea) some parts. version 2022.3.2+parent.abadcafe</span>
 </code></pre></div>
 
 
