@@ -90,14 +90,14 @@ def update(
         "'from laskea import *'",
     ] + paths
     if DEBUG:
-        print(f'ACTION: ({command})')
-        print(f'ASCIINATOR_USER: ({api.BASE_USER})')
-        print(f'ASCIINATOR_TOKEN: ({"*" * len(api.BASE_PASS)})')
-        print(f'ASCIINATOR_BASE_URL: ({api.BASE_URL})')
-        print(f'ASCIINATOR_COL_FIELDS: ({api.BASE_COL_FIELDS})')
-        print(f'ASCIINATOR_COL_MAPS: ({api.BASE_COL_MAPS})')
-        print(f'ASCIINATOR_MARKERS: ({BASE_MARKERS})')
-        print(f'Vector: ({vector})')
+        print(f'ACTION: ({command})', file=sys.stderr)
+        print(f'ASCIINATOR_USER: ({api.BASE_USER})', file=sys.stderr)
+        print(f'ASCIINATOR_TOKEN: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
+        print(f'ASCIINATOR_BASE_URL: ({api.BASE_URL})', file=sys.stderr)
+        print(f'ASCIINATOR_COL_FIELDS: ({api.BASE_COL_FIELDS})', file=sys.stderr)
+        print(f'ASCIINATOR_COL_MAPS: ({api.BASE_COL_MAPS})', file=sys.stderr)
+        print(f'ASCIINATOR_MARKERS: ({BASE_MARKERS})', file=sys.stderr)
+        print(f'Vector: ({vector})', file=sys.stderr)
 
     return sys.exit(Cog().main(vector))
 
@@ -142,54 +142,59 @@ def verify(
         '-p',
         "'from laskea import *'",
     ] + paths
-    if DEBUG:
-        print(f'ACTION: ({command})')
-        print(f'ASCIINATOR_USER: ({api.BASE_USER})')
-        print(f'ASCIINATOR_TOKEN: ({"*" * len(api.BASE_PASS)})')
-        print(f'ASCIINATOR_BASE_URL: ({api.BASE_URL})')
-        print(f'ASCIINATOR_COL_FIELDS: ({api.BASE_COL_FIELDS})')
-        print(f'ASCIINATOR_COL_MAPS: ({api.BASE_COL_MAPS})')
-        print(f'ASCIINATOR_MARKERS: ({BASE_MARKERS})')
-        print(f'Vector: ({vector})')
 
     cog = Cog()
-    cog.processArguments(vector)
+
+    if DEBUG:
+        print(f'ACTION: ({command})', file=sys.stderr)
+        print(f'ASCIINATOR_USER: ({api.BASE_USER})', file=sys.stderr)
+        print(f'ASCIINATOR_TOKEN: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
+        print(f'ASCIINATOR_BASE_URL: ({api.BASE_URL})', file=sys.stderr)
+        print(f'ASCIINATOR_COL_FIELDS: ({api.BASE_COL_FIELDS})', file=sys.stderr)
+        print(f'ASCIINATOR_COL_MAPS: ({api.BASE_COL_MAPS})', file=sys.stderr)
+        print(f'ASCIINATOR_MARKERS: ({BASE_MARKERS})', file=sys.stderr)
+        print(f'Vector: ({vector})', file=sys.stderr)
     
-    print(f'CodeGen option states of {cog.options}):')
-    print(f'- {cog.options.args=} (default=[])')
-    print(f'- {cog.options.includePath=} (default=[])')
-    print(f'- {cog.options.defines=} (default={{}})')
-    print(f'- {cog.options.bShowVersion=} (default=False)')
-    print(f'- {cog.options.sMakeWritableCmd=} (default=None)')
-    print(f'- {cog.options.bReplace=} (default=False)')
-    print(f'- {cog.options.bNoGenerate=} (default=False)')
-    print(f'- {cog.options.sOutputName=} (default=None)')
-    print(f'- {cog.options.bWarnEmpty=} (default=False)')
-    print(f'- {cog.options.bHashOutput=} (default=False)')
-    print(f'- {cog.options.bDeleteCode=} (default=False)')
-    print(f'- {cog.options.bEofCanBeEnd=} (default=False)')
-    print(f'- {cog.options.sSuffix=} (default=None)')
-    print(f'- {cog.options.bNewlines=} (default=False)')
-    print(f"- {cog.options.sBeginSpec=} (default='[[[cog')")
-    print(f"- {cog.options.sEndSpec=} (default=']]]')")
-    print(f"- {cog.options.sEndOutput=} (default='[[[end]]]')")
-    print(f'- {cog.options.sEncoding=} (default="utf-8")')
-    print(f'- {cog.options.verbosity=} (default=2)')
-    print(f"- {cog.options.sPrologue=} (default='')")
-    print(f'- {cog.options.bPrintOutput=} (default=False)')
-    print(f'- {cog.options.bCheck=} (default=False)')
+        print(f'CodeGen option states of {cog.options}):', file=sys.stderr)
+        print(f'- {cog.options.args=} (default=[])', file=sys.stderr)
+        print(f'- {cog.options.includePath=} (default=[])', file=sys.stderr)
+        print(f'- {cog.options.defines=} (default={{}})', file=sys.stderr)
+        print(f'- {cog.options.bShowVersion=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.sMakeWritableCmd=} (default=None)', file=sys.stderr)
+        print(f'- {cog.options.bReplace=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.bNoGenerate=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.sOutputName=} (default=None)', file=sys.stderr)
+        print(f'- {cog.options.bWarnEmpty=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.bHashOutput=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.bDeleteCode=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.bEofCanBeEnd=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.sSuffix=} (default=None)', file=sys.stderr)
+        print(f'- {cog.options.bNewlines=} (default=False)', file=sys.stderr)
+        print(f"- {cog.options.sBeginSpec=} (default='[[[cog')", file=sys.stderr)
+        print(f"- {cog.options.sEndSpec=} (default=']]]')", file=sys.stderr)
+        print(f"- {cog.options.sEndOutput=} (default='[[[end]]]')", file=sys.stderr)
+        print(f'- {cog.options.sEncoding=} (default="utf-8")', file=sys.stderr)
+        print(f'- {cog.options.verbosity=} (default=2)', file=sys.stderr)
+        print(f"- {cog.options.sPrologue=} (default='')", file=sys.stderr)
+        print(f'- {cog.options.bPrintOutput=} (default=False)', file=sys.stderr)
+        print(f'- {cog.options.bCheck=} (default=False)', file=sys.stderr)
+
+        print(' Calling cog.options.parseArgs(vector)', file=sys.stderr)
 
     try:
         cog.options.parseArgs(vector)
     except CogError as err:
-        print(f'CodeGen option parsing error:')
+        print(f'CodeGen option parsing error:', file=sys.stderr)
         print(str(err))
         return sys.exit(2)
+
+    if DEBUG:
+        print(' Calling cog.callableMain(vector)', file=sys.stderr)
 
     try:
         cog.callableMain(vector)
     except CogUsageError as err:
-        print(f'CodeGen processing usage error:')
+        print(f'CodeGen processing usage error:', file=sys.stderr)
         print(str(err))
         return sys.exit(1)
 
