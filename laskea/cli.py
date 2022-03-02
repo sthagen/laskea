@@ -132,19 +132,19 @@ def update(
         help='Verbose output (default is False)',
     ),    
 ) -> int:
-    f"""
+    """
     Fill in some parts of the input document.
     
     You can set some options per evironment variables:
 
     \b
-    * {APP_ENV}_USER='remote-user'
-    * {APP_ENV}_TOKEN='remote-secret'
-    * {APP_ENV}_BASE_URL='https://remote-jira-instance.example.com/'
-    * {APP_ENV}_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * {APP_ENV}_COL_MAPS='{{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}}'
-    * {APP_ENV}_MARKERS='{DEFAULT_MARKERS}'
-    * {APP_ENV}_DEBUG='AnythingTruthy'
+    * ASCIINATOR_USER='remote-user'
+    * ASCIINATOR_TOKEN='remote-secret'
+    * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
+    * ASCIINATOR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
+    * ASCIINATOR_DEBUG='AnythingTruthy'
     
     """
     # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
@@ -227,23 +227,48 @@ def verify(
         help='Verbose output (default is False)',
     ),    
 ) -> int:
-    f"""
+    """
     Answer the question if the input document is in good shape.
     
     You can set some options per evironment variables:
     
     \b
-    * {APP_ENV}_USER='remote-user'
-    * {APP_ENV}_TOKEN='remote-secret'
-    * {APP_ENV}_BASE_URL='https://remote-jira-instance.example.com/'
-    * {APP_ENV}_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * {APP_ENV}_COL_MAPS='{{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}}'
-    * {APP_ENV}_MARKERS='{DEFAULT_MARKERS}'
-    * {APP_ENV}_DEBUG='AnythingTruthy'
+    * ASCIINATOR_USER='remote-user'
+    * ASCIINATOR_TOKEN='remote-secret'
+    * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
+    * ASCIINATOR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
+    * ASCIINATOR_DEBUG='AnythingTruthy'
 
     """
     # cog -I. -P -c --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'verify'
+    configuration, conf_source = None, ''
+    if conf:
+        cp = pathlib.Path(conf)
+        if not cp.is_file() or not cp.stat().st_size:
+            print(f'Given configuration path is no file or empty')
+            sys.exit(2)
+        print(f'Reading configuration file {cp} as requested...')
+        configuration = json.load(cp.read_text(encoding=ENCODING))
+    else:
+        cp = pathlib.Path(fill.DEFAULT_CONFIG_NAME)
+        if not cp.is_file() or not cp.stat().st_size:
+            print(f'Configuration path {cp} in current working directory is no file or empty')
+            cp = pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
+            if not cp.is_file() or not cp.stat().st_size:
+                print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
+            else:
+                print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
+                configuration = json.load(cp.read_text(encoding=ENCODING))
+        else:
+            print(f'Reading configuration file {cp} from current working directory at {pathlib.Path.cwd()}...')
+            configuration = json.load(cp.read_text(encoding=ENCODING))
+
+    if configuration is not None:
+        print('Configuration interface requested - NotImplemented')
+
     incoming = inp if inp else source
     if not incoming:
         callback(False)
