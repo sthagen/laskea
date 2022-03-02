@@ -160,6 +160,34 @@ def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str
     return source_of
 
 
+@no_type_check
+def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
+    """Try to retrieve the configuration following the (explicit, local, home)-strategy."""
+    configuration, conf_source = None, ''
+    if conf:
+        cp = pathlib.Path(conf)
+        if not cp.is_file() or not cp.stat().st_size:
+            print(f'Given configuration path is no file or empty')
+            sys.exit(2)
+        print(f'Reading configuration file {cp} as requested...')
+        configuration = json.load(cp.open())
+    else:
+        cp = pathlib.Path(fill.DEFAULT_CONFIG_NAME)
+        if not cp.is_file() or not cp.stat().st_size:
+            print(f'Configuration path {cp} in current working directory is no file or empty')
+            cp = pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
+            if not cp.is_file() or not cp.stat().st_size:
+                print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
+            else:
+                print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
+                configuration = json.load(cp.open())
+        else:
+            print(f'Reading configuration file {cp} from current working directory at {pathlib.Path.cwd()}...')
+            configuration = json.load(cp.open())
+
+    return configuration, str(cp)
+
+
 @app.command('update')
 def update(
     source: str = typer.Argument(default=''),
@@ -201,27 +229,7 @@ def update(
     """
     # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'update'
-    configuration, conf_source = None, ''
-    if conf:
-        cp = pathlib.Path(conf)
-        if not cp.is_file() or not cp.stat().st_size:
-            print(f'Given configuration path is no file or empty')
-            sys.exit(2)
-        print(f'Reading configuration file {cp} as requested...')
-        configuration = json.load(cp.open())
-    else:
-        cp = pathlib.Path(fill.DEFAULT_CONFIG_NAME)
-        if not cp.is_file() or not cp.stat().st_size:
-            print(f'Configuration path {cp} in current working directory is no file or empty')
-            cp = pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
-            if not cp.is_file() or not cp.stat().st_size:
-                print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
-            else:
-                print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
-                configuration = json.load(cp.open())
-        else:
-            print(f'Reading configuration file {cp} from current working directory at {pathlib.Path.cwd()}...')
-            configuration = json.load(cp.open())
+    configuration, cp = discover_configuration(conf)
 
     if configuration is not None:
         if DEBUG or verbose:
