@@ -153,14 +153,7 @@ def verify(
         print(f'Vector: ({vector})')
 
     cog = Cog()
-    try:
-        cog.options.parseArgs(vector)
-    except CogError as err:
-        print(f'CodeGen option parsing error:')
-        print(str(err))
-        return sys.exit(2)
-
-    cog.processArguments(paths)
+    cog.processArguments(vector)
     
     print(f'CodeGen option states of {cog.options}):')
     print(f'- {cog.options.args=} (default=[])')
@@ -185,6 +178,13 @@ def verify(
     print(f"- {cog.options.sPrologue=} (default='')")
     print(f'- {cog.options.bPrintOutput=} (default=False)')
     print(f'- {cog.options.bCheck=} (default=False)')
+
+    try:
+        cog.options.parseArgs(vector)
+    except CogError as err:
+        print(f'CodeGen option parsing error:')
+        print(str(err))
+        return sys.exit(2)
 
     try:
         cog.callableMain(vector)
