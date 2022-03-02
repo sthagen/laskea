@@ -93,7 +93,8 @@ def update(
     cog = Cog()
 
     if DEBUG:
-        print(f'Environment(variables):', file=sys.stderr)
+        print(f'Command: ({command})', file=sys.stderr)
+        print(f'Environment(variable values):', file=sys.stderr)
         app_env_user = f'{APP_ENV}_USER'
         app_env_token = f'{APP_ENV}_TOKEN'
         app_env_base_url = f'{APP_ENV}_BASE_URL'
@@ -107,7 +108,7 @@ def update(
         print(f'- {APP_ENV}R_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_MARKERS: ({os.getenv(app_env_markers, empty)})', file=sys.stderr)
-        print(f'Command: ({command})', file=sys.stderr)
+        print(f'Effective(variable values):', file=sys.stderr)
         print(f'- RemoteUser: ({api.BASE_USER})', file=sys.stderr)
         print(f'- RemoteToken: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
         print(f'- RemoteBaseURL: ({api.BASE_URL})', file=sys.stderr)
@@ -170,7 +171,8 @@ def verify(
     cog = Cog()
 
     if DEBUG:
-        print(f'Environment(variables):', file=sys.stderr)
+        print(f'Command: ({command})', file=sys.stderr)
+        print(f'Environment(variable values):', file=sys.stderr)
         app_env_user = f'{APP_ENV}_USER'
         app_env_token = f'{APP_ENV}_TOKEN'
         app_env_base_url = f'{APP_ENV}_BASE_URL'
@@ -184,7 +186,7 @@ def verify(
         print(f'- {APP_ENV}R_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_MARKERS: ({os.getenv(app_env_markers, empty)})', file=sys.stderr)
-        print(f'Command: ({command})', file=sys.stderr)
+        print(f'Effective(variable values):', file=sys.stderr)
         print(f'- RemoteUser: ({api.BASE_USER})', file=sys.stderr)
         print(f'- RemoteToken: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
         print(f'- RemoteBaseURL: ({api.BASE_URL})', file=sys.stderr)
