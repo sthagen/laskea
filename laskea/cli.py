@@ -124,37 +124,65 @@ def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str
     if column_fields:
         source_of['column_fields'] = 'config'
         api.BASE_COL_FIELDS = copy.deepcopy(column_fields)
+    column_fields = os.getenv(f'{APP_ENV}_COL_FIELDS', '')
+    if column_fields:
+        source_of['column_fields'] = 'env'
+        api.BASE_COL_FIELDS = column_fields
 
     field_map = jmespath.search('table.column.field_map', configuration)
     if field_map:
         source_of['field_map'] = 'config'
         api.BASE_COL_MAPS = copy.deepcopy(field_map)
+    field_map = os.getenv(f'{APP_ENV}_COL_MAPS', '')
+    if field_map:
+        source_of['field_map'] = 'env'
+        api.BASE_COL_MAPS = field_map
 
     remote_user = jmespath.search('remote.user', configuration)
     if remote_user:
         source_of['remote_user'] = 'config'
+        api.BASE_USER = remote_user
+    remote_user = os.getenv(f'{APP_ENV}_USER', '')
+    if remote_user:
+        source_of['remote_user'] = 'env'
         api.BASE_USER = remote_user
 
     remote_token = jmespath.search('remote.token', configuration)
     if remote_token:
         source_of['remote_token'] = 'config'
         api.BASE_TOKEN = remote_token
+    remote_token = os.getenv(f'{APP_ENV}_TOKEN', '')
+    if remote_token:
+        source_of['remote_token'] = 'env'
+        api.BASE_TOKEN = remote_token
 
     remote_base_url = jmespath.search('remote.base_url', configuration)
     if remote_base_url:
         source_of['remote_base_url'] = 'config'
         api.BASE_URL = remote_base_url
+    remote_base_url = os.getenv(f'{APP_ENV}_BASE_URL', '')
+    if remote_base_url:
+        source_of['remote_base_url'] = 'env'
+        api.BASE_URL = remote_base_url
 
+    global BASE_MARKERS
     local_markers = jmespath.search('local.markers', configuration)
     if local_markers:
         source_of['local_markers'] = 'config'
-        global BASE_MARKERS
+        BASE_MARKERS = local_markers
+    local_markers = os.getenv(f'{APP_ENV}_MARKERS', '')
+    if local_markers:
+        source_of['local_markers'] = 'env'
         BASE_MARKERS = local_markers
 
+    global DEBUG
     verbose = bool(jmespath.search('local.verbose', configuration))
     if verbose:
         source_of['verbose'] = 'config'
-        global DEBUG
+        DEBUG = verbose
+    verbose = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
+    if verbose:
+        source_of['verbose'] = 'env'
         DEBUG = verbose
 
     return source_of
