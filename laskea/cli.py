@@ -13,7 +13,6 @@ from typing import Dict, List, Tuple, Union, no_type_check
 
 import typer
 from cogapp import Cog, CogUsageError  # type: ignore
-from cogapp.cogapp import CogError, CogOptions  # type: ignore
 
 import laskea
 import laskea.api.jira as api
@@ -100,16 +99,17 @@ def callback(
 def app_template() -> int:
     """
     Write a template of a well-formed JSON configuration to standard out and exit
-    
+
     The strategy for looking up configurations is to start at the current working
     directory trying to read a file with the name `.laskea.json` else try to read
     same named file in the user folder (home).
-    
+
     In case an explicit path is given to the config option of commands that offer
     it, only that path is considered.
     """
     sys.stdout.write(TEMPLATE_EXAMPLE)
     return sys.exit(0)
+
 
 @no_type_check
 def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
@@ -117,7 +117,7 @@ def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str
     if not configuration:
         print('Warning: Requested load from empty configuration')
         return {}
-    
+
     source_of = {}
 
     column_fields = jmespath.search('table.column.fields[]', configuration)
@@ -191,11 +191,11 @@ def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str
 @no_type_check
 def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
     """Try to retrieve the configuration following the (explicit, local, home)-strategy."""
-    configuration, conf_source = None, ''
+    configuration = None
     if conf:
         cp = pathlib.Path(conf)
         if not cp.is_file() or not cp.stat().st_size:
-            print(f'Given configuration path is no file or empty')
+            print('Given configuration path is no file or empty')
             sys.exit(2)
         print(f'Reading configuration file {cp} as requested...')
         configuration = json.load(cp.open())
@@ -220,7 +220,7 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
 def report_context(command: str, vector: List[str]) -> None:
     """DRY."""
     print(f'Command: ({command})', file=sys.stderr)
-    print(f'Environment(variable values):', file=sys.stderr)
+    print('Environment(variable values):', file=sys.stderr)
     app_env_user = f'{APP_ENV}_USER'
     app_env_token = f'{APP_ENV}_TOKEN'
     app_env_base_url = f'{APP_ENV}_BASE_URL'
@@ -234,7 +234,7 @@ def report_context(command: str, vector: List[str]) -> None:
     print(f'- {APP_ENV}_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
     print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
     print(f'- {APP_ENV}_MARKERS: ({os.getenv(app_env_markers, empty)})', file=sys.stderr)
-    print(f'Effective(variable values):', file=sys.stderr)
+    print('Effective(variable values):', file=sys.stderr)
     print(f'- RemoteUser: ({api.BASE_USER})', file=sys.stderr)
     print(f'- RemoteToken: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
     print(f'- RemoteBaseURL: ({api.BASE_URL})', file=sys.stderr)
