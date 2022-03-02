@@ -217,9 +217,10 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
 
 
 @no_type_check
-def report_context(command: str, vector: List[str]) -> None:
+def report_context(command: str, transaction_mode: str, vector: List[str]) -> None:
     """DRY."""
     print(f'Command: ({command})', file=sys.stderr)
+    print(f'- Transaction mode: ({transaction_mode})', file=sys.stderr)
     print('Environment(variable values):', file=sys.stderr)
     app_env_user = f'{APP_ENV}_USER'
     app_env_token = f'{APP_ENV}_TOKEN'
@@ -312,6 +313,12 @@ def update(
         help=f'Path to config file (default is $HOME/{fill.DEFAULT_CONFIG_NAME})',
         metavar='<configpath>',
     ),
+    verify: bool = typer.Option(
+        False,
+        '-n',
+        '--dry-run',
+        help='Dry run (default is False)',
+    ),
     verbose: bool = typer.Option(
         False,
         '-v',
@@ -337,6 +344,7 @@ def update(
     """
     # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'update'
+    transaction_mode = 'commit' if not verify else 'dry-run'
     configuration, cp = discover_configuration(conf)
 
     if configuration is not None:
@@ -355,98 +363,7 @@ def update(
     incoming = inp if inp else source
     paths = glob.glob(incoming)
     if not paths:
-        print('Usage: asciinator "source-files*md"')
-        sys.exit(2)
-    # config = conf if conf else pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
-    # action = [command, str(incoming), str(config)]
-    vector = [
-        APP_ALIAS,
-        '-P',
-        '-c',
-        '-r',
-        f'--markers={BASE_MARKERS}',
-        '-p',
-        'from laskea import *',
-    ] + paths
-
-    cog = Cog()
-
-    if DEBUG or verbose:
-        report_context(command, vector)
-
-    try:
-        cog.callableMain(vector)
-    except CogUsageError as err:
-        print('CodeGen processing usage error:', file=sys.stderr)
-        print(str(err))
-        return sys.exit(1)
-
-    return sys.exit(0)
-
-
-@app.command('verify')
-def verify(
-    source: str = typer.Argument(default=''),
-    inp: str = typer.Option(
-        '',
-        '-i',
-        '--input',
-        help='Path to input file',
-        metavar='<sourcepath>',
-    ),
-    conf: str = typer.Option(
-        '',
-        '-c',
-        '--config',
-        help=f'Path to config file (default is $HOME/{fill.DEFAULT_CONFIG_NAME})',
-        metavar='<configpath>',
-    ),
-    verbose: bool = typer.Option(
-        False,
-        '-v',
-        '--verbose',
-        help='Verbose output (default is False)',
-    ),
-) -> int:
-    """
-    Answer the question if the input document is in good shape.
-
-    You can set some options per evironment variables:
-
-    \b
-    * ASCIINATOR_USER='remote-user'
-    * ASCIINATOR_TOKEN='remote-secret'
-    * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
-    * ASCIINATOR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
-      "custom field name": ["customfield_123", "fields.customfield_123"]}'
-    * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
-    * ASCIINATOR_DEBUG='AnythingTruthy'
-
-    """
-    # cog -I. -P -c --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
-    command = 'verify'
-    configuration, cp = discover_configuration(conf)
-
-    if configuration is not None:
-        if DEBUG or verbose:
-            safe_report_configuration_discovered(configuration, cp)
-
-        source_of = _spike_load_configuration(configuration)
-
-        if DEBUG or verbose:
-            report_sources_of_effective_configuration(source_of, cp)
-
-        print('Configuration interface requested - Experimental!')
-
-        create_and_report_effective_configuration(cp)
-
-    incoming = inp if inp else source
-    if not incoming:
-        callback(False)
-    paths = glob.glob(incoming)
-    if not paths:
-        print('Usage: asciinator "source-files*md"')
+        print('Usage: laskea update [--help] [-v] [-c config-path] [-n] [-i] "source-files*md"')
         sys.exit(2)
     # config = conf if conf else pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
     # action = [command, str(incoming), str(config)]
@@ -457,12 +374,15 @@ def verify(
         f'--markers={BASE_MARKERS}',
         '-p',
         'from laskea import *',
-    ] + paths
+    ]
+    if not verify:
+        vector.append('-r')
+    vector.extend(paths)
 
     cog = Cog()
 
     if DEBUG or verbose:
-        report_context(command, vector)
+        report_context(command, transaction_mode, vector)
 
     try:
         cog.callableMain(vector)
