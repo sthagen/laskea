@@ -253,7 +253,7 @@ def verify(
             print(f'Given configuration path is no file or empty')
             sys.exit(2)
         print(f'Reading configuration file {cp} as requested...')
-        configuration = json.load(cp.read_text(encoding=ENCODING))
+        configuration = json.load(cp.open())
     else:
         cp = pathlib.Path(fill.DEFAULT_CONFIG_NAME)
         if not cp.is_file() or not cp.stat().st_size:
@@ -263,10 +263,10 @@ def verify(
                 print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
             else:
                 print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
-                configuration = json.load(cp.read_text(encoding=ENCODING))
+                configuration = json.load(cp.open())
         else:
             print(f'Reading configuration file {cp} from current working directory at {pathlib.Path.cwd()}...')
-            configuration = json.load(cp.read_text(encoding=ENCODING))
+            configuration = json.load(cp.open())
 
     if configuration is not None:
         print('Configuration interface requested - NotImplemented')
