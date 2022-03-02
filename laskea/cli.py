@@ -370,18 +370,6 @@ def verify(
 
         print('Configuration interface requested - NotImplemented')
 
-    if configuration is not None:
-        if DEBUG or verbose:
-            print(f'Loaded configuration from {cp}:')
-            print('# --- BEGIN ---')
-            fake_configuration = copy.deepcopy(configuration)
-            if jmespath.search('remote.token', fake_configuration):
-                fake_configuration['remote']['token'] = FAKE_SECRET
-            print(json.dumps(fake_configuration, indent=2))
-            print('# --- E N D ---')
-            del fake_configuration
-        print('Configuration interface requested - NotImplemented')
-
     incoming = inp if inp else source
     if not incoming:
         callback(False)
