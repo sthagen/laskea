@@ -9,7 +9,7 @@ import json
 import os
 import pathlib
 import sys
-from typing import List, Union
+from typing import List, Union, no_type_check
 
 import typer
 from cogapp import Cog, CogUsageError  # type: ignore
@@ -111,6 +111,54 @@ def app_template() -> int:
     sys.stdout.write(TEMPLATE_EXAMPLE)
     return sys.exit(0)
 
+@no_type_check
+def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
+    """LaterAlligator."""
+    if not configuration:
+        print('Warning: Requested load from empty configuration')
+        return {}
+    
+    source_of = {}
+
+    column_fields = jmespath.search('table.column.fields[]')
+    if column_fields:
+        source_of['column_fields'] = 'config'
+        api.BASE_COL_FIELDS = copy.deepcopy(column_fields)
+
+    field_map = jmespath.search('table.column.field_map')
+    if field_map:
+        source_of['field_map'] = 'config'
+        api.BASE_COL_MAPS = copy.deepcopy(field_map)
+
+    remote_user = jmespath.search('remote_user')
+    if remote_user:
+        source_of['remote_user'] = 'config'
+        api.BASE_USER = remote_user
+
+    remote_token = jmespath.search('remote.token')
+    if remote_token:
+        source_of['remote_token'] = 'config'
+        api.BASE_TOKEN = remote_token
+
+    remote_base_url = jmespath.search('remote.base_url')
+    if remote_base_url:
+        source_of['remote_base_url'] = 'config'
+        api.BASE_URL = remote_base_url
+
+    local_markers = jmespath.search('local.markers')
+    if local_markers:
+        source_of['local_markers'] = 'config'
+        global BASE_MARKERS
+        BASE_MARKERS = local_markers
+
+    verbose = bool(jmespath.search('local.verbose'))
+    if verbose:
+        source_of['verbose'] = 'config'
+        global DEBUG
+        DEBUG = verbose
+
+    return source_of
+
 
 @app.command('update')
 def update(
@@ -185,6 +233,15 @@ def update(
             print(json.dumps(fake_configuration, indent=2))
             print('# --- E N D ---')
             del fake_configuration
+
+        source_of = _spike_load_configuration(configuration)
+
+        if DEBUG or verbose:
+            print(f'Configuration source after loading from {cp}:')
+            print('# --- BEGIN ---')
+            print(json.dumps(source_of, indent=2))
+            print('# --- E N D ---')
+
         print('Configuration interface requested - NotImplemented')
 
     incoming = inp if inp else source
