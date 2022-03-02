@@ -26,7 +26,7 @@ DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
 ENCODING = 'utf-8'
 DEFAULT_MARKERS = '[[[fill ]]] [[[end]]]'
 BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
-
+FAKE_SECRET = '*' * 13
 TEMPLATE_EXAMPLE = """\
 {
   "table": {
@@ -151,6 +151,40 @@ def update(
     """
     # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'update'
+    configuration, conf_source = None, ''
+    if conf:
+        cp = pathlib.Path(conf)
+        if not cp.is_file() or not cp.stat().st_size:
+            print(f'Given configuration path is no file or empty')
+            sys.exit(2)
+        print(f'Reading configuration file {cp} as requested...')
+        configuration = json.load(cp.open())
+    else:
+        cp = pathlib.Path(fill.DEFAULT_CONFIG_NAME)
+        if not cp.is_file() or not cp.stat().st_size:
+            print(f'Configuration path {cp} in current working directory is no file or empty')
+            cp = pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
+            if not cp.is_file() or not cp.stat().st_size:
+                print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
+            else:
+                print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
+                configuration = json.load(cp.open())
+        else:
+            print(f'Reading configuration file {cp} from current working directory at {pathlib.Path.cwd()}...')
+            configuration = json.load(cp.open())
+
+    if configuration is not None:
+        if DEBUG or verbose:
+            print(f'Loaded configuration from {cp}:')
+            print('# --- BEGIN ---')
+            fake_configuration = copy.deepcopy(configuration)
+            if jmespath.search('remote.token', fake_configuration):
+                fake_configuration['remote']['token'] = FAKE_SECRET
+            print(json.dumps(fake_configuration, indent=2))
+            print('# --- E N D ---')
+            del fake_configuration
+        print('Configuration interface requested - NotImplemented')
+
     incoming = inp if inp else source
     paths = glob.glob(incoming)
     if not paths:
@@ -181,7 +215,7 @@ def update(
         app_env_markers = f'{APP_ENV}_MARKERS'
         empty = ''
         print(f'- {APP_ENV}_USER: ({os.getenv(app_env_user, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}_TOKEN: ({"*" * len(os.getenv(app_env_token, empty))})', file=sys.stderr)
+        print(f'- {APP_ENV}_TOKEN: ({FAKE_SECRET if len(os.getenv(app_env_token, empty)) else empty})', file=sys.stderr)
         print(f'- {APP_ENV}_BASE_URL: ({os.getenv(app_env_base_url, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}R_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
@@ -272,8 +306,12 @@ def verify(
         if DEBUG or verbose:
             print(f'Loaded configuration from {cp}:')
             print('# --- BEGIN ---')
-            print(json.dumps(configuration, indent=2))
+            fake_configuration = copy.deepcopy(configuration)
+            if jmespath.search('remote.token', fake_configuration):
+                fake_configuration['remote']['token'] = FAKE_SECRET
+            print(json.dumps(fake_configuration, indent=2))
             print('# --- E N D ---')
+            del fake_configuration
         print('Configuration interface requested - NotImplemented')
 
     incoming = inp if inp else source
@@ -307,7 +345,7 @@ def verify(
         app_env_markers = f'{APP_ENV}_MARKERS'
         empty = ''
         print(f'- {APP_ENV}_USER: ({os.getenv(app_env_user, empty)})', file=sys.stderr)
-        print(f'- {APP_ENV}_TOKEN: ({"*" * len(os.getenv(app_env_token, empty))})', file=sys.stderr)
+        print(f'- {APP_ENV}_TOKEN: ({FAKE_SECRET if len(os.getenv(app_env_token, empty)) else empty})', file=sys.stderr)
         print(f'- {APP_ENV}_BASE_URL: ({os.getenv(app_env_base_url, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}R_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
         print(f'- {APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
