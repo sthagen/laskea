@@ -265,6 +265,36 @@ def safe_report_configuration_discovered(configuration: Dict[str, object], cp: s
     print('# --- E N D ---')
 
 
+@no_type_check
+def create_and_report_effective_configuration(cp: str) -> None:
+    """DRY."""
+    effective = {
+        'table': {
+            'column': {
+                'fields': copy.deepcopy(api.BASE_COL_FIELDS),
+                'field_map': copy.deepcopy(api.base_COL_MAPS),
+            },
+        },
+        'remote': {
+            'user': api.BASE_USER,
+            'token': '',
+            'base_url': api.BASE_URL,
+        },
+        'local': {
+            'markers': BASE_MARKERS,
+            'verbose': DEBUG,
+        },
+    }
+
+    print(f'Effective configuration combining {cp} and environment variables:')
+    print('# --- BEGIN ---')
+    fake_configuration = copy.deepcopy(effective)
+    if jmespath.search('remote.token', fake_configuration):
+        fake_configuration['remote']['token'] = FAKE_SECRET
+    print(json.dumps(fake_configuration, indent=2))
+    print('# --- E N D ---')
+
+
 @app.command('update')
 def update(
     source: str = typer.Argument(default=''),
