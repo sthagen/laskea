@@ -160,6 +160,8 @@ def verify(
         print(str(err))
         return sys.exit(2)
 
+    cog.processArguments(vector)
+    
     print(f'CodeGen option states of {cog.options}):')
     print(f'- {cog.options.args=} (default=[])')
     print(f'- {cog.options.includePath=} (default=[])')
@@ -185,7 +187,7 @@ def verify(
     print(f'- {cog.options.bCheck=} (default=False)')
 
     try:
-        cog.main(vector)
+        cog.callableMain(vector)
     except CogUsageError as err:
         print(f'CodeGen processing usage error:')
         print(str(err))
