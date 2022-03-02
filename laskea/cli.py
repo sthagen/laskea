@@ -161,7 +161,7 @@ def verify(
     print(f'CodeGen option states of {cog.options}):')
     print(f'- {cog.options.args =} (default=[])')
     print(f'- {cog.options.includePath =} (default=[])')
-    print(f'- {cog.options.defines =} (default=x{}xx)')
+    print(f'- {cog.options.defines =} (default={{}})')
     print(f'- {cog.options.bShowVersion =} (default=False)')
     print(f'- {cog.options.sMakeWritableCmd =} (default=None)')
     print(f'- {cog.options.bReplace =} (default=False)')
