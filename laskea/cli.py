@@ -151,7 +151,7 @@ def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str
         global BASE_MARKERS
         BASE_MARKERS = local_markers
 
-    verbose = bool(jmespath.search('local.verbose'), configuration)
+    verbose = bool(jmespath.search('local.verbose', configuration))
     if verbose:
         source_of['verbose'] = 'config'
         global DEBUG
