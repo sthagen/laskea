@@ -152,7 +152,14 @@ def verify(
         print(f'ASCIINATOR_MARKERS: ({BASE_MARKERS})')
         print(f'Vector: ({vector})')
 
-    return sys.exit(Cog().main(vector))
+    cog = Cog()
+    try:
+        cog.main(vector)
+    except CogUsageError as err:
+        print(str(err))
+        return sys.exit(1)
+    print(f'CodeGen Options: {cog.options})')
+    return sys.exit(0)
 
 
 @app.command('version')
