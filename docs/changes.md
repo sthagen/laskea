@@ -1,5 +1,14 @@
 # Change History
 
+## 2022.3.2
+
+* First working implementation of command line mode
+* Added layered configuration handling
+* Added new command template to produce a starter tempalte JSON file
+* Added source of effective configuration detection and reporting
+* Added verbose flags to verify and updated commands
+* Added effective configuration reporting to easily generate proven configurations from experimenting 
+
 ## 2022.3.1
 
 * Fixed laskea.api.jira matrix construction (library mode)
