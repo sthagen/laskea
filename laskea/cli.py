@@ -82,7 +82,7 @@ def update(
         f'--markers={BASE_MARKERS}',
         '-p',
         'from laskea import *',
-        *(incoming.split(' ')),
+        f'"{incoming}"',
     ]
     return sys.exit(Cog().main(vector))
 
