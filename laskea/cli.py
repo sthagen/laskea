@@ -132,7 +132,7 @@ def update(
         help='Verbose output (default is False)',
     ),    
 ) -> int:
-    """
+    f"""
     Fill in some parts of the input document.
     
     You can set some options per evironment variables:
@@ -142,8 +142,8 @@ def update(
     * {APP_ENV}_TOKEN='remote-secret'
     * {APP_ENV}_BASE_URL='https://remote-jira-instance.example.com/'
     * {APP_ENV}_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * {APP_ENV}_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
-    * {APP_ENV}_MARKERS='[[[fill ]]] [[[end]]]'
+    * {APP_ENV}_COL_MAPS='{{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}}'
+    * {APP_ENV}_MARKERS='{DEFAULT_MARKERS}'
     * {APP_ENV}_DEBUG='AnythingTruthy'
     
     """
@@ -227,7 +227,7 @@ def verify(
         help='Verbose output (default is False)',
     ),    
 ) -> int:
-    """
+    f"""
     Answer the question if the input document is in good shape.
     
     You can set some options per evironment variables:
@@ -237,8 +237,8 @@ def verify(
     * {APP_ENV}_TOKEN='remote-secret'
     * {APP_ENV}_BASE_URL='https://remote-jira-instance.example.com/'
     * {APP_ENV}_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * {APP_ENV}_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}'
-    * {APP_ENV}_MARKERS='[[[fill ]]] [[[end]]]'
+    * {APP_ENV}_COL_MAPS='{{"key": ["key", "key"], "summary": ["summary", "fields.summary"], "custom field name": ["customfield_123", "fields.customfield_123"]}}'
+    * {APP_ENV}_MARKERS='{DEFAULT_MARKERS}'
     * {APP_ENV}_DEBUG='AnythingTruthy'
 
     """
