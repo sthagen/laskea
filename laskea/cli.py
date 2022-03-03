@@ -410,6 +410,8 @@ def update(
     ]
     if not verify:
         vector.append('-r')
+    if quiet:
+        vector.append('--verbosity=0')
     vector.extend(paths)
 
     cog = Cog()
