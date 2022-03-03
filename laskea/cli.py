@@ -24,6 +24,7 @@ APP_NAME = 'Calculate (Finnish: laskea) some parts.'
 APP_ALIAS = 'laskea'
 APP_ENV = 'ASCIINATOR'
 DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
+QUIET = False
 ENCODING = 'utf-8'
 DEFAULT_MARKERS = '[[[fill ]]] [[[end]]]'
 BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
@@ -198,7 +199,8 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
         if not cp.is_file() or not cp.stat().st_size:
             print('Given configuration path is no file or empty')
             sys.exit(2)
-        print(f'Reading configuration file {cp} as requested...')
+        if not QUIET:
+            print(f'Reading configuration file {cp} as requested...')
         configuration = json.load(cp.open())
     else:
         cn = fill.DEFAULT_CONFIG_NAME
@@ -212,11 +214,13 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
 
         cp = pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
         if cp.is_file() and cp.stat().st_size:
-            print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
+            if not QUIET:
+                print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
             configuration = json.load(cp.open())
             return configuration, str(cp)
 
-        print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
+        if not QUIET:
+            print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
 
     return configuration, str(cp)
 
@@ -224,6 +228,8 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
 @no_type_check
 def report_context(command: str, transaction_mode: str, vector: List[str]) -> None:
     """DRY."""
+    if QUIET:
+        return
     print(f'Command: ({command})', file=sys.stderr)
     print(f'- Transaction mode: ({transaction_mode})', file=sys.stderr)
     print('Environment(variable values):', file=sys.stderr)
@@ -253,6 +259,8 @@ def report_context(command: str, transaction_mode: str, vector: List[str]) -> No
 @no_type_check
 def report_sources_of_effective_configuration(source_of: Dict[str, str], cp: str) -> None:
     """DRY."""
+    if QUIET:
+        return
     print(f'Configuration source after loading from {cp}:')
     print('# --- BEGIN ---')
     print(json.dumps(source_of, indent=2))
@@ -262,6 +270,8 @@ def report_sources_of_effective_configuration(source_of: Dict[str, str], cp: str
 @no_type_check
 def safe_report_configuration_discovered(configuration: Dict[str, object], cp: str) -> None:
     """DRY."""
+    if QUIET:
+        return
     print(f'Loaded configuration from {cp}:')
     print('# --- BEGIN ---')
     fake_configuration = copy.deepcopy(configuration)
@@ -274,6 +284,8 @@ def safe_report_configuration_discovered(configuration: Dict[str, object], cp: s
 @no_type_check
 def create_and_report_effective_configuration(cp: str) -> None:
     """DRY."""
+    if QUIET:
+        return
     effective = {
         'table': {
             'column': {
@@ -330,6 +342,12 @@ def update(
         '--verbose',
         help='Verbose output (default is False)',
     ),
+    quiet: bool = typer.Option(
+        False,
+        '-q',
+        '--quiet',
+        help='Minimal output (default is False)',
+    ),
 ) -> int:
     """
     Fill in some parts of the input document.
@@ -350,6 +368,13 @@ def update(
     # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'update'
     transaction_mode = 'commit' if not verify else 'dry-run'
+    global QUIET
+    global DEBUG
+
+    if quiet:
+        QUIET = True
+        DEBUG = False
+
     configuration, cp = discover_configuration(conf)
 
     if configuration is not None:
@@ -361,7 +386,8 @@ def update(
         if DEBUG or verbose:
             report_sources_of_effective_configuration(source_of, cp)
 
-        print('Configuration interface requested - Experimental!')
+        if not QUIET:
+            print('Configuration interface requested - Experimental!')
 
         create_and_report_effective_configuration(cp)
 
