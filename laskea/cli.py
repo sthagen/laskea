@@ -3,7 +3,6 @@
 # pylint: disable=line-too-long
 """Commandline API gateway for laskea."""
 import copy
-import glob
 import json
 import os
 import pathlib
@@ -113,7 +112,7 @@ def app_template() -> int:
 
 
 @no_type_check
-def _spike_load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
+def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
     """LaterAlligator."""
     if not configuration:
         print('Warning: Requested load from empty configuration')
@@ -258,32 +257,32 @@ def report_context(command: str, transaction_mode: str, vector: List[str]) -> No
 
 
 @no_type_check
-def report_sources_of_effective_configuration(source_of: Dict[str, str], cp: str) -> None:
+def report_sources_of_effective_configuration(source_of: Dict[str, str], header: str) -> None:
     """DRY."""
     if QUIET:
         return
-    print(f'Configuration source after loading from {cp}:')
+    print(header)
     print('# --- BEGIN ---')
     print(json.dumps(source_of, indent=2))
     print('# --- E N D ---')
 
 
 @no_type_check
-def safe_report_configuration_discovered(configuration: Dict[str, object], cp: str) -> None:
+def safe_report_configuration(configuration: Dict[str, object], header: str) -> None:
     """DRY."""
     if QUIET:
         return
-    print(f'Loaded configuration from {cp}:')
+    print(header)
     print('# --- BEGIN ---')
     fake_configuration = copy.deepcopy(configuration)
     if jmespath.search('remote.token', fake_configuration):
-        fake_configuration['remote']['token'] = FAKE_SECRET
+        fake_configuration['remote']['token'] = FAKE_SECRET  # noqa
     print(json.dumps(fake_configuration, indent=2))
     print('# --- E N D ---')
 
 
 @no_type_check
-def create_and_report_effective_configuration(cp: str) -> None:
+def create_and_report_effective_configuration(header: str) -> None:
     """DRY."""
     if QUIET:
         return
@@ -304,19 +303,12 @@ def create_and_report_effective_configuration(cp: str) -> None:
             'verbose': DEBUG,
         },
     }
-
-    print(f'Effective configuration combining {cp} and environment variables:')
-    print('# --- BEGIN ---')
-    fake_configuration = copy.deepcopy(effective)
-    if jmespath.search('remote.token', fake_configuration):
-        fake_configuration['remote']['token'] = FAKE_SECRET
-    print(json.dumps(fake_configuration, indent=2))
-    print('# --- E N D ---')
+    safe_report_configuration(effective, header)
 
 
 @app.command('update')
 def update(
-    source:  List[str],  # str = typer.Argument(default=''),
+    source: List[str],
     inp: str = typer.Option(
         '',
         '-i',
@@ -365,9 +357,8 @@ def update(
     * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
     * ASCIINATOR_DEBUG='AnythingTruthy'
 
-    The quiet option (if given) disables any conflicting verbosity setting. 
+    The quiet option (if given) disables any conflicting verbosity setting.
     """
-    # cog -I. -P -c -r --markers='[[[fill ]]] [[[end]]]' -p "from api import *" files*.md
     command = 'update'
     transaction_mode = 'commit' if not verify else 'dry-run'
     global QUIET
@@ -381,25 +372,23 @@ def update(
 
     if configuration is not None:
         if DEBUG or verbose:
-            safe_report_configuration_discovered(configuration, cp)
+            safe_report_configuration(configuration, f'Loaded configuration from {cp}:')
 
-        source_of = _spike_load_configuration(configuration)
+        source_of = load_configuration(configuration)
 
         if DEBUG or verbose:
-            report_sources_of_effective_configuration(source_of, cp)
+            report_sources_of_effective_configuration(source_of, f'Configuration source after loading from {cp}:')
 
         if not QUIET:
             print('Configuration interface requested - Experimental!')
 
-        create_and_report_effective_configuration(cp)
+        create_and_report_effective_configuration(f'Effective configuration combining {cp} and environment variables:')
 
-    incoming = inp if inp else source
-    paths = incoming  # glob.glob(incoming)
+    paths = inp if inp else source
     if not paths:
-        print('Usage: laskea update [--help] [-v] [-c config-path] [-n] [-i] "source-files*md"')
+        print('Usage: laskea update [--help] [-v] [-c config-path] [-n] [-i] source-files*md [other.md]')
         sys.exit(2)
-    # config = conf if conf else pathlib.Path.home() / fill.DEFAULT_CONFIG_NAME
-    # action = [command, str(incoming), str(config)]
+
     vector = [
         APP_ALIAS,
         '-P',
@@ -412,7 +401,6 @@ def update(
         vector.append('-r')
     if quiet:
         vector.append('--verbosity=0')
-    # vector.extend(paths)
 
     cog = Cog()
 
