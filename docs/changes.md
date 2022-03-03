@@ -4,7 +4,8 @@
 
 * Introduced quiet flag
 * Changed positional argument handling (accepting multiple files)
-* The underlying code generator is called per such argument
+* The underlying code generator is called per input argument term
+* Enhanced test coverage
 
 ## 2022.3.2
 
