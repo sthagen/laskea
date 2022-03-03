@@ -208,7 +208,8 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
         for pp in cwd.parents:
             cp = pp / cn
             if cp.is_file() and cp.stat().st_size:
-                print(f'Reading from discovered configuration path {cp}')
+                if not QUIET:
+                    print(f'Reading from discovered configuration path {cp}')
                 configuration = json.load(cp.open())
                 return configuration, str(cp)
 
