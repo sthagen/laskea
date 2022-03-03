@@ -1,5 +1,11 @@
 # Change History
 
+## 2022.3.3
+
+* Introduced quiet flag
+* Changed positional argument handling (accepting multiple files)
+* The underlying code generator is called per such argument
+
 ## 2022.3.2
 
 * First working implementation of command line mode
