@@ -169,5 +169,5 @@ Options:
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.3.2+parent.f99aa559
+Calculate (Finnish: laskea) some parts. version 2022.3.3+parent.cc2efded
 ```
