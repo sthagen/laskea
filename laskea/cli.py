@@ -316,7 +316,7 @@ def create_and_report_effective_configuration(cp: str) -> None:
 
 @app.command('update')
 def update(
-    source: str = typer.Argument(default=''),
+    source:  List[str],  # str = typer.Argument(default=''),
     inp: str = typer.Option(
         '',
         '-i',
@@ -394,7 +394,7 @@ def update(
         create_and_report_effective_configuration(cp)
 
     incoming = inp if inp else source
-    paths = glob.glob(incoming)
+    paths = incoming  # glob.glob(incoming)
     if not paths:
         print('Usage: laskea update [--help] [-v] [-c config-path] [-n] [-i] "source-files*md"')
         sys.exit(2)
@@ -412,19 +412,21 @@ def update(
         vector.append('-r')
     if quiet:
         vector.append('--verbosity=0')
-    vector.extend(paths)
+    # vector.extend(paths)
 
     cog = Cog()
 
     if DEBUG or verbose:
         report_context(command, transaction_mode, vector)
 
-    try:
-        cog.callableMain(vector)
-    except CogUsageError as err:
-        print('CodeGen processing usage error:', file=sys.stderr)
-        print(str(err))
-        return sys.exit(1)
+    for path in paths:
+        single_vector = vector + [path]
+        try:
+            cog.callableMain(single_vector)
+        except CogUsageError as err:
+            print('CodeGen processing usage error:', file=sys.stderr)
+            print(str(err))
+            return sys.exit(1)
 
     return sys.exit(0)
 
