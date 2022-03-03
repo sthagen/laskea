@@ -680,7 +680,7 @@
 </code></pre></div>
 <h3 id="help_2">Help</h3>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea update -h
-<span class="go">Usage: laskea update [OPTIONS] [SOURCE]</span>
+<span class="go">Usage: laskea update [OPTIONS] SOURCE...</span>
 
 <span class="go">  Fill in some parts of the input document.</span>
 
@@ -695,8 +695,10 @@
 <span class="go">  * ASCIINATOR_MARKERS=&#39;[[[fill ]]] [[[end]]]&#39;</span>
 <span class="go">  * ASCIINATOR_DEBUG=&#39;AnythingTruthy&#39;</span>
 
+<span class="go">  The quiet option (if given) disables any conflicting verbosity setting.</span>
+
 <span class="go">Arguments:</span>
-<span class="go">  [SOURCE]  [default: ]</span>
+<span class="go">  SOURCE...  [required]</span>
 
 <span class="go">Options:</span>
 <span class="go">  -i, --input &lt;sourcepath&gt;   Path to input file</span>
@@ -704,11 +706,12 @@
 <span class="gp">                             $</span>HOME/.laskea.json<span class="o">)</span>
 <span class="go">  -n, --dry-run              Dry run (default is False)</span>
 <span class="go">  -v, --verbose              Verbose output (default is False)</span>
+<span class="go">  -q, --quiet                Minimal output (default is False)</span>
 <span class="go">  -h, --help                 Show this message and exit.</span>
 </code></pre></div>
 <h2 id="version">Version</h2>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea version
-<span class="go">Calculate (Finnish: laskea) some parts. version 2022.3.3+parent.cc2efded</span>
+<span class="go">Calculate (Finnish: laskea) some parts. version 2022.3.3+parent.22b5b468</span>
 </code></pre></div>
 
 
