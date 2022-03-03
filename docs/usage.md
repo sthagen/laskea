@@ -138,7 +138,7 @@ Cogging tests/fixtures/basic/empty.md
 
 ```console
 $ laskea update -h
-Usage: laskea update [OPTIONS] [SOURCE]
+Usage: laskea update [OPTIONS] SOURCE...
 
   Fill in some parts of the input document.
 
@@ -153,8 +153,10 @@ Usage: laskea update [OPTIONS] [SOURCE]
   * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
   * ASCIINATOR_DEBUG='AnythingTruthy'
 
+  The quiet option (if given) disables any conflicting verbosity setting.
+
 Arguments:
-  [SOURCE]  [default: ]
+  SOURCE...  [required]
 
 Options:
   -i, --input <sourcepath>   Path to input file
@@ -162,6 +164,7 @@ Options:
                              $HOME/.laskea.json)
   -n, --dry-run              Dry run (default is False)
   -v, --verbose              Verbose output (default is False)
+  -q, --quiet                Minimal output (default is False)
   -h, --help                 Show this message and exit.
 ```
 
@@ -169,5 +172,5 @@ Options:
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.3.3+parent.cc2efded
+Calculate (Finnish: laskea) some parts. version 2022.3.3+parent.22b5b468
 ```
