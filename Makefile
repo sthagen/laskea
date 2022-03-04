@@ -57,6 +57,10 @@ sbom:
 version:
 	@cog -I. -P -c -r --check --markers="[[fill ]]] [[[end]]]" -p "from gen_version import *" pyproject.toml laskea/__init__.py
 
+.PHONY: secure
+secure:
+	@bandit -r -x test_laskea.py,test_cli.py .
+
 .PHONY: clean
 clean:
 	@rm -rf `find . -name __pycache__`
