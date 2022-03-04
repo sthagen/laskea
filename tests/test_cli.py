@@ -2,6 +2,9 @@
 # pylint: disable=line-too-long,missing-docstring,reimported,unused-import,unused-variable
 import json
 
+import pytest
+
+import laskea
 import laskea.api.jqlLexer  # noqa
 import laskea.api.jqlListener  # noqa
 import laskea.api.jqlParser  # noqa
@@ -24,6 +27,14 @@ def test_baz():
 
 def test_quux():
     assert isinstance(laskea.api.jqlVisitor.jqlVisitor(), laskea.api.jqlVisitor.jqlVisitor)
+
+
+def test_report_command(capsys):
+    with pytest.raises(SystemExit):
+        cli.report()
+    out, err = capsys.readouterr()
+    assert f'laskea : {laskea.__version__}' in out
+    assert not err
 
 
 def test_report_context(capsys):
