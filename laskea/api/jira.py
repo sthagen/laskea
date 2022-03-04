@@ -154,3 +154,29 @@ def markdown_table(handle: Jira, jql_text: str, column_fields=None) -> str:
     issues = len(table)
     summary = f'\n\n{issues} issue{"" if issues == 1 else "s"}'
     return '\n'.join([header] + [separator] + rows) + summary
+
+
+@no_type_check
+def markdown_unordered_list(handle: Jira, jql_text: str, column_fields=None) -> str:
+    """Yes we can ... document later."""
+    data = query(handle, jql_text, column_fields)
+    if data.get('error', ''):
+        return json.dumps(data, indent=2)
+
+    if not data['rows']:
+        return ''
+
+    items = []
+    for slot, record in enumerate(data['rows']):
+        k, v = '', ''
+        for key, cell in record.items():
+            if key.lower() not in ('key', 'summary'):
+                continue
+            if key.lower() == 'key':
+                k = f'[{cell}]({BASE_URL.strip("/")}/browse/{cell})'
+            else:
+                v = cell
+        items.append((k, v))
+
+    ul = tuple(f'- {" - ".join(item)}' for item in items)
+    return '\n'.join(ul) + '\n'
