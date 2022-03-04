@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.3.4
+
+* Introduced ul function for injecting unordered markdown lists of keys and summaries
+
 ## 2022.3.3
 
 * Introduced quiet flag
