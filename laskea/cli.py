@@ -117,6 +117,22 @@ def report() -> int:
     """
     Write a report of the environment for bug reports to standard out and exit
     """
+    import antlr4  # noqa
+    import atlassian  # noqa
+    try:
+        import pkg_resources  # noqa
+    except (ImportError, ModuleNotFoundError):
+        message = (
+            '\n  Report requires setuptools (to identify the version of antlr4 and atlassian-python-api).'
+            '\n  You can install it via `pip install setuptools`\n\n'
+        )
+        sys.stdout.write(message)
+        return sys.exit(0)
+
+    monkey_atl = [p.version for p in pkg_resources.working_set if p.project_name == 'atlassian-python-api'][0]  # noqa
+    atlassian.__version__ = monkey_atl
+    monkey_ant = [p.version for p in pkg_resources.working_set if p.project_name == 'antlr4-python3-runtime'][0]  # noqa
+    antlr4.__version__ = monkey_ant
 
     class Report(scooby.Report):  # type: ignore
         def __init__(self, additional=None, ncol=3, text_width=80, sort=False):  # type: ignore
@@ -125,7 +141,7 @@ def report() -> int:
             # Mandatory packages.
             core = [
                 'laskea',
-                # 'antlr4',
+                'antlr4',  # has version in METADATA text file in package info only?
                 'atlassian',  # has version in VERSION text file in package info only?
                 'cogapp.cogapp',
                 'jmespath',
