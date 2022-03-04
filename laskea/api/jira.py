@@ -157,7 +157,7 @@ def markdown_table(handle: Jira, jql_text: str, column_fields=None) -> str:
 
 
 @no_type_check
-def markdown_unordered_list(handle: Jira, jql_text: str, column_fields=None) -> str:
+def markdown_list(handle: Jira, jql_text: str, column_fields=None, list_type: str = 'ul') -> str:
     """Yes we can ... document later."""
     data = query(handle, jql_text, column_fields)
     if data.get('error', ''):
@@ -178,5 +178,6 @@ def markdown_unordered_list(handle: Jira, jql_text: str, column_fields=None) -> 
                 v = cell
         items.append((k, v))
 
-    ul = tuple(f'- {" - ".join(item)}' for item in items)
-    return '\n'.join(ul) + '\n'
+    lt = '-' if list_type == 'ul' else '1.'  # implicit 'ol'
+    xl = tuple(f'{lt} {" - ".join(item)}' for item in items)
+    return '\n'.join(xl) + '\n'

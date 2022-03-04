@@ -10,6 +10,7 @@ import sys
 from typing import Dict, List, Tuple, Union, no_type_check
 
 import jmespath
+import scooby  # type: ignore
 import typer
 from cogapp import Cog, CogUsageError  # type: ignore
 
@@ -108,6 +109,39 @@ def app_template() -> int:
     it, only that path is considered.
     """
     sys.stdout.write(TEMPLATE_EXAMPLE)
+    return sys.exit(0)
+
+
+@app.command('report')
+def report() -> int:
+    """
+    Write a report of the environment for bug reports to standard out and exit
+    """
+
+    class Report(scooby.Report):  # type: ignore
+        def __init__(self, additional=None, ncol=3, text_width=80, sort=False):  # type: ignore
+            """Initiate a scooby.Report instance."""
+
+            # Mandatory packages.
+            core = [
+                'laskea',
+                # 'antlr4',
+                'atlassian',  # has version in VERSION text file in package info only?
+                'cogapp.cogapp',
+                'jmespath',
+                'pydantic',
+                'scooby',
+                'typer',
+            ]
+
+            # Optional packages.
+            optional: List[str] = []
+
+            scooby.Report.__init__(
+                self, additional=additional, core=core, optional=optional, ncol=ncol, text_width=text_width, sort=sort
+            )
+
+    sys.stdout.write(str(Report()))  # type: ignore
     return sys.exit(0)
 
 

@@ -23,7 +23,7 @@ DB: Dict[str, Union[None, Jira]] = {'handle': None}
 
 
 @no_type_check
-def table(query_text: str = '') -> str:
+def table(query_text: str = '') -> None:
     """Public document interface."""
     if not DB.get('handle', None):
         DB['handle'] = api.login()
@@ -32,12 +32,21 @@ def table(query_text: str = '') -> str:
 
 
 @no_type_check
-def ul(query_text: str = '') -> str:
+def ol(query_text: str = '') -> None:
+    """Public document interface for ordered list."""
+    if not DB.get('handle', None):
+        DB['handle'] = api.login()
+
+    print(api.markdown_list(DB['handle'], query_text, list_type='ol'))
+
+
+@no_type_check
+def ul(query_text: str = '') -> None:
     """Public document interface for unordered list."""
     if not DB.get('handle', None):
         DB['handle'] = api.login()
 
-    print(api.markdown_unordered_list(DB['handle'], query_text))
+    print(api.markdown_list(DB['handle'], query_text))
 
 
 def init() -> None:
@@ -52,7 +61,7 @@ def verify_request(argv: Optional[List[str]]) -> Tuple[int, str, List[str]]:
 
     command, inp, config = argv
 
-    if command not in ('update', 'verify'):
+    if command not in ('update',):
         return 2, 'received unknown command', ['']
 
     if inp:
