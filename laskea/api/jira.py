@@ -38,7 +38,7 @@ def mock(number: int) -> int:
     return number
 
 
-def login(user: str = '', token: str = '', url: str = '') -> Jira:
+def login(user: str = '', token: str = '', url: str = '') -> Jira:  # nosec
     """LatAli"""
     if not user:
         user = BASE_USER

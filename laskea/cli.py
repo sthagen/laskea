@@ -141,7 +141,7 @@ def report() -> int:
                 self, additional=additional, core=core, optional=optional, ncol=ncol, text_width=text_width, sort=sort
             )
 
-    sys.stdout.write(str(Report()))  # type: ignore
+    sys.stdout.write(str(Report()) + '\n')  # type: ignore
     return sys.exit(0)
 
 
@@ -183,11 +183,11 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
 
     remote_token = jmespath.search('remote.token', configuration)
     if remote_token:
-        source_of['remote_token'] = 'config'
+        source_of['remote_token'] = 'config'  # nosec
         api.BASE_TOKEN = remote_token
     remote_token = os.getenv(f'{APP_ENV}_TOKEN', '')
     if remote_token:
-        source_of['remote_token'] = 'env'
+        source_of['remote_token'] = 'env'  # nosec
         api.BASE_TOKEN = remote_token
 
     remote_base_url = jmespath.search('remote.base_url', configuration)
