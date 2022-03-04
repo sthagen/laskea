@@ -31,6 +31,15 @@ def table(query_text: str = '') -> str:
     print(api.markdown_table(DB['handle'], query_text))
 
 
+@no_type_check
+def ul(query_text: str = '') -> str:
+    """Public document interface for unordered list."""
+    if not DB.get('handle', None):
+        DB['handle'] = api.login()
+
+    print(api.markdown_unordered_list(DB['handle'], query_text))
+
+
 def init() -> None:
     """Minimize boilerplate in the target documents."""
     pass
