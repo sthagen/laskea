@@ -3,7 +3,7 @@ import json
 import pathlib
 import pkg_resources
 import string
-import subprocess
+import subprocess  # nosec
 from typing import List, Tuple
 """
 | Name                                                                          | Version | License                 | Author                                   | Description (from packaging data)                                       |
@@ -50,7 +50,7 @@ def _generate_dependency_information() -> None:
         'pip-licenses', '--format', 'json', '-p', *direct_names,
         '--with-authors', '--with-description', '--with-urls', '--with-license-file', '--with-notice-file',
         '--output-file', str(TP_PATH / 'direct-dependency-licenses.json')]
-    noise = subprocess.run(direct_vector, capture_output=True, encoding=ENCODING, text=True).stdout.strip()
+    noise = subprocess.run(direct_vector, capture_output=True, encoding=ENCODING, text=True).stdout.strip()  # nosec
     if not noise.startswith('created path: ') or not noise.endswith('direct-dependency-licenses.json'):
         raise RuntimeError(noise)
 
@@ -72,7 +72,7 @@ def _generate_dependency_information() -> None:
         'pip-licenses', '--format', 'json', '-p', *direct_names, *indirect_names,
         '--with-authors', '--with-description', '--with-urls', '--with-license-file', '--with-notice-file',
         '--output-file', str(TP_PATH / 'all-dependency-licenses.json')]
-    noise = subprocess.run(full_vector, capture_output=True, encoding=ENCODING, text=True).stdout.strip()
+    noise = subprocess.run(full_vector, capture_output=True, encoding=ENCODING, text=True).stdout.strip()  # nosec
     if not noise.startswith('created path: ') or not noise.endswith('all-dependency-licenses.json'):
         raise RuntimeError(noise)
 
@@ -88,7 +88,7 @@ def _generate_dependency_information() -> None:
         (TP_PATH / 'package-dependency-tree.console.txt', base_vector + ['--warn', 'silence']),
     )
     for target, vector in jobs:
-        plot = subprocess.run(vector, capture_output=True, encoding=ENCODING, text=True).stdout.strip()
+        plot = subprocess.run(vector, capture_output=True, encoding=ENCODING, text=True).stdout.strip()  # nosec
         target.write_text(plot, encoding=ENCODING)
 
 
