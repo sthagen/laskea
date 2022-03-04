@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([170ac085 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:170ac08513ef0b218420049655810bb82425cc99edab0669e6b7b8ec76507630")).
-<!--[[[end]]] (checksum: 05eb2c0db42b94f6f7c52b9fd330d2b7)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([e5191d32 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:e5191d32a302686a85f902ec6bb196ccad875171e3e2c725769ed9b25f47987a")).
+<!--[[[end]]] (checksum: d86f4c5d5d0899f313bc5326b7a794d3)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -10,14 +10,15 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 ### Direct Dependencies
 
 <!--[[[fill direct_dependencies_table()]]]-->
-| Name                                                                          | Version                                                         | License                 | Author             | Description (from packaging data)                                       |
-|:------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------|:-------------------|:------------------------------------------------------------------------|
-| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | [3.20.1](https://pypi.org/project/atlassian-python-api/3.20.1/) | Apache Software License | Matt Harasymczuk   | Python Atlassian REST API Wrapper                                       |
-| [cogapp](http://nedbatchelder.com/code/cog)                                   | [3.3.0](https://pypi.org/project/cogapp/3.3.0/)                 | MIT License             | Ned Batchelder     | Cog: A content generator for executing Python snippets in source files. |
-| [jmespath](https://github.com/jmespath/jmespath.py)                           | [0.10.0](https://pypi.org/project/jmespath/0.10.0/)             | MIT License             | James Saryerwinnie | JSON Matching Expressions                                               |
-| [pydantic](https://github.com/samuelcolvin/pydantic)                          | [1.9.0](https://pypi.org/project/pydantic/1.9.0/)               | MIT License             | Samuel Colvin      | Data validation and settings management using python 3.6 type hinting   |
-| [typer](https://github.com/tiangolo/typer)                                    | [0.4.0](https://pypi.org/project/typer/0.4.0/)                  | MIT License             | Sebastián Ramírez  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
-<!--[[[end]]] (checksum: 8e21b5668bd5cf7a77284ea235129522)-->
+| Name                                                                          | Version                                                         | License                 | Author                             | Description (from packaging data)                                       |
+|:------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------|:-----------------------------------|:------------------------------------------------------------------------|
+| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | [3.20.1](https://pypi.org/project/atlassian-python-api/3.20.1/) | Apache Software License | Matt Harasymczuk                   | Python Atlassian REST API Wrapper                                       |
+| [cogapp](http://nedbatchelder.com/code/cog)                                   | [3.3.0](https://pypi.org/project/cogapp/3.3.0/)                 | MIT License             | Ned Batchelder                     | Cog: A content generator for executing Python snippets in source files. |
+| [jmespath](https://github.com/jmespath/jmespath.py)                           | [0.10.0](https://pypi.org/project/jmespath/0.10.0/)             | MIT License             | James Saryerwinnie                 | JSON Matching Expressions                                               |
+| [pydantic](https://github.com/samuelcolvin/pydantic)                          | [1.9.0](https://pypi.org/project/pydantic/1.9.0/)               | MIT License             | Samuel Colvin                      | Data validation and settings management using python 3.6 type hinting   |
+| [scooby](https://github.com/banesullivan/scooby)                              | [0.5.12](https://pypi.org/project/scooby/0.5.12/)               | MIT License             | Dieter Werthmüller & Bane Sullivan | A Great Dane turned Python environment detective                        |
+| [typer](https://github.com/tiangolo/typer)                                    | [0.4.0](https://pypi.org/project/typer/0.4.0/)                  | MIT License             | Sebastián Ramírez                  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
+<!--[[[end]]] (checksum: 57b565a76aec87e01d867c22cbce8721)-->
 
 ### Indirect Dependencies
 
@@ -73,7 +74,8 @@ cogapp==3.3.0
 jmespath==0.10.0
 pydantic==1.9.0
   - typing-extensions [required: >=3.7.4.3, installed: 4.1.1]
+scooby==0.5.12
 typer==0.4.0
   - click [required: >=7.1.1,<9.0.0, installed: 8.0.4]
 ````
-<!--[[[end]]] (checksum: 83731647caaec7255f7b74cd72e57db9)-->
+<!--[[[end]]] (checksum: 92dede4ce989a9451e3f7c541300f068)-->
