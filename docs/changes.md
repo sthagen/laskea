@@ -3,6 +3,7 @@
 ## 2022.3.4
 
 * Introduced ul function for injecting unordered markdown lists of keys and summaries
+* Added report of environment facts command to support bug reports (new dependency scooby)
 
 ## 2022.3.3
 

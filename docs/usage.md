@@ -13,9 +13,47 @@ Options:
   -h, --help     Show this message and exit.
 
 Commands:
+  report    Write a report of the environment for bug reports to standard...
   template  Write a template of a well-formed JSON configuration to...
   update    Fill in some parts of the input document.
   version   Display the laskea version and exit.
+```
+
+## Report
+
+```onsole
+$ laskea report
+
+--------------------------------------------------------------------------------
+  Date: Fri Mar 04 23:19:28 2022 CET
+
+                OS : Darwin
+            CPU(s) : 1024
+           Machine : arm64
+      Architecture : 64bit
+       Environment : Python
+
+  Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0
+  (clang-1300.0.29.30)]
+
+            laskea : 2022.3.4+parent.ec1ce47e
+         atlassian : Version unknown
+     cogapp.cogapp : 3.3.0
+          jmespath : 0.10.0
+          pydantic : 1.9.0
+            scooby : 0.5.12
+             typer : 0.4.0
+--------------------------------------------------------------------------------%
+```
+### Help
+
+```console
+Usage: laskea report [OPTIONS]
+
+  Write a report of the environment for bug reports to standard out and exit
+
+Options:
+  -h, --help  Show this message and exit.
 ```
 
 ## Template
