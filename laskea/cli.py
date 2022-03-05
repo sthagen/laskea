@@ -113,26 +113,41 @@ def app_template() -> int:
 
 
 @app.command('report')
-def report() -> int:
+def report(
+    shallow: bool = typer.Option(
+        False,
+        '-s',
+        '--shallow',
+        help='Shallow reporting - no setuptools required (default is False)',
+    ),
+) -> int:
     """
     Write a report of the environment for bug reports to standard out and exit
     """
-    import antlr4  # noqa
-    import atlassian  # noqa
+    deep = True
     try:
         import pkg_resources  # noqa
     except (ImportError, ModuleNotFoundError):
-        message = (
-            '\n  Report requires setuptools (to identify the version of antlr4 and atlassian-python-api).'
-            '\n  You can install it via `pip install setuptools`\n\n'
-        )
-        sys.stdout.write(message)
-        return sys.exit(0)
+        if shallow:
+            deep = False
+            sys.stdout.write('\nInfo: No setuptools module found and shallow reporting requested. Continuing ...')
+        else:
+            message = (
+                '\n  Report requires setuptools (to identify the version of antlr4 and atlassian-python-api).'
+                '\n  You may either add --shallow or install the module via `pip install setuptools`\n\n'
+            )
+            sys.stdout.write(message)
+            return sys.exit(0)
 
-    monkey_atl = [p.version for p in pkg_resources.working_set if p.project_name == 'atlassian-python-api'][0]  # noqa
-    atlassian.__version__ = monkey_atl
-    monkey_ant = [p.version for p in pkg_resources.working_set if p.project_name == 'antlr4-python3-runtime'][0]  # noqa
-    antlr4.__version__ = monkey_ant
+    if deep:
+        import antlr4  # type: ignore
+        import atlassian  # type: ignore # noqa
+
+        packages = pkg_resources.working_set  # noqa
+        monkey_atl = [p.version for p in packages if p.project_name == 'atlassian-python-api'][0]  # noqa
+        atlassian.__version__ = monkey_atl
+        monkey_ant = [p.version for p in packages if p.project_name == 'antlr4-python3-runtime'][0]  # noqa
+        antlr4.__version__ = monkey_ant
 
     class Report(scooby.Report):  # type: ignore
         def __init__(self, additional=None, ncol=3, text_width=80, sort=False):  # type: ignore
