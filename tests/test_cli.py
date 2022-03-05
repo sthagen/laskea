@@ -37,6 +37,14 @@ def test_report_command(capsys):
     assert not err
 
 
+def test_template_command(capsys):
+    with pytest.raises(SystemExit):
+        cli.app_template()
+    out, err = capsys.readouterr()
+    assert '"markers": "[[[fill ]]] [[[end]]]"' in out
+    assert not err
+
+
 def test_report_context(capsys):
     quiet_flag_restore = cli.QUIET
     cli.QUIET = False
