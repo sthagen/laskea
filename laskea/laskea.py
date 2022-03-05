@@ -1,98 +1,50 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=expression-not-assigned,line-too-long
 """Calculate (Finnish: laskea) some parts."""
-import json
-import os
-import pathlib
 import sys
-from typing import Dict, List, Optional, Tuple, Union, no_type_check
+from typing import Mapping, Sequence
 
 from atlassian import Jira  # type: ignore # noqa
+from cogapp import Cog, CogUsageError  # type: ignore
 
-import laskea.api.jira as api
-
-DEBUG_VAR = 'LASKEA_DEBUG'
-DEBUG = os.getenv(DEBUG_VAR)
-
-ENCODING = 'utf-8'
-ENCODING_ERRORS_POLICY = 'ignore'
-
-DEFAULT_CONFIG_NAME = '.laskea.json'
-
-DB: Dict[str, Union[None, Jira]] = {'handle': None}
+import laskea
+import laskea.config as cfg
 
 
-@no_type_check
-def table(query_text: str = '') -> None:
-    """Public document interface."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
-
-    print(api.markdown_table(DB['handle'], query_text))
-
-
-@no_type_check
-def ol(query_text: str = '') -> None:
-    """Public document interface for ordered list."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
-
-    print(api.markdown_list(DB['handle'], query_text, list_type='ol'))
-
-
-@no_type_check
-def ul(query_text: str = '') -> None:
-    """Public document interface for unordered list."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
-
-    print(api.markdown_list(DB['handle'], query_text))
-
-
-def init() -> None:
-    """Minimize boilerplate in the target documents."""
-    pass
-
-
-def verify_request(argv: Optional[List[str]]) -> Tuple[int, str, List[str]]:
-    """Fail with grace."""
-    if not argv or len(argv) != 3:
-        return 2, 'received wrong number of arguments', ['']
-
-    command, inp, config = argv
-
-    if command not in ('update',):
-        return 2, 'received unknown command', ['']
-
-    if inp:
-        if not pathlib.Path(str(inp)).is_file():
-            return 1, 'source is no file', ['']
-
-    if not config:
-        return 2, 'configuration missing', ['']
-
-    config_path = pathlib.Path(str(config))
-    if not config_path.is_file():
-        return 1, f'config ({config_path}) is no file', ['']
-    if not ''.join(config_path.suffixes).lower().endswith('.json'):
-        return 1, 'config has no .json extension', ['']
-
-    return 0, '', argv
-
-
-def main(argv: Union[List[str], None] = None) -> int:
+def process(command: str, transaction_mode: str, paths: Sequence[str], options: Mapping[str, bool]) -> int:
     """Drive the lookup."""
-    error, message, strings = verify_request(argv)
-    if error:
-        print(message, file=sys.stderr)
-        return error
 
-    command, inp, config = strings
+    if command != 'update' or not paths:
+        print('Usage: laskea update [--help] [-v] [-c config-path] [-n] [-i] source-files*md [other.md]')
+        sys.exit(2)
 
-    with open(config, 'rt', encoding=ENCODING) as handle:
-        configuration = json.load(handle)
+    quiet = bool(options.get('quiet', ''))
+    verbose = bool(options.get('verbose', ''))
 
-    print(f'using configuration ({configuration})')
-    print(f'Would act on {command =}, {inp =}, and {config =}')
-    print('NotImplemented (yet)')
+    vector = [
+        laskea.APP_ALIAS,
+        '-P',
+        '-c',
+        f'--markers={laskea.BASE_MARKERS}',
+        '-p',
+        'from laskea import *',
+    ]
+    if transaction_mode != 'commit':
+        vector.append('-r')
+    if quiet:
+        vector.append('--verbosity=0')
+
+    cog = Cog()
+
+    if laskea.DEBUG or verbose:
+        cfg.report_context(command, transaction_mode, vector)
+
+    for path in paths:
+        single_vector = vector + [path]
+        try:
+            cog.callableMain(single_vector)
+        except CogUsageError as err:
+            print('CodeGen processing usage error:', file=sys.stderr)
+            print(str(err))
+            return 1
     return 0

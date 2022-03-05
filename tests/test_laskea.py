@@ -1,31 +1,21 @@
-# -*- coding: utf-8 -*-
-# pylint: disable=line-too-long,missing-docstring,reimported,unused-import,unused-variable
+import pytest
+
 import laskea.laskea as fill
 
 
-def test_fill_init():
-    assert fill.init() is None
+def test_process_wrong_command(capsys):
+    err_msg = 'Usage: laskea update [--help] [-v] [-c config-path] [-n] [-i] source-files*md [other.md]'
+    with pytest.raises(SystemExit):
+        fill.process('wrong', 'ignore', ('ignore',), {})
+    out, err = capsys.readouterr()
+    assert not err
+    assert err_msg in out
 
 
-def test_verify_request_wrong_number_of_args():
-    assert fill.verify_request([]) == (2, 'received wrong number of arguments', [''])
-
-
-def test_verify_request_bogus_command():
-    assert fill.verify_request(['foo', 'bar', 'baz']) == (2, 'received unknown command', [''])
-
-
-def test_verify_request_bogus_inp():
-    assert fill.verify_request(['update', 'not-present', 'baz']) == (1, 'source is no file', [''])
-
-
-def test_verify_request_no_config():
-    assert fill.verify_request(['update', 'README.md', '']) == (2, 'configuration missing', [''])
-
-
-def test_verify_request_config_as_folder():
-    assert fill.verify_request(['update', 'README.md', 'laskea']) == (1, 'config (laskea) is no file', [''])
-
-
-def test_verify_request_config_no_json_extension():
-    assert fill.verify_request(['update', 'README.md', 'README.md']) == (1, 'config has no .json extension', [''])
+def test_process_empty_paths(capsys):
+    err_msg = 'Usage: laskea update [--help] [-v] [-c config-path] [-n] [-i] source-files*md [other.md]'
+    with pytest.raises(SystemExit):
+        fill.process('update', 'ignore', tuple(), {})
+    out, err = capsys.readouterr()
+    assert not err
+    assert err_msg in out
