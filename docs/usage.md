@@ -55,7 +55,8 @@ Usage: laskea report [OPTIONS]
   Write a report of the environment for bug reports to standard out and exit
 
 Options:
-  -h, --help  Show this message and exit.
+  -s, --shallow  Shallow reporting - no setuptools required (default is False)
+  -h, --help     Show this message and exit.
 ```
 
 ## Template
