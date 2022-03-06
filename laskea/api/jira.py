@@ -4,7 +4,7 @@
 import copy
 import json
 import os
-from typing import no_type_check
+from typing import Iterable, Mapping, Sized, Union, no_type_check
 
 import jmespath
 from atlassian import Jira  # type: ignore # noqa
@@ -124,9 +124,12 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
 
 
 @no_type_check
-def markdown_table(handle: Jira, jql_text: str, column_fields=None) -> str:
+def markdown_table(
+    handle: Jira, jql_text: str, column_fields=None, data: Mapping[str, Union[object, Iterable, Sized]] = None
+) -> str:
     """Yes we can ... document later."""
-    data = query(handle, jql_text, column_fields)
+    if data is None:
+        data = query(handle, jql_text, column_fields)
     if data.get('error', ''):
         return json.dumps(data, indent=2)
 
@@ -134,15 +137,15 @@ def markdown_table(handle: Jira, jql_text: str, column_fields=None) -> str:
         return 'WARNING: Empty table!'
 
     table = copy.deepcopy(data['rows'])
-    columns = list(table[0].keys())
+    columns = list(table[0].keys())  # noqa
     col_wid = {key: len(key) for key in columns}
     for slot, record in enumerate(table):
         for key, cell in record.items():
             if key.lower() == 'key':
-                table[slot][key] = f'[{cell}]({BASE_URL.strip("/")}/browse/{cell})'
+                table[slot][key] = f'[{cell}]({BASE_URL.strip("/")}/browse/{cell})'  # noqa
             if not isinstance(cell, str):
-                table[slot][key] = '<br>'.join(cell)
-            col_wid[key] = max(len(table[slot][key]), col_wid[key])
+                table[slot][key] = '<br>'.join(cell)  # noqa
+            col_wid[key] = max(len(table[slot][key]), col_wid[key])  # noqa
 
     header_cells = [key.ljust(col_wid[key]) for key in columns]
     header = f'| {" | ".join(header_cells)} |'
@@ -157,9 +160,16 @@ def markdown_table(handle: Jira, jql_text: str, column_fields=None) -> str:
 
 
 @no_type_check
-def markdown_list(handle: Jira, jql_text: str, column_fields=None, list_type: str = 'ul') -> str:
+def markdown_list(
+    handle: Jira,
+    jql_text: str,
+    column_fields=None,
+    list_type: str = 'ul',
+    data: Mapping[str, Union[object, Iterable, Sized]] = None,
+) -> str:
     """Yes we can ... document later."""
-    data = query(handle, jql_text, column_fields)
+    if data is None:
+        data = query(handle, jql_text, column_fields)
     if data.get('error', ''):
         return json.dumps(data, indent=2)
 
@@ -193,9 +203,16 @@ def markdown_list(handle: Jira, jql_text: str, column_fields=None, list_type: st
 
 
 @no_type_check
-def markdown_heading(handle: Jira, jql_text: str, column_fields=None, level: int = 1) -> str:
+def markdown_heading(
+    handle: Jira,
+    jql_text: str,
+    column_fields=None,
+    level: int = 1,
+    data: Mapping[str, Union[object, Iterable, Sized]] = None,
+) -> str:
     """Yes we can ... document later."""
-    data = query(handle, jql_text, column_fields)
+    if data is None:
+        data = query(handle, jql_text, column_fields)
     if data.get('error', ''):
         return json.dumps(data, indent=2)
 

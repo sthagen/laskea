@@ -1,8 +1,40 @@
+import pytest
+
 import laskea
+import laskea.api.jira as impl
 import laskea.api.jqlLexer  # noqa
 import laskea.api.jqlListener  # noqa
 import laskea.api.jqlParser  # noqa
 import laskea.api.jqlVisitor  # noqa
+
+HEADING_FIXTURE = {
+    'rows': [
+        {
+            'key': 'ABC-42',
+            'summary': 'Some issue to show off the headings',
+        }
+    ]
+}
+HEADING_PAYLOAD_POSTFIX = (
+    f' [{HEADING_FIXTURE["rows"][0]["key"]}](/browse/{HEADING_FIXTURE["rows"][0]["key"]})'
+    f' - {HEADING_FIXTURE["rows"][0]["summary"]}\n'
+)
+
+UO_LIST_FIXTURE = {
+    'rows': [
+        {
+            'key': 'ABC-42',
+            'summary': 'First issue to show off the ordered and unordered lists',
+        },
+        {
+            'key': 'ABC-1001',
+            'summary': 'Second issue to show off the ordered and unordered lists',
+        },
+    ]
+}
+UO_LIST_PAYLOAD_POSTFIXES = tuple(
+    f' [{row["key"]}](/browse/{row["key"]}) - {row["summary"]}' for row in UO_LIST_FIXTURE['rows']
+)
 
 
 def test_foo():
@@ -20,3 +52,18 @@ def test_baz():
 
 def test_quux():
     assert isinstance(laskea.api.jqlVisitor.jqlVisitor(), laskea.api.jqlVisitor.jqlVisitor)
+
+
+@pytest.mark.parametrize('level', [lv for lv in range(1, 7 - 1)])
+def test_impl_headings(level):
+    hd = impl.markdown_heading(impl.Jira(''), jql_text='', column_fields=tuple(), level=level, data=HEADING_FIXTURE)
+    token = '#' * level
+    assert hd == f'{token}{HEADING_PAYLOAD_POSTFIX}'
+
+
+@pytest.mark.parametrize('kind,marker', [('ol', '1.'), ('ul', '-')])
+def test_impl_uo_lists(kind, marker):
+    text = impl.markdown_list(impl.Jira(''), jql_text='', column_fields=tuple(), list_type=kind, data=UO_LIST_FIXTURE)
+    items = text.strip().split('\n')
+    for slot in (0, 1):
+        assert items[slot] == f'{marker}{UO_LIST_PAYLOAD_POSTFIXES[slot]}'
