@@ -59,7 +59,8 @@ version:
 
 .PHONY: secure
 secure:
-	@bandit -r -x test_laskea.py,test_cli.py .
+	@bandit --output current-bandit.json --baseline baseline-bandit.json --format json --recursive --quiet --exclude ./tests,./build laskea
+	@diff -Nu {baseline,current}-bandit.json; printf "^ Only the timestamps ^^ ^^ ^^ ^^ ^^ ^^ should differ. OK?\n"
 
 .PHONY: clean
 clean:
