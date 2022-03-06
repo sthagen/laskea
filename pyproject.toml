@@ -2,8 +2,8 @@
 name = "laskea"
 py_version = "3.8"
 # [[[fill version_sync()]]]
-version = "2022.3.5"
-# [[[end]]] (checksum: ec333bfd58d34e3a5f05c7db99cf0fe7)
+version = "2022.3.6"
+# [[[end]]] (checksum: 571d8e0ea16cf2a89933b97e30cbbd30)
 authors = ["Stefan Hagen <stefan@hagen.link>"]
 
 [tool.pyflow.scripts]
@@ -16,25 +16,3 @@ jmespath = "^0.10.0"
 pydantic = "^1.9.0"
 scooby = "^0.5.12"
 typer = "^0.4.0"
-
-[tool.pyflow.dev-dependencies]
-bandit = "^1.7.4"
-black = "^22.1.0"
-coverage = "^6.3.2"
-flake8 = "^4.0.1"
-flake8-quotes = "^3.3.1"
-hypothesis = "^6.38.0"
-isort = "^5.10.1"
-mkautodoc = "^0.1.0"
-mkdocstrings = "^0.18.0"
-mypy = "^0.931"
-pycodestyle = "^2.8.0"
-pyflakes = "^2.4.0"
-pygments = "^2.11.2"
-pytest = "^7.0.1"
-pytest-asyncio = "^0.18.1"
-pytest-cov = "^3.0.0"
-pytest-mock = "^3.7.0"
-pytest-sugar = "^0.9.4"
-pytest-toolbox = "^0.4"
-types-jmespath = "^0.10.2"
