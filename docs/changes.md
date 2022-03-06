@@ -1,5 +1,12 @@
 # Change History
 
+## 2022.3.7
+
+* Reduced noise in dry-run mode when warnings were duplicated if not splitting stderr stream
+* Added new dependency requests-cache to ease the load on the server
+* Added new option for update command to set the expiry of the cache in seconds (default is 180 seconds or 3 minutes)
+* Updated baseline, third-party information, and SBOM
+
 ## 2022.3.6
 
 * Enhanced user experience for HTTP/400 client errors - failing JQL
