@@ -55,6 +55,9 @@ def _generate_dependency_information() -> None:
         raise RuntimeError(noise)
 
     indirect_names = [  # TODO(sthagen) these indirect deps may diverge ...
+        'appdirs',
+        'attrs',
+        'cattrs',
         'certifi',
         'charset-normalizer',
         'click',
@@ -65,8 +68,10 @@ def _generate_dependency_information() -> None:
         'requests-oauthlib',
         'six',
         'typing-extensions',
+        'url-normalize',
         'urllib3',
         'wrapt',
+
     ]
     full_vector = [
         'pip-licenses', '--format', 'json', '-p', *direct_names, *indirect_names,
@@ -77,8 +82,8 @@ def _generate_dependency_information() -> None:
         raise RuntimeError(noise)
 
     """
-    pipdeptree --packages antlr4-python3-runtime,atlassian-python-api,cogapp,jmespath,pydantic,typer --graph-output svg > docs/third-party/package-dependency-tree.svg
-    pipdeptree --packages antlr4-python3-runtime,atlassian-python-api,cogapp,jmespath,pydantic,typer --json-tree --warn silence > docs/third-party/package-dependency-tree.json
+    pipdeptree --packages antlr4-python3-runtime,atlassian-python-api,cogapp,jmespath,pydantic,requests-cache,typer --graph-output svg > docs/third-party/package-dependency-tree.svg
+    pipdeptree --packages antlr4-python3-runtime,atlassian-python-api,cogapp,jmespath,pydantic,requests-cache,typer --json-tree --warn silence > docs/third-party/package-dependency-tree.json
     """
     base_vector = ['pipdeptree', '--packages', ','.join(direct_names)]
     jobs = (
