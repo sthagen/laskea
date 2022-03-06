@@ -1,5 +1,7 @@
 import json
 
+import pytest
+
 import laskea
 import laskea.config as cfg
 
@@ -7,6 +9,14 @@ import laskea.config as cfg
 def test_generate_template_command():
     json_string = cfg.generate_template()
     assert '"markers": "[[[fill ]]] [[[end]]]"' in json_string
+
+
+def test_process_spoc_no_file(capsys):
+    with pytest.raises(SystemExit):
+        cfg.process('no-file', {})
+    out, err = capsys.readouterr()
+    assert 'Given configuration path is no file or empty' in out
+    assert not err
 
 
 def test_report_context(capsys):
