@@ -69,3 +69,11 @@ def test_impl_uo_lists(kind, marker, capsys):
     out, err = capsys.readouterr()
     assert not err
     assert out.strip() == expected
+
+
+def test_impl_d_list(capsys):
+    expected = '\n'.join(D_LIST_PAYLOADS) + '\n' + '\n'
+    assert emb.dl(query_text='', data=D_LIST_FIXTURE) is None
+    out, err = capsys.readouterr()
+    assert not err
+    assert out == expected
