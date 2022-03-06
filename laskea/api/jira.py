@@ -148,7 +148,7 @@ def markdown_table(
         return json.dumps(data, indent=2)
 
     if not data['rows']:
-        return 'WARNING: Empty table!'
+        return f'WARNING: received 0 results for JQL ({jql_text}) and table'
 
     table = copy.deepcopy(data['rows'])
     columns = list(table[0].keys())  # noqa
@@ -188,7 +188,7 @@ def markdown_list(
         return json.dumps(data, indent=2)
 
     if not data['rows']:
-        return ''
+        return f'WARNING: received 0 results for JQL ({jql_text}) and {list_type}'
 
     items = []
     for slot, record in enumerate(data['rows']):

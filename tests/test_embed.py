@@ -64,6 +64,27 @@ D_LIST_PAYLOADS = tuple(
     f'[{row["key"]}]({URL_FIXTURE}/browse/{row["key"]})\n' f':{row["summary"]}\n' for row in D_LIST_FIXTURE['rows']
 )
 
+TABLE_FIXTURE = {
+    'rows': [
+        {
+            'key': 'ABC-42',
+            'summary': 'First issue to show off the tables',
+        },
+        {
+            'key': 'ABC-1001',
+            'summary': 'Second issue to show off the tables',
+        },
+    ]
+}
+TABLE_FIXTURE_PAYLOADS = (
+    '| key                                                                  | summary                             |',
+    '|:---------------------------------------------------------------------|:------------------------------------|',
+    '| [ABC-42](https://remote-jira-instance.example.com/browse/ABC-42)     | First issue to show off the tables  |',
+    '| [ABC-1001](https://remote-jira-instance.example.com/browse/ABC-1001) | Second issue to show off the tables |',
+    '',
+    '2 issues',
+)
+
 
 @pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
 def test_embed_headings(level, capsys):
@@ -117,3 +138,22 @@ def test_embed_headings_too_many(level, capsys):
     out, err = capsys.readouterr()
     assert f'WARNING: received {mis_count} results instead of 1 for JQL ({query_text}) and h{level}' in err
     assert out
+
+
+def test_embed_table(capsys):
+    impl.BASE_URL = URL_FIXTURE
+    expected = '\n'.join(TABLE_FIXTURE_PAYLOADS)
+    assert emb.table(query_text='', data=TABLE_FIXTURE) is None
+    out, err = capsys.readouterr()
+    assert not err
+    assert out.strip() == expected
+
+
+def test_embed_table_no_result(capsys):
+    impl.BASE_URL = URL_FIXTURE
+    query_text = ''
+    expected = f'WARNING: received 0 results for JQL ({query_text}) and table'
+    assert emb.table(query_text='', data=HEADING_WARN_TOO_FEW_FIXTURE) is None
+    out, err = capsys.readouterr()
+    assert not err
+    assert out.strip() == expected
