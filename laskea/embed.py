@@ -9,90 +9,96 @@ DB: Dict[str, Union[None, Jira]] = {'handle': None}
 
 
 @no_type_check
-def table(query_text: str = '') -> None:
+def table(query_text: str = '', data=None) -> None:
     """Public document interface."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
+    if data is None:
+        if not DB.get('handle', None):
+            DB['handle'] = api.login()
 
-    print(api.markdown_table(DB['handle'], query_text))
+        print(api.markdown_table(DB['handle'], query_text))
+    else:
+        print(api.markdown_table(DB['handle'], query_text, data=data))
 
 
 @no_type_check
-def dl(query_text: str = '') -> None:
+def dl(query_text: str = '', data=None) -> None:
     """Public document interface for definition list."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
+    if data is None:
+        if not DB.get('handle', None):
+            DB['handle'] = api.login()
 
-    print(api.markdown_list(DB['handle'], query_text, list_type='dl'))
+        print(api.markdown_list(DB['handle'], query_text, list_type='dl'))
+    else:
+        print(api.markdown_list(DB['handle'], query_text, list_type='dl', data=data))
 
 
 @no_type_check
-def ol(query_text: str = '') -> None:
+def ol(query_text: str = '', data=None) -> None:
     """Public document interface for ordered list."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
+    if data is None:
+        if not DB.get('handle', None):
+            DB['handle'] = api.login()
 
-    print(api.markdown_list(DB['handle'], query_text, list_type='ol'))
+        print(api.markdown_list(DB['handle'], query_text, list_type='ol'))
+    else:
+        print(api.markdown_list(DB['handle'], query_text, list_type='ol', data=data))
 
 
 @no_type_check
-def ul(query_text: str = '') -> None:
+def ul(query_text: str = '', data=None) -> None:
     """Public document interface for unordered list."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
+    if data is None:
+        if not DB.get('handle', None):
+            DB['handle'] = api.login()
 
-    print(api.markdown_list(DB['handle'], query_text, list_type='ul'))
+        print(api.markdown_list(DB['handle'], query_text, list_type='ul'))
+    else:
+        print(api.markdown_list(DB['handle'], query_text, list_type='ul', data=data))
 
 
 @no_type_check
-def h1(query_text: str = '') -> None:
+def hx(level: int, query_text: str = '', data=None) -> None:
+    """Public document interface for headings 1 through 6."""
+    if data is None:
+        if not DB.get('handle', None):
+            DB['handle'] = api.login()
+
+        print(api.markdown_heading(DB['handle'], query_text, level=level))
+    else:
+        print(api.markdown_heading(api.Jira(''), query_text, level=level, data=data))
+
+
+@no_type_check
+def h1(query_text: str = '', data=None) -> None:
     """Public document interface for heading 1."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
-
-    print(api.markdown_heading(DB['handle'], query_text, level=1))
+    return hx(1, query_text, data)
 
 
 @no_type_check
-def h2(query_text: str = '') -> None:
+def h2(query_text: str = '', data=None) -> None:
     """Public document interface for heading 2."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
-
-    print(api.markdown_heading(DB['handle'], query_text, level=2))
+    return hx(2, query_text, data)
 
 
 @no_type_check
-def h3(query_text: str = '') -> None:
+def h3(query_text: str = '', data=None) -> None:
     """Public document interface for heading 3."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
-
-    print(api.markdown_heading(DB['handle'], query_text, level=3))
+    return hx(3, query_text, data)
 
 
 @no_type_check
-def h4(query_text: str = '') -> None:
+def h4(query_text: str = '', data=None) -> None:
     """Public document interface for heading 4."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
-
-    print(api.markdown_heading(DB['handle'], query_text, level=4))
+    return hx(4, query_text, data)
 
 
 @no_type_check
-def h5(query_text: str = '') -> None:
+def h5(query_text: str = '', data=None) -> None:
     """Public document interface for heading 5."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
-
-    print(api.markdown_heading(DB['handle'], query_text, level=6))
+    return hx(5, query_text, data)
 
 
 @no_type_check
-def h6(query_text: str = '') -> None:
+def h6(query_text: str = '', data=None) -> None:
     """Public document interface for heading 6."""
-    if not DB.get('handle', None):
-        DB['handle'] = api.login()
-
-    print(api.markdown_heading(DB['handle'], query_text, level=6))
+    return hx(6, query_text, data)
