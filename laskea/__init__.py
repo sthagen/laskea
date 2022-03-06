@@ -5,8 +5,8 @@ from laskea.api.jira import login, markdown_heading, markdown_list, markdown_tab
 from laskea.embed import dl, h1, h2, h3, h4, h5, h6, ol, table, ul
 
 # [[[fill git_describe()]]]
-__version__ = '2022.3.6+parent.2422594d-dirty'
-# [[[end]]] (checksum: f0e79fde037fbaaa9187d6fd7a16c6c3)
+__version__ = '2022.3.6+parent.8bd0a130'
+# [[[end]]] (checksum: f78e8e4e668a82fa3e4f4f5c5a29987a)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
