@@ -1,5 +1,10 @@
 # Change History
 
+## 2022.3.5
+
+* Refactored codebase and tests
+* Nits
+
 ## 2022.3.4
 
 * Introduced ul function for injecting unordered markdown lists of keys and summaries
