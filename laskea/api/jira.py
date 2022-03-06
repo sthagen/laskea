@@ -4,6 +4,7 @@
 import copy
 import json
 import os
+import sys
 from typing import Iterable, Mapping, Sized, Union, no_type_check
 
 import jmespath
@@ -29,6 +30,7 @@ KNOWN_CI_FIELDS = {
 BASE_USER = os.getenv(f'{APP_ENV}_USER', '')
 BASE_PASS = os.getenv(f'{APP_ENV}_TOKEN', '')
 BASE_URL = os.getenv(f'{APP_ENV}_BASE_URL', '')
+BASE_IS_CLOUD = bool(os.getenv(f'{APP_ENV}_IS_CLOUD', ''))
 BASE_COL_FIELDS = json.loads(os.getenv(f'{APP_ENV}_COL_FIELDS', json.dumps(DEFAULT_COLUMN_FIELDS)))
 BASE_COL_MAPS = json.loads(os.getenv(f'{APP_ENV}_COL_MAPS', json.dumps(KNOWN_CI_FIELDS)))
 
@@ -38,7 +40,7 @@ def mock(number: int) -> int:
     return number
 
 
-def login(user: str = '', token: str = '', url: str = '') -> Jira:  # nosec
+def login(user: str = '', token: str = '', url: str = '', is_cloud: bool = False) -> Jira:  # nosec
     """LatAli"""
     if not user:
         user = BASE_USER
@@ -46,10 +48,12 @@ def login(user: str = '', token: str = '', url: str = '') -> Jira:  # nosec
         token = BASE_PASS
     if not url:
         url = BASE_URL
+    if not is_cloud:
+        is_cloud = BASE_IS_CLOUD
     if not user or not token or not url:
         raise ValueError('User, Token, and URL are all required for login.')
-
-    return Jira(url=url, username=user, password=token)
+    print(f'INFO: Upstream JIRA instance is addressed per {"cloud" if is_cloud else "server"} rules', file=sys.stderr)
+    return Jira(url=url, username=user, password=token, cloud=is_cloud)
 
 
 @no_type_check
@@ -100,9 +104,19 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
             'error': 'Completed column fields empty (no known fields?)',
         }
 
-    # dynamics below
+    # dynamics below - for now giving up on a "login did work" test
+    # try:
+    #     handle.user(handle.username)['name'] == handle.username
+    # except RuntimeError as err:
+    #     return {
+    #         'jql_text': jql_text,
+    #         'column_fields': column_fields,
+    #         'parsed_columns': completed_column_fields,
+    #         'error': str(err),
+    #     }
+
     try:
-        handle.user(handle.username)['name'] == handle.username
+        issues = handle.jql(jql_text)
     except RuntimeError as err:
         return {
             'jql_text': jql_text,
@@ -111,7 +125,6 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
             'error': str(err),
         }
 
-    issues = handle.jql(jql_text)
     pairs = [(col['label'], col['path']) for col in completed_column_fields]
     rows = [{label: jmespath.search(path, issue) or [''] for label, path in pairs} for issue in issues['issues']]
     return {
@@ -230,10 +243,10 @@ def markdown_heading(
             else:
                 v = cell
         items.append((k, v))
-    level_range = tuple(range(1, 7 - 1))
+    level_range = tuple(range(1, 6 + 1))
     if level in level_range:
         heading_token = '#' * level
         xl = tuple(f'{heading_token} {key} - {summary}' for key, summary in items)
-        return '\n'.join(xl) + '\n'
+        return '\n'.join(xl)
     else:
         return f'Unexpected level for heading ({level}) in markdown_heading not in ({level_range})' + '\n'

@@ -29,7 +29,7 @@ def process(command: str, transaction_mode: str, paths: Sequence[str], options: 
         '-p',
         'from laskea import *',
     ]
-    if transaction_mode != 'commit':
+    if transaction_mode == 'commit':
         vector.append('-r')
     if quiet:
         vector.append('--verbosity=0')
