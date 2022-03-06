@@ -252,11 +252,15 @@ def markdown_heading(
         items.append((k, v))
     received = len(items)
     if received != 1:
-        print(f'WARNING: received {received} results instead of 1 for JQL ({jql_text}) and h{level}', file=sys.stderr)
+        message = f'WARNING: received {received} results instead of 1 for JQL ({jql_text}) and h{level}'
+        print(message, file=sys.stderr)
+        return message
     level_range = tuple(range(1, 6 + 1))
     if level in level_range:
         heading_token = '#' * level
         xl = tuple(f'{heading_token} {key} - {summary}' for key, summary in items)
         return '\n'.join(xl)
     else:
-        return f'Unexpected level for heading ({level}) in markdown_heading not in ({level_range})' + '\n'
+        message = f'Unexpected level for heading ({level}) in markdown_heading not in ({level_range})'
+        print(message, file=sys.stderr)
+        return message
