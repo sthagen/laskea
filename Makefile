@@ -73,13 +73,6 @@ clean:
 	@rm -f `find . -type f -name '*.py[co]' `
 	@rm -f `find . -type f -name '*~' `
 	@rm -f `find . -type f -name '.*~' `
-	@rm -rf .cache
-	@rm -rf htmlcov
-	@rm -rf *.egg-info
-	@rm -f .coverage
-	@rm -f .coverage.*
-	@rm -rf build
-	@rm -f *.log
-	@rm -fr dist/*
-	@rm -f current-bandit.json
+	@rm -rf .cache htmlcov *.egg-info build dist/*
+	@rm -f .coverage .coverage.* *.log current-bandit.json .laskea_cache.sqlite
 	python setup.py clean
