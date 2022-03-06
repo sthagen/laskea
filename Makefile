@@ -75,4 +75,5 @@ clean:
 	@rm -f .coverage.*
 	@rm -rf build
 	@rm -f *.log
+	@rm -fr dist/*
 	python setup.py clean
