@@ -148,7 +148,9 @@ def markdown_table(
         return json.dumps(data, indent=2)
 
     if not data['rows']:
-        return f'WARNING: received 0 results for JQL ({jql_text}) and table'
+        message = f'WARNING: received 0 results for JQL ({jql_text}) and table'
+        print(message, file=sys.stderr)
+        return message
 
     table = copy.deepcopy(data['rows'])
     columns = list(table[0].keys())  # noqa
@@ -188,7 +190,9 @@ def markdown_list(
         return json.dumps(data, indent=2)
 
     if not data['rows']:
-        return f'WARNING: received 0 results for JQL ({jql_text}) and {list_type}'
+        message = f'WARNING: received 0 results for JQL ({jql_text}) and {list_type}'
+        print(message, file=sys.stderr)
+        return message
 
     items = []
     for slot, record in enumerate(data['rows']):
@@ -231,8 +235,9 @@ def markdown_heading(
         return json.dumps(data, indent=2)
 
     if not data['rows']:
-        print(f'WARNING: received 0 results instead of 1 for JQL ({jql_text}) and h{level}', file=sys.stderr)
-        return ''
+        message = f'WARNING: received 0 results instead of 1 for JQL ({jql_text}) and h{level}'
+        print(message, file=sys.stderr)
+        return message
 
     items = []
     for slot, record in enumerate(data['rows']):

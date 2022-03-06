@@ -125,7 +125,7 @@ def test_embed_headings_too_few(level, capsys):
     assert hx[level](query_text=query_text, data=HEADING_WARN_TOO_FEW_FIXTURE) is None
     out, err = capsys.readouterr()
     assert f'WARNING: received 0 results instead of 1 for JQL ({query_text}) and h{level}' in err
-    assert not out.strip()
+    assert out == f'WARNING: received 0 results instead of 1 for JQL () and h{level}\n'
 
 
 @pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
@@ -155,5 +155,5 @@ def test_embed_table_no_result(capsys):
     expected = f'WARNING: received 0 results for JQL ({query_text}) and table'
     assert emb.table(query_text='', data=HEADING_WARN_TOO_FEW_FIXTURE) is None
     out, err = capsys.readouterr()
-    assert not err
+    assert err == 'WARNING: received 0 results for JQL () and table\n'
     assert out.strip() == expected
