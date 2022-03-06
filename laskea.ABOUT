@@ -1,0 +1,14 @@
+name: laskea
+description: Calculate (Finnish: laskea) some parts.
+license_spdx: MIT
+version: 2022.3.7
+spec_version: 1.0
+home_url: https://github.com/sthagen/laskea
+news_url: https://libraries.io/pypi/laskea/versions.atom
+date: 2022-03-06
+about_resource: ./
+libraries_io_url: https://libraries.io/pypi/laskea?number=2022.3.7
+vcs_tool: git
+vcs_repository: https://github.com/sthagen/laskea
+vcs_branch: default
+
