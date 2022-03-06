@@ -62,6 +62,11 @@ secure:
 	@bandit --output current-bandit.json --baseline baseline-bandit.json --format json --recursive --quiet --exclude ./tests,./build laskea
 	@diff -Nu {baseline,current}-bandit.json; printf "^ Only the timestamps ^^ ^^ ^^ ^^ ^^ ^^ should differ. OK?\n"
 
+.PHONY: baseline
+baseline:
+	@bandit --output baseline-bandit.json --format json --recursive --quiet --exclude ./tests,./build laskea
+	@cat baseline-bandit.json; printf "\n^ The new baseline ^^ ^^ ^^ ^^ ^^ ^^. OK?\n"
+
 .PHONY: clean
 clean:
 	@rm -rf `find . -name __pycache__`
@@ -76,4 +81,5 @@ clean:
 	@rm -rf build
 	@rm -f *.log
 	@rm -fr dist/*
+	@rm -f current-bandit.json
 	python setup.py clean
