@@ -52,7 +52,7 @@ D_LIST_PAYLOADS = tuple(
 
 
 @pytest.mark.parametrize('level', [lv for lv in range(1, 7 - 1)])
-def test_impl_headings(level, capsys):
+def test_embed_headings(level, capsys):
     hx = [None, emb.h1, emb.h2, emb.h3, emb.h4, emb.h5, emb.h6]
     token = '#' * level
     assert hx[level](query_text='', data=HEADING_FIXTURE) is None
@@ -62,7 +62,7 @@ def test_impl_headings(level, capsys):
 
 
 @pytest.mark.parametrize('kind,marker', [('ol', '1.'), ('ul', '-')])
-def test_impl_uo_lists(kind, marker, capsys):
+def test_embed_uo_lists(kind, marker, capsys):
     lx = {'ol': emb.ol, 'ul': emb.ul}
     expected = '\n'.join(f'{marker}{UO_LIST_PAYLOAD_POSTFIXES[slot]}' for slot in (0, 1))
     assert lx[kind](query_text='', data=UO_LIST_FIXTURE) is None
@@ -71,7 +71,7 @@ def test_impl_uo_lists(kind, marker, capsys):
     assert out.strip() == expected
 
 
-def test_impl_d_list(capsys):
+def test_embed_d_list(capsys):
     expected = '\n'.join(D_LIST_PAYLOADS) + '\n' + '\n'
     assert emb.dl(query_text='', data=D_LIST_FIXTURE) is None
     out, err = capsys.readouterr()
