@@ -5,6 +5,7 @@
 import sys
 from typing import List
 
+import requests_cache
 import typer
 
 import laskea
@@ -102,6 +103,12 @@ def update(
         '--quiet',
         help='Minimal output (default is False)',
     ),
+    expires: int = typer.Option(
+        180,
+        '-x',
+        '--cache-expiry-seconds',
+        help='Request cache expiry in seconds (default is 180)',
+    ),
 ) -> int:
     """
     Fill in some parts of the input document.
@@ -125,7 +132,15 @@ def update(
     if quiet:
         laskea.QUIET = True
         laskea.DEBUG = False
+        laskea.VERBOSE = False
+    elif verbose:
+        laskea.VERBOSE = True
 
+    if transaction_mode == 'dry-run':
+        laskea.DRY_RUN = True
+
+    requests_cache.install_cache(cache_name='.laskea_cache', backend='sqlite', expire_after=expires)
+    laskea.CACHE_EXPIRY_SECONDS = expires
     options = {
         'quiet': quiet,
         'verbose': verbose,

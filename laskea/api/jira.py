@@ -11,6 +11,8 @@ import jmespath
 from atlassian import Jira  # type: ignore # noqa
 from requests.exceptions import HTTPError
 
+import laskea
+
 API_BASE_URL = 'https://example.com'
 APP_NAME = 'ASCIINATOR'
 APP_ENV = APP_NAME
@@ -149,7 +151,8 @@ def markdown_table(
 
     if not data['rows']:
         message = f'WARNING: received 0 results for JQL ({jql_text}) and table'
-        print(message, file=sys.stderr)
+        if not laskea.DRY_RUN:
+            print(message, file=sys.stderr)
         return message
 
     table = copy.deepcopy(data['rows'])
@@ -191,7 +194,8 @@ def markdown_list(
 
     if not data['rows']:
         message = f'WARNING: received 0 results for JQL ({jql_text}) and {list_type}'
-        print(message, file=sys.stderr)
+        if not laskea.DRY_RUN:
+            print(message, file=sys.stderr)
         return message
 
     items = []
@@ -236,7 +240,8 @@ def markdown_heading(
 
     if not data['rows']:
         message = f'WARNING: received 0 results instead of 1 for JQL ({jql_text}) and h{level}'
-        print(message, file=sys.stderr)
+        if not laskea.DRY_RUN:
+            print(message, file=sys.stderr)
         return message
 
     items = []
@@ -253,7 +258,8 @@ def markdown_heading(
     received = len(items)
     if received != 1:
         message = f'WARNING: received {received} results instead of 1 for JQL ({jql_text}) and h{level}'
-        print(message, file=sys.stderr)
+        if not laskea.DRY_RUN:
+            print(message, file=sys.stderr)
         return message
     level_range = tuple(range(1, 6 + 1))
     if level in level_range:
@@ -262,5 +268,6 @@ def markdown_heading(
         return '\n'.join(xl)
     else:
         message = f'Unexpected level for heading ({level}) in markdown_heading not in ({level_range})'
-        print(message, file=sys.stderr)
+        if not laskea.DRY_RUN:
+            print(message, file=sys.stderr)
         return message
