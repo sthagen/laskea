@@ -2,6 +2,8 @@
 
 ## 2022.3.6
 
+* Enhanced user experience for HTTP/400 client errors - failing JQL
+* Enhanced user experience for unexpected results in embedded heading calls
 * Added cloud switch to JIRA API - new environment variable and login parameter
 * Added further embed calls for definition lists, and headers
 * Added security baseline and hardened configuration resource handling
