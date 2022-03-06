@@ -557,8 +557,8 @@
 
 <h1 id="third-party-dependencies">Third Party Dependencies</h1>
 <!--[[[fill sbom_sha256()]]]-->
-<p>The <a href="https://github.com/sthagen/laskea/blob/default/sbom.json">SBOM in CycloneDX v1.4 JSON format</a> with SHA256 checksum (<a href="https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256" title="sha256:e5191d32a302686a85f902ec6bb196ccad875171e3e2c725769ed9b25f47987a">e5191d32 ...</a>).</p>
-<!--[[[end]]] (checksum: d86f4c5d5d0899f313bc5326b7a794d3)-->
+<p>The <a href="https://github.com/sthagen/laskea/blob/default/sbom.json">SBOM in CycloneDX v1.4 JSON format</a> with SHA256 checksum (<a href="https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256" title="sha256:88c5d06ec6249c6546f3d39d9abb13b5896c42ef53b628a0cacd326eab89b5cc">88c5d06e ...</a>).</p>
+<!--[[[end]]] (checksum: ac2d42ed373958d94e17ffe6ea321ccc)-->
 <h2 id="licenses">Licenses</h2>
 <p>JSON files with complete license info of: <a href="direct-dependency-licenses.json">direct dependencies</a> | <a href="all-dependency-licenses.json">all dependencies</a></p>
 <h3 id="direct-dependencies">Direct Dependencies</h3>
@@ -603,6 +603,13 @@
 <td align="left">Data validation and settings management using python 3.6 type hinting</td>
 </tr>
 <tr>
+<td align="left"><a href="https://github.com/reclosedev/requests-cache">requests-cache</a></td>
+<td align="left"><a href="https://pypi.org/project/requests-cache/0.9.3/">0.9.3</a></td>
+<td align="left">BSD License</td>
+<td align="left">Roman Haritonov</td>
+<td align="left">A transparent persistent cache for the requests library</td>
+</tr>
+<tr>
 <td align="left"><a href="https://github.com/banesullivan/scooby">scooby</a></td>
 <td align="left"><a href="https://pypi.org/project/scooby/0.5.12/">0.5.12</a></td>
 <td align="left">MIT License</td>
@@ -618,7 +625,7 @@
 </tr>
 </tbody>
 </table>
-<!--[[[end]]] (checksum: 57b565a76aec87e01d867c22cbce8721)-->
+<!--[[[end]]] (checksum: 0bc60f338b11ee91fe13e376a2a18ab0)-->
 
 <h3 id="indirect-dependencies">Indirect Dependencies</h3>
 <!--[[[fill indirect_dependencies_table()]]]-->
@@ -639,6 +646,27 @@
 <td align="left">MIT License</td>
 <td align="left">Laurent LAPORTE</td>
 <td align="left">Python @deprecated decorator to deprecate old python classes, functions or methods.</td>
+</tr>
+<tr>
+<td align="left"><a href="http://github.com/ActiveState/appdirs">appdirs</a></td>
+<td align="left"><a href="https://pypi.org/project/appdirs/1.4.4/">1.4.4</a></td>
+<td align="left">MIT License</td>
+<td align="left">Trent Mick</td>
+<td align="left">A small Python module for determining appropriate platform-specific dirs, e.g. a "user data dir".</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.attrs.org/">attrs</a></td>
+<td align="left"><a href="https://pypi.org/project/attrs/21.4.0/">21.4.0</a></td>
+<td align="left">MIT License</td>
+<td align="left">Hynek Schlawack</td>
+<td align="left">Classes Without Boilerplate</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/python-attrs/cattrs">cattrs</a></td>
+<td align="left"><a href="https://pypi.org/project/cattrs/1.10.0/">1.10.0</a></td>
+<td align="left">MIT License</td>
+<td align="left">Tin Tvrtkovic</td>
+<td align="left">Composable complex class support for attrs and dataclasses.</td>
 </tr>
 <tr>
 <td align="left"><a href="https://certifiio.readthedocs.io/en/latest/">certifi</a></td>
@@ -704,6 +732,13 @@
 <td align="left">Backported and Experimental Type Hints for Python 3.6+</td>
 </tr>
 <tr>
+<td align="left"><a href="https://github.com/niksite/url-normalize">url-normalize</a></td>
+<td align="left"><a href="https://pypi.org/project/url-normalize/1.4.3/">1.4.3</a></td>
+<td align="left">MIT License</td>
+<td align="left">Nikolay Panov</td>
+<td align="left">URL normalization for Python</td>
+</tr>
+<tr>
 <td align="left"><a href="https://urllib3.readthedocs.io/">urllib3</a></td>
 <td align="left"><a href="https://pypi.org/project/urllib3/1.26.8/">1.26.8</a></td>
 <td align="left">MIT License</td>
@@ -718,7 +753,7 @@
 <td align="left">Module for decorators, wrappers and monkey patching.</td>
 </tr>
 <tr>
-<td align="left"><!--[[[end]]] (checksum: 665fc64eade84863662fe37d2780bd36)-->
+<td align="left"><!--[[[end]]] (checksum: 91185e223dfd4c47bd8a360476c98be5)-->
 </td>
 <td align="left"></td>
 <td align="left"></td>
@@ -755,11 +790,24 @@
 <span class="go">jmespath==0.10.0</span>
 <span class="go">pydantic==1.9.0</span>
 <span class="go">  - typing-extensions [required: &gt;=3.7.4.3, installed: 4.1.1]</span>
+<span class="go">requests-cache==0.9.3</span>
+<span class="go">  - appdirs [required: &gt;=1.4.4,&lt;2.0.0, installed: 1.4.4]</span>
+<span class="go">  - attrs [required: &gt;=21.2,&lt;22.0, installed: 21.4.0]</span>
+<span class="go">  - cattrs [required: &gt;=1.8,&lt;2.0, installed: 1.10.0]</span>
+<span class="go">    - attrs [required: &gt;=20, installed: 21.4.0]</span>
+<span class="go">  - requests [required: &gt;=2.22,&lt;3.0, installed: 2.27.1]</span>
+<span class="go">    - certifi [required: &gt;=2017.4.17, installed: 2021.10.8]</span>
+<span class="go">    - charset-normalizer [required: ~=2.0.0, installed: 2.0.12]</span>
+<span class="go">    - idna [required: &gt;=2.5,&lt;4, installed: 3.3]</span>
+<span class="go">    - urllib3 [required: &gt;=1.21.1,&lt;1.27, installed: 1.26.8]</span>
+<span class="go">  - url-normalize [required: &gt;=1.4,&lt;2.0, installed: 1.4.3]</span>
+<span class="go">    - six [required: Any, installed: 1.16.0]</span>
+<span class="go">  - urllib3 [required: &gt;=1.25.5,&lt;2.0.0, installed: 1.26.8]</span>
 <span class="go">scooby==0.5.12</span>
 <span class="go">typer==0.4.0</span>
 <span class="go">  - click [required: &gt;=7.1.1,&lt;9.0.0, installed: 8.0.4]</span>
 </code></pre></div>
-<!--[[[end]]] (checksum: 92dede4ce989a9451e3f7c541300f068)-->
+<!--[[[end]]] (checksum: 9868d13e6b9a5ee58ff7f8210408d15e)-->
 
 
 

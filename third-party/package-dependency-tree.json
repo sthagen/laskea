@@ -153,6 +153,101 @@
         ]
     },
     {
+        "key": "requests-cache",
+        "package_name": "requests-cache",
+        "installed_version": "0.9.3",
+        "required_version": "0.9.3",
+        "dependencies": [
+            {
+                "key": "appdirs",
+                "package_name": "appdirs",
+                "installed_version": "1.4.4",
+                "required_version": ">=1.4.4,<2.0.0",
+                "dependencies": []
+            },
+            {
+                "key": "attrs",
+                "package_name": "attrs",
+                "installed_version": "21.4.0",
+                "required_version": ">=21.2,<22.0",
+                "dependencies": []
+            },
+            {
+                "key": "cattrs",
+                "package_name": "cattrs",
+                "installed_version": "1.10.0",
+                "required_version": ">=1.8,<2.0",
+                "dependencies": [
+                    {
+                        "key": "attrs",
+                        "package_name": "attrs",
+                        "installed_version": "21.4.0",
+                        "required_version": ">=20",
+                        "dependencies": []
+                    }
+                ]
+            },
+            {
+                "key": "requests",
+                "package_name": "requests",
+                "installed_version": "2.27.1",
+                "required_version": ">=2.22,<3.0",
+                "dependencies": [
+                    {
+                        "key": "certifi",
+                        "package_name": "certifi",
+                        "installed_version": "2021.10.8",
+                        "required_version": ">=2017.4.17",
+                        "dependencies": []
+                    },
+                    {
+                        "key": "charset-normalizer",
+                        "package_name": "charset-normalizer",
+                        "installed_version": "2.0.12",
+                        "required_version": "~=2.0.0",
+                        "dependencies": []
+                    },
+                    {
+                        "key": "idna",
+                        "package_name": "idna",
+                        "installed_version": "3.3",
+                        "required_version": ">=2.5,<4",
+                        "dependencies": []
+                    },
+                    {
+                        "key": "urllib3",
+                        "package_name": "urllib3",
+                        "installed_version": "1.26.8",
+                        "required_version": ">=1.21.1,<1.27",
+                        "dependencies": []
+                    }
+                ]
+            },
+            {
+                "key": "url-normalize",
+                "package_name": "url-normalize",
+                "installed_version": "1.4.3",
+                "required_version": ">=1.4,<2.0",
+                "dependencies": [
+                    {
+                        "key": "six",
+                        "package_name": "six",
+                        "installed_version": "1.16.0",
+                        "required_version": "Any",
+                        "dependencies": []
+                    }
+                ]
+            },
+            {
+                "key": "urllib3",
+                "package_name": "urllib3",
+                "installed_version": "1.26.8",
+                "required_version": ">=1.25.5,<2.0.0",
+                "dependencies": []
+            }
+        ]
+    },
+    {
         "key": "scooby",
         "package_name": "scooby",
         "installed_version": "0.5.12",

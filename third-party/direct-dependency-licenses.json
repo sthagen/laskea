@@ -48,6 +48,18 @@
     "Version": "1.9.0"
   },
   {
+    "Author": "Roman Haritonov",
+    "Description": "A transparent persistent cache for the requests library",
+    "License": "BSD License",
+    "LicenseFile": "/Users/ruth/.pyenv/versions/3.10.2/envs/laskea-3-10-2/lib/python3.10/site-packages/requests_cache-0.9.3.dist-info/LICENSE",
+    "LicenseText": "BSD 2-Clause License\n\nCopyright (c) 2019, Roman Haritonov\nCopyright (c) 2022, Jordan Cook\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n",
+    "Name": "requests-cache",
+    "NoticeFile": "UNKNOWN",
+    "NoticeText": "UNKNOWN",
+    "URL": "https://github.com/reclosedev/requests-cache",
+    "Version": "0.9.3"
+  },
+  {
     "Author": "Dieter Werthm\u00fcller & Bane Sullivan",
     "Description": "A Great Dane turned Python environment detective",
     "License": "MIT License",
