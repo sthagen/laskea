@@ -1,16 +1,32 @@
 """Calculate (Finnish: laskea) some parts."""
 import os
 
-from laskea.api.jira import login, markdown_list, markdown_table, query
-from laskea.embed import ol, table, ul
+from laskea.api.jira import login, markdown_heading, markdown_list, markdown_table, query
+from laskea.embed import dl, h1, h2, h3, h4, h5, h6, ol, table, ul
 
 # [[[fill git_describe()]]]
-__version__ = '2022.3.5+parent.fc48b537'
-# [[[end]]] (checksum: 3e532f17eb2bd6ca5389ed717eb859d1)
+__version__ = '2022.3.6+parent.a317bdb1-dirty'
+# [[[end]]] (checksum: 794bbdfab3cd02e91d8af87bfa1bf65d)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
-__all__ = ['login', 'markdown_table', 'markdown_list', 'query', 'ol', 'table', 'ul']
+__all__ = [
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'dl',
+    'login',
+    'markdown_heading',
+    'markdown_table',
+    'markdown_list',
+    'query',
+    'ol',
+    'table',
+    'ul',
+]
 
 APP_NAME = 'Calculate (Finnish: laskea) some parts.'
 APP_ALIAS = 'laskea'
