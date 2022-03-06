@@ -42,3 +42,57 @@ def ul(query_text: str = '') -> None:
         DB['handle'] = api.login()
 
     print(api.markdown_list(DB['handle'], query_text, list_type='ul'))
+
+
+@no_type_check
+def h1(query_text: str = '') -> None:
+    """Public document interface for heading 1."""
+    if not DB.get('handle', None):
+        DB['handle'] = api.login()
+
+    print(api.markdown_heading(DB['handle'], query_text, level=1))
+
+
+@no_type_check
+def h2(query_text: str = '') -> None:
+    """Public document interface for heading 2."""
+    if not DB.get('handle', None):
+        DB['handle'] = api.login()
+
+    print(api.markdown_heading(DB['handle'], query_text, level=2))
+
+
+@no_type_check
+def h3(query_text: str = '') -> None:
+    """Public document interface for heading 3."""
+    if not DB.get('handle', None):
+        DB['handle'] = api.login()
+
+    print(api.markdown_heading(DB['handle'], query_text, level=3))
+
+
+@no_type_check
+def h4(query_text: str = '') -> None:
+    """Public document interface for heading 4."""
+    if not DB.get('handle', None):
+        DB['handle'] = api.login()
+
+    print(api.markdown_heading(DB['handle'], query_text, level=4))
+
+
+@no_type_check
+def h5(query_text: str = '') -> None:
+    """Public document interface for heading 5."""
+    if not DB.get('handle', None):
+        DB['handle'] = api.login()
+
+    print(api.markdown_heading(DB['handle'], query_text, level=6))
+
+
+@no_type_check
+def h6(query_text: str = '') -> None:
+    """Public document interface for heading 6."""
+    if not DB.get('handle', None):
+        DB['handle'] = api.login()
+
+    print(api.markdown_heading(DB['handle'], query_text, level=6))

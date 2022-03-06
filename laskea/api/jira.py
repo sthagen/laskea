@@ -190,3 +190,33 @@ def markdown_list(handle: Jira, jql_text: str, column_fields=None, list_type: st
         return '\n'.join(xl) + '\n'
     else:
         return f'Unexpected list type ({list_type}) in markdown_list not in ({("dl", "ol", "ul")})' + '\n'
+
+
+@no_type_check
+def markdown_heading(handle: Jira, jql_text: str, column_fields=None, level: int = 1) -> str:
+    """Yes we can ... document later."""
+    data = query(handle, jql_text, column_fields)
+    if data.get('error', ''):
+        return json.dumps(data, indent=2)
+
+    if not data['rows']:
+        return ''
+
+    items = []
+    for slot, record in enumerate(data['rows']):
+        k, v = '', ''
+        for key, cell in record.items():
+            if key.lower() not in ('key', 'summary'):
+                continue
+            if key.lower() == 'key':
+                k = f'[{cell}]({BASE_URL.strip("/")}/browse/{cell})'
+            else:
+                v = cell
+        items.append((k, v))
+    level_range = tuple(range(1, 7 - 1))
+    if level in level_range:
+        heading_token = '#' * level
+        xl = tuple(f'{heading_token} {key} - {summary}' for key, summary in items)
+        return '\n'.join(xl) + '\n'
+    else:
+        return f'Unexpected level for heading ({level}) in markdown_heading not in ({level_range})' + '\n'
