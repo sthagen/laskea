@@ -613,29 +613,30 @@
 <span class="go">  version   Display the laskea version and exit.</span>
 </code></pre></div>
 <h2 id="report">Report</h2>
-<div class="highlight"><pre><span></span><code>$ laskea report
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea report
 
---------------------------------------------------------------------------------
-  Date: Sat Mar 05 01:14:40 2022 CET
+<span class="go">--------------------------------------------------------------------------------</span>
+<span class="go">  Date: Sun Mar 06 17:44:22 2022 CET</span>
 
-                OS : Darwin
-            CPU(s) : 8
-           Machine : arm64
-      Architecture : 64bit
-       Environment : Python
+<span class="go">                OS : Darwin</span>
+<span class="go">            CPU(s) : 8</span>
+<span class="go">           Machine : arm64</span>
+<span class="go">      Architecture : 64bit</span>
+<span class="go">       Environment : Python</span>
 
-  Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0
-  (clang-1300.0.29.30)]
+<span class="go">  Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0</span>
+<span class="go">  (clang-1300.0.29.30)]</span>
 
-            laskea : 2022.3.5+parent.7d561a50
-            antlr4 : 4.9.3
-         atlassian : 3.20.1
-     cogapp.cogapp : 3.3.0
-          jmespath : 0.10.0
-          pydantic : 1.9.0
-            scooby : 0.5.12
-             typer : 0.4.0
---------------------------------------------------------------------------------
+<span class="go">            laskea : 2022.3.7+parent.ebcee883</span>
+<span class="go">            antlr4 : 4.9.3</span>
+<span class="go">         atlassian : 3.20.1</span>
+<span class="go">     cogapp.cogapp : 3.3.0</span>
+<span class="go">          jmespath : 0.10.0</span>
+<span class="go">          pydantic : 1.9.0</span>
+<span class="go">    requests_cache : 0.9.2</span>
+<span class="go">            scooby : 0.5.12</span>
+<span class="go">             typer : 0.4.0</span>
+<span class="go">--------------------------------------------------------------------------------</span>
 </code></pre></div>
 <h3 id="help_1">Help</h3>
 <div class="highlight"><pre><span></span><code><span class="go">Usage: laskea report [OPTIONS]</span>
@@ -764,11 +765,14 @@
 <span class="go">  * ASCIINATOR_USER=&#39;remote-user&#39;</span>
 <span class="go">  * ASCIINATOR_TOKEN=&#39;remote-secret&#39;</span>
 <span class="go">  * ASCIINATOR_BASE_URL=&#39;https://remote-jira-instance.example.com/&#39;</span>
+<span class="go">  * ASCIINATOR_CACHE_EXPIRY_SECONDS=180</span>
 <span class="go">  * ASCIINATOR_COL_FIELDS: &#39;[&quot;Key&quot;, &quot;Summary&quot;, &quot;Custom Field Name&quot;]&#39;</span>
 <span class="go">  * ASCIINATOR_COL_MAPS=&#39;{&quot;key&quot;: [&quot;key&quot;, &quot;key&quot;], &quot;summary&quot;: [&quot;summary&quot;, &quot;fields.summary&quot;],</span>
 <span class="go">    &quot;custom field name&quot;: [&quot;customfield_123&quot;, &quot;fields.customfield_123&quot;]}&#39;</span>
+<span class="go">  * ASCIINATOR_IS_CLOUD=&#39;WhenNotConnectingToJiraServerButJiraCloud&#39;</span>
 <span class="go">  * ASCIINATOR_MARKERS=&#39;[[[fill ]]] [[[end]]]&#39;</span>
 <span class="go">  * ASCIINATOR_DEBUG=&#39;AnythingTruthy&#39;</span>
+<span class="go">  * ASCIINATOR_VERBOSE=&#39;AnythingTruthy&#39;</span>
 
 <span class="go">  The quiet option (if given) disables any conflicting verbosity setting.</span>
 
@@ -776,17 +780,20 @@
 <span class="go">  SOURCE...  [required]</span>
 
 <span class="go">Options:</span>
-<span class="go">  -i, --input &lt;sourcepath&gt;   Path to input file</span>
-<span class="go">  -c, --config &lt;configpath&gt;  Path to config file (default is</span>
-<span class="gp">                             $</span>HOME/.laskea.json<span class="o">)</span>
-<span class="go">  -n, --dry-run              Dry run (default is False)</span>
-<span class="go">  -v, --verbose              Verbose output (default is False)</span>
-<span class="go">  -q, --quiet                Minimal output (default is False)</span>
-<span class="go">  -h, --help                 Show this message and exit.</span>
+<span class="go">  -i, --input &lt;sourcepath&gt;        Path to input file</span>
+<span class="go">  -c, --config &lt;configpath&gt;       Path to config file (default is</span>
+<span class="gp">                                  $</span>HOME/.laskea.json<span class="o">)</span>
+<span class="go">  -n, --dry-run                   Dry run (default is False)</span>
+<span class="go">  -v, --verbose                   Verbose output (default is False)</span>
+<span class="go">  -q, --quiet                     Minimal output (default is False)</span>
+<span class="go">  -x, --cache-expiry-seconds INTEGER</span>
+<span class="go">                                  Request cache expiry in seconds (default is</span>
+<span class="go">                                  180)  [default: 180]</span>
+<span class="go">  -h, --help                      Show this message and exit.</span>
 </code></pre></div>
 <h2 id="version">Version</h2>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea version
-<span class="go">Calculate (Finnish: laskea) some parts. version 2022.3.6+parent.0d08af64</span>
+<span class="go">Calculate (Finnish: laskea) some parts. version 2022.3.7+parent.4a9a4a3d</span>
 </code></pre></div>
 
 
