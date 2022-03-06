@@ -230,6 +230,7 @@ def markdown_heading(
         return json.dumps(data, indent=2)
 
     if not data['rows']:
+        print(f'WARNING: received 0 results instead of 1 for JQL ({jql_text}) and h{level}', file=sys.stderr)
         return ''
 
     items = []
@@ -243,6 +244,9 @@ def markdown_heading(
             else:
                 v = cell
         items.append((k, v))
+    received = len(items)
+    if received != 1:
+        print(f'WARNING: received {received} results instead of 1 for JQL ({jql_text}) and h{level}', file=sys.stderr)
     level_range = tuple(range(1, 6 + 1))
     if level in level_range:
         heading_token = '#' * level

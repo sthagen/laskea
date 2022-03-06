@@ -17,6 +17,20 @@ HEADING_PAYLOAD_POSTFIX = (
     f'{URL_FIXTURE}/browse/{HEADING_FIXTURE["rows"][0]["key"]})'
     f' - {HEADING_FIXTURE["rows"][0]["summary"]}\n'
 )
+HEADING_WARN_TOO_MANY_FIXTURE = {
+    'rows': [
+        {
+            'key': 'ABC-42',
+            'summary': 'Some issue to show off the headings',
+        },
+        {
+            'key': 'ABC-1001',
+            'summary': 'Some additional issue to show off the headings warning',
+        },
+    ]
+}
+HEADING_WARN_TOO_MANY_FIXTURE_COUNT = len(HEADING_WARN_TOO_MANY_FIXTURE['rows'])
+HEADING_WARN_TOO_FEW_FIXTURE = {'rows': []}
 
 UO_LIST_FIXTURE = {
     'rows': [
@@ -80,3 +94,26 @@ def test_embed_d_list(capsys):
     out, err = capsys.readouterr()
     assert not err
     assert out == expected
+
+
+@pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
+def test_embed_headings_too_few(level, capsys):
+    impl.BASE_URL = URL_FIXTURE
+    hx = [None, emb.h1, emb.h2, emb.h3, emb.h4, emb.h5, emb.h6]
+    query_text = ''
+    assert hx[level](query_text=query_text, data=HEADING_WARN_TOO_FEW_FIXTURE) is None
+    out, err = capsys.readouterr()
+    assert f'WARNING: received 0 results instead of 1 for JQL ({query_text}) and h{level}' in err
+    assert not out.strip()
+
+
+@pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
+def test_embed_headings_too_many(level, capsys):
+    impl.BASE_URL = URL_FIXTURE
+    hx = [None, emb.h1, emb.h2, emb.h3, emb.h4, emb.h5, emb.h6]
+    query_text = ''
+    mis_count = HEADING_WARN_TOO_MANY_FIXTURE_COUNT
+    assert hx[level](query_text=query_text, data=HEADING_WARN_TOO_MANY_FIXTURE) is None
+    out, err = capsys.readouterr()
+    assert f'WARNING: received {mis_count} results instead of 1 for JQL ({query_text}) and h{level}' in err
+    assert out
