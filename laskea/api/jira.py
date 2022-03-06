@@ -9,6 +9,7 @@ from typing import Iterable, Mapping, Sized, Union, no_type_check
 
 import jmespath
 from atlassian import Jira  # type: ignore # noqa
+from requests.exceptions import HTTPError
 
 API_BASE_URL = 'https://example.com'
 APP_NAME = 'ASCIINATOR'
@@ -117,7 +118,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
 
     try:
         issues = handle.jql(jql_text)
-    except RuntimeError as err:
+    except (HTTPError, RuntimeError) as err:
         return {
             'jql_text': jql_text,
             'column_fields': column_fields,
