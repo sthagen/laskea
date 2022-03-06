@@ -2,10 +2,10 @@
 
 ## 2022.3.6
 
-* Added further embed calls for definition lists, headers, and block quotes
-* Added security baseline
-* Hardened configuration resource handling
-* Added tests growing the coverage
+* Added cloud switch to JIRA API - new environment variable and login parameter
+* Added further embed calls for definition lists, and headers
+* Added security baseline and hardened configuration resource handling
+* Added tests growing the coverage to 55 %
 
 ## 2022.3.5
 
