@@ -59,3 +59,13 @@ def test_impl_headings(level, capsys):
     out, err = capsys.readouterr()
     assert not err
     assert out.strip() == f'{token}{HEADING_PAYLOAD_POSTFIX}'.strip()
+
+
+@pytest.mark.parametrize('kind,marker', [('ol', '1.'), ('ul', '-')])
+def test_impl_uo_lists(kind, marker, capsys):
+    lx = {'ol': emb.ol, 'ul': emb.ul}
+    expected = '\n'.join(f'{marker}{UO_LIST_PAYLOAD_POSTFIXES[slot]}' for slot in (0, 1))
+    assert lx[kind](query_text='', data=UO_LIST_FIXTURE) is None
+    out, err = capsys.readouterr()
+    assert not err
+    assert out.strip() == expected
