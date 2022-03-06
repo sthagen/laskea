@@ -36,6 +36,20 @@ UO_LIST_PAYLOAD_POSTFIXES = tuple(
     f' [{row["key"]}](/browse/{row["key"]}) - {row["summary"]}' for row in UO_LIST_FIXTURE['rows']
 )
 
+D_LIST_FIXTURE = {
+    'rows': [
+        {
+            'key': 'ABC-42',
+            'summary': 'First issue to show off the definition lists',
+        },
+        {
+            'key': 'ABC-1001',
+            'summary': 'Second issue to show off the definition lists',
+        },
+    ]
+}
+D_LIST_PAYLOADS = tuple(f'[{row["key"]}](/browse/{row["key"]})\n:{row["summary"]}\n' for row in D_LIST_FIXTURE['rows'])
+
 
 def test_foo():
     assert isinstance(laskea.api.jqlLexer.jqlLexer(), laskea.api.jqlLexer.jqlLexer)
@@ -67,3 +81,8 @@ def test_impl_uo_lists(kind, marker):
     items = text.strip().split('\n')
     for slot in (0, 1):
         assert items[slot] == f'{marker}{UO_LIST_PAYLOAD_POSTFIXES[slot]}'
+
+
+def test_impl_d_list():
+    text = impl.markdown_list(impl.Jira(''), jql_text='', column_fields=tuple(), list_type='dl', data=D_LIST_FIXTURE)
+    assert text == '\n'.join(D_LIST_PAYLOADS) + '\n'
