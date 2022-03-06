@@ -44,6 +44,7 @@ def report(shallow: bool = False) -> str:
                 'cogapp.cogapp',
                 'jmespath',
                 'pydantic',
+                'requests_cache',
                 'scooby',
                 'typer',
             ]

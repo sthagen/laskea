@@ -21,11 +21,11 @@ Commands:
 
 ## Report
 
-```onsole
+```console
 $ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Sat Mar 05 01:14:40 2022 CET
+  Date: Sun Mar 06 17:44:22 2022 CET
 
                 OS : Darwin
             CPU(s) : 8
@@ -36,12 +36,13 @@ $ laskea report
   Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0
   (clang-1300.0.29.30)]
 
-            laskea : 2022.3.5+parent.7d561a50
+            laskea : 2022.3.7+parent.ebcee883
             antlr4 : 4.9.3
          atlassian : 3.20.1
      cogapp.cogapp : 3.3.0
           jmespath : 0.10.0
           pydantic : 1.9.0
+    requests_cache : 0.9.2
             scooby : 0.5.12
              typer : 0.4.0
 --------------------------------------------------------------------------------
@@ -188,11 +189,14 @@ Usage: laskea update [OPTIONS] SOURCE...
   * ASCIINATOR_USER='remote-user'
   * ASCIINATOR_TOKEN='remote-secret'
   * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
+  * ASCIINATOR_CACHE_EXPIRY_SECONDS=180
   * ASCIINATOR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
   * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
     "custom field name": ["customfield_123", "fields.customfield_123"]}'
+  * ASCIINATOR_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
   * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
   * ASCIINATOR_DEBUG='AnythingTruthy'
+  * ASCIINATOR_VERBOSE='AnythingTruthy'
 
   The quiet option (if given) disables any conflicting verbosity setting.
 
@@ -200,18 +204,21 @@ Arguments:
   SOURCE...  [required]
 
 Options:
-  -i, --input <sourcepath>   Path to input file
-  -c, --config <configpath>  Path to config file (default is
-                             $HOME/.laskea.json)
-  -n, --dry-run              Dry run (default is False)
-  -v, --verbose              Verbose output (default is False)
-  -q, --quiet                Minimal output (default is False)
-  -h, --help                 Show this message and exit.
+  -i, --input <sourcepath>        Path to input file
+  -c, --config <configpath>       Path to config file (default is
+                                  $HOME/.laskea.json)
+  -n, --dry-run                   Dry run (default is False)
+  -v, --verbose                   Verbose output (default is False)
+  -q, --quiet                     Minimal output (default is False)
+  -x, --cache-expiry-seconds INTEGER
+                                  Request cache expiry in seconds (default is
+                                  180)  [default: 180]
+  -h, --help                      Show this message and exit.
 ```
 
 ## Version
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.3.6+parent.0d08af64
+Calculate (Finnish: laskea) some parts. version 2022.3.7+parent.0d08af64
 ```

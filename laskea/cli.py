@@ -119,11 +119,14 @@ def update(
     * ASCIINATOR_USER='remote-user'
     * ASCIINATOR_TOKEN='remote-secret'
     * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
+    * ASCIINATOR_CACHE_EXPIRY_SECONDS=180
     * ASCIINATOR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
     * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
       "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * ASCIINATOR_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
     * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
     * ASCIINATOR_DEBUG='AnythingTruthy'
+    * ASCIINATOR_VERBOSE='AnythingTruthy'
 
     The quiet option (if given) disables any conflicting verbosity setting.
     """
