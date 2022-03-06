@@ -178,6 +178,15 @@ def markdown_list(handle: Jira, jql_text: str, column_fields=None, list_type: st
                 v = cell
         items.append((k, v))
 
-    lt = '-' if list_type == 'ul' else '1.'  # implicit 'ol'
-    xl = tuple(f'{lt} {" - ".join(item)}' for item in items)
-    return '\n'.join(xl) + '\n'
+    if list_type in ('ol', 'ul'):
+        lt = '-' if list_type == 'ul' else '1.'  # implicit 'ol'
+        xl = tuple(f'{lt} {key} - {summary}' for key, summary in items)
+        return '\n'.join(xl) + '\n'
+    elif list_type == 'dl':
+        # 'Term'
+        # ':definition of term'
+        #
+        xl = tuple(f'{key}\n:{summary}\n' for key, summary in items)
+        return '\n'.join(xl) + '\n'
+    else:
+        return f'Unexpected list type ({list_type}) in markdown_list not in ({("dl", "ol", "ul")})' + '\n'

@@ -18,6 +18,15 @@ def table(query_text: str = '') -> None:
 
 
 @no_type_check
+def dl(query_text: str = '') -> None:
+    """Public document interface for definition list."""
+    if not DB.get('handle', None):
+        DB['handle'] = api.login()
+
+    print(api.markdown_list(DB['handle'], query_text, list_type='dl'))
+
+
+@no_type_check
 def ol(query_text: str = '') -> None:
     """Public document interface for ordered list."""
     if not DB.get('handle', None):
@@ -32,4 +41,4 @@ def ul(query_text: str = '') -> None:
     if not DB.get('handle', None):
         DB['handle'] = api.login()
 
-    print(api.markdown_list(DB['handle'], query_text))
+    print(api.markdown_list(DB['handle'], query_text, list_type='ul'))
