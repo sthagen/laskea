@@ -147,7 +147,8 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
             sys.exit(2)
         if not laskea.QUIET:
             print(f'Reading configuration file {cp} as requested...')
-        configuration = json.load(cp.open())
+        with cp.open() as handle:
+            configuration = json.load(handle)
     else:
         cn = laskea.DEFAULT_CONFIG_NAME
         cwd = pathlib.Path.cwd().resolve()
@@ -156,14 +157,16 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
             if cp.is_file() and cp.stat().st_size:
                 if not laskea.QUIET:
                     print(f'Reading from discovered configuration path {cp}')
-                configuration = json.load(cp.open())
+                with cp.open() as handle:
+                    configuration = json.load(handle)
                 return configuration, str(cp)
 
         cp = pathlib.Path.home() / laskea.DEFAULT_CONFIG_NAME
         if cp.is_file() and cp.stat().st_size:
             if not laskea.QUIET:
                 print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
-            configuration = json.load(cp.open())
+            with cp.open() as handle:
+                configuration = json.load(handle)
             return configuration, str(cp)
 
         if not laskea.QUIET:

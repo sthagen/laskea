@@ -1,4 +1,5 @@
 import json
+import pathlib
 
 import pytest
 
@@ -16,6 +17,14 @@ def test_process_spoc_no_file(capsys):
         cfg.process('no-file', {})
     out, err = capsys.readouterr()
     assert 'Given configuration path is no file or empty' in out
+    assert not err
+
+
+def test_process_spoc_template_file(capsys):
+    fixture_config = pathlib.Path('tests', 'fixtures', 'basic', 'dot.laskea.json')
+    assert cfg.process(str(fixture_config), {'quiet': laskea.QUIET, 'verbose': True}) is None
+    out, err = capsys.readouterr()
+    assert 'Configuration interface requested' in out
     assert not err
 
 
@@ -107,9 +116,10 @@ def test_create_and_report_effective_configuration(capsys):
     out, err = capsys.readouterr()
     assert not err
     lines = out.strip().split('\n')
-    assert len(lines) == 55
+    assert len(lines) == 42
     assert lines[:2] == ['42', '# --- BEGIN ---']
     assert lines[-1] == '# --- E N D ---'
+    print(lines)
     laskea.QUIET = quiet_flag_restore
 
 
