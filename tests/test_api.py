@@ -1,11 +1,6 @@
 import pytest
 
-import laskea
 import laskea.api.jira as impl
-import laskea.api.jqlLexer  # noqa
-import laskea.api.jqlListener  # noqa
-import laskea.api.jqlParser  # noqa
-import laskea.api.jqlVisitor  # noqa
 
 URL_FIXTURE = ''
 HEADING_FIXTURE = {
@@ -52,23 +47,6 @@ D_LIST_FIXTURE = {
 D_LIST_PAYLOADS = tuple(
     f'[{row["key"]}]({URL_FIXTURE}/browse/{row["key"]})\n:{row["summary"]}\n' for row in D_LIST_FIXTURE['rows']
 )
-
-
-def test_foo():
-    assert isinstance(laskea.api.jqlLexer.jqlLexer(), laskea.api.jqlLexer.jqlLexer)
-
-
-def test_bar():
-    assert isinstance(laskea.api.jqlListener.jqlListener(), laskea.api.jqlListener.jqlListener)
-
-
-def test_baz():
-    token_stream = laskea.api.jqlParser.TokenStream()
-    assert isinstance(laskea.api.jqlParser.jqlParser(token_stream), laskea.api.jqlParser.jqlParser)
-
-
-def test_quux():
-    assert isinstance(laskea.api.jqlVisitor.jqlVisitor(), laskea.api.jqlVisitor.jqlVisitor)
 
 
 @pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])

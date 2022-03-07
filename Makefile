@@ -2,8 +2,8 @@ SHELL = /bin/bash
 package = shagen/laskea
 
 .DEFAULT_GOAL := all
-isort = isort --skip-glob 'laskea/api/jql*' laskea tests
-black = black -S -l 120 --target-version py38 --exclude 'laskea/api/jql*' laskea tests
+isort = isort laskea tests
+black = black -S -l 120 --target-version py38 laskea tests
 
 .PHONY: install
 install:
@@ -28,13 +28,13 @@ init:
 .PHONY: lint
 lint:
 	python setup.py check -ms
-	flake8 --exclude 'laskea/api/jql*' laskea/ tests/
+	flake8 laskea/ tests/
 	$(isort) --check-only --df
 	$(black) --check --diff
 
 .PHONY: mypy
 mypy:
-	mypy --exclude 'laskea/api/jql*' laskea
+	mypy laskea
 
 .PHONY: test
 test: clean
