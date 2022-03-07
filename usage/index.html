@@ -616,7 +616,7 @@
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea report
 
 <span class="go">--------------------------------------------------------------------------------</span>
-<span class="go">  Date: Sun Mar 06 17:44:22 2022 CET</span>
+<span class="go">  Date: Mon Mar 07 20:20:08 2022 CET</span>
 
 <span class="go">                OS : Darwin</span>
 <span class="go">            CPU(s) : 8</span>
@@ -627,8 +627,7 @@
 <span class="go">  Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0</span>
 <span class="go">  (clang-1300.0.29.30)]</span>
 
-<span class="go">            laskea : 2022.3.7+parent.ebcee883</span>
-<span class="go">            antlr4 : 4.9.3</span>
+<span class="go">            laskea : 2022.3.8+parent.ccf51569-dirty</span>
 <span class="go">         atlassian : 3.20.1</span>
 <span class="go">     cogapp.cogapp : 3.3.0</span>
 <span class="go">          jmespath : 0.10.0</span>
@@ -641,7 +640,8 @@
 <h3 id="help_1">Help</h3>
 <div class="highlight"><pre><span></span><code><span class="go">Usage: laskea report [OPTIONS]</span>
 
-<span class="go">  Write a report of the environment for bug reports to standard out and exit</span>
+<span class="go">  Output either text options for the user to report her env or the report of</span>
+<span class="go">  the environment for support.</span>
 
 <span class="go">Options:</span>
 <span class="go">  -s, --shallow  Shallow reporting - no setuptools required (default is False)</span>
@@ -679,13 +679,16 @@
 <span class="go">    }</span>
 <span class="go">  },</span>
 <span class="go">  &quot;remote&quot;: {</span>
+<span class="go">    &quot;is_cloud&quot;: false,</span>
 <span class="go">    &quot;user&quot;: &quot;&quot;,</span>
 <span class="go">    &quot;token&quot;: &quot;&quot;,</span>
 <span class="go">    &quot;base_url&quot;: &quot;https://remote-jira-instance.example.com/&quot;</span>
 <span class="go">  },</span>
 <span class="go">  &quot;local&quot;: {</span>
 <span class="go">    &quot;markers&quot;: &quot;[[[fill ]]] [[[end]]]&quot;,</span>
-<span class="go">    &quot;verbose&quot;: false</span>
+<span class="go">    &quot;quiet&quot;: false,</span>
+<span class="go">    &quot;verbose&quot;: false,</span>
+<span class="go">    &quot;strict&quot;: false</span>
 <span class="go">  }</span>
 <span class="go">}</span>
 </code></pre></div>
@@ -709,7 +712,7 @@
 <h2 id="update">Update</h2>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea update tests/fixtures/basic/empty.md
 <span class="go">Reading from discovered configuration path /home/ofsomeone/.laskea.json</span>
-<span class="go">Configuration interface requested - Experimental!</span>
+<span class="go">Configuration interface combined file, environment, and commandline values!</span>
 <span class="go">Effective configuration combining /home/ofsomeone/.laskea.json and environment variables:</span>
 <span class="gp"># </span>--- BEGIN ---
 <span class="go">{</span>
@@ -752,6 +755,7 @@
 <span class="go">  }</span>
 <span class="go">}</span>
 <span class="gp"># </span>--- E N D ---
+<span class="go">INFO: Upstream JIRA instance is addressed per cloud rules</span>
 <span class="go">Cogging tests/fixtures/basic/empty.md</span>
 </code></pre></div>
 <h3 id="help_3">Help</h3>
@@ -773,6 +777,7 @@
 <span class="go">  * ASCIINATOR_MARKERS=&#39;[[[fill ]]] [[[end]]]&#39;</span>
 <span class="go">  * ASCIINATOR_DEBUG=&#39;AnythingTruthy&#39;</span>
 <span class="go">  * ASCIINATOR_VERBOSE=&#39;AnythingTruthy&#39;</span>
+<span class="go">  * ASCIINATOR_STRICT=&#39;AnythingTruthy&#39;</span>
 
 <span class="go">  The quiet option (if given) disables any conflicting verbosity setting.</span>
 
@@ -786,6 +791,8 @@
 <span class="go">  -n, --dry-run                   Dry run (default is False)</span>
 <span class="go">  -v, --verbose                   Verbose output (default is False)</span>
 <span class="go">  -q, --quiet                     Minimal output (default is False)</span>
+<span class="go">  -s, --strict                    Ouput noisy warnings on console and in the</span>
+<span class="go">                                  processed document (default is False)</span>
 <span class="go">  -x, --cache-expiry-seconds INTEGER</span>
 <span class="go">                                  Request cache expiry in seconds (default is</span>
 <span class="go">                                  180)  [default: 180]</span>
@@ -793,7 +800,7 @@
 </code></pre></div>
 <h2 id="version">Version</h2>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea version
-<span class="go">Calculate (Finnish: laskea) some parts. version 2022.3.7+parent.4a9a4a3d</span>
+<span class="go">Calculate (Finnish: laskea) some parts. version 2022.3.8+parent.13b540c2</span>
 </code></pre></div>
 
 
