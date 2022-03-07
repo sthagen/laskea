@@ -150,7 +150,7 @@ def test_load_configuration_remote_token(capsys):
     base_markers_restore = laskea.BASE_MARKERS
     laskea.DEBUG = False
     thing = {'remote': {'token': 'leak'}}
-    gnith = {'remote_base_url': 'env', 'remote_token': 'env', 'remote_user': 'env'}
+    gnith = {'is_cloud': 'env', 'remote_base_url': 'env', 'remote_token': 'env', 'remote_user': 'env'}
     assert cfg.load_configuration(configuration=thing) == gnith
     out, err = capsys.readouterr()
     assert not out

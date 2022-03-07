@@ -1,5 +1,12 @@
 # Change History
 
+## 2022.3.8
+
+* Introduced strict option to expose warnings on unexpected query result sizes otherwise inject empty strings
+* Removed JQL grammar, parser, and antlr4 dependency (YAGNI) there is a tag `yagni-jql-parser` for sentimental days
+* Coverage therefore jumped to above 2/3.
+* Added more variables as entries to the template configuration
+
 ## 2022.3.7
 
 * Reduced noise in dry-run mode when warnings were duplicated if not splitting stderr stream

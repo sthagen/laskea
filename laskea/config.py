@@ -43,13 +43,16 @@ TEMPLATE_EXAMPLE = """\
     }
   },
   "remote": {
+    "is_cloud": false,
     "user": "",
     "token": "",
     "base_url": "https://remote-jira-instance.example.com/"
   },
   "local": {
     "markers": "[[[fill ]]] [[[end]]]",
-    "verbose": false
+    "quiet": false,
+    "verbose": false,
+    "strict": false
   }
 }
 """
@@ -131,6 +134,37 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
     if verbose:
         source_of['verbose'] = 'env'
         laskea.DEBUG = verbose
+
+    is_cloud = bool(jmespath.search('remote.is_cloud', configuration))
+    if is_cloud:
+        source_of['is_cloud'] = 'config'
+        laskea.IS_CLOUD = is_cloud
+    is_cloud = bool(os.getenv(f'{laskea.APP_ENV}_IS_CLOUD', ''))
+    if is_cloud:
+        source_of['is_cloud'] = 'env'
+        laskea.IS_CLOUD = is_cloud
+
+    strict = bool(jmespath.search('local.strict', configuration))
+    if strict:
+        source_of['strict'] = 'config'
+        laskea.STRICT = strict
+    strict = bool(os.getenv(f'{laskea.APP_ENV}_STRICT', ''))
+    if strict:
+        source_of['strict'] = 'env'
+        laskea.STRICT = strict
+
+    quiet = bool(jmespath.search('local.quiet', configuration))
+    if quiet:
+        source_of['quiet'] = 'config'
+        laskea.QUIET = quiet
+        if source_of['verbose'] == 'config':
+            laskea.DEBUG = quiet
+    quiet = bool(os.getenv(f'{laskea.APP_ENV}_QUIET', ''))
+    if quiet:
+        source_of['quiet'] = 'env'
+        laskea.QUIET = quiet
+        source_of['verbose'] = 'env'
+        laskea.DEBUG = quiet
 
     return source_of
 
