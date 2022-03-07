@@ -6,6 +6,7 @@
 * Removed JQL grammar, parser, and antlr4 dependency (YAGNI) there is a tag `yagni-jql-parser` for sentimental days
 * Coverage therefore jumped to above 2/3.
 * Added more variables as entries to the template configuration
+* Documented (some) usage changes and removed experimental warning
 
 ## 2022.3.7
 
