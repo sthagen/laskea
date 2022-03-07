@@ -13,6 +13,6 @@ Third party dependencies are documented in the folder [third-party](third-party/
 
 ## Status
 
-Pre-production.
+Production/Stable.
 
 **Note**: The default branch is `default`.

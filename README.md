@@ -6,7 +6,7 @@ Third party dependencies are documented in the folder [docs/third-party](docs/th
 
 ## Status
 
-Pre-production.
+Production/Stable.
 
 [License: MIT](https://github.com/sthagen/laskea/blob/default/LICENSE)
 
