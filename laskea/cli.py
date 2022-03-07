@@ -103,6 +103,12 @@ def update(
         '--quiet',
         help='Minimal output (default is False)',
     ),
+    strict: bool = typer.Option(
+        False,
+        '-s',
+        '--strict',
+        help='Ouput noisy warnings on console and in the processed document (default is False)',
+    ),
     expires: int = typer.Option(
         180,
         '-x',
@@ -127,6 +133,7 @@ def update(
     * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
     * ASCIINATOR_DEBUG='AnythingTruthy'
     * ASCIINATOR_VERBOSE='AnythingTruthy'
+    * ASCIINATOR_STRICT='AnythingTruthy'
 
     The quiet option (if given) disables any conflicting verbosity setting.
     """
@@ -139,6 +146,9 @@ def update(
     elif verbose:
         laskea.VERBOSE = True
 
+    if strict:
+        laskea.STRICT = True
+
     if transaction_mode == 'dry-run':
         laskea.DRY_RUN = True
 
@@ -146,6 +156,7 @@ def update(
     laskea.CACHE_EXPIRY_SECONDS = expires
     options = {
         'quiet': quiet,
+        'strict': strict,
         'verbose': verbose,
     }
     cfg.process(conf, options)

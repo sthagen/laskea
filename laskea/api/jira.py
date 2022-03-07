@@ -107,17 +107,6 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
             'error': 'Completed column fields empty (no known fields?)',
         }
 
-    # dynamics below - for now giving up on a "login did work" test
-    # try:
-    #     handle.user(handle.username)['name'] == handle.username
-    # except RuntimeError as err:
-    #     return {
-    #         'jql_text': jql_text,
-    #         'column_fields': column_fields,
-    #         'parsed_columns': completed_column_fields,
-    #         'error': str(err),
-    #     }
-
     try:
         issues = handle.jql(jql_text)
     except (HTTPError, RuntimeError) as err:
@@ -150,10 +139,13 @@ def markdown_table(
         return json.dumps(data, indent=2)
 
     if not data['rows']:
-        message = f'WARNING: received 0 results for JQL ({jql_text}) and table'
-        if not laskea.DRY_RUN:
-            print(message, file=sys.stderr)
-        return message
+        if laskea.STRICT:
+            message = f'WARNING: received 0 results for JQL ({jql_text}) and table'
+            if not laskea.DRY_RUN:
+                print(message, file=sys.stderr)
+            return message
+        else:
+            return ''
 
     table = copy.deepcopy(data['rows'])
     columns = list(table[0].keys())  # noqa
@@ -193,10 +185,13 @@ def markdown_list(
         return json.dumps(data, indent=2)
 
     if not data['rows']:
-        message = f'WARNING: received 0 results for JQL ({jql_text}) and {list_type}'
-        if not laskea.DRY_RUN:
-            print(message, file=sys.stderr)
-        return message
+        if laskea.STRICT:
+            message = f'WARNING: received 0 results for JQL ({jql_text}) and {list_type}'
+            if not laskea.DRY_RUN:
+                print(message, file=sys.stderr)
+            return message
+        else:
+            return ''
 
     items = []
     for slot, record in enumerate(data['rows']):
@@ -239,10 +234,13 @@ def markdown_heading(
         return json.dumps(data, indent=2)
 
     if not data['rows']:
-        message = f'WARNING: received 0 results instead of 1 for JQL ({jql_text}) and h{level}'
-        if not laskea.DRY_RUN:
-            print(message, file=sys.stderr)
-        return message
+        if laskea.STRICT:
+            message = f'WARNING: received 0 results instead of 1 for JQL ({jql_text}) and h{level}'
+            if not laskea.DRY_RUN:
+                print(message, file=sys.stderr)
+            return message
+        else:
+            return ''
 
     items = []
     for slot, record in enumerate(data['rows']):
@@ -257,10 +255,13 @@ def markdown_heading(
         items.append((k, v))
     received = len(items)
     if received != 1:
-        message = f'WARNING: received {received} results instead of 1 for JQL ({jql_text}) and h{level}'
-        if not laskea.DRY_RUN:
-            print(message, file=sys.stderr)
-        return message
+        if laskea.STRICT:
+            message = f'WARNING: received {received} results instead of 1 for JQL ({jql_text}) and h{level}'
+            if not laskea.DRY_RUN:
+                print(message, file=sys.stderr)
+            return message
+        else:
+            return ''
     level_range = tuple(range(1, 6 + 1))
     if level in level_range:
         heading_token = '#' * level

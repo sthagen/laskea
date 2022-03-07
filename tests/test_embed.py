@@ -1,5 +1,6 @@
 import pytest
 
+import laskea
 import laskea.api.jira as impl
 import laskea.embed as emb
 
@@ -118,19 +119,24 @@ def test_embed_d_list(capsys):
 
 
 @pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
-def test_embed_headings_too_few(level, capsys):
+def test_embed_headings_too_few_strict(level, capsys):
     impl.BASE_URL = URL_FIXTURE
+    strictness = laskea.STRICT
+    laskea.STRICT = True
     hx = [None, emb.h1, emb.h2, emb.h3, emb.h4, emb.h5, emb.h6]
     query_text = ''
     assert hx[level](query_text=query_text, data=HEADING_WARN_TOO_FEW_FIXTURE) is None
     out, err = capsys.readouterr()
     assert f'WARNING: received 0 results instead of 1 for JQL ({query_text}) and h{level}' in err
     assert out == f'WARNING: received 0 results instead of 1 for JQL () and h{level}\n'
+    laskea.STRICT = strictness
 
 
 @pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
-def test_embed_headings_too_many(level, capsys):
+def test_embed_headings_too_many_strict(level, capsys):
     impl.BASE_URL = URL_FIXTURE
+    strictness = laskea.STRICT
+    laskea.STRICT = True
     hx = [None, emb.h1, emb.h2, emb.h3, emb.h4, emb.h5, emb.h6]
     query_text = ''
     mis_count = HEADING_WARN_TOO_MANY_FIXTURE_COUNT
@@ -138,6 +144,7 @@ def test_embed_headings_too_many(level, capsys):
     out, err = capsys.readouterr()
     assert f'WARNING: received {mis_count} results instead of 1 for JQL ({query_text}) and h{level}' in err
     assert out
+    laskea.STRICT = strictness
 
 
 def test_embed_table(capsys):
@@ -149,11 +156,55 @@ def test_embed_table(capsys):
     assert out.strip() == expected
 
 
-def test_embed_table_no_result(capsys):
+def test_embed_table_no_result_strict(capsys):
     impl.BASE_URL = URL_FIXTURE
+    strictness = laskea.STRICT
+    laskea.STRICT = True
     query_text = ''
     expected = f'WARNING: received 0 results for JQL ({query_text}) and table'
-    assert emb.table(query_text='', data=HEADING_WARN_TOO_FEW_FIXTURE) is None
+    assert emb.table(query_text=query_text, data=HEADING_WARN_TOO_FEW_FIXTURE) is None
     out, err = capsys.readouterr()
     assert err == 'WARNING: received 0 results for JQL () and table\n'
     assert out.strip() == expected
+    laskea.STRICT = strictness
+
+
+def test_embed_table_no_result_non_strict(capsys):
+    impl.BASE_URL = URL_FIXTURE
+    strictness = laskea.STRICT
+    laskea.STRICT = False
+    query_text = ''
+    expected = ''
+    assert emb.table(query_text=query_text, data=HEADING_WARN_TOO_FEW_FIXTURE) is None
+    out, err = capsys.readouterr()
+    assert not err
+    assert out.strip() == expected
+    laskea.STRICT = strictness
+
+
+@pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
+def test_embed_headings_too_few_non_strict(level, capsys):
+    impl.BASE_URL = URL_FIXTURE
+    strictness = laskea.STRICT
+    laskea.STRICT = False
+    hx = [None, emb.h1, emb.h2, emb.h3, emb.h4, emb.h5, emb.h6]
+    query_text = ''
+    assert hx[level](query_text=query_text, data=HEADING_WARN_TOO_FEW_FIXTURE) is None
+    out, err = capsys.readouterr()
+    assert not err
+    assert not out.strip()
+    laskea.STRICT = strictness
+
+
+@pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
+def test_embed_headings_too_many_non_strict(level, capsys):
+    impl.BASE_URL = URL_FIXTURE
+    strictness = laskea.STRICT
+    laskea.STRICT = False
+    hx = [None, emb.h1, emb.h2, emb.h3, emb.h4, emb.h5, emb.h6]
+    query_text = ''
+    assert hx[level](query_text=query_text, data=HEADING_WARN_TOO_MANY_FIXTURE) is None
+    out, err = capsys.readouterr()
+    assert not err
+    assert not out.strip()
+    laskea.STRICT = strictness
