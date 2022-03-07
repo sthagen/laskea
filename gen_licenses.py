@@ -1,3 +1,4 @@
+"""Derive the license information and publish in docs."""
 import functools
 import json
 import pathlib
@@ -5,16 +6,7 @@ import pkg_resources
 import string
 import subprocess  # nosec
 from typing import List, Tuple
-"""
-| Name                                                                          | Version | License                 | Author                                   | Description (from packaging data)                                       |
-|:------------------------------------------------------------------------------|:--------|:------------------------|:-----------------------------------------|:------------------------------------------------------------------------|
-| [antlr4-python3-runtime](http://www.antlr.org)                                | 4.9.3   | BSD                     | Eric Vergnaud, Terence Parr, Sam Harwell | ANTLR 4.9.3 runtime for Python 3.7                                      |
-| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | 3.20.1  | Apache Software License | Matt Harasymczuk                         | Python Atlassian REST API Wrapper                                       |
-| [cogapp](http://nedbatchelder.com/code/cog)                                   | 3.3.0   | MIT License             | Ned Batchelder                           | Cog: A content generator for executing Python snippets in source files. |
-| [jmespath](https://github.com/jmespath/jmespath.py)                           | 0.10.0  | MIT License             | James Saryerwinnie                       | JSON Matching Expressions                                               |
-| [pydantic](https://github.com/samuelcolvin/pydantic)                          | 1.9.0   | MIT License             | Samuel Colvin                            | Data validation and settings management using python 3.6 type hinting   |
-| [typer](https://github.com/tiangolo/typer)                                    | 0.4.0   | MIT License             | Sebastián Ramírez                        | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
-"""
+
 __all__ = ['dependency_tree_console_text', 'direct_dependencies_table', 'indirect_dependencies_table']
 
 ENCODING = 'utf-8'
