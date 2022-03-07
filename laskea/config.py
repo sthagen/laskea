@@ -308,6 +308,6 @@ def process(conf: str, options: Mapping[str, bool]) -> None:
             report_sources_of_effective_configuration(source_of, f'Configuration source after loading from {cp}:')
 
         if not laskea.QUIET:
-            print('Configuration interface requested - Experimental!')
+            print('Configuration interface combined file, environment, and commandline values!')
 
         create_and_report_effective_configuration(f'Effective configuration combining {cp} and environment variables:')

@@ -25,7 +25,7 @@ Commands:
 $ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Sun Mar 06 17:44:22 2022 CET
+  Date: Mon Mar 07 20:20:08 2022 CET
 
                 OS : Darwin
             CPU(s) : 8
@@ -36,8 +36,7 @@ $ laskea report
   Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0
   (clang-1300.0.29.30)]
 
-            laskea : 2022.3.7+parent.ebcee883
-            antlr4 : 4.9.3
+            laskea : 2022.3.8+parent.ccf51569-dirty
          atlassian : 3.20.1
      cogapp.cogapp : 3.3.0
           jmespath : 0.10.0
@@ -53,7 +52,8 @@ $ laskea report
 ```console
 Usage: laskea report [OPTIONS]
 
-  Write a report of the environment for bug reports to standard out and exit
+  Output either text options for the user to report her env or the report of
+  the environment for support.
 
 Options:
   -s, --shallow  Shallow reporting - no setuptools required (default is False)
@@ -94,13 +94,16 @@ $ laskea template
     }
   },
   "remote": {
+    "is_cloud": false,
     "user": "",
     "token": "",
     "base_url": "https://remote-jira-instance.example.com/"
   },
   "local": {
     "markers": "[[[fill ]]] [[[end]]]",
-    "verbose": false
+    "quiet": false,
+    "verbose": false,
+    "strict": false
   }
 }
 ```
@@ -130,7 +133,7 @@ Options:
 ```console
 $ laskea update tests/fixtures/basic/empty.md
 Reading from discovered configuration path /home/ofsomeone/.laskea.json
-Configuration interface requested - Experimental!
+Configuration interface combined file, environment, and commandline values!
 Effective configuration combining /home/ofsomeone/.laskea.json and environment variables:
 # --- BEGIN ---
 {
@@ -173,6 +176,7 @@ Effective configuration combining /home/ofsomeone/.laskea.json and environment v
   }
 }
 # --- E N D ---
+INFO: Upstream JIRA instance is addressed per cloud rules
 Cogging tests/fixtures/basic/empty.md
 ```
 
@@ -197,6 +201,7 @@ Usage: laskea update [OPTIONS] SOURCE...
   * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
   * ASCIINATOR_DEBUG='AnythingTruthy'
   * ASCIINATOR_VERBOSE='AnythingTruthy'
+  * ASCIINATOR_STRICT='AnythingTruthy'
 
   The quiet option (if given) disables any conflicting verbosity setting.
 
@@ -210,6 +215,8 @@ Options:
   -n, --dry-run                   Dry run (default is False)
   -v, --verbose                   Verbose output (default is False)
   -q, --quiet                     Minimal output (default is False)
+  -s, --strict                    Ouput noisy warnings on console and in the
+                                  processed document (default is False)
   -x, --cache-expiry-seconds INTEGER
                                   Request cache expiry in seconds (default is
                                   180)  [default: 180]
