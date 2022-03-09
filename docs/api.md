@@ -29,10 +29,11 @@ All functions accept an optional keyword parameter `data` that when given will r
 This can be helpful to test the format without always querying the server.
 
 For this data inject to work, the following characteristic must be present in the data:
+
 * `data`value is a dict, with at lease one `rows` key with a list as value.
-  * that list contains one or more dicts with 
-    * the expected keys (from the column spec) and
-    * the values that should be injected.
+    * that list contains one or more dicts with 
+        * the expected keys (from the column spec) and
+        * the values that should be injected.
 
 ```python
 from laskea import *
