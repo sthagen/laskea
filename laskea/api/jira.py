@@ -55,7 +55,6 @@ def login(user: str = '', token: str = '', url: str = '', is_cloud: bool = False
         is_cloud = BASE_IS_CLOUD
     if not user or not token or not url:
         raise ValueError('User, Token, and URL are all required for login.')
-    print(f'INFO: Upstream JIRA instance is addressed per {"cloud" if is_cloud else "server"} rules', file=sys.stderr)
     return Jira(url=url, username=user, password=token, cloud=is_cloud)
 
 
