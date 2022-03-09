@@ -514,10 +514,12 @@
 <p>This can be helpful to test the format without always querying the server.</p>
 <p>For this data inject to work, the following characteristic must be present in the data:</p>
 <ul>
-<li><code>data</code>value is a dict, with at lease one <code>rows</code> key with a list as value.</li>
+<li><code>data</code>value is a dict, with at lease one <code>rows</code> key with a list as value.<ul>
 <li>that list contains one or more dicts with <ul>
 <li>the expected keys (from the column spec) and</li>
 <li>the values that should be injected.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
