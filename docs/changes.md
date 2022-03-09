@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.3.9
+
+* Moved cloudness log statement out of inject area for documents
+
 ## 2022.3.8
 
 * Introduced strict option to expose warnings on unexpected query result sizes otherwise inject empty strings
