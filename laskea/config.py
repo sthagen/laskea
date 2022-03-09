@@ -311,3 +311,5 @@ def process(conf: str, options: Mapping[str, bool]) -> None:
             print('Configuration interface combined file, environment, and commandline values!')
 
         create_and_report_effective_configuration(f'Effective configuration combining {cp} and environment variables:')
+    print(f'INFO: Upstream JIRA instance is addressed per {"cloud" if laskea.IS_CLOUD else "server"} rules')
+
