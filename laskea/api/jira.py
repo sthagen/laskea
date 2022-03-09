@@ -36,6 +36,7 @@ BASE_URL = os.getenv(f'{APP_ENV}_BASE_URL', '')
 BASE_IS_CLOUD = bool(os.getenv(f'{APP_ENV}_IS_CLOUD', ''))
 BASE_COL_FIELDS = json.loads(os.getenv(f'{APP_ENV}_COL_FIELDS', json.dumps(DEFAULT_COLUMN_FIELDS)))
 BASE_COL_MAPS = json.loads(os.getenv(f'{APP_ENV}_COL_MAPS', json.dumps(KNOWN_CI_FIELDS)))
+BASE_JOIN_STRING = os.getenv(f'{APP_ENV}_JOIN_STRING', '')
 
 
 def mock(number: int) -> int:
@@ -154,7 +155,7 @@ def markdown_table(
             if key.lower() == 'key':
                 table[slot][key] = f'[{cell}]({BASE_URL.strip("/")}/browse/{cell})'  # noqa
             if not isinstance(cell, str):
-                table[slot][key] = '<br>'.join(cell)  # noqa
+                table[slot][key] = BASE_JOIN_STRING.join(cell)  # noqa
             col_wid[key] = max(len(table[slot][key]), col_wid[key])  # noqa
 
     header_cells = [key.ljust(col_wid[key]) for key in columns]
