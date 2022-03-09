@@ -25,7 +25,7 @@ Commands:
 $ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Mon Mar 07 20:20:08 2022 CET
+  Date: Wed Mar 09 18:19:27 2022 CET
 
                 OS : Darwin
             CPU(s) : 8
@@ -36,7 +36,7 @@ $ laskea report
   Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0
   (clang-1300.0.29.30)]
 
-            laskea : 2022.3.8+parent.ccf51569-dirty
+            laskea : 2022.3.9+parent.838249fb
          atlassian : 3.20.1
      cogapp.cogapp : 3.3.0
           jmespath : 0.10.0
@@ -90,7 +90,9 @@ $ laskea template
           "customfield_13901",
           "fields.customfield_13901[].value"
         ]
-      }
+      },
+      "lf_only": true,
+      "join_string": " <br>"
     }
   },
   "remote": {
@@ -134,7 +136,7 @@ Options:
 $ laskea update tests/fixtures/basic/empty.md
 Reading from discovered configuration path /home/ofsomeone/.laskea.json
 Configuration interface combined file, environment, and commandline values!
-Effective configuration combining /home/ofsomeone/.laskea.json and environment variables:
+Effective configuration combining /home/ofsomeone/.laskea.json, environment variables, and defaults:
 # --- BEGIN ---
 {
   "table": {
@@ -142,8 +144,8 @@ Effective configuration combining /home/ofsomeone/.laskea.json and environment v
       "fields": [
         "Key",
         "Summary",
-        "Foo",
-        "Bar"
+        "Custom Field Name",
+        "Custom Field Other"
       ],
       "field_map": {
         "key": [
@@ -154,25 +156,30 @@ Effective configuration combining /home/ofsomeone/.laskea.json and environment v
           "summary",
           "fields.summary"
         ],
-        "foo": [
+        "custom field name": [
           "customfield_11501",
           "fields.customfield_11501"
         ],
-        "bar": [
+        "custom field other": [
           "customfield_13901",
           "fields.customfield_13901[].value"
         ]
-      }
+      },
+      "lf_only": false,
+      "join_string": " <br>"
     }
   },
   "remote": {
+    "is_cloud": true,
     "user": "someuser",
     "token": "",
     "base_url": "https://some.server.example.com/"
   },
   "local": {
     "markers": "[[[fill ]]] [[[end]]]",
-    "verbose": false
+    "quiet": false,
+    "verbose": false,
+    "strict": false
   }
 }
 # --- E N D ---
@@ -190,18 +197,20 @@ Usage: laskea update [OPTIONS] SOURCE...
 
   You can set some options per evironment variables:
 
-  * ASCIINATOR_USER='remote-user'
-  * ASCIINATOR_TOKEN='remote-secret'
-  * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
-  * ASCIINATOR_CACHE_EXPIRY_SECONDS=180
-  * ASCIINATOR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-  * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
+  * LASKEA_USER='remote-user'
+  * LASKEA_TOKEN='remote-secret'
+  * LASKEA_BASE_URL='https://remote-jira-instance.example.com/'
+  * LASKEA_CACHE_EXPIRY_SECONDS=180
+  * LASKEA_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+  * LASKEA_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
     "custom field name": ["customfield_123", "fields.customfield_123"]}'
-  * ASCIINATOR_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
-  * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
-  * ASCIINATOR_DEBUG='AnythingTruthy'
-  * ASCIINATOR_VERBOSE='AnythingTruthy'
-  * ASCIINATOR_STRICT='AnythingTruthy'
+  * LASKEA_JOIN_STRING=' <br>'
+  * LASKEA_LF_ONLY='AnythingTruthy'
+  * LASKEA_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
+  * LASKEA_MARKERS='[[[fill ]]] [[[end]]]'
+  * LASKEA_DEBUG='AnythingTruthy'
+  * LASKEA_VERBOSE='AnythingTruthy'
+  * LASKEA_STRICT='AnythingTruthy'
 
   The quiet option (if given) disables any conflicting verbosity setting.
 
@@ -227,5 +236,5 @@ Options:
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.3.8+parent.13b540c2
+Calculate (Finnish: laskea) some parts. version 2022.3.9+parent.838249fb
 ```
