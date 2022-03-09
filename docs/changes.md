@@ -4,7 +4,7 @@
 
 * Moved "cloudness" log statement out of inject area for documents
 * Send (nearly) all logging to stderr
-* Added JOIN_STRING parameter defaulting to ' <br>' (before not customizable and fixed to be '<br>' which is stripped in PDF/DOCX conversions)
+* Added JOIN_STRING parameter defaulting to `' <br>'` (before not customizable and fixed to be `'<br>'` which is stripped in PDF/DOCX conversions)
 
 ## 2022.3.8
 
