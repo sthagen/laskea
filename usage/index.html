@@ -616,7 +616,7 @@
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea report
 
 <span class="go">--------------------------------------------------------------------------------</span>
-<span class="go">  Date: Mon Mar 07 20:20:08 2022 CET</span>
+<span class="go">  Date: Wed Mar 09 18:19:27 2022 CET</span>
 
 <span class="go">                OS : Darwin</span>
 <span class="go">            CPU(s) : 8</span>
@@ -627,7 +627,7 @@
 <span class="go">  Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0</span>
 <span class="go">  (clang-1300.0.29.30)]</span>
 
-<span class="go">            laskea : 2022.3.8+parent.ccf51569-dirty</span>
+<span class="go">            laskea : 2022.3.9+parent.838249fb</span>
 <span class="go">         atlassian : 3.20.1</span>
 <span class="go">     cogapp.cogapp : 3.3.0</span>
 <span class="go">          jmespath : 0.10.0</span>
@@ -675,7 +675,9 @@
 <span class="go">          &quot;customfield_13901&quot;,</span>
 <span class="go">          &quot;fields.customfield_13901[].value&quot;</span>
 <span class="go">        ]</span>
-<span class="go">      }</span>
+<span class="go">      },</span>
+<span class="go">      &quot;lf_only&quot;: true,</span>
+<span class="go">      &quot;join_string&quot;: &quot; &lt;br&gt;&quot;</span>
 <span class="go">    }</span>
 <span class="go">  },</span>
 <span class="go">  &quot;remote&quot;: {</span>
@@ -713,7 +715,7 @@
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea update tests/fixtures/basic/empty.md
 <span class="go">Reading from discovered configuration path /home/ofsomeone/.laskea.json</span>
 <span class="go">Configuration interface combined file, environment, and commandline values!</span>
-<span class="go">Effective configuration combining /home/ofsomeone/.laskea.json and environment variables:</span>
+<span class="go">Effective configuration combining /home/ofsomeone/.laskea.json, environment variables, and defaults:</span>
 <span class="gp"># </span>--- BEGIN ---
 <span class="go">{</span>
 <span class="go">  &quot;table&quot;: {</span>
@@ -721,8 +723,8 @@
 <span class="go">      &quot;fields&quot;: [</span>
 <span class="go">        &quot;Key&quot;,</span>
 <span class="go">        &quot;Summary&quot;,</span>
-<span class="go">        &quot;Foo&quot;,</span>
-<span class="go">        &quot;Bar&quot;</span>
+<span class="go">        &quot;Custom Field Name&quot;,</span>
+<span class="go">        &quot;Custom Field Other&quot;</span>
 <span class="go">      ],</span>
 <span class="go">      &quot;field_map&quot;: {</span>
 <span class="go">        &quot;key&quot;: [</span>
@@ -733,25 +735,30 @@
 <span class="go">          &quot;summary&quot;,</span>
 <span class="go">          &quot;fields.summary&quot;</span>
 <span class="go">        ],</span>
-<span class="go">        &quot;foo&quot;: [</span>
+<span class="go">        &quot;custom field name&quot;: [</span>
 <span class="go">          &quot;customfield_11501&quot;,</span>
 <span class="go">          &quot;fields.customfield_11501&quot;</span>
 <span class="go">        ],</span>
-<span class="go">        &quot;bar&quot;: [</span>
+<span class="go">        &quot;custom field other&quot;: [</span>
 <span class="go">          &quot;customfield_13901&quot;,</span>
 <span class="go">          &quot;fields.customfield_13901[].value&quot;</span>
 <span class="go">        ]</span>
-<span class="go">      }</span>
+<span class="go">      },</span>
+<span class="go">      &quot;lf_only&quot;: false,</span>
+<span class="go">      &quot;join_string&quot;: &quot; &lt;br&gt;&quot;</span>
 <span class="go">    }</span>
 <span class="go">  },</span>
 <span class="go">  &quot;remote&quot;: {</span>
+<span class="go">    &quot;is_cloud&quot;: true,</span>
 <span class="go">    &quot;user&quot;: &quot;someuser&quot;,</span>
 <span class="go">    &quot;token&quot;: &quot;&quot;,</span>
 <span class="go">    &quot;base_url&quot;: &quot;https://some.server.example.com/&quot;</span>
 <span class="go">  },</span>
 <span class="go">  &quot;local&quot;: {</span>
 <span class="go">    &quot;markers&quot;: &quot;[[[fill ]]] [[[end]]]&quot;,</span>
-<span class="go">    &quot;verbose&quot;: false</span>
+<span class="go">    &quot;quiet&quot;: false,</span>
+<span class="go">    &quot;verbose&quot;: false,</span>
+<span class="go">    &quot;strict&quot;: false</span>
 <span class="go">  }</span>
 <span class="go">}</span>
 <span class="gp"># </span>--- E N D ---
@@ -766,18 +773,20 @@
 
 <span class="go">  You can set some options per evironment variables:</span>
 
-<span class="go">  * ASCIINATOR_USER=&#39;remote-user&#39;</span>
-<span class="go">  * ASCIINATOR_TOKEN=&#39;remote-secret&#39;</span>
-<span class="go">  * ASCIINATOR_BASE_URL=&#39;https://remote-jira-instance.example.com/&#39;</span>
-<span class="go">  * ASCIINATOR_CACHE_EXPIRY_SECONDS=180</span>
-<span class="go">  * ASCIINATOR_COL_FIELDS: &#39;[&quot;Key&quot;, &quot;Summary&quot;, &quot;Custom Field Name&quot;]&#39;</span>
-<span class="go">  * ASCIINATOR_COL_MAPS=&#39;{&quot;key&quot;: [&quot;key&quot;, &quot;key&quot;], &quot;summary&quot;: [&quot;summary&quot;, &quot;fields.summary&quot;],</span>
+<span class="go">  * LASKEA_USER=&#39;remote-user&#39;</span>
+<span class="go">  * LASKEA_TOKEN=&#39;remote-secret&#39;</span>
+<span class="go">  * LASKEA_BASE_URL=&#39;https://remote-jira-instance.example.com/&#39;</span>
+<span class="go">  * LASKEA_CACHE_EXPIRY_SECONDS=180</span>
+<span class="go">  * LASKEA_COL_FIELDS: &#39;[&quot;Key&quot;, &quot;Summary&quot;, &quot;Custom Field Name&quot;]&#39;</span>
+<span class="go">  * LASKEA_COL_MAPS=&#39;{&quot;key&quot;: [&quot;key&quot;, &quot;key&quot;], &quot;summary&quot;: [&quot;summary&quot;, &quot;fields.summary&quot;],</span>
 <span class="go">    &quot;custom field name&quot;: [&quot;customfield_123&quot;, &quot;fields.customfield_123&quot;]}&#39;</span>
-<span class="go">  * ASCIINATOR_IS_CLOUD=&#39;WhenNotConnectingToJiraServerButJiraCloud&#39;</span>
-<span class="go">  * ASCIINATOR_MARKERS=&#39;[[[fill ]]] [[[end]]]&#39;</span>
-<span class="go">  * ASCIINATOR_DEBUG=&#39;AnythingTruthy&#39;</span>
-<span class="go">  * ASCIINATOR_VERBOSE=&#39;AnythingTruthy&#39;</span>
-<span class="go">  * ASCIINATOR_STRICT=&#39;AnythingTruthy&#39;</span>
+<span class="go">  * LASKEA_JOIN_STRING=&#39; &lt;br&gt;&#39;</span>
+<span class="go">  * LASKEA_LF_ONLY=&#39;AnythingTruthy&#39;</span>
+<span class="go">  * LASKEA_IS_CLOUD=&#39;WhenNotConnectingToJiraServerButJiraCloud&#39;</span>
+<span class="go">  * LASKEA_MARKERS=&#39;[[[fill ]]] [[[end]]]&#39;</span>
+<span class="go">  * LASKEA_DEBUG=&#39;AnythingTruthy&#39;</span>
+<span class="go">  * LASKEA_VERBOSE=&#39;AnythingTruthy&#39;</span>
+<span class="go">  * LASKEA_STRICT=&#39;AnythingTruthy&#39;</span>
 
 <span class="go">  The quiet option (if given) disables any conflicting verbosity setting.</span>
 
@@ -800,7 +809,7 @@
 </code></pre></div>
 <h2 id="version">Version</h2>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>laskea version
-<span class="go">Calculate (Finnish: laskea) some parts. version 2022.3.8+parent.13b540c2</span>
+<span class="go">Calculate (Finnish: laskea) some parts. version 2022.3.9+parent.838249fb</span>
 </code></pre></div>
 
 

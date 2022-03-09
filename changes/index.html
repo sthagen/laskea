@@ -379,6 +379,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#202239" class="md-nav__link">
+    2022.3.9
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#202238" class="md-nav__link">
     2022.3.8
   </a>
@@ -511,6 +518,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#202239" class="md-nav__link">
+    2022.3.9
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#202238" class="md-nav__link">
     2022.3.8
   </a>
@@ -602,6 +616,13 @@
 
 
 <h1 id="change-history">Change History</h1>
+<h2 id="202239">2022.3.9</h2>
+<ul>
+<li>Breaking change: Use <code>LASKEA_</code> prefixed environment variables (instead of <code>ASCIINATOR_</code>) - cf. <code>laskea update -h</code> for the names</li>
+<li>Moved "cloudness" log statement out of inject area for documents and redirected all logging to stderr</li>
+<li>Added JOIN_STRING parameter defaulting to <code>' &lt;br&gt;'</code> (before not customizable and fixed to be <code>'&lt;br&gt;'</code> which is stripped in PDF/DOCX conversions)</li>
+<li>Added LF_ONLY parameter defaulting to <code>True</code> (which will remove any <code>\r</code> from markdown output)</li>
+</ul>
 <h2 id="202238">2022.3.8</h2>
 <ul>
 <li>Introduced strict option to expose warnings on unexpected query result sizes otherwise inject empty strings</li>
