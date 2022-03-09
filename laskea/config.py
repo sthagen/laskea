@@ -39,7 +39,8 @@ TEMPLATE_EXAMPLE = """\
           "customfield_13901",
           "fields.customfield_13901[].value"
         ]
-      }
+      },
+      "join_string": " <br>",
     }
   },
   "remote": {
@@ -89,6 +90,15 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
     if field_map:
         source_of['field_map'] = 'env'
         api.BASE_COL_MAPS = json.loads(field_map)
+
+    join_string = jmespath.search('table.column.join_string', configuration)
+    if join_string:
+        source_of['join_string'] = 'config'
+        api.BASE_JOIN_STRING = join_string
+    join_string = os.getenv(f'{laskea.APP_ENV}_JOIN_STRING', '')
+    if join_string:
+        source_of['join_string'] = 'env'
+        api.BASE_JOIN_STRING = join_string
 
     remote_user = jmespath.search('remote.user', configuration)
     if remote_user:
