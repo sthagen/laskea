@@ -68,7 +68,7 @@ def generate_template() -> str:
 def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
     """LaterAlligator."""
     if not configuration:
-        print('Warning: Requested load from empty configuration')
+        print('Warning: Requested load from empty configuration', file=sys.stderr)
         return {}
 
     source_of = {}
@@ -187,10 +187,10 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
     if conf:
         cp = pathlib.Path(conf)
         if not cp.is_file() or not cp.stat().st_size:
-            print('Given configuration path is no file or empty')
+            print('Given configuration path is no file or empty', file=sys.stderr)
             sys.exit(2)
         if not laskea.QUIET:
-            print(f'Reading configuration file {cp} as requested...')
+            print(f'Reading configuration file {cp} as requested...', file=sys.stderr)
         with cp.open() as handle:
             configuration = json.load(handle)
     else:
@@ -200,7 +200,7 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
             cp = pp / cn
             if cp.is_file() and cp.stat().st_size:
                 if not laskea.QUIET:
-                    print(f'Reading from discovered configuration path {cp}')
+                    print(f'Reading from discovered configuration path {cp}', file=sys.stderr)
                 with cp.open() as handle:
                     configuration = json.load(handle)
                 return configuration, str(cp)
@@ -208,13 +208,13 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
         cp = pathlib.Path.home() / laskea.DEFAULT_CONFIG_NAME
         if cp.is_file() and cp.stat().st_size:
             if not laskea.QUIET:
-                print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...')
+                print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...', file=sys.stderr)
             with cp.open() as handle:
                 configuration = json.load(handle)
             return configuration, str(cp)
 
         if not laskea.QUIET:
-            print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data')
+            print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data', file=sys.stderr)
 
     return configuration, str(cp)
 
@@ -258,10 +258,10 @@ def report_sources_of_effective_configuration(source_of: Dict[str, str], header:
     """DRY."""
     if laskea.QUIET:
         return
-    print(header)
-    print('# --- BEGIN ---')
-    print(json.dumps(source_of, indent=2))
-    print('# --- E N D ---')
+    print(header, file=sys.stderr)
+    print('# --- BEGIN ---', file=sys.stderr)
+    print(json.dumps(source_of, indent=2), file=sys.stderr)
+    print('# --- E N D ---', file=sys.stderr)
 
 
 @no_type_check
@@ -269,13 +269,13 @@ def safe_report_configuration(configuration: Dict[str, object], header: str) -> 
     """DRY."""
     if laskea.QUIET:
         return
-    print(header)
-    print('# --- BEGIN ---')
+    print(header, file=sys.stderr)
+    print('# --- BEGIN ---', file=sys.stderr)
     fake_configuration = copy.deepcopy(configuration)
     if jmespath.search('remote.token', fake_configuration):
         fake_configuration['remote']['token'] = laskea.FAKE_SECRET  # noqa
-    print(json.dumps(fake_configuration, indent=2))
-    print('# --- E N D ---')
+    print(json.dumps(fake_configuration, indent=2), file=sys.stderr)
+    print('# --- E N D ---', file=sys.stderr)
 
 
 @no_type_check
@@ -318,8 +318,8 @@ def process(conf: str, options: Mapping[str, bool]) -> None:
             report_sources_of_effective_configuration(source_of, f'Configuration source after loading from {cp}:')
 
         if not laskea.QUIET:
-            print('Configuration interface combined file, environment, and commandline values!')
+            print('Configuration interface combined file, environment, and commandline values!', file=sys.stderr)
 
         create_and_report_effective_configuration(f'Effective configuration combining {cp} and environment variables:')
-    print(f'INFO: Upstream JIRA instance is addressed per {"cloud" if laskea.IS_CLOUD else "server"} rules')
+    print(f'INFO: Upstream JIRA instance is addressed per {"cloud" if laskea.IS_CLOUD else "server"} rules', file=sys.stderr)
 
