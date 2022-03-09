@@ -129,6 +129,7 @@ def update(
     * ASCIINATOR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
     * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
       "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * ASCIINATOR_JOIN_STRING=' <br>'
     * ASCIINATOR_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
     * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
     * ASCIINATOR_DEBUG='AnythingTruthy'
