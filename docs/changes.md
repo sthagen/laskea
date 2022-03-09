@@ -2,9 +2,10 @@
 
 ## 2022.3.9
 
-* Moved "cloudness" log statement out of inject area for documents
-* Send (nearly) all logging to stderr
+* Breaking change: Use `LASKEA_` prefixed environment variables (instead of `ASCIINATOR_`) - cf. `laskea update -h` for the names
+* Moved "cloudness" log statement out of inject area for documents and redirected all logging to stderr
 * Added JOIN_STRING parameter defaulting to `' <br>'` (before not customizable and fixed to be `'<br>'` which is stripped in PDF/DOCX conversions)
+* Added LF_ONLY parameter defaulting to `True` (which will remove any `\r` from markdown output)
 
 ## 2022.3.8
 

@@ -18,3 +18,11 @@ def test_template_command(capsys):
     out, err = capsys.readouterr()
     assert '"markers": "[[[fill ]]] [[[end]]]"' in out
     assert not err
+
+
+def test_update_command(capsys):
+    with pytest.raises(TypeError):
+        cli.update(source=['not-present'])
+    out, err = capsys.readouterr()
+    assert not out
+    assert not err

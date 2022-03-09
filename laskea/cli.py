@@ -122,19 +122,20 @@ def update(
     You can set some options per evironment variables:
 
     \b
-    * ASCIINATOR_USER='remote-user'
-    * ASCIINATOR_TOKEN='remote-secret'
-    * ASCIINATOR_BASE_URL='https://remote-jira-instance.example.com/'
-    * ASCIINATOR_CACHE_EXPIRY_SECONDS=180
-    * ASCIINATOR_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * ASCIINATOR_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
+    * LASKEA_USER='remote-user'
+    * LASKEA_TOKEN='remote-secret'
+    * LASKEA_BASE_URL='https://remote-jira-instance.example.com/'
+    * LASKEA_CACHE_EXPIRY_SECONDS=180
+    * LASKEA_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+    * LASKEA_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
       "custom field name": ["customfield_123", "fields.customfield_123"]}'
-    * ASCIINATOR_JOIN_STRING=' <br>'
-    * ASCIINATOR_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
-    * ASCIINATOR_MARKERS='[[[fill ]]] [[[end]]]'
-    * ASCIINATOR_DEBUG='AnythingTruthy'
-    * ASCIINATOR_VERBOSE='AnythingTruthy'
-    * ASCIINATOR_STRICT='AnythingTruthy'
+    * LASKEA_JOIN_STRING=' <br>'
+    * LASKEA_LF_ONLY='AnythingTruthy'
+    * LASKEA_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
+    * LASKEA_MARKERS='[[[fill ]]] [[[end]]]'
+    * LASKEA_DEBUG='AnythingTruthy'
+    * LASKEA_VERBOSE='AnythingTruthy'
+    * LASKEA_STRICT='AnythingTruthy'
 
     The quiet option (if given) disables any conflicting verbosity setting.
     """

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-# pylint: disable=expression-not-assigned,line-too-long
 """Calculate (Finnish: laskea) some parts."""
 import sys
 from typing import Mapping, Sequence

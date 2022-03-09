@@ -106,7 +106,8 @@ def test_impl_login_trying_but_bad_non_url(is_cloud, capsys):
     impl.BASE_IS_CLOUD = is_cloud
     _ = impl.login(user='not-relevant', token='as-url-is-leading-nowhere', url='/dev/null', is_cloud=is_cloud)
     out, err = capsys.readouterr()
-    assert f'INFO: Upstream JIRA instance is addressed per {"cloud" if is_cloud else "server"} rules' in err
+    assert not err
+    assert not out
 
 
 def test_impl_query():

@@ -16,16 +16,16 @@ def test_process_spoc_no_file(capsys):
     with pytest.raises(SystemExit):
         cfg.process('no-file', {})
     out, err = capsys.readouterr()
-    assert 'Given configuration path is no file or empty' in out
-    assert not err
+    assert 'Given configuration path is no file or empty' in err
+    assert not out
 
 
 def test_process_spoc_template_file(capsys):
     fixture_config = pathlib.Path('tests', 'fixtures', 'basic', 'dot.laskea.json')
     assert cfg.process(str(fixture_config), {'quiet': laskea.QUIET, 'verbose': True}) is None
     out, err = capsys.readouterr()
-    assert 'Configuration interface combined file, environment, and commandline values!' in out
-    assert not err
+    assert 'Configuration interface combined file, environment, and commandline values!' in err
+    assert not out
 
 
 def test_report_context(capsys):
@@ -35,10 +35,10 @@ def test_report_context(capsys):
     out, err = capsys.readouterr()
     assert not out
     lines = err.strip().split('\n')
-    assert len(lines) == 17
+    assert len(lines) == 21
     assert lines[:3] == ['Command: (-)', '- Transaction mode: (+)', 'Environment(variable values):']
-    assert lines[9] == 'Effective(variable values):'
-    for line in lines[3:9]:
+    assert lines[11] == 'Effective(variable values):'
+    for line in lines[3:11]:
         assert line.startswith(f'- {laskea.APP_ENV}_')
     assert lines[-1] == "- CallVector: (['42'])"
     laskea.QUIET = quiet_flag_restore
@@ -59,8 +59,8 @@ def test_report_sources_of_effective_configuration(capsys):
     laskea.QUIET = False
     assert cfg.report_sources_of_effective_configuration(source_of={}, header='42') is None
     out, err = capsys.readouterr()
-    assert not err
-    lines = out.strip().split('\n')
+    assert not out
+    lines = err.strip().split('\n')
     assert lines == ['42', '# --- BEGIN ---', '{}', '# --- E N D ---']
     laskea.QUIET = quiet_flag_restore
 
@@ -80,8 +80,8 @@ def test_safe_report_configuration(capsys):
     laskea.QUIET = False
     assert cfg.safe_report_configuration(configuration={}, header='42') is None
     out, err = capsys.readouterr()
-    assert not err
-    lines = out.strip().split('\n')
+    assert not out
+    lines = err.strip().split('\n')
     assert lines == ['42', '# --- BEGIN ---', '{}', '# --- E N D ---']
     laskea.QUIET = quiet_flag_restore
 
@@ -103,8 +103,8 @@ def test_safe_report_configuration_no_leak(capsys):
     gnith = {'remote': {'token': '*************'}}
     assert cfg.safe_report_configuration(configuration=thing, header='42') is None
     out, err = capsys.readouterr()
-    assert not err
-    lines = out.strip().split('\n')
+    assert not out
+    lines = err.strip().split('\n')
     assert lines == ['42', '# --- BEGIN ---'] + json.dumps(gnith, indent=2).split('\n') + ['# --- E N D ---']
     laskea.QUIET = quiet_flag_restore
 
@@ -114,9 +114,9 @@ def test_create_and_report_effective_configuration(capsys):
     laskea.QUIET = False
     assert cfg.create_and_report_effective_configuration(header='42') is None
     out, err = capsys.readouterr()
-    assert not err
-    lines = out.strip().split('\n')
-    assert len(lines) == 42
+    assert not out
+    lines = err.strip().split('\n')
+    assert len(lines) == 47
     assert lines[:2] == ['42', '# --- BEGIN ---']
     assert lines[-1] == '# --- E N D ---'
     print(lines)
@@ -139,8 +139,8 @@ def test_load_configuration_empty(capsys):
     laskea.DEBUG = False
     assert cfg.load_configuration(configuration={}) == {}
     out, err = capsys.readouterr()
-    assert not err
-    assert out.strip() == 'Warning: Requested load from empty configuration'
+    assert not out
+    assert err.strip() == 'Warning: Requested load from empty configuration'
     laskea.DEBUG = quiet_flag_restore
     laskea.BASE_MARKERS = base_markers_restore
 

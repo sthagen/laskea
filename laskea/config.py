@@ -1,4 +1,3 @@
-# pylint: disable=line-too-long
 """Configuration API for laskea."""
 import copy
 import json
@@ -40,7 +39,8 @@ TEMPLATE_EXAMPLE = """\
           "fields.customfield_13901[].value"
         ]
       },
-      "join_string": " <br>",
+      "lf_only": true,
+      "join_string": " <br>"
     }
   },
   "remote": {
@@ -90,6 +90,15 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
     if field_map:
         source_of['field_map'] = 'env'
         api.BASE_COL_MAPS = json.loads(field_map)
+
+    lf_only = jmespath.search('table.column.lf_only', configuration)
+    if lf_only:
+        source_of['lf_only'] = 'config'
+        api.BASE_LF_ONLY = lf_only
+    lf_only = os.getenv(f'{laskea.APP_ENV}_LF_ONLY', '')
+    if lf_only:
+        source_of['lf_only'] = 'env'
+        api.BASE_LF_ONLY = lf_only
 
     join_string = jmespath.search('table.column.join_string', configuration)
     if join_string:
@@ -208,13 +217,19 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
         cp = pathlib.Path.home() / laskea.DEFAULT_CONFIG_NAME
         if cp.is_file() and cp.stat().st_size:
             if not laskea.QUIET:
-                print(f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...', file=sys.stderr)
+                print(
+                    f'Reading configuration file {cp} from home directory at {pathlib.Path.home()} ...',
+                    file=sys.stderr,
+                )
             with cp.open() as handle:
                 configuration = json.load(handle)
             return configuration, str(cp)
 
         if not laskea.QUIET:
-            print(f'User home configuration path to {cp} is no file or empty - ignoring configuration data', file=sys.stderr)
+            print(
+                f'User home configuration path to {cp} is no file or empty - ignoring configuration data',
+                file=sys.stderr,
+            )
 
     return configuration, str(cp)
 
@@ -233,6 +248,8 @@ def report_context(command: str, transaction_mode: str, vector: List[str]) -> No
     app_env_col_fields = f'{laskea.APP_ENV}_COL_FIELDS'
     app_env_col_maps = f'{laskea.APP_ENV}_COL_MAPS'
     app_env_markers = f'{laskea.APP_ENV}_MARKERS'
+    app_env_lf_only = f'{laskea.APP_ENV}_LF_ONLY'
+    app_env_join_string = f'{laskea.APP_ENV}_JOIN_STRING'
     empty = ''
     print(f'- {laskea.APP_ENV}_USER: ({os.getenv(app_env_user, empty)})', file=sys.stderr)
     print(
@@ -243,6 +260,8 @@ def report_context(command: str, transaction_mode: str, vector: List[str]) -> No
     print(f'- {laskea.APP_ENV}_COL_FIELDS: ({os.getenv(app_env_col_fields, empty)})', file=sys.stderr)
     print(f'- {laskea.APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
     print(f'- {laskea.APP_ENV}_MARKERS: ({os.getenv(app_env_markers, empty)})', file=sys.stderr)
+    print(f'- {laskea.APP_ENV}_LF_ONLY: ({os.getenv(app_env_lf_only, empty)})', file=sys.stderr)
+    print(f'- {laskea.APP_ENV}_JOIN_STRING: ({os.getenv(app_env_join_string, empty)})', file=sys.stderr)
     print('Effective(variable values):', file=sys.stderr)
     print(f'- RemoteUser: ({api.BASE_USER})', file=sys.stderr)
     print(f'- RemoteToken: ({"*" * len(api.BASE_PASS)})', file=sys.stderr)
@@ -250,6 +269,8 @@ def report_context(command: str, transaction_mode: str, vector: List[str]) -> No
     print(f'- ColumnFields(table): ({api.BASE_COL_FIELDS})', file=sys.stderr)
     print(f'- ColumnMaps(remote->table): ({api.BASE_COL_MAPS})', file=sys.stderr)
     print(f'- Markers(pattern): ({laskea.BASE_MARKERS})', file=sys.stderr)
+    print(f'- lf_only: ({laskea.BASE_LF_ONLY})', file=sys.stderr)
+    print(f'- join_string: ({laskea.BASE_JOIN_STRING})', file=sys.stderr)
     print(f'- CallVector: ({vector})', file=sys.stderr)
 
 
@@ -288,16 +309,21 @@ def create_and_report_effective_configuration(header: str) -> None:
             'column': {
                 'fields': copy.deepcopy(api.BASE_COL_FIELDS),
                 'field_map': copy.deepcopy(api.BASE_COL_MAPS),
+                'lf_only': api.BASE_LF_ONLY,
+                'join_string': api.BASE_JOIN_STRING,
             },
         },
         'remote': {
+            'is_cloud': api.BASE_IS_CLOUD,
             'user': api.BASE_USER,
             'token': '',
             'base_url': api.BASE_URL,
         },
         'local': {
             'markers': laskea.BASE_MARKERS,
+            'quiet': laskea.QUIET,
             'verbose': laskea.DEBUG,
+            'strict': laskea.STRICT,
         },
     }
     safe_report_configuration(effective, header)
@@ -320,6 +346,11 @@ def process(conf: str, options: Mapping[str, bool]) -> None:
         if not laskea.QUIET:
             print('Configuration interface combined file, environment, and commandline values!', file=sys.stderr)
 
-        create_and_report_effective_configuration(f'Effective configuration combining {cp} and environment variables:')
-    print(f'INFO: Upstream JIRA instance is addressed per {"cloud" if laskea.IS_CLOUD else "server"} rules', file=sys.stderr)
+        create_and_report_effective_configuration(
+            f'Effective configuration combining {cp}, environment variables, and defaults:'
+        )
 
+    print(
+        f'INFO: Upstream JIRA instance is addressed per {"cloud" if api.BASE_IS_CLOUD else "server"} rules',
+        file=sys.stderr,
+    )

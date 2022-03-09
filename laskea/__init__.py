@@ -1,8 +1,30 @@
 """Calculate (Finnish: laskea) some parts."""
 import os
 
-from laskea.api.jira import login, markdown_heading, markdown_list, markdown_table, query
-from laskea.embed import dl, h1, h2, h3, h4, h5, h6, ol, table, ul
+APP_NAME = 'Calculate (Finnish: laskea) some parts.'
+APP_ALIAS = 'laskea'
+APP_ENV = 'LASKEA'
+CACHE_EXPIRY_SECONDS = int(os.getenv(f'{APP_ENV}_CACHE_EXPIRY_SECONDS', '180'))
+DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
+DRY_RUN = False
+VERBOSE = bool(os.getenv(f'{APP_ENV}_VERBOSE', ''))
+QUIET = False
+STRICT = bool(os.getenv(f'{APP_ENV}_STRICT', ''))
+ENCODING = 'utf-8'
+ENCODING_ERRORS_POLICY = 'ignore'
+DEFAULT_CONFIG_NAME = '.laskea.json'
+OPEN_BRACKET = '['
+CLOSE_BRACKET = ']'
+DEFAULT_MARKERS = f'{OPEN_BRACKET * 3}fill {CLOSE_BRACKET * 3} {OPEN_BRACKET * 3}end{CLOSE_BRACKET * 3}'
+DEFAULT_LF_ONLY = 'YES'
+DEFAULT_JOIN_STRING = ' <br>'
+BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
+BASE_LF_ONLY = bool(os.getenv(f'{APP_ENV}_LF_ONLY', DEFAULT_LF_ONLY))
+BASE_JOIN_STRING = os.getenv(f'{APP_ENV}_JOIN_STRING', DEFAULT_JOIN_STRING)
+FAKE_SECRET = '*' * 13
+
+from laskea.api.jira import login, markdown_heading, markdown_list, markdown_table, query  # noqa
+from laskea.embed import dl, h1, h2, h3, h4, h5, h6, ol, table, ul  # noqa
 
 # [[[fill git_describe()]]]
 __version__ = '2022.3.p+parent.cafefade'
@@ -27,21 +49,3 @@ __all__ = [
     'table',
     'ul',
 ]
-
-APP_NAME = 'Calculate (Finnish: laskea) some parts.'
-APP_ALIAS = 'laskea'
-APP_ENV = 'ASCIINATOR'
-CACHE_EXPIRY_SECONDS = int(os.getenv(f'{APP_ENV}_CACHE_EXPIRY_SECONDS', '180'))
-DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
-DRY_RUN = False
-VERBOSE = bool(os.getenv(f'{APP_ENV}_VERBOSE', ''))
-QUIET = False
-STRICT = bool(os.getenv(f'{APP_ENV}_STRICT', ''))
-ENCODING = 'utf-8'
-ENCODING_ERRORS_POLICY = 'ignore'
-DEFAULT_CONFIG_NAME = '.laskea.json'
-OPEN_BRACKET = '['
-CLOSE_BRACKET = ']'
-DEFAULT_MARKERS = f'{OPEN_BRACKET * 3}fill {CLOSE_BRACKET * 3} {OPEN_BRACKET * 3}end{CLOSE_BRACKET * 3}'
-BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
-FAKE_SECRET = '*' * 13

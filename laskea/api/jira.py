@@ -14,8 +14,6 @@ from requests.exceptions import HTTPError
 import laskea
 
 API_BASE_URL = 'https://example.com'
-APP_NAME = 'ASCIINATOR'
-APP_ENV = APP_NAME
 
 DEFAULT_COLUMN_FIELDS = ['Key', 'Summary', ['Priority', 'P'], 'Status', 'Custom Field Wun', 'Custom Field Other (CFO)']
 
@@ -30,13 +28,14 @@ KNOWN_CI_FIELDS = {
     'custom field other': [ANOTHER_ID, f'fields.{ANOTHER_ID}[].value'],
 }
 
-BASE_USER = os.getenv(f'{APP_ENV}_USER', '')
-BASE_PASS = os.getenv(f'{APP_ENV}_TOKEN', '')
-BASE_URL = os.getenv(f'{APP_ENV}_BASE_URL', '')
-BASE_IS_CLOUD = bool(os.getenv(f'{APP_ENV}_IS_CLOUD', ''))
-BASE_COL_FIELDS = json.loads(os.getenv(f'{APP_ENV}_COL_FIELDS', json.dumps(DEFAULT_COLUMN_FIELDS)))
-BASE_COL_MAPS = json.loads(os.getenv(f'{APP_ENV}_COL_MAPS', json.dumps(KNOWN_CI_FIELDS)))
-BASE_JOIN_STRING = os.getenv(f'{APP_ENV}_JOIN_STRING', '')
+BASE_USER = os.getenv(f'{laskea.APP_ENV}_USER', '')
+BASE_PASS = os.getenv(f'{laskea.APP_ENV}_TOKEN', '')
+BASE_URL = os.getenv(f'{laskea.APP_ENV}_BASE_URL', '')
+BASE_IS_CLOUD = bool(os.getenv(f'{laskea.APP_ENV}_IS_CLOUD', ''))
+BASE_COL_FIELDS = json.loads(os.getenv(f'{laskea.APP_ENV}_COL_FIELDS', json.dumps(DEFAULT_COLUMN_FIELDS)))
+BASE_COL_MAPS = json.loads(os.getenv(f'{laskea.APP_ENV}_COL_MAPS', json.dumps(KNOWN_CI_FIELDS)))
+BASE_JOIN_STRING = os.getenv(f'{laskea.APP_ENV}_JOIN_STRING', ' <br>')
+BASE_LF_ONLY = bool(os.getenv(f'{laskea.APP_ENV}_LF_ONLY', 'YES'))
 
 
 def mock(number: int) -> int:
@@ -167,7 +166,8 @@ def markdown_table(
     rows = [f'| {" | ".join(str(v).ljust(col_wid[k]) for k, v in line.items())} |' for line in table]
     issues = len(table)
     summary = f'\n\n{issues} issue{"" if issues == 1 else "s"}'
-    return '\n'.join([header] + [separator] + rows) + summary
+    the_table = '\n'.join([header] + [separator] + rows) + summary
+    return the_table.replace('\r', '') if BASE_LF_ONLY else the_table
 
 
 @no_type_check
@@ -208,13 +208,15 @@ def markdown_list(
     if list_type in ('ol', 'ul'):
         lt = '-' if list_type == 'ul' else '1.'  # implicit 'ol'
         xl = tuple(f'{lt} {key} - {summary}' for key, summary in items)
-        return '\n'.join(xl) + '\n'
+        the_list = '\n'.join(xl) + '\n'
+        return the_list.replace('\r', '') if BASE_LF_ONLY else the_list
     elif list_type == 'dl':
         # 'Term'
         # ':definition of term'
         #
         xl = tuple(f'{key}\n:{summary}\n' for key, summary in items)
-        return '\n'.join(xl) + '\n'
+        the_list = '\n'.join(xl) + '\n'
+        return the_list.replace('\r', '') if BASE_LF_ONLY else the_list
     else:
         return f'Unexpected list type ({list_type}) in markdown_list not in ({("dl", "ol", "ul")})' + '\n'
 
@@ -259,14 +261,15 @@ def markdown_heading(
             message = f'WARNING: received {received} results instead of 1 for JQL ({jql_text}) and h{level}'
             if not laskea.DRY_RUN:
                 print(message, file=sys.stderr)
-            return message
+            return message.replace('\r', '') if BASE_LF_ONLY else message
         else:
             return ''
     level_range = tuple(range(1, 6 + 1))
     if level in level_range:
         heading_token = '#' * level
         xl = tuple(f'{heading_token} {key} - {summary}' for key, summary in items)
-        return '\n'.join(xl)
+        the_heading = '\n'.join(xl)
+        return the_heading.replace('\r', '') if BASE_LF_ONLY else the_heading
     else:
         message = f'Unexpected level for heading ({level}) in markdown_heading not in ({level_range})'
         if not laskea.DRY_RUN:
