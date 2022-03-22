@@ -54,6 +54,43 @@ TEMPLATE_EXAMPLE = """\
     "quiet": false,
     "verbose": false,
     "strict": false
+  },
+  "tabulator": {
+    "overview": {
+        "base_url": "https://example.com/metrics/",
+        "path": "$year$/kpi-table-$year$.json",
+        "years": [2022],
+        "matrix": [
+            ["section", "Section", False, "L"],
+            ["name", "Name", False, "L"],
+            ["unit", "Unit", False, "C"],
+            ["all", "ALL", True, "R"],
+            ["pr1", "PR1", True, "R"],
+            ["pr2", "PR2", True, "R"],
+            ["pr3", "PR3", True, "R"],
+            ["description", "Description", False, "L"]
+        ]
+    },
+    "metrics": {
+        "base_url": "https://example.com/metrics/",
+        "paths": {
+            "review_effectivity": "$year$/review_effectivity/kpi-review_effectivity-per_product-report-$year$.json",
+            "sprint_effectivity": "$year$/sprint_effectivity/kpi-sprint_effectivity-per_product-report-$year$.json",
+            "task_traceability": "$year$/task_traceability/kpi-task_traceability-per_product-report-$year$.json",
+        },
+        "years": [2021, 2022],
+        "matrix": [
+            ["month", "Month", False, "L"],
+            ["all", "ALL", True, "R"],
+            ["pr1", "PR1", True, "R"],
+            ["pr2", "PR2", True, "R"],
+            ["pr3", "PR3", True, "R"],
+            ["trend_all", "±ALL", True, "R"],
+            ["trend_pr1", "±PR1", True, "R"],
+            ["trend_pr2", "±PR2", True, "R"],
+            ["trend_pr3", "±PR3", True, "R"]
+        ]
+    }
   }
 }
 """
@@ -184,6 +221,9 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
         laskea.QUIET = quiet
         source_of['verbose'] = 'env'
         laskea.DEBUG = quiet
+
+    if 'tabulator' in configuration:
+        laskea.TABULATOR = copy.deepcopy(configuration['tabulator'])
 
     return source_of
 

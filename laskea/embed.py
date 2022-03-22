@@ -3,9 +3,29 @@ from typing import Dict, Union, no_type_check
 
 from atlassian import Jira  # type: ignore # noqa
 
+import laskea
 import laskea.api.jira as api
+import laskea.api.tabulator as tab
 
 DB: Dict[str, Union[None, Jira]] = {'handle': None}
+
+
+@no_type_check
+def metrics_table(configuration=None) -> None:
+    """Public document interface."""
+    if configuration is None:
+        configuration = laskea.TABULATOR['overview']
+
+    print(tab.tabulator_overview_table(configuration))
+
+
+@no_type_check
+def kpi_table(selected, configuration=None) -> None:
+    """Public document interface."""
+    if configuration is None:
+        configuration = laskea.TABULATOR['metrics']
+
+    print(tab.tabulator_kpi_table(configuration, selected))
 
 
 @no_type_check

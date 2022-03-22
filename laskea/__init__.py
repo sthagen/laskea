@@ -22,13 +22,50 @@ BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
 BASE_LF_ONLY = bool(os.getenv(f'{APP_ENV}_LF_ONLY', DEFAULT_LF_ONLY))
 BASE_JOIN_STRING = os.getenv(f'{APP_ENV}_JOIN_STRING', DEFAULT_JOIN_STRING)
 FAKE_SECRET = '*' * 13
+TABULATOR = {
+    'overview': {
+        'base_url': 'https://example.com/metrics/',
+        'path': '$year$/kpi-table-$year$.json',
+        'years': [2022],
+        'matrix': [
+            ['section', 'Section', False, 'L'],
+            ['name', 'Name', False, 'L'],
+            ['unit', 'Unit', False, 'C'],
+            ['all', 'ALL', True, 'R'],
+            ['pr1', 'PR1', True, 'R'],
+            ['pr2', 'PR2', True, 'R'],
+            ['pr3', 'PR3', True, 'R'],
+            ['description', 'Description', False, 'L'],
+        ],
+    },
+    'metrics': {
+        'base_url': 'https://example.com/metrics/',
+        'paths': {
+            'review_effectivity': '$year$/review_effectivity/kpi-review_effectivity-per_product-report-$year$.json',
+            'sprint_effectivity': '$year$/sprint_effectivity/kpi-sprint_effectivity-per_product-report-$year$.json',
+            'task_traceability': '$year$/task_traceability/kpi-task_traceability-per_product-report-$year$.json',
+        },
+        'years': [2021, 2022],
+        'matrix': [
+            ['month', 'Month', False, 'L'],
+            ['all', 'ALL', True, 'R'],
+            ['pr1', 'PR1', True, 'R'],
+            ['pr2', 'PR2', True, 'R'],
+            ['pr3', 'PR3', True, 'R'],
+            ['trend_all', '±ALL', True, 'R'],
+            ['trend_pr1', '±PR1', True, 'R'],
+            ['trend_pr2', '±PR2', True, 'R'],
+            ['trend_pr3', '±PR3', True, 'R'],
+        ],
+    },
+}
 
 from laskea.api.jira import login, markdown_heading, markdown_list, markdown_table, query  # noqa
-from laskea.embed import dl, h1, h2, h3, h4, h5, h6, ol, table, ul  # noqa
+from laskea.embed import dl, h1, h2, h3, h4, h5, h6, kpi_table, metrics_table, ol, table, ul  # noqa
 
 # [[[fill git_describe()]]]
-__version__ = '2022.3.9+parent.838249fb'
-# [[[end]]] (checksum: 7aa3f7bd97d3b07d73c0c20d48e33e1b)
+__version__ = '2022.3.9+parent.3fbc2252-dirty'
+# [[[end]]] (checksum: 1d535ce504e450a82297a23f5ae53678)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
@@ -48,4 +85,6 @@ __all__ = [
     'ol',
     'table',
     'ul',
+    'kpi_table',
+    'metrics_table',
 ]

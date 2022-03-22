@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.3.22
+
+* Added tabulator mode table backend
+
 ## 2022.3.9
 
 * Breaking change: Use `LASKEA_` prefixed environment variables (instead of `ASCIINATOR_`) - cf. `laskea update -h` for the names
