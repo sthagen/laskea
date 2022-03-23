@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.3.23
+
+* Hotfix for URL construction in kpi table to prepend the base url
+ 
 ## 2022.3.22
 
 * Added tabulator mode table backend
