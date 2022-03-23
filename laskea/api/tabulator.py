@@ -116,7 +116,8 @@ def tabulator_kpi_table(configuration: Mapping[str, object], selected: str) -> s
     data = []
     data_version = ''
     for year in configuration['years']:  # noqa
-        source = configuration['paths'][selected].replace('$year$', str(year))  # noqa
+        the_path = configuration['paths'][selected].replace('$year$', str(year))  # noqa
+        source = f'{configuration["base_url"]}{the_path}'
         r = requests.get(source, verify=False)  # noqa
         as_json = r.json()
         data_version = jmespath.search('data_version', as_json)
