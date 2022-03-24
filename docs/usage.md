@@ -25,7 +25,7 @@ Commands:
 $ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Wed Mar 09 18:19:27 2022 CET
+  Date: Thu Mar 24 06:03:56 2022 CET
 
                 OS : Darwin
             CPU(s) : 8
@@ -36,7 +36,7 @@ $ laskea report
   Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0
   (clang-1300.0.29.30)]
 
-            laskea : 2022.3.9+parent.838249fb
+            laskea : 2022.3.23+parent.d340edde
          atlassian : 3.20.1
      cogapp.cogapp : 3.3.0
           jmespath : 0.10.0
@@ -236,5 +236,5 @@ Options:
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.3.9+parent.838249fb
+Calculate (Finnish: laskea) some parts. version 2022.3.23+parent.d340edde
 ```
