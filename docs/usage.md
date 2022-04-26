@@ -25,7 +25,7 @@ Commands:
 $ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Thu Mar 24 06:03:56 2022 CET
+  Date: Tue Apr 26 23:14:02 2022 CEST
 
                 OS : Darwin
             CPU(s) : 8
@@ -37,7 +37,7 @@ $ laskea report
   (clang-1300.0.29.30)]
 
             laskea : 2022.3.23+parent.d340edde
-         atlassian : 3.20.1
+         atlassian : 3.21.0
      cogapp.cogapp : 3.3.0
           jmespath : 0.10.0
           pydantic : 1.9.0
