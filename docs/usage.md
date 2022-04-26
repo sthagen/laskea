@@ -1,7 +1,7 @@
 # Example Usage
 
 **Note**: After having set up a local configuration, normally only two of the many possible environment
-variables are to be sez: `LASKEA_USER` and `LASKEA_TOKEN`. In some cases the debug variable `LASKEA_DEBUG`
+variables are set: `LASKEA_USER` and `LASKEA_TOKEN`. In some cases the debug variable `LASKEA_DEBUG`
 may be helpful temporarily.
 
 ## Help
