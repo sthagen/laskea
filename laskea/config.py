@@ -245,7 +245,7 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
     else:
         cn = laskea.DEFAULT_CONFIG_NAME
         cwd = pathlib.Path.cwd().resolve()
-        for pp in cwd.parents:
+        for pp in (cwd, *cwd.parents):
             cp = pp / cn
             if cp.is_file() and cp.stat().st_size:
                 if not laskea.QUIET:
