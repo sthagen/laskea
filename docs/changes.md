@@ -3,6 +3,7 @@
 ## 2022.4.26
 
 * Fix for configuration file discovery (#23 Configuration search ignores current dir)
+* Bumped atlassian API dependency
 
 ## 2022.3.23
 

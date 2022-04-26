@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([73416847 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:73416847108fbcb20ba6e2491f500691d07a004e4142fb9fe1cfb870fa3bfbf6")).
-<!--[[[end]]] (checksum: cff9705aaf4bcb57f494a77fc7d52df5)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([a2f70d5e ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:a2f70d5e1cb7956b65d34222a9dff6afb6ab9e96a760b617537ef189366f3b62")).
+<!--[[[end]]] (checksum: ea8d1bde3cc2bdcc5393557c43a76480)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -12,14 +12,14 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 <!--[[[fill direct_dependencies_table()]]]-->
 | Name                                                                          | Version                                                         | License                 | Author                             | Description (from packaging data)                                       |
 |:------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------|:-----------------------------------|:------------------------------------------------------------------------|
-| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | [3.20.1](https://pypi.org/project/atlassian-python-api/3.20.1/) | Apache Software License | Matt Harasymczuk                   | Python Atlassian REST API Wrapper                                       |
+| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | [3.21.0](https://pypi.org/project/atlassian-python-api/3.21.0/) | Apache Software License | Matt Harasymczuk                   | Python Atlassian REST API Wrapper                                       |
 | [cogapp](http://nedbatchelder.com/code/cog)                                   | [3.3.0](https://pypi.org/project/cogapp/3.3.0/)                 | MIT License             | Ned Batchelder                     | Cog: A content generator for executing Python snippets in source files. |
 | [jmespath](https://github.com/jmespath/jmespath.py)                           | [0.10.0](https://pypi.org/project/jmespath/0.10.0/)             | MIT License             | James Saryerwinnie                 | JSON Matching Expressions                                               |
 | [pydantic](https://github.com/samuelcolvin/pydantic)                          | [1.9.0](https://pypi.org/project/pydantic/1.9.0/)               | MIT License             | Samuel Colvin                      | Data validation and settings management using python 3.6 type hinting   |
 | [requests-cache](https://github.com/reclosedev/requests-cache)                | [0.9.3](https://pypi.org/project/requests-cache/0.9.3/)         | BSD License             | Roman Haritonov                    | A transparent persistent cache for the requests library                 |
 | [scooby](https://github.com/banesullivan/scooby)                              | [0.5.12](https://pypi.org/project/scooby/0.5.12/)               | MIT License             | Dieter Werthmüller & Bane Sullivan | A Great Dane turned Python environment detective                        |
 | [typer](https://github.com/tiangolo/typer)                                    | [0.4.0](https://pypi.org/project/typer/0.4.0/)                  | MIT License             | Sebastián Ramírez                  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
-<!--[[[end]]] (checksum: 0bc60f338b11ee91fe13e376a2a18ab0)-->
+<!--[[[end]]] (checksum: 7cdd163b9efafa375c4a25663013407d)-->
 
 ### Indirect Dependencies
 
@@ -58,7 +58,7 @@ Base graphviz file in dot format: [Trees of the direct dependencies](package-dep
 
 <!--[[[fill dependency_tree_console_text()]]]-->
 ````console
-atlassian-python-api==3.20.1
+atlassian-python-api==3.21.0
   - deprecated [required: Any, installed: 1.2.13]
     - wrapt [required: >=1.10,<2, installed: 1.13.3]
   - oauthlib [required: Any, installed: 3.2.0]
@@ -96,4 +96,4 @@ scooby==0.5.12
 typer==0.4.0
   - click [required: >=7.1.1,<9.0.0, installed: 8.0.4]
 ````
-<!--[[[end]]] (checksum: 9868d13e6b9a5ee58ff7f8210408d15e)-->
+<!--[[[end]]] (checksum: f931f2acb837e07a238d3540fd09c6e4)-->
