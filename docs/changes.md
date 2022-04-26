@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.4.26
+
+* Fix for configuration file discovery (#23 Configuration search ignores current dir)
+
 ## 2022.3.23
 
 * Hotfix for URL construction in kpi table to prepend the base url
