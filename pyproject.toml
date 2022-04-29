@@ -2,8 +2,8 @@
 name = "laskea"
 py_version = "3.8"
 # [[[fill version_sync()]]]
-version = "2022.4.26"
-# [[[end]]] (checksum: 6dcdc6e7931550085ce3908460a493ea)
+version = "2022.4.29"
+# [[[end]]] (checksum: 7e6f0c6869b5a741034ae6193ed7f64c)
 authors = ["Stefan Hagen <stefan@hagen.link>"]
 
 [tool.pyflow.scripts]
