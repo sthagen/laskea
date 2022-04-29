@@ -9,7 +9,7 @@ authors = ["Stefan Hagen <stefan@hagen.link>"]
 [tool.pyflow.scripts]
 
 [tool.pyflow.dependencies]
-atlassian-python-api = "^3.21.0"
+atlassian-python-api = "^3.22.0"
 cogapp = "^3.3.0"
 jmespath = "^0.10.0"
 pydantic = "^1.9.0"
