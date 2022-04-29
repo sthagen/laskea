@@ -107,7 +107,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
         }
 
     try:
-        issues = handle.jql(jql_text)
+        issues = handle.jql(jql_text, limit=1000)
     except (HTTPError, RuntimeError) as err:
         return {
             'jql_text': jql_text,
