@@ -1,5 +1,8 @@
 # Change History
 
+## 2022.4.29
+
+* Enable extension of query result limit for JIRA backend (#25 Offer a parameter to extend the limit for JIRA backend)
 ## 2022.4.26
 
 * Fix for configuration file discovery (#23 Configuration search ignores current dir)
