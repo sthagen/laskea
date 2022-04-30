@@ -44,7 +44,7 @@ def tabulator_overview_table(configuration: Mapping[str, object]) -> str:
     data_version = ''
     for year in configuration['years']:  # noqa
         source = over_view.replace('$year$', str(year))
-        r = requests.get(source, verify=False)  # noqa
+        r = requests.get(source, verify=configuration['verify_server_certificate'])  # noqa
         as_json = r.json()
         data_version = jmespath.search('data_version', as_json)
         for entry in jmespath.search('data[]', as_json):
@@ -118,7 +118,7 @@ def tabulator_kpi_table(configuration: Mapping[str, object], selected: str) -> s
     for year in configuration['years']:  # noqa
         the_path = configuration['paths'][selected].replace('$year$', str(year))  # noqa
         source = f'{configuration["base_url"]}{the_path}'
-        r = requests.get(source, verify=False)  # noqa
+        r = requests.get(source, configuration['verify_server_certificate'])  # noqa
         as_json = r.json()
         data_version = jmespath.search('data_version', as_json)
         for entry in jmespath.search('data[]', as_json):

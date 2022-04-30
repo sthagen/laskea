@@ -37,6 +37,7 @@ TABULATOR = {
             ['pr3', 'PR3', True, 'R'],
             ['description', 'Description', False, 'L'],
         ],
+        'verify_server_certificate': False,
     },
     'metrics': {
         'base_url': 'https://example.com/metrics/',
@@ -57,6 +58,7 @@ TABULATOR = {
             ['trend_pr2', '±PR2', True, 'R'],
             ['trend_pr3', '±PR3', True, 'R'],
         ],
+        'verify_server_certificate': False,
     },
 }
 
