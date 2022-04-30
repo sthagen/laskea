@@ -66,8 +66,8 @@ from laskea.api.jira import login, markdown_heading, markdown_list, markdown_tab
 from laskea.embed import dl, h1, h2, h3, h4, h5, h6, kpi_table, metrics_table, ol, table, ul  # noqa
 
 # [[[fill git_describe()]]]
-__version__ = '2022.4.29+parent.9a0b1b1c'
-# [[[end]]] (checksum: 7a52c8613de2d7b889d20619b3e785c9)
+__version__ = '2022.4.30+parent.11a3a2af'
+# [[[end]]] (checksum: e7361d82313d8258f098326d6c765e8b)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
