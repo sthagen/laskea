@@ -1,5 +1,8 @@
 # Change History
 
+## 2022.4.30
+
+* Added configuration parameter to enable server certificate verification for tabulator API
 ## 2022.4.29
 
 * Enlarged query result limit for JIRA backend (partially implementing #25 Offer a parameter to extend the limit for JIRA backend)
