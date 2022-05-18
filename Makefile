@@ -15,7 +15,7 @@ install:
 install-all: install
 	pip install -r tests/requirements-dev.txt
 
-.PHONY: isort
+.PHONY: format
 format:
 	$(isort)
 	$(black)
