@@ -135,3 +135,5 @@ dmypy.json
 local_publi.sh
 current-bandit.json
 .laskea_cache.sqlite
+local/
+.vscode/
