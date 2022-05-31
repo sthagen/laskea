@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([34dffdcc ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:34dffdcc0ea53e2d3472024f7cef86cff111afc0083f447bf657d5fdfa97a169")).
-<!--[[[end]]] (checksum: 5591f39800b7e5de5cd15df5e41d4dcf)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([f86cc1d8 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:f86cc1d81ee7a880d6c962932ee91503cefd0bd6abd5b0d23b97a4ae0edb55d5")).
+<!--[[[end]]] (checksum: 19c92f9a00005ffeb5793c405e1962ef)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -12,14 +12,14 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 <!--[[[fill direct_dependencies_table()]]]-->
 | Name                                                                          | Version                                                         | License                 | Author                             | Description (from packaging data)                                       |
 |:------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------|:-----------------------------------|:------------------------------------------------------------------------|
-| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | [3.22.0](https://pypi.org/project/atlassian-python-api/3.22.0/) | Apache Software License | Matt Harasymczuk                   | Python Atlassian REST API Wrapper                                       |
+| [atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api) | [3.25.0](https://pypi.org/project/atlassian-python-api/3.25.0/) | Apache Software License | Matt Harasymczuk                   | Python Atlassian REST API Wrapper                                       |
 | [cogapp](http://nedbatchelder.com/code/cog)                                   | [3.3.0](https://pypi.org/project/cogapp/3.3.0/)                 | MIT License             | Ned Batchelder                     | Cog: A content generator for executing Python snippets in source files. |
-| [jmespath](https://github.com/jmespath/jmespath.py)                           | [0.10.0](https://pypi.org/project/jmespath/0.10.0/)             | MIT License             | James Saryerwinnie                 | JSON Matching Expressions                                               |
-| [pydantic](https://github.com/samuelcolvin/pydantic)                          | [1.9.0](https://pypi.org/project/pydantic/1.9.0/)               | MIT License             | Samuel Colvin                      | Data validation and settings management using python 3.6 type hinting   |
-| [requests-cache](https://github.com/reclosedev/requests-cache)                | [0.9.3](https://pypi.org/project/requests-cache/0.9.3/)         | BSD License             | Roman Haritonov                    | A transparent persistent cache for the requests library                 |
+| [jmespath](https://github.com/jmespath/jmespath.py)                           | [1.0.0](https://pypi.org/project/jmespath/1.0.0/)               | MIT License             | James Saryerwinnie                 | JSON Matching Expressions                                               |
+| [pydantic](https://github.com/samuelcolvin/pydantic)                          | [1.9.1](https://pypi.org/project/pydantic/1.9.1/)               | MIT License             | Samuel Colvin                      | Data validation and settings management using python type hints         |
+| [requests-cache](https://github.com/reclosedev/requests-cache)                | [0.9.4](https://pypi.org/project/requests-cache/0.9.4/)         | BSD License             | Roman Haritonov                    | A transparent persistent cache for the requests library                 |
 | [scooby](https://github.com/banesullivan/scooby)                              | [0.5.12](https://pypi.org/project/scooby/0.5.12/)               | MIT License             | Dieter Werthmüller & Bane Sullivan | A Great Dane turned Python environment detective                        |
-| [typer](https://github.com/tiangolo/typer)                                    | [0.4.0](https://pypi.org/project/typer/0.4.0/)                  | MIT License             | Sebastián Ramírez                  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
-<!--[[[end]]] (checksum: 8352337e92970212fef2b47f4a09e0e6)-->
+| [typer](https://github.com/tiangolo/typer)                                    | [0.4.1](https://pypi.org/project/typer/0.4.1/)                  | MIT License             | Sebastián Ramírez                  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
+<!--[[[end]]] (checksum: aa8f9b76f9533c9bd4acfbe2b5b4e842)-->
 
 ### Indirect Dependencies
 
@@ -58,7 +58,7 @@ Base graphviz file in dot format: [Trees of the direct dependencies](package-dep
 
 <!--[[[fill dependency_tree_console_text()]]]-->
 ````console
-atlassian-python-api==3.22.0
+atlassian-python-api==3.25.0
   - deprecated [required: Any, installed: 1.2.13]
     - wrapt [required: >=1.10,<2, installed: 1.13.3]
   - oauthlib [required: Any, installed: 3.2.0]
@@ -76,10 +76,10 @@ atlassian-python-api==3.22.0
       - urllib3 [required: >=1.21.1,<1.27, installed: 1.26.8]
   - six [required: Any, installed: 1.16.0]
 cogapp==3.3.0
-jmespath==0.10.0
-pydantic==1.9.0
+jmespath==1.0.0
+pydantic==1.9.1
   - typing-extensions [required: >=3.7.4.3, installed: 4.1.1]
-requests-cache==0.9.3
+requests-cache==0.9.4
   - appdirs [required: >=1.4.4,<2.0.0, installed: 1.4.4]
   - attrs [required: >=21.2,<22.0, installed: 21.4.0]
   - cattrs [required: >=1.8,<2.0, installed: 1.10.0]
@@ -93,7 +93,7 @@ requests-cache==0.9.3
     - six [required: Any, installed: 1.16.0]
   - urllib3 [required: >=1.25.5,<2.0.0, installed: 1.26.8]
 scooby==0.5.12
-typer==0.4.0
+typer==0.4.1
   - click [required: >=7.1.1,<9.0.0, installed: 8.0.4]
 ````
-<!--[[[end]]] (checksum: bc014778075c3158d2436771451e3b54)-->
+<!--[[[end]]] (checksum: c140c710e59326a4ed54fd3788e27502)-->
