@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.5.31
+
+* Bumped dependencies and updated SBOM as well as third-party documentation (prose).
+
 ## 2022.4.30
 
 * Added configuration parameter to enable server certificate verification for tabulator API
