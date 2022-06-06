@@ -29,16 +29,15 @@ Commands:
 $ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Mon Jun 06 20:40:34 2022 CEST
+  Date: Mon Jun 06 18:45:12 2022 UTC
 
-                OS : Darwin
-            CPU(s) : 8
-           Machine : arm64
+                OS : Linux
+            CPU(s) : 1
+           Machine : x86_64
       Architecture : 64bit
        Environment : Python
 
-  Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0
-  (clang-1300.0.29.30)]
+  Python 3.9.13 (main, May 25 2022, 05:23:35)  [GCC 9.4.0]
 
             laskea : 2022.6.7+parent.25937bc1
          atlassian : 3.25.0
