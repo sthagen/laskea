@@ -40,7 +40,7 @@ $ laskea report
   Python 3.10.2 (main, Jan 29 2022, 17:30:41) [Clang 13.0.0
   (clang-1300.0.29.30)]
 
-            laskea : 2022.6.6+parent.abadcafe
+            laskea : 2022.6.6+parent.04c306e3
          atlassian : 3.25.0
      cogapp.cogapp : 3.3.0
           jmespath : 1.0.0
@@ -240,5 +240,5 @@ Options:
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.6.6+parent.abadcafe
+Calculate (Finnish: laskea) some parts. version 2022.6.6+parent.04c306e3
 ```

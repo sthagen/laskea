@@ -2,7 +2,13 @@
 
 The API provides simple functions for embeddings in markdown documents.
 
-Currently, there are two distinct kinds of embeddings: Sequence like embeddings and single item embeddings.
+Currently, there are three distinct kinds of embeddings: Section/subsection partial document embeddings, sequence like embeddings, and single item embeddings.
+
+## Document Part Functions
+
+The following function produces markdown constructs that map parent issues with children issues onto subsections and subsubsections:
+
+* `test_plans(parents_query_text, children_query_text)` - parent issues become subsections and children issues (including their description as content) become subsubsections
 
 ## Sequence Functions
 
