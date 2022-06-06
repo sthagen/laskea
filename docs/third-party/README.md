@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([aef5d102 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:aef5d102bb71642e3eacea1ac9f2016cbec7eb609e3188a409f43bccbf789bbe")).
-<!--[[[end]]] (checksum: b463ca1a7174784f6a22e23a6c9c6021)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([71897b73 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:71897b731f82c723c3d637310ab442254840032c0aec9db4c7f8bac108cd1458")).
+<!--[[[end]]] (checksum: d591e6580ad93e67f8f1e3fe98675c7a)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
