@@ -91,7 +91,7 @@
         "key": "C-102",
         "fields": {
           "parent": {
-            "key": "P-2",
+            "key": "P-1",
             "issuetype": {
               "name": "Test Plan"
             }
@@ -110,7 +110,7 @@
         "key": "C-103",
         "fields": {
           "parent": {
-            "key": "P-3",
+            "key": "P-2",
             "issuetype": {
               "name": "Test Plan"
             }
