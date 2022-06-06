@@ -62,7 +62,14 @@ TABULATOR = {
     },
 }
 
-from laskea.api.jira import login, markdown_heading, markdown_list, markdown_table, parent_children_sections, query  # noqa
+from laskea.api.jira import (  # noqa
+    login,
+    markdown_heading,
+    markdown_list,
+    markdown_table,
+    parent_children_sections,
+    query,
+)
 from laskea.embed import dl, h1, h2, h3, h4, h5, h6, kpi_table, metrics_table, ol, table, test_plans, ul  # noqa
 
 # [[[fill git_describe()]]]
