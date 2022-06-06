@@ -1,5 +1,5 @@
-coverage==6.4
-hypothesis==6.46.9
+coverage==6.4.1
+hypothesis==6.46.11
 pygments==2.12.0
 pytest==7.1.2
 pytest-asyncio==0.18.3
