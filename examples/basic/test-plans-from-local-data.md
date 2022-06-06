@@ -19,7 +19,8 @@ The Test Plan consists of 2 Test Cases
 
 ### Test Case Summary Of A Hundred And One (C-101)
 
-||*A*||*B*||
+|*A*|*B*|
+|:- |:- |
 |v1|v2|
 **Note**: Something noteworthy.
 
@@ -35,11 +36,12 @@ The Test Plan consists of 1 Test Case
 
 ### Test Case Summary Of A Hundred And Three (C-103)
 
-||*Another Head*||*Before the end column*||
+|*Another Head*|*Before the end column*|
+|:------------ |:--------------------- |
 |value 1.1|value 2.1|
 |value 1.2|value 2.2|
 
-<!--[[[end]]] (checksum: 7bcfc3e379dbdb6f063416772a5fb09c)-->
+<!--[[[end]]] (checksum: 00fe385b71439ef896de7bb856d9a0e6)-->
 
 and:
 
