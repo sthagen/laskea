@@ -1,3 +1,7 @@
+import json
+import pathlib
+from atlassian import Jira
+
 import pytest
 
 import laskea.api.jira as impl
@@ -47,6 +51,8 @@ D_LIST_FIXTURE = {
 D_LIST_PAYLOADS = tuple(
     f'[{row["key"]}]({URL_FIXTURE}/browse/{row["key"]})\n:{row["summary"]}\n' for row in D_LIST_FIXTURE['rows']
 )
+
+P_C_L_FIXTURE_PATH = pathlib.Path('tests', 'fixtures', 'basic', 'p_c_jira.json')
 
 
 @pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
@@ -114,3 +120,11 @@ def test_impl_query():
     impl.BASE_COL_FIELDS = ('key', 'summary')
     result = impl.query(impl.Jira(''), jql_text='', column_fields=tuple())
     assert result == {'jql_text': '', 'error': 'Empty JIRA Query Language text detected'}
+
+
+def test_parent_children_sections():
+    with open(P_C_L_FIXTURE_PATH, 'rt', encoding='utf-8') as handle:
+        data = json.load(handle)
+
+    doc = impl.parent_children_sections(Jira(), 'parent_jql', 'children_jql', 'Test Plan', 'Test Case', data)
+    assert '## Test Plan First Summary (P-1)' in doc
