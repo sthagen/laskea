@@ -1,6 +1,5 @@
 import json
 import pathlib
-from atlassian import Jira
 
 import pytest
 
