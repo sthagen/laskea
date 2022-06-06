@@ -417,4 +417,4 @@ def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
         md.extend(c_parts)
 
     md.append(LF)
-    return LF.join(md)
+    return LF.join(md).replace(LF + LF, LF)

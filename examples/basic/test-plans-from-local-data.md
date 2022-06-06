@@ -13,44 +13,33 @@ Some constant introduction.
 
 <!--[[[fill test_plans(data=data)]]]-->
 
-
 ## Test Plan First Summary (P-1)
-
 
 The Test Plan consists of 2 Test Cases
 
-
 ### Test Case Summary Of A Hundred And One (C-101)
-
 
 ||*A*||*B*||
 |v1|v2|
 **Note**: Something noteworthy.
 
-
 ### Test Case Summary Of A Hundred And Two (C-102)
-
 
 Test cases:
 * C-103
 **Note**: Something else worthy to state.
 
-
 ## Test Plan Second Summary (P-2)
-
 
 The Test Plan consists of 1 Test Case
 
-
 ### Test Case Summary Of A Hundred And Three (C-103)
-
 
 ||*Another Head*||*Before the end column*||
 |value 1.1|value 2.1|
 |value 1.2|value 2.2|
 
-
-<!--[[[end]]] (checksum: 3bef64338488e98ca3d3807178c1cad9)-->
+<!--[[[end]]] (checksum: 7bcfc3e379dbdb6f063416772a5fb09c)-->
 
 and:
 
