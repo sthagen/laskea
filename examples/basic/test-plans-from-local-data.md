@@ -17,12 +17,14 @@ Some constant introduction.
 ## Test Plan First Summary (P-1)
 
 
+The Test Plan consists of 2 Test Cases
+
+
 ### Test Case Summary Of A Hundred And One (C-101)
 
 
 ||*A*||*B*||
 |v1|v2|
-
 **Note**: Something noteworthy.
 
 
@@ -31,11 +33,13 @@ Some constant introduction.
 
 Test cases:
 * C-103
-
 **Note**: Something else worthy to state.
 
 
 ## Test Plan Second Summary (P-2)
+
+
+The Test Plan consists of 1 Test Case
 
 
 ### Test Case Summary Of A Hundred And Three (C-103)
@@ -46,7 +50,7 @@ Test cases:
 |value 1.2|value 2.2|
 
 
-<!--[[[end]]] (checksum: 4edf8d0f29e5b83fdddb1cc4ce181c11)-->
+<!--[[[end]]] (checksum: 3bef64338488e98ca3d3807178c1cad9)-->
 
 and:
 
