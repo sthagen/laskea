@@ -126,5 +126,5 @@ def test_parent_children_sections():
     with open(P_C_L_FIXTURE_PATH, 'rt', encoding='utf-8') as handle:
         data = json.load(handle)
 
-    doc = impl.parent_children_sections(Jira(), 'parent_jql', 'children_jql', 'Test Plan', 'Test Case', data)
+    doc = impl.parent_children_sections(impl.Jira(''), 'parent_jql', 'children_jql', 'Test Plan', 'Test Case', data)
     assert '## Test Plan First Summary (P-1)' in doc
