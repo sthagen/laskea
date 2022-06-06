@@ -1,0 +1,129 @@
+{
+  "parent_data": {
+    "issues": [
+      {
+        "id": 1,
+        "key": "P-1",
+        "fields": {
+          "issuetype": {
+            "name": "Test Plan"
+          },
+          "summary": "First summary",
+          "description": "",
+          "customfield_10006": "E-42",
+          "created": "2019-03-12T10:01:25.000+0100",
+          "updated": "2019-03-12T10:01:25.000+0100",
+          "subtasks": [
+            {
+              "id": 101,
+              "key": "C-101",
+              "fields": {
+                "issuetype": {
+                  "name": "Test Case"
+                },
+                "summary": "Summary of a hundred and one"
+              }
+            },
+            {
+              "id": 102,
+              "key": "C-102",
+              "fields": {
+                "issuetype": {
+                  "name": "Test Case"
+                },
+                "summary": "Summary of a hundred and two"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "key": "P-2",
+        "fields": {
+          "issuetype": {
+            "name": "Test Plan"
+          },
+          "summary": "Second summary",
+          "description": "",
+          "customfield_10006": "E-42",
+          "created": "2019-03-12T10:01:25.000+0100",
+          "updated": "2019-03-12T10:01:25.000+0100",
+          "subtasks": [
+            {
+              "id": 103,
+              "key": "C-103",
+              "fields": {
+                "issuetype": {
+                  "name": "Test Case"
+                },
+                "summary": "Summary of a hundred and three"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "children_data": {
+    "issues": [
+      {
+        "id": 101,
+        "key": "C-101",
+        "fields": {
+          "parent": {
+            "key": "P-1",
+            "issuetype": {
+              "name": "Test Plan"
+            }
+          },
+          "issuetype": {
+            "name": "Test Case"
+          },
+          "summary": "Summary of a hundred and one",
+          "description": "\n||*A*||*B*||\n|v1|v2|\n\n**Note**: Something noteworthy.\n",
+          "created": "2019-03-12T10:01:25.000+0100",
+          "updated": "2019-03-12T10:01:25.000+0100"
+        }
+      },
+      {
+        "id": 102,
+        "key": "C-102",
+        "fields": {
+          "parent": {
+            "key": "P-2",
+            "issuetype": {
+              "name": "Test Plan"
+            }
+          },
+          "issuetype": {
+            "name": "Test Case"
+          },
+          "summary": "Summary of a hundred and two",
+          "description": "\n||*A*||*B*||\n|v1|v2|\n\n**Note**: Something noteworthy.\n",
+          "created": "2019-03-12T10:01:25.000+0100",
+          "updated": "2019-03-12T10:01:25.000+0100"
+        }
+      },
+      {
+        "id": 103,
+        "key": "C-103",
+        "fields": {
+          "parent": {
+            "key": "P-3",
+            "issuetype": {
+              "name": "Test Plan"
+            }
+          },
+          "issuetype": {
+            "name": "Test Case"
+          },
+          "summary": "Summary of a hundred and three",
+          "description": "\n||*Another Head*||*Before the end column*||\n|value 1.1|value 2.1|\n|value 1.2|value 2.2|\n\n\n",
+          "created": "2019-03-12T10:01:25.000+0100",
+          "updated": "2019-03-12T10:01:25.000+0100"
+        }
+      }
+    ]
+  }
+}
