@@ -320,7 +320,6 @@ def parent_children_sections(
     if data['parent_data'].get('error', '') or data['children_data'].get('error', ''):
         return json.dumps(data, indent=2)
 
-
     doc = {}
     has_parents = {}
 
@@ -331,7 +330,7 @@ def parent_children_sections(
         p_field = parent['fields']
 
         p_itn = p_field['issuetype']['name']
-        #assert p_itn == parent_type_name
+        # assert p_itn == parent_type_name
         p_sum = p_field['summary']
         p_des = p_field['description']  # None for parent type names
         p_epic = p_field['customfield_10006']  # TODO assuming here ...
@@ -404,16 +403,17 @@ def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
     md = []
     for p_key, p_tree in doc.items():
         p_head = f'## {parent_type_name} {p_tree["summary"].title()} ({p_key})'.strip(LF)
-        c_count = len(p_tree["children"])
-        p_para = f'The {p_tree["type"]} consists of {c_count} {children_type_name}{"" if c_count == 1 else "s"}'.strip(LF)
+        c_count = len(p_tree['children'])
+        c_type_disp = f'{children_type_name}{"" if c_count == 1 else "s"}'
+        p_para = f'The {p_tree["type"]} consists of {c_count} {c_type_disp}'.strip(LF)
 
         c_parts = []
-        for c_key, c_data in p_tree["children"].items():
+        for c_key, c_data in p_tree['children'].items():
             c_head = f'### {children_type_name} {c_data["summary"].title()} ({c_key})'.strip(LF)
-            c_content = c_data["description"].strip(LF)
+            c_content = c_data['description'].strip(LF)
             c_parts.extend([LF, c_head, LF, c_content])
 
-        md.extend([LF, p_head])
+        md.extend([LF, p_head, LF, p_para])
         md.extend(c_parts)
 
     md.append(LF)
