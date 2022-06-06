@@ -34,7 +34,7 @@ def test_plans(
     children_jql: str = '',
     parent_type: str = 'Test Plan',
     children_type: str = 'Test Case',
-    data=None
+    data=None,
 ) -> None:
     """Public document interface for the sub(sub)section document part generation from JIRA parents with children."""
     if data is None:
@@ -43,7 +43,7 @@ def test_plans(
 
         print(api.parent_children_sections(DB['handle'], parent_jql, children_jql, parent_type, children_type))
     else:
-        print(api.parent_children_sections(DB['handle'], parent_jql, children_jql, parent_type, children_type, data=data))
+        print(api.parent_children_sections(DB['handle'], parent_jql, children_jql, parent_type, children_type, data))
 
 
 @no_type_check
