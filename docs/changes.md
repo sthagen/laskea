@@ -1,5 +1,8 @@
 # Change History
 
+## 2022.6.7
+
+* Updated SBOM as well as third-party documentation (prose) and enhanced the experimental feature (#29).
 ## 2022.6.6
 
 * Updated SBOM as well as third-party documentation (prose) and added an experimental feature (#29).
