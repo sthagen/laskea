@@ -9,4 +9,4 @@ mypy==0.960
 pycodestyle==2.8.0
 pyflakes==2.4.0
 types-jmespath==0.10.2
-types-requests==2.27.29
+types-requests==2.27.30
