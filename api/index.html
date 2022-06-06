@@ -364,6 +364,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#document-part-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Part Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sequence-functions" class="md-nav__link">
     <span class="md-ellipsis">
       Sequence Functions
@@ -469,6 +478,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#document-part-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Part Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sequence-functions" class="md-nav__link">
     <span class="md-ellipsis">
       Sequence Functions
@@ -511,7 +529,12 @@
 
 <h1 id="api">API</h1>
 <p>The API provides simple functions for embeddings in markdown documents.</p>
-<p>Currently, there are two distinct kinds of embeddings: Sequence like embeddings and single item embeddings.</p>
+<p>Currently, there are three distinct kinds of embeddings: Section/subsection partial document embeddings, sequence like embeddings, and single item embeddings.</p>
+<h2 id="document-part-functions">Document Part Functions</h2>
+<p>The following function produces markdown constructs that map parent issues with children issues onto subsections and subsubsections:</p>
+<ul>
+<li><code>test_plans(parents_query_text, children_query_text)</code> - parent issues become subsections and children issues (including their description as content) become subsubsections</li>
+</ul>
 <h2 id="sequence-functions">Sequence Functions</h2>
 <p>The following functions produce markdown constructs that receive sequences:</p>
 <ul>
