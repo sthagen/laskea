@@ -29,6 +29,24 @@ def kpi_table(selected, configuration=None) -> None:
 
 
 @no_type_check
+def test_plans(
+    parent_jql: str = '',
+    children_jql: str = '',
+    parent_type: str = 'Test Plan',
+    children_type: str = 'Test Case',
+    data=None
+) -> None:
+    """Public document interface for the sub(sub)section document part generation from JIRA parents with children."""
+    if data is None:
+        if not DB.get('handle', None):
+            DB['handle'] = api.login()
+
+        print(api.parent_children_sections(DB['handle'], parent_jql, children_jql, parent_type, children_type))
+    else:
+        print(api.parent_children_sections(DB['handle'], parent_jql, children_jql, parent_type, children_type, data=data))
+
+
+@no_type_check
 def table(query_text: str = '', data=None) -> None:
     """Public document interface."""
     if data is None:
