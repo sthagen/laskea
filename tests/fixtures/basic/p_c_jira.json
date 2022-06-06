@@ -100,7 +100,7 @@
             "name": "Test Case"
           },
           "summary": "Summary of a hundred and two",
-          "description": "\n||*A*||*B*||\n|v1|v2|\n\n**Note**: Something noteworthy.\n",
+          "description": "\nTest cases:\n* C-103\n\n**Note**: Something else worthy to state.\n",
           "created": "2019-03-12T10:01:25.000+0100",
           "updated": "2019-03-12T10:01:25.000+0100"
         }
