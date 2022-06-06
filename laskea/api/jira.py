@@ -403,17 +403,17 @@ def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
     """Transform the document content to markdown."""
     md = []
     for p_key, p_tree in doc.items():
-        p_head = f'## {parent_type_name} {p_tree["summary"]} ({p_key})'
+        p_head = f'## {parent_type_name} {p_tree["summary"].title()} ({p_key})'
         c_count = len(p_tree["children"])
         p_para = f'The {p_tree["type"]} consists of {c_count} {children_type_name}{"" if c_count == 1 else "s"}'
 
         c_parts = []
-        for c_key, c_data in p_tree["children"]:
-            c_head = f'### {children_type_name} {c_data["summary"]} ({c_key})'
+        for c_key, c_data in p_tree["children"].items():
+            c_head = f'### {children_type_name} {c_data["summary"].title()} ({c_key})'
             c_content = c_data["description"]
-            c_parts.append(LF, c_head, LF, c_content)
+            c_parts.extend([LF, c_head, LF, c_content])
 
-        md.append(LF, p_head)
+        md.extend([LF, p_head])
         md.extend(c_parts)
 
     md.append(LF)
