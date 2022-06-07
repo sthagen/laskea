@@ -29,7 +29,7 @@ Commands:
 $ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Mon Jun 06 18:45:12 2022 UTC
+  Date: Tue Jun 07 20:05:05 2022 UTC
 
                 OS : Linux
             CPU(s) : 1
@@ -39,7 +39,7 @@ $ laskea report
 
   Python 3.9.13 (main, May 25 2022, 05:23:35)  [GCC 9.4.0]
 
-            laskea : 2022.6.7+parent.25937bc1
+            laskea : 2022.6.8+parent.6698b850
          atlassian : 3.25.0
      cogapp.cogapp : 3.3.0
           jmespath : 1.0.0
@@ -239,5 +239,5 @@ Options:
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.6.7+parent.25937bc1
+Calculate (Finnish: laskea) some parts. version 2022.6.8+parent.6698b850
 ```
