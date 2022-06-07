@@ -60,6 +60,36 @@
                   },
                   "summary": "Summary of a hundred and three"
                 }
+              },
+              {
+                "id": 104,
+                "key": "C-104",
+                "fields": {
+                  "issuetype": {
+                    "name": "Test Case"
+                  },
+                  "summary": "Summary of a hundred and four"
+                }
+              },
+              {
+                "id": 105,
+                "key": "C-105",
+                "fields": {
+                  "issuetype": {
+                    "name": "Test Case"
+                  },
+                  "summary": "Summary of a hundred and five"
+                }
+              },
+              {
+                "id": 106,
+                "key": "C-106",
+                "fields": {
+                  "issuetype": {
+                    "name": "Test Case"
+                  },
+                  "summary": "Summary of a hundred and six"
+                }
               }
             ]
           }
@@ -123,6 +153,63 @@
             },
             "summary": "Summary of a hundred and three",
             "description": "\n||*Another Head*||*Before the end column*||\n|value 1.1|value 2.1|\n|value 1.2|value 2.2|\n\n\n",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100"
+          }
+        },
+        {
+          "id": 104,
+          "key": "C-104",
+          "fields": {
+            "parent": {
+              "key": "P-2",
+              "issuetype": {
+                "name": "Test Plan"
+              }
+            },
+            "issuetype": {
+              "name": "Test Case"
+            },
+            "summary": "Summary of a hundred and four",
+            "description": "\n&nbsp;|*Another Head*|*Before the end column*|\n|value 1.1|value 2.1|\n|A list:\n- item\n- meti\n|value 2.2|\n\n\n",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100"
+          }
+        },
+        {
+          "id": 105,
+          "key": "C-105",
+          "fields": {
+            "parent": {
+              "key": "P-2",
+              "issuetype": {
+                "name": "Test Plan"
+              }
+            },
+            "issuetype": {
+              "name": "Test Case"
+            },
+            "summary": "Summary of a hundred and five",
+            "description": "\n||Another Head||Before the end column||\n|value 1.1|A list:\n* item\n* meti\n|\n|value 1.2|value 2.2|\n\n\n",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100"
+          }
+        },
+        {
+          "id": 106,
+          "key": "C-106",
+          "fields": {
+            "parent": {
+              "key": "P-2",
+              "issuetype": {
+                "name": "Test Plan"
+              }
+            },
+            "issuetype": {
+              "name": "Test Case"
+            },
+            "summary": "Summary of a hundred and six (simulate inconsistency due to race)",
+            "description": "\n||Another Head||Before the end column||\n|value 1.1|value 2.1|\n|value 1.2|value 2.2|\n\n\n",
             "created": "2019-03-12T10:01:25.000+0100",
             "updated": "2019-03-12T10:01:25.000+0100"
           }
