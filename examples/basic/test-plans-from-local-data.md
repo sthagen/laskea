@@ -13,168 +13,285 @@ Some constant introduction.
 
 <!--[[[fill test_plans(data=data)]]]-->
 
-## Test Plan First Summary (P-1)
+## First summary
 
 The Test Plan consists of 2 Test Cases
 
-### Test Case Summary Of A Hundred And One (C-101)
+### Summary of a hundred and one
 
-|*A*|*B*|
+||*A*||*B*||
 |:- |:- |
 |v1|v2|
 **Note**: Something noteworthy.
 
-### Test Case Summary Of A Hundred And Two (C-102)
+### Summary of a hundred and two
 
 Test cases:
 * C-103
 **Note**: Something else worthy to state.
 
-## Test Plan Second Summary (P-2)
+## Second summary
 
-The Test Plan consists of 1 Test Case
+The Test Plan consists of 4 Test Cases
 
-### Test Case Summary Of A Hundred And Three (C-103)
+### Summary of a hundred and three
 
-|*Another Head*|*Before the end column*|
+||*Another Head*||*Before the end column*||
 |:------------ |:--------------------- |
 |value 1.1|value 2.1|
 |value 1.2|value 2.2|
 
-<!--[[[end]]] (checksum: 00fe385b71439ef896de7bb856d9a0e6)-->
+### Summary of a hundred and four
+
+&nbsp;|*Another Head*|*Before the end column*|
+|value 1.1|value 2.1|
+|A list:
+- item
+- meti
+|value 2.2|
+
+### Summary of a hundred and five
+
+||Another Head||Before the end column||
+|:---------- |:------------------- |
+|value 1.1|A list:
+* item
+* meti
+|
+|value 1.2|value 2.2|
+
+### Summary of a hundred and six
+
+||Another Head||Before the end column||
+|:---------- |:------------------- |
+|value 1.1|value 2.1|
+|value 1.2|value 2.2|
+
+<!--[[[end]]] (checksum: 0eda23b06803ad582ae581a91bf9bcd4)-->
 
 and:
 
 <!--[[[fill print(json.dumps(data, indent=2))]]]-->
 {
   "parent_data": {
-    "issues": [
-      {
-        "id": 1,
-        "key": "P-1",
-        "fields": {
-          "issuetype": {
-            "name": "Test Plan"
-          },
-          "summary": "First summary",
-          "description": "",
-          "customfield_10006": "E-42",
-          "created": "2019-03-12T10:01:25.000+0100",
-          "updated": "2019-03-12T10:01:25.000+0100",
-          "subtasks": [
-            {
-              "id": 101,
-              "key": "C-101",
-              "fields": {
-                "issuetype": {
-                  "name": "Test Case"
-                },
-                "summary": "Summary of a hundred and one"
-              }
+    "data": {
+      "issues": [
+        {
+          "id": 1,
+          "key": "P-1",
+          "fields": {
+            "issuetype": {
+              "name": "Test Plan"
             },
-            {
-              "id": 102,
-              "key": "C-102",
-              "fields": {
-                "issuetype": {
-                  "name": "Test Case"
-                },
-                "summary": "Summary of a hundred and two"
+            "summary": "First summary",
+            "description": "",
+            "customfield_10006": "E-42",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100",
+            "subtasks": [
+              {
+                "id": 101,
+                "key": "C-101",
+                "fields": {
+                  "issuetype": {
+                    "name": "Test Case"
+                  },
+                  "summary": "Summary of a hundred and one"
+                }
+              },
+              {
+                "id": 102,
+                "key": "C-102",
+                "fields": {
+                  "issuetype": {
+                    "name": "Test Case"
+                  },
+                  "summary": "Summary of a hundred and two"
+                }
               }
-            }
-          ]
-        }
-      },
-      {
-        "id": 2,
-        "key": "P-2",
-        "fields": {
-          "issuetype": {
-            "name": "Test Plan"
-          },
-          "summary": "Second summary",
-          "description": "",
-          "customfield_10006": "E-42",
-          "created": "2019-03-12T10:01:25.000+0100",
-          "updated": "2019-03-12T10:01:25.000+0100",
-          "subtasks": [
-            {
-              "id": 103,
-              "key": "C-103",
-              "fields": {
-                "issuetype": {
-                  "name": "Test Case"
-                },
-                "summary": "Summary of a hundred and three"
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "key": "P-2",
+          "fields": {
+            "issuetype": {
+              "name": "Test Plan"
+            },
+            "summary": "Second summary",
+            "description": "",
+            "customfield_10006": "E-42",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100",
+            "subtasks": [
+              {
+                "id": 103,
+                "key": "C-103",
+                "fields": {
+                  "issuetype": {
+                    "name": "Test Case"
+                  },
+                  "summary": "Summary of a hundred and three"
+                }
+              },
+              {
+                "id": 104,
+                "key": "C-104",
+                "fields": {
+                  "issuetype": {
+                    "name": "Test Case"
+                  },
+                  "summary": "Summary of a hundred and four"
+                }
+              },
+              {
+                "id": 105,
+                "key": "C-105",
+                "fields": {
+                  "issuetype": {
+                    "name": "Test Case"
+                  },
+                  "summary": "Summary of a hundred and five"
+                }
+              },
+              {
+                "id": 106,
+                "key": "C-106",
+                "fields": {
+                  "issuetype": {
+                    "name": "Test Case"
+                  },
+                  "summary": "Summary of a hundred and six"
+                }
               }
-            }
-          ]
+            ]
+          }
         }
-      }
-    ]
+      ]
+    }
   },
   "children_data": {
-    "issues": [
-      {
-        "id": 101,
-        "key": "C-101",
-        "fields": {
-          "parent": {
-            "key": "P-1",
+    "data": {
+      "issues": [
+        {
+          "id": 101,
+          "key": "C-101",
+          "fields": {
+            "parent": {
+              "key": "P-1",
+              "issuetype": {
+                "name": "Test Plan"
+              }
+            },
             "issuetype": {
-              "name": "Test Plan"
-            }
-          },
-          "issuetype": {
-            "name": "Test Case"
-          },
-          "summary": "Summary of a hundred and one",
-          "description": "\n||*A*||*B*||\n|v1|v2|\n\n**Note**: Something noteworthy.\n",
-          "created": "2019-03-12T10:01:25.000+0100",
-          "updated": "2019-03-12T10:01:25.000+0100"
-        }
-      },
-      {
-        "id": 102,
-        "key": "C-102",
-        "fields": {
-          "parent": {
-            "key": "P-1",
+              "name": "Test Case"
+            },
+            "summary": "Summary of a hundred and one",
+            "description": "\n||*A*||*B*||\n|v1|v2|\n\n**Note**: Something noteworthy.\n",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100"
+          }
+        },
+        {
+          "id": 102,
+          "key": "C-102",
+          "fields": {
+            "parent": {
+              "key": "P-1",
+              "issuetype": {
+                "name": "Test Plan"
+              }
+            },
             "issuetype": {
-              "name": "Test Plan"
-            }
-          },
-          "issuetype": {
-            "name": "Test Case"
-          },
-          "summary": "Summary of a hundred and two",
-          "description": "\nTest cases:\n* C-103\n\n**Note**: Something else worthy to state.\n",
-          "created": "2019-03-12T10:01:25.000+0100",
-          "updated": "2019-03-12T10:01:25.000+0100"
-        }
-      },
-      {
-        "id": 103,
-        "key": "C-103",
-        "fields": {
-          "parent": {
-            "key": "P-2",
+              "name": "Test Case"
+            },
+            "summary": "Summary of a hundred and two",
+            "description": "\nTest cases:\n* C-103\n\n**Note**: Something else worthy to state.\n",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100"
+          }
+        },
+        {
+          "id": 103,
+          "key": "C-103",
+          "fields": {
+            "parent": {
+              "key": "P-2",
+              "issuetype": {
+                "name": "Test Plan"
+              }
+            },
             "issuetype": {
-              "name": "Test Plan"
-            }
-          },
-          "issuetype": {
-            "name": "Test Case"
-          },
-          "summary": "Summary of a hundred and three",
-          "description": "\n||*Another Head*||*Before the end column*||\n|value 1.1|value 2.1|\n|value 1.2|value 2.2|\n\n\n",
-          "created": "2019-03-12T10:01:25.000+0100",
-          "updated": "2019-03-12T10:01:25.000+0100"
+              "name": "Test Case"
+            },
+            "summary": "Summary of a hundred and three",
+            "description": "\n||*Another Head*||*Before the end column*||\n|value 1.1|value 2.1|\n|value 1.2|value 2.2|\n\n\n",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100"
+          }
+        },
+        {
+          "id": 104,
+          "key": "C-104",
+          "fields": {
+            "parent": {
+              "key": "P-2",
+              "issuetype": {
+                "name": "Test Plan"
+              }
+            },
+            "issuetype": {
+              "name": "Test Case"
+            },
+            "summary": "Summary of a hundred and four",
+            "description": "\n&nbsp;|*Another Head*|*Before the end column*|\n|value 1.1|value 2.1|\n|A list:\n- item\n- meti\n|value 2.2|\n\n\n",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100"
+          }
+        },
+        {
+          "id": 105,
+          "key": "C-105",
+          "fields": {
+            "parent": {
+              "key": "P-2",
+              "issuetype": {
+                "name": "Test Plan"
+              }
+            },
+            "issuetype": {
+              "name": "Test Case"
+            },
+            "summary": "Summary of a hundred and five",
+            "description": "\n||Another Head||Before the end column||\n|value 1.1|A list:\n* item\n* meti\n|\n|value 1.2|value 2.2|\n\n\n",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100"
+          }
+        },
+        {
+          "id": 106,
+          "key": "C-106",
+          "fields": {
+            "parent": {
+              "key": "P-2",
+              "issuetype": {
+                "name": "Test Plan"
+              }
+            },
+            "issuetype": {
+              "name": "Test Case"
+            },
+            "summary": "Summary of a hundred and six (simulate inconsistency due to race)",
+            "description": "\n||Another Head||Before the end column||\n|value 1.1|value 2.1|\n|value 1.2|value 2.2|\n\n\n",
+            "created": "2019-03-12T10:01:25.000+0100",
+            "updated": "2019-03-12T10:01:25.000+0100"
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }
-<!--[[[end]]] (checksum: 80d8643a753e061d71ab8f5f3048a835)-->
+<!--[[[end]]] (checksum: 2fb37a73c62c3e16029e63c60c9e39ed)-->
 
 Here some other text following the table ...
