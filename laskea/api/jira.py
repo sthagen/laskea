@@ -408,25 +408,30 @@ def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
         p_para = f'The {p_tree["type"]} consists of {c_count} {c_type_disp}'.strip(LF)
 
         c_parts = []
-        double_pipe = '||'
+        double_pipe, ast_pipe, pipe_ast = '||', '|*', '*|'
+        nbsp = '&nbsp;'
         for c_key, c_data in p_tree['children'].items():
             c_head = f'### {c_data["summary"]}'.strip().strip(LF)
-            c_content = LF.join(line for line in c_data['description'].strip().split(LF) if line)
-            if double_pipe in c_content:
-                # patch confluence markdown like table heads ...
-                c_patch = []
-                c_content_lines = c_content.split(LF)
-                for line in c_content_lines:
+            c_in = [line for line in c_data['description'].replace(nbsp, ' ').strip().split(LF)]
+            c_out = []
+            for line in c_in:
+                print(line, "TEST:", line.startswith(double_pipe) or line.startswith(ast_pipe), file=sys.stderr)
+                if line.startswith(double_pipe) or line.startswith(ast_pipe):
+                    # patch confluence markdown like table heads ...
                     line_s = line.strip()
                     extra_line = ''
                     if line_s.startswith(double_pipe) and line_s.endswith(double_pipe):
-                        lp = line.replace(double_pipe, '|')
-                        extra_line = ''.join(c if c == '|' else '-' for c in lp).replace('|-', '|:').replace('-|', ' |')
-                    c_patch.append(line)
+                        line = line.replace(double_pipe, '|')
+                        extra_line = ''.join(c if c == '|' else '-' for c in line).replace('|-', '|:').replace('-|', ' |')
+                    elif line_s.startswith(ast_pipe) and line_s.endswith(pipe_ast):
+                        extra_line = ''.join(c if c == '|' else '-' for c in line).replace('|-', '|:').replace('-|', ' |')
+                    c_out.append(line)
                     if extra_line:
-                        c_patch.append(extra_line)
-                c_content = LF.join(c_patch)
-            c_parts.extend([LF, c_head, LF, c_content])
+                        c_out.append(extra_line)
+                else:
+                    c_out.append(line)
+
+            c_parts.extend([LF, c_head, LF, *c_out])
 
         md.extend([LF, p_head, LF, p_para])
         md.extend(c_parts)
