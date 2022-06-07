@@ -415,7 +415,6 @@ def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
             c_in = [line for line in c_data['description'].replace(nbsp, ' ').strip().split(LF)]
             c_out = []
             for line in c_in:
-                print(line, "TEST:", line.startswith(double_pipe) or line.startswith(ast_pipe), file=sys.stderr)
                 if line.startswith(double_pipe) or line.startswith(ast_pipe):
                     # patch confluence markdown like table heads ...
                     line_s = line.strip()
