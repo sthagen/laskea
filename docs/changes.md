@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.6.8
+
+* Updated SBOM as well as third-party documentation (prose) and enhanced the naive table transformer.
+
 ## 2022.6.7
 
 * Updated SBOM as well as third-party documentation (prose) and enhanced the experimental feature (#29).
