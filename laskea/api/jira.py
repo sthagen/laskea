@@ -402,7 +402,7 @@ def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
     """Transform the document content to markdown."""
     md = []
     for p_key, p_tree in doc.items():
-        p_head = f'## {parent_type_name} {p_tree["summary"].title()} ({p_key})'.strip(LF)
+        p_head = f'## {p_tree["summary"]}'.strip().strip(LF)
         c_count = len(p_tree['children'])
         c_type_disp = f'{children_type_name}{"" if c_count == 1 else "s"}'
         p_para = f'The {p_tree["type"]} consists of {c_count} {c_type_disp}'.strip(LF)
@@ -410,8 +410,8 @@ def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
         c_parts = []
         double_pipe = '||'
         for c_key, c_data in p_tree['children'].items():
-            c_head = f'### {children_type_name} {c_data["summary"].title()} ({c_key})'.strip(LF)
-            c_content = LF.join(line for line in c_data['description'].strip(LF).split(LF) if line)
+            c_head = f'### {c_data["summary"]}'.strip().strip(LF)
+            c_content = LF.join(line for line in c_data['description'].strip().split(LF) if line)
             if double_pipe in c_content:
                 # patch confluence markdown like table heads ...
                 c_patch = []
