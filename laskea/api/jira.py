@@ -421,9 +421,13 @@ def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
                     extra_line = ''
                     if line_s.startswith(double_pipe) and line_s.endswith(double_pipe):
                         line = line.replace(double_pipe, '|')
-                        extra_line = ''.join(c if c == '|' else '-' for c in line).replace('|-', '|:').replace('-|', ' |')
+                        extra_line = (
+                            ''.join(c if c == '|' else '-' for c in line).replace('|-', '|:').replace('-|', ' |')
+                        )
                     elif line_s.startswith(ast_pipe) and line_s.endswith(pipe_ast):
-                        extra_line = ''.join(c if c == '|' else '-' for c in line).replace('|-', '|:').replace('-|', ' |')
+                        extra_line = (
+                            ''.join(c if c == '|' else '-' for c in line).replace('|-', '|:').replace('-|', ' |')
+                        )
                     c_out.append(line)
                     if extra_line:
                         c_out.append(extra_line)
