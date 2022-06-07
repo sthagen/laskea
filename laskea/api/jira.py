@@ -323,7 +323,7 @@ def parent_children_sections(
     doc = {}
     has_parents = {}
 
-    for parent in data['parent_data']['issues']:
+    for parent in data['parent_data']['data']['issues']:
         p_id = parent['id']
         p_key = parent['key']
 
@@ -372,7 +372,7 @@ def parent_children_sections(
                 has_parents[c_key] = []
             has_parents[c_key].append(p_key)
 
-    for child in data['children_data']['issues']:
+    for child in data['children_data']['data']['issues']:
         c_id = child['id']
         c_key = child['key']
 
@@ -380,7 +380,7 @@ def parent_children_sections(
 
         p_key = c_field['parent']['key']
         # assert p_key in has_parents[c_key]
-        p_itn = c_field['parent']['issuetype']['name']
+        # p_itn = c_field['parent']['issuetype']['name']
         # assert p_itn == parent_type_name
 
         c_itn = c_field['issuetype']['name']
