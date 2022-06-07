@@ -19,7 +19,7 @@ The Test Plan consists of 2 Test Cases
 
 ### Summary of a hundred and one
 
-||*A*||*B*||
+|*A*|*B*|
 |:- |:- |
 |v1|v2|
 **Note**: Something noteworthy.
@@ -36,14 +36,15 @@ The Test Plan consists of 4 Test Cases
 
 ### Summary of a hundred and three
 
-||*Another Head*||*Before the end column*||
+|*Another Head*|*Before the end column*|
 |:------------ |:--------------------- |
 |value 1.1|value 2.1|
 |value 1.2|value 2.2|
 
 ### Summary of a hundred and four
 
-&nbsp;|*Another Head*|*Before the end column*|
+|*Another Head*|*Before the end column*|
+|:------------ |:--------------------- |
 |value 1.1|value 2.1|
 |A list:
 - item
@@ -52,7 +53,7 @@ The Test Plan consists of 4 Test Cases
 
 ### Summary of a hundred and five
 
-||Another Head||Before the end column||
+|Another Head|Before the end column|
 |:---------- |:------------------- |
 |value 1.1|A list:
 * item
@@ -62,12 +63,12 @@ The Test Plan consists of 4 Test Cases
 
 ### Summary of a hundred and six
 
-||Another Head||Before the end column||
+|Another Head|Before the end column|
 |:---------- |:------------------- |
 |value 1.1|value 2.1|
 |value 1.2|value 2.2|
 
-<!--[[[end]]] (checksum: 0eda23b06803ad582ae581a91bf9bcd4)-->
+<!--[[[end]]] (checksum: 901d3ed763874b8091f3624b5bc8cbb8)-->
 
 and:
 
