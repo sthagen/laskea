@@ -126,4 +126,4 @@ def test_parent_children_sections():
         data = json.load(handle)
 
     doc = impl.parent_children_sections(impl.Jira(''), 'parent_jql', 'children_jql', 'Test Plan', 'Test Case', data)
-    assert '## Test Plan First Summary (P-1)' in doc
+    assert '## First summary' in doc
