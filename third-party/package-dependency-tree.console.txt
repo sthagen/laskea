@@ -16,7 +16,7 @@ atlassian-python-api==3.25.0
       - urllib3 [required: >=1.21.1,<1.27, installed: 1.26.8]
   - six [required: Any, installed: 1.16.0]
 cogapp==3.3.0
-jmespath==1.0.0
+jmespath==1.0.1
 pydantic==1.9.1
   - typing-extensions [required: >=3.7.4.3, installed: 4.1.1]
 requests-cache==0.9.4
