@@ -1,5 +1,6 @@
 bandit==1.7.4
 black==22.6.0
+cyclonedx-bom==3.5.0
 flake8==4.0.1
 flake8-quotes==3.3.1
 isort==5.10.1
