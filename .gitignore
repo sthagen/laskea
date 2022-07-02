@@ -137,3 +137,4 @@ current-bandit.json
 .laskea_cache.sqlite
 local/
 .vscode/
+local_*
