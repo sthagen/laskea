@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16+insiders-4.16.2">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8+insiders-4.19.1">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ca782038.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.485cfce5.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
@@ -78,9 +78,6 @@
     
       
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -131,23 +128,26 @@
         
           
           
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
           
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
             </label>
           
         
           
           
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
           
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
             </label>
           
         
       </form>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -165,7 +165,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -589,8 +589,8 @@
 
 <h1 id="third-party-dependencies">Third Party Dependencies</h1>
 <!--[[[fill sbom_sha256()]]]-->
-<p>The <a href="https://github.com/sthagen/laskea/blob/default/sbom.json">SBOM in CycloneDX v1.4 JSON format</a> with SHA256 checksum (<a href="https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256" title="sha256:ad8f5060a97d80b45b198b6dc89fc94132d56e0094f71162d3fcdefb379925bb">ad8f5060 ...</a>).</p>
-<!--[[[end]]] (checksum: d145a2e14c7d45c9d00654c930d65d44)-->
+<p>The <a href="https://github.com/sthagen/laskea/blob/default/sbom.json">SBOM in CycloneDX v1.4 JSON format</a> with SHA256 checksum (<a href="https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256" title="sha256:99f26f611f16aaae0c15575179a2f88ce50b684cc250d26537d0210a380b5bac">99f26f61 ...</a>).</p>
+<!--[[[end]]] (checksum: 32817282672dc5537b14ef04692819ad)-->
 <h2 id="licenses">Licenses</h2>
 <p>JSON files with complete license info of: <a href="direct-dependency-licenses.json">direct dependencies</a> | <a href="all-dependency-licenses.json">all dependencies</a></p>
 <h3 id="direct-dependencies">Direct Dependencies</h3>
@@ -635,8 +635,8 @@
 <td align="left">Data validation and settings management using python type hints</td>
 </tr>
 <tr>
-<td align="left"><a href="https://github.com/reclosedev/requests-cache">requests-cache</a></td>
-<td align="left"><a href="https://pypi.org/project/requests-cache/0.9.4/">0.9.4</a></td>
+<td align="left"><a href="https://github.com/requests-cache/requests-cache">requests-cache</a></td>
+<td align="left"><a href="https://pypi.org/project/requests-cache/0.9.5/">0.9.5</a></td>
 <td align="left">BSD License</td>
 <td align="left">Roman Haritonov</td>
 <td align="left">A transparent persistent cache for the requests library</td>
@@ -650,14 +650,14 @@
 </tr>
 <tr>
 <td align="left"><a href="https://github.com/tiangolo/typer">typer</a></td>
-<td align="left"><a href="https://pypi.org/project/typer/0.4.1/">0.4.1</a></td>
+<td align="left"><a href="https://pypi.org/project/typer/0.4.2/">0.4.2</a></td>
 <td align="left">MIT License</td>
 <td align="left">Sebastián Ramírez</td>
 <td align="left">Typer, build great CLIs. Easy to code. Based on Python type hints.</td>
 </tr>
 </tbody>
 </table>
-<!--[[[end]]] (checksum: 75ffd9ac5dd904c5e80df46f2aa68bdb)-->
+<!--[[[end]]] (checksum: 601b54848c8323c476d4e82bd9ee4924)-->
 
 <h3 id="indirect-dependencies">Indirect Dependencies</h3>
 <!--[[[fill indirect_dependencies_table()]]]-->
@@ -695,28 +695,28 @@
 </tr>
 <tr>
 <td align="left"><a href="https://github.com/python-attrs/cattrs">cattrs</a></td>
-<td align="left"><a href="https://pypi.org/project/cattrs/1.10.0/">1.10.0</a></td>
+<td align="left"><a href="https://pypi.org/project/cattrs/22.1.0/">22.1.0</a></td>
 <td align="left">MIT License</td>
 <td align="left">Tin Tvrtkovic</td>
 <td align="left">Composable complex class support for attrs and dataclasses.</td>
 </tr>
 <tr>
-<td align="left"><a href="https://certifiio.readthedocs.io/en/latest/">certifi</a></td>
-<td align="left"><a href="https://pypi.org/project/certifi/2021.10.8/">2021.10.8</a></td>
+<td align="left"><a href="https://github.com/certifi/python-certifi">certifi</a></td>
+<td align="left"><a href="https://pypi.org/project/certifi/2022.6.15/">2022.6.15</a></td>
 <td align="left">Mozilla Public License 2.0 (MPL 2.0)</td>
 <td align="left">Kenneth Reitz</td>
 <td align="left">Python package for providing Mozilla's CA Bundle.</td>
 </tr>
 <tr>
 <td align="left"><a href="https://github.com/ousret/charset_normalizer">charset-normalizer</a></td>
-<td align="left"><a href="https://pypi.org/project/charset-normalizer/2.0.12/">2.0.12</a></td>
+<td align="left"><a href="https://pypi.org/project/charset-normalizer/2.1.0/">2.1.0</a></td>
 <td align="left">MIT License</td>
 <td align="left">Ahmed TAHRI @Ousret</td>
 <td align="left">The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet.</td>
 </tr>
 <tr>
 <td align="left"><a href="https://palletsprojects.com/p/click/">click</a></td>
-<td align="left"><a href="https://pypi.org/project/click/8.0.4/">8.0.4</a></td>
+<td align="left"><a href="https://pypi.org/project/click/8.1.3/">8.1.3</a></td>
 <td align="left">BSD License</td>
 <td align="left">Armin Ronacher</td>
 <td align="left">Composable command line interface toolkit</td>
@@ -744,7 +744,7 @@
 </tr>
 <tr>
 <td align="left"><a href="https://requests.readthedocs.io">requests</a></td>
-<td align="left"><a href="https://pypi.org/project/requests/2.27.1/">2.27.1</a></td>
+<td align="left"><a href="https://pypi.org/project/requests/2.28.1/">2.28.1</a></td>
 <td align="left">Apache Software License</td>
 <td align="left">Kenneth Reitz</td>
 <td align="left">Python HTTP for Humans.</td>
@@ -758,10 +758,10 @@
 </tr>
 <tr>
 <td align="left"><a href="https://github.com/python/typing/blob/master/typing_extensions/README.rst">typing-extensions</a></td>
-<td align="left"><a href="https://pypi.org/project/typing-extensions/4.1.1/">4.1.1</a></td>
+<td align="left"><a href="https://pypi.org/project/typing-extensions/4.3.0/">4.3.0</a></td>
 <td align="left">Python Software Foundation License</td>
 <td align="left">UNKNOWN</td>
-<td align="left">Backported and Experimental Type Hints for Python 3.6+</td>
+<td align="left">Backported and Experimental Type Hints for Python 3.7+</td>
 </tr>
 <tr>
 <td align="left"><a href="https://github.com/niksite/url-normalize">url-normalize</a></td>
@@ -772,20 +772,20 @@
 </tr>
 <tr>
 <td align="left"><a href="https://urllib3.readthedocs.io/">urllib3</a></td>
-<td align="left"><a href="https://pypi.org/project/urllib3/1.26.8/">1.26.8</a></td>
+<td align="left"><a href="https://pypi.org/project/urllib3/1.26.9/">1.26.9</a></td>
 <td align="left">MIT License</td>
 <td align="left">Andrey Petrov</td>
 <td align="left">HTTP library with thread-safe connection pooling, file post, and more.</td>
 </tr>
 <tr>
 <td align="left"><a href="https://github.com/GrahamDumpleton/wrapt">wrapt</a></td>
-<td align="left"><a href="https://pypi.org/project/wrapt/1.13.3/">1.13.3</a></td>
+<td align="left"><a href="https://pypi.org/project/wrapt/1.14.1/">1.14.1</a></td>
 <td align="left">BSD License</td>
 <td align="left">Graham Dumpleton</td>
 <td align="left">Module for decorators, wrappers and monkey patching.</td>
 </tr>
 <tr>
-<td align="left"><!--[[[end]]] (checksum: 91185e223dfd4c47bd8a360476c98be5)-->
+<td align="left"><!--[[[end]]] (checksum: f2282beed60f852f233a64ded98fe6f9)-->
 </td>
 <td align="left"></td>
 <td align="left"></td>
@@ -803,43 +803,46 @@
 <!--[[[fill dependency_tree_console_text()]]]-->
 <div class="highlight"><pre><span></span><code><span class="go">atlassian-python-api==3.25.0</span>
 <span class="go">  - deprecated [required: Any, installed: 1.2.13]</span>
-<span class="go">    - wrapt [required: &gt;=1.10,&lt;2, installed: 1.13.3]</span>
+<span class="go">    - wrapt [required: &gt;=1.10,&lt;2, installed: 1.14.1]</span>
 <span class="go">  - oauthlib [required: Any, installed: 3.2.0]</span>
-<span class="go">  - requests [required: Any, installed: 2.27.1]</span>
-<span class="go">    - certifi [required: &gt;=2017.4.17, installed: 2021.10.8]</span>
-<span class="go">    - charset-normalizer [required: ~=2.0.0, installed: 2.0.12]</span>
+<span class="go">  - requests [required: Any, installed: 2.28.1]</span>
+<span class="go">    - certifi [required: &gt;=2017.4.17, installed: 2022.6.15]</span>
+<span class="go">    - charset-normalizer [required: &gt;=2,&lt;3, installed: 2.1.0]</span>
 <span class="go">    - idna [required: &gt;=2.5,&lt;4, installed: 3.3]</span>
-<span class="go">    - urllib3 [required: &gt;=1.21.1,&lt;1.27, installed: 1.26.8]</span>
+<span class="go">    - urllib3 [required: &gt;=1.21.1,&lt;1.27, installed: 1.26.9]</span>
 <span class="go">  - requests-oauthlib [required: Any, installed: 1.3.1]</span>
 <span class="go">    - oauthlib [required: &gt;=3.0.0, installed: 3.2.0]</span>
-<span class="go">    - requests [required: &gt;=2.0.0, installed: 2.27.1]</span>
-<span class="go">      - certifi [required: &gt;=2017.4.17, installed: 2021.10.8]</span>
-<span class="go">      - charset-normalizer [required: ~=2.0.0, installed: 2.0.12]</span>
+<span class="go">    - requests [required: &gt;=2.0.0, installed: 2.28.1]</span>
+<span class="go">      - certifi [required: &gt;=2017.4.17, installed: 2022.6.15]</span>
+<span class="go">      - charset-normalizer [required: &gt;=2,&lt;3, installed: 2.1.0]</span>
 <span class="go">      - idna [required: &gt;=2.5,&lt;4, installed: 3.3]</span>
-<span class="go">      - urllib3 [required: &gt;=1.21.1,&lt;1.27, installed: 1.26.8]</span>
+<span class="go">      - urllib3 [required: &gt;=1.21.1,&lt;1.27, installed: 1.26.9]</span>
 <span class="go">  - six [required: Any, installed: 1.16.0]</span>
 <span class="go">cogapp==3.3.0</span>
 <span class="go">jmespath==1.0.1</span>
 <span class="go">pydantic==1.9.1</span>
-<span class="go">  - typing-extensions [required: &gt;=3.7.4.3, installed: 4.1.1]</span>
-<span class="go">requests-cache==0.9.4</span>
+<span class="go">  - typing-extensions [required: &gt;=3.7.4.3, installed: 4.3.0]</span>
+<span class="go">requests-cache==0.9.5</span>
 <span class="go">  - appdirs [required: &gt;=1.4.4,&lt;2.0.0, installed: 1.4.4]</span>
 <span class="go">  - attrs [required: &gt;=21.2,&lt;22.0, installed: 21.4.0]</span>
-<span class="go">  - cattrs [required: &gt;=1.8,&lt;2.0, installed: 1.10.0]</span>
+<span class="go">  - cattrs [required: &gt;=1.8,&lt;=22.2, installed: 22.1.0]</span>
 <span class="go">    - attrs [required: &gt;=20, installed: 21.4.0]</span>
-<span class="go">  - requests [required: &gt;=2.22,&lt;3.0, installed: 2.27.1]</span>
-<span class="go">    - certifi [required: &gt;=2017.4.17, installed: 2021.10.8]</span>
-<span class="go">    - charset-normalizer [required: ~=2.0.0, installed: 2.0.12]</span>
+<span class="go">    - exceptiongroup [required: Any, installed: 1.0.0rc8]</span>
+<span class="go">  - exceptiongroup [required: &gt;=1.0.0-rc.3, installed: 1.0.0rc8]</span>
+<span class="go">  - requests [required: &gt;=2.22,&lt;3.0, installed: 2.28.1]</span>
+<span class="go">    - certifi [required: &gt;=2017.4.17, installed: 2022.6.15]</span>
+<span class="go">    - charset-normalizer [required: &gt;=2,&lt;3, installed: 2.1.0]</span>
 <span class="go">    - idna [required: &gt;=2.5,&lt;4, installed: 3.3]</span>
-<span class="go">    - urllib3 [required: &gt;=1.21.1,&lt;1.27, installed: 1.26.8]</span>
+<span class="go">    - urllib3 [required: &gt;=1.21.1,&lt;1.27, installed: 1.26.9]</span>
 <span class="go">  - url-normalize [required: &gt;=1.4,&lt;2.0, installed: 1.4.3]</span>
 <span class="go">    - six [required: Any, installed: 1.16.0]</span>
-<span class="go">  - urllib3 [required: &gt;=1.25.5,&lt;2.0.0, installed: 1.26.8]</span>
+<span class="go">  - urllib3 [required: &gt;=1.25.5,&lt;2.0.0, installed: 1.26.9]</span>
 <span class="go">scooby==0.5.12</span>
-<span class="go">typer==0.4.1</span>
-<span class="go">  - click [required: &gt;=7.1.1,&lt;9.0.0, installed: 8.0.4]</span>
+<span class="go">typer==0.4.2</span>
+<span class="go">  - click [required: &gt;=7.1.1,&lt;9.0.0, installed: 8.1.3]</span>
 </code></pre></div>
-<!--[[[end]]] (checksum: 632cbbbfa7b7440b572a469b5925f6ab)-->
+<!--[[[end]]] (checksum: 7a91d3cddf4f66a43a126be668b4476c)-->
+
 
 
 
@@ -847,6 +850,7 @@
               
             </article>
             
+<script>var input,hash=location.hash.slice(1);hash.startsWith("__tabbed_")&&((input=document.getElementById(hash)).checked=!0)</script>
           </div>
         </div>
         
@@ -854,7 +858,8 @@
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href="../changes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Changes" rel="prev">
@@ -934,10 +939,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.4bc08946.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.1a3bf749.min.js"></script>
+      <script src="../assets/javascripts/bundle.2131bdac.min.js"></script>
       
     
   </body>
