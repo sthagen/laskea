@@ -51,7 +51,7 @@ D_LIST_PAYLOADS = tuple(
     f'[{row["key"]}]({URL_FIXTURE}/browse/{row["key"]})\n:{row["summary"]}\n' for row in D_LIST_FIXTURE['rows']
 )
 
-P_C_L_FIXTURE_PATH = pathlib.Path('tests', 'fixtures', 'basic', 'p_c_jira.json')
+P_C_L_FIXTURE_PATH = pathlib.Path('test', 'fixtures', 'basic', 'p_c_jira.json')
 
 
 @pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])

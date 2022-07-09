@@ -21,7 +21,7 @@ def test_process_spoc_no_file(capsys):
 
 
 def test_process_spoc_template_file(capsys):
-    fixture_config = pathlib.Path('tests', 'fixtures', 'basic', 'dot.laskea.json')
+    fixture_config = pathlib.Path('test', 'fixtures', 'basic', 'dot.laskea.json')
     assert cfg.process(str(fixture_config), {'quiet': laskea.QUIET, 'verbose': True}) is None
     out, err = capsys.readouterr()
     assert 'Configuration interface combined file, environment, and commandline values!' in err
