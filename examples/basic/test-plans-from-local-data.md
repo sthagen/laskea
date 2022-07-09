@@ -1,11 +1,11 @@
 <!--[[[fill
 import json
 import pathlib
-P_C_L_FIXTURE_PATH = pathlib.Path('tests', 'fixtures', 'basic', 'p_c_jira.json')
+P_C_L_FIXTURE_PATH = pathlib.Path('test', 'fixtures', 'basic', 'p_c_jira.json')
 with open(P_C_L_FIXTURE_PATH, 'rt', encoding='utf-8') as handle:
     data = json.load(handle)
 ]]]-->
-<!--[[[end]]] (checksum: d41d8cd98f00b204e9800998ecf8427e)-->
+<!--[[[end]]]-->
 
 # Basic Parent Children Sections Example File
 
