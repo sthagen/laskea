@@ -144,8 +144,7 @@ def markdown_table(
             if not laskea.DRY_RUN:
                 print(message, file=sys.stderr)
             return message
-        else:
-            return ''
+        return ''
 
     table = copy.deepcopy(data['rows'])
     columns = list(table[0].keys())  # noqa
@@ -191,8 +190,7 @@ def markdown_list(
             if not laskea.DRY_RUN:
                 print(message, file=sys.stderr)
             return message
-        else:
-            return ''
+        return ''
 
     items = []
     for slot, record in enumerate(data['rows']):
@@ -211,15 +209,14 @@ def markdown_list(
         xl = tuple(f'{lt} {key} - {summary}' for key, summary in items)
         the_list = '\n'.join(xl) + '\n'
         return the_list.replace('\r', '') if BASE_LF_ONLY else the_list
-    elif list_type == 'dl':
+    if list_type == 'dl':
         # 'Term'
         # ':definition of term'
         #
         xl = tuple(f'{key}\n:{summary}\n' for key, summary in items)
         the_list = '\n'.join(xl) + '\n'
         return the_list.replace('\r', '') if BASE_LF_ONLY else the_list
-    else:
-        return f'Unexpected list type ({list_type}) in markdown_list not in ({("dl", "ol", "ul")})' + '\n'
+    return f'Unexpected list type ({list_type}) in markdown_list not in ({("dl", "ol", "ul")})' + '\n'
 
 
 @no_type_check
@@ -242,8 +239,7 @@ def markdown_heading(
             if not laskea.DRY_RUN:
                 print(message, file=sys.stderr)
             return message
-        else:
-            return ''
+        return ''
 
     items = []
     for slot, record in enumerate(data['rows']):
@@ -263,19 +259,17 @@ def markdown_heading(
             if not laskea.DRY_RUN:
                 print(message, file=sys.stderr)
             return message.replace('\r', '') if BASE_LF_ONLY else message
-        else:
-            return ''
+        return ''
     level_range = tuple(range(1, 6 + 1))
     if level in level_range:
         heading_token = '#' * level
         xl = tuple(f'{heading_token} {key} - {summary}' for key, summary in items)
         the_heading = '\n'.join(xl)
         return the_heading.replace('\r', '') if BASE_LF_ONLY else the_heading
-    else:
-        message = f'Unexpected level for heading ({level}) in markdown_heading not in ({level_range})'
-        if not laskea.DRY_RUN:
-            print(message, file=sys.stderr)
-        return message
+    message = f'Unexpected level for heading ({level}) in markdown_heading not in ({level_range})'
+    if not laskea.DRY_RUN:
+        print(message, file=sys.stderr)
+    return message
 
 
 @no_type_check
@@ -412,7 +406,7 @@ def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
         nbsp = '&nbsp;'
         for c_key, c_data in p_tree['children'].items():
             c_head = f'### {c_data["summary"]}'.strip().strip(LF)
-            c_in = [line for line in c_data['description'].replace(nbsp, ' ').strip().split(LF)]
+            c_in = list(c_data['description'].replace(nbsp, ' ').strip().split(LF))
             c_out = []
             for line in c_in:
                 if line.startswith(double_pipe) or line.startswith(ast_pipe):
