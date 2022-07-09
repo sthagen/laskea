@@ -2,18 +2,18 @@ SHELL = /bin/bash
 package = shagen/laskea
 
 .DEFAULT_GOAL := all
-isort = isort laskea tests
-black = black -S -l 120 --target-version py38 laskea tests
+isort = isort laskea test
+black = black -S -l 120 --target-version py38 laskea test
 
 .PHONY: install
 install:
 	pip install -U pip wheel
-	pip install -r tests/requirements.txt
+	pip install -r test/requirements.txt
 	pip install -U .
 
 .PHONY: install-all
 install-all: install
-	pip install -r tests/requirements-dev.txt
+	pip install -r test/requirements-dev.txt
 
 .PHONY: format
 format:
@@ -22,13 +22,13 @@ format:
 
 .PHONY: init
 init:
-	pip install -r tests/requirements.txt
-	pip install -r tests/requirements-dev.txt
+	pip install -r test/requirements.txt
+	pip install -r test/requirements-dev.txt
 
 .PHONY: lint
 lint:
 	python setup.py check -ms
-	flake8 laskea/ tests/
+	flake8 laskea/ test/
 	$(isort) --check-only --df
 	$(black) --check --diff
 
@@ -59,12 +59,12 @@ version:
 
 .PHONY: secure
 secure:
-	@bandit --output current-bandit.json --baseline baseline-bandit.json --format json --recursive --quiet --exclude ./tests,./build laskea
+	@bandit --output current-bandit.json --baseline baseline-bandit.json --format json --recursive --quiet --exclude ./test,./build laskea
 	@diff -Nu {baseline,current}-bandit.json; printf "^ Only the timestamps ^^ ^^ ^^ ^^ ^^ ^^ should differ. OK?\n"
 
 .PHONY: baseline
 baseline:
-	@bandit --output baseline-bandit.json --format json --recursive --quiet --exclude ./tests,./build laskea
+	@bandit --output baseline-bandit.json --format json --recursive --quiet --exclude ./test,./build laskea
 	@cat baseline-bandit.json; printf "\n^ The new baseline ^^ ^^ ^^ ^^ ^^ ^^. OK?\n"
 
 .PHONY: clean
