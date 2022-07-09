@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# pylint: disable=expression-not-assigned,line-too-long
 """Tabulator style REST/JSON data proxy connector API for code generation."""
 from typing import Mapping, no_type_check
 
