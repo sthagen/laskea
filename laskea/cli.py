@@ -1,6 +1,5 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
-# pylint: disable=line-too-long
 """Commandline API gateway for laskea."""
 import sys
 from typing import List
@@ -10,8 +9,8 @@ import typer
 
 import laskea
 import laskea.config as cfg
-import laskea.env as env
 import laskea.laskea as fill
+from laskea import env
 
 app = typer.Typer(
     add_completion=False,
