@@ -240,7 +240,7 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
             sys.exit(2)
         if not laskea.QUIET:
             print(f'Reading configuration file {cp} as requested...', file=sys.stderr)
-        with cp.open() as handle:
+        with cp.open(encoding=laskea.ENCODING) as handle:
             configuration = json.load(handle)
     else:
         cn = laskea.DEFAULT_CONFIG_NAME
