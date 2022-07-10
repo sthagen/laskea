@@ -32,8 +32,8 @@ lint:
 	$(isort) --check-only --df
 	$(black) --check --diff
 
-.PHONY: mypy
-mypy:
+.PHONY: types
+types:
 	mypy laskea
 
 .PHONY: test
@@ -46,7 +46,7 @@ testcov: test
 	@coverage html
 
 .PHONY: all
-all: lint mypy testcov
+all: lint types testcov
 
 .PHONY: sbom
 sbom:
