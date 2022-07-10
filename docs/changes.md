@@ -1,20 +1,26 @@
 # Change History
 
-## 2022.6.8
+## 2022.7.10
+
+* Updated SBOM as well as third-party documentation (prose) and fixed findings from static code analysis.
+
+## 2022
+
+### 2022.6.8
 
 * Updated SBOM as well as third-party documentation (prose) and enhanced the naive table transformer.
 
-## 2022.6.7
+### 2022.6.7
 
 * Updated SBOM as well as third-party documentation (prose) and enhanced the experimental feature (#29).
-## 2022.6.6
+### 2022.6.6
 
 * Updated SBOM as well as third-party documentation (prose) and added an experimental feature (#29).
-## 2022.5.31
+
+### 2022.5.31
 
 * Bumped dependencies and updated SBOM as well as third-party documentation (prose).
 
-## 2022.4
 ### 2022.4.30
 
 * Added configuration parameter to enable server certificate verification for tabulator API
@@ -25,8 +31,6 @@
 
 * Fix for configuration file discovery (#23 Configuration search ignores current dir)
 * Bumped atlassian API dependency
-
-## 2022.3
 
 ### 2022.3.23
 
@@ -99,8 +103,6 @@
 * Fixed laskea.api.jira matrix construction (library mode)
 * Added cog api integration for update
 * Moved all inputs to environment (no file based configuration yet)
-
-## 2022.2
 
 ### 2022.2.28
 
