@@ -73,8 +73,8 @@ from laskea.api.jira import (  # noqa
 from laskea.embed import dl, h1, h2, h3, h4, h5, h6, kpi_table, metrics_table, ol, table, test_plans, ul  # noqa
 
 # [[[fill git_describe()]]]
-__version__ = '2022.6.8+parent.6698b850'
-# [[[end]]] (checksum: fce1e9233e2cddbb01ab14888cfccfa8)
+__version__ = '2022.7.10+parent.ccc349b3'
+# [[[end]]] (checksum: b4cf5b29ff018894e2bcac373453e73a)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
