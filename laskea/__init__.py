@@ -21,7 +21,7 @@ DEFAULT_JOIN_STRING = ' <br>'
 BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
 BASE_LF_ONLY = bool(os.getenv(f'{APP_ENV}_LF_ONLY', DEFAULT_LF_ONLY))
 BASE_JOIN_STRING = os.getenv(f'{APP_ENV}_JOIN_STRING', DEFAULT_JOIN_STRING)
-FAKE_SECRET = '*' * 13
+MASK_DISPLAY = '*' * 13
 TABULATOR = {
     'overview': {
         'base_url': 'https://example.com/metrics/',

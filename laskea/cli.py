@@ -68,7 +68,7 @@ def report(
 
 
 @app.command('update')
-def update(
+def update(  # noqa
     source: List[str],
     inp: str = typer.Option(
         '',

@@ -293,7 +293,7 @@ def report_context(command: str, transaction_mode: str, vector: List[str]) -> No
     empty = ''
     print(f'- {laskea.APP_ENV}_USER: ({os.getenv(app_env_user, empty)})', file=sys.stderr)
     print(
-        f'- {laskea.APP_ENV}_TOKEN: ({laskea.FAKE_SECRET if len(os.getenv(app_env_token, empty)) else empty})',
+        f'- {laskea.APP_ENV}_TOKEN: ({laskea.MASK_DISPLAY if len(os.getenv(app_env_token, empty)) else empty})',
         file=sys.stderr,
     )
     print(f'- {laskea.APP_ENV}_BASE_URL: ({os.getenv(app_env_base_url, empty)})', file=sys.stderr)
@@ -334,7 +334,7 @@ def safe_report_configuration(configuration: Dict[str, object], header: str) -> 
     print('# --- BEGIN ---', file=sys.stderr)
     fake_configuration = copy.deepcopy(configuration)
     if jmespath.search('remote.token', fake_configuration):
-        fake_configuration['remote']['token'] = laskea.FAKE_SECRET  # noqa
+        fake_configuration['remote']['token'] = laskea.MASK_DISPLAY  # noqa
     print(json.dumps(fake_configuration, indent=2), file=sys.stderr)
     print('# --- E N D ---', file=sys.stderr)
 

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# pylint: disable=expression-not-assigned,line-too-long
 """JIRA proxy connector API for code generation."""
 import copy
 import json
@@ -193,7 +192,7 @@ def markdown_list(
         return ''
 
     items = []
-    for slot, record in enumerate(data['rows']):
+    for record in data['rows']:
         k, v = '', ''
         for key, cell in record.items():
             if key.lower() not in ('key', 'summary'):
@@ -242,7 +241,7 @@ def markdown_heading(
         return ''
 
     items = []
-    for slot, record in enumerate(data['rows']):
+    for record in data['rows']:
         k, v = '', ''
         for key, cell in record.items():
             if key.lower() not in ('key', 'summary'):
@@ -392,10 +391,10 @@ def parent_children_sections(
 
 
 @no_type_check
-def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
+def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:  # noqa
     """Transform the document content to markdown."""
     md = []
-    for p_key, p_tree in doc.items():
+    for p_tree in doc.values():
         p_head = f'## {p_tree["summary"]}'.strip().strip(LF)
         c_count = len(p_tree['children'])
         c_type_disp = f'{children_type_name}{"" if c_count == 1 else "s"}'
@@ -404,7 +403,7 @@ def doc_to_markdown(doc, parent_type_name: str, children_type_name: str) -> str:
         c_parts = []
         double_pipe, ast_pipe, pipe_ast = '||', '|*', '*|'
         nbsp = '&nbsp;'
-        for c_key, c_data in p_tree['children'].items():
+        for c_data in p_tree['children'].values():
             c_head = f'### {c_data["summary"]}'.strip().strip(LF)
             c_in = list(c_data['description'].replace(nbsp, ' ').strip().split(LF))
             c_out = []
