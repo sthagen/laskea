@@ -73,10 +73,6 @@ def _generate_dependency_information() -> None:
     if not noise.startswith('created path: ') or not noise.endswith('all-dependency-licenses.json'):
         raise RuntimeError(noise)
 
-    """
-    pipdeptree --packages antlr4-python3-runtime,atlassian-python-api,cogapp,jmespath,pydantic,requests-cache,typer --graph-output svg > docs/third-party/package-dependency-tree.svg
-    pipdeptree --packages antlr4-python3-runtime,atlassian-python-api,cogapp,jmespath,pydantic,requests-cache,typer --json-tree --warn silence > docs/third-party/package-dependency-tree.json
-    """
     base_vector = ['pipdeptree', '--packages', ','.join(direct_names)]
     jobs = (
         (TP_PATH / 'package-dependency-tree.dot.txt', base_vector + ['--graph-output', 'dot']),
@@ -102,7 +98,7 @@ def _markdown_table(table: List[Tuple[str, str, str, str, str]], header_labels=H
     """Create the gfm table as string."""
     columns = header_labels
     col_wid = {key: len(key) for key in columns}
-    for slot, record in enumerate(table):
+    for record in table:
         for key, cell in zip(columns, record):
             col_wid[key] = max(len(cell), col_wid[key])
 
