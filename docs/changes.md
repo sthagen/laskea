@@ -1,10 +1,19 @@
 # Change History
 
+## 2022.7.27
+
+* Bumped dependencies
+* Updated SBOM as well as third-party documentation (prose)
+* Moved documentation to [codes.dilettant.life/docs](https://codes.dilettant.life/docs/laskea)
+* Moved tracker to [todo.sr.ht/~sthagen](https://todo.sr.ht/~sthagen/laskea)
+* Moved normative source repo to [git.sr.ht/~sthagen](https://git.sr.ht/~sthagen/laskea)
+* Provide test coverage documentation at [codes.dilettant.life/coverage](https://codes.dilettant.life/coverage/laskea)
+
 ## 2022.7.10
 
 * Updated SBOM as well as third-party documentation (prose) and fixed findings from static code analysis.
 
-## 2022
+## Older
 
 ### 2022.6.8
 
