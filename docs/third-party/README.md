@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([ebbbbfb9 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:ebbbbfb9c7bce1d4fbd3bfdc3b3ba645a06c144156978aa88989162bd6ecf9af")).
-<!--[[[end]]] (checksum: e0c4c315d62da00fd9f73dec384c42f2)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://github.com/sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([a02ed701 ...](https://raw.githubusercontent.com/sthagen/laskea/default/sbom.json.sha256 "sha256:a02ed701afae0057ad44f071af5c48fe5175e9a90c4716454128f6cb06eb45ca")).
+<!--[[[end]]] (checksum: dec3f56b46d553658216fc9a570ecde2)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -17,9 +17,9 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [jmespath](https://github.com/jmespath/jmespath.py)                           | [1.0.1](https://pypi.org/project/jmespath/1.0.1/)               | MIT License             | James Saryerwinnie                 | JSON Matching Expressions                                               |
 | [pydantic](https://github.com/samuelcolvin/pydantic)                          | [1.9.1](https://pypi.org/project/pydantic/1.9.1/)               | MIT License             | Samuel Colvin                      | Data validation and settings management using python type hints         |
 | [requests-cache](https://github.com/requests-cache/requests-cache)            | [0.9.5](https://pypi.org/project/requests-cache/0.9.5/)         | BSD License             | Roman Haritonov                    | A transparent persistent cache for the requests library                 |
-| [scooby](https://github.com/banesullivan/scooby)                              | [0.5.12](https://pypi.org/project/scooby/0.5.12/)               | MIT License             | Dieter Werthmüller & Bane Sullivan | A Great Dane turned Python environment detective                        |
-| [typer](https://github.com/tiangolo/typer)                                    | [0.5.0](https://pypi.org/project/typer/0.5.0/)                  | MIT License             | Sebastián Ramírez                  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
-<!--[[[end]]] (checksum: 2e17de2d9466d40cf6c04d87b550c246)-->
+| [scooby](https://github.com/banesullivan/scooby)                              | [0.6.0](https://pypi.org/project/scooby/0.6.0/)                 | MIT License             | Dieter Werthmüller & Bane Sullivan | A Great Dane turned Python environment detective                        |
+| [typer](https://github.com/tiangolo/typer)                                    | [0.4.2](https://pypi.org/project/typer/0.4.2/)                  | MIT License             | Sebastián Ramírez                  | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
+<!--[[[end]]] (checksum: 5f1afe53386cd607ad535e1f4418b8aa)-->
 
 ### Indirect Dependencies
 
@@ -94,8 +94,8 @@ requests-cache==0.9.5
   - url-normalize [required: >=1.4,<2.0, installed: 1.4.3]
     - six [required: Any, installed: 1.16.0]
   - urllib3 [required: >=1.25.5,<2.0.0, installed: 1.26.9]
-scooby==0.5.12
-typer==0.5.0
+scooby==0.6.0
+typer==0.4.2
   - click [required: >=7.1.1,<9.0.0, installed: 8.1.3]
 ````
-<!--[[[end]]] (checksum: 38bf6c75ea5917b720b1afcf131880c3)-->
+<!--[[[end]]] (checksum: 5bc71165430fe95a472d96f609fba45b)-->
