@@ -18,7 +18,7 @@ User and developer [documentation of laskea](https://codes.dilettant.life/docs/l
 
 ## Bug Tracker
 
-Feature requests and bug reports are bested entered in the [todos of laskea](https://todo.sr.ht/~sthagen/laskea).
+Feature requests and bug reports are best entered in the [todos of laskea](https://todo.sr.ht/~sthagen/laskea).
 
 ## Primary Source repository
 
