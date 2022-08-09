@@ -14,7 +14,7 @@ Third party dependencies are documented in the folder [third-party](third-party/
 
 ## Bug Tracker
 
-Feature requests and bug reports are bested entered in the [todos of laskea](https://todo.sr.ht/~sthagen/laskea).
+Feature requests and bug reports are best entered in the [todos of laskea](https://todo.sr.ht/~sthagen/laskea).
 
 ## Primary Source repository
 
