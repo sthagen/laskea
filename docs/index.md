@@ -18,5 +18,9 @@ Feature requests and bug reports are best entered in the [todos of laskea](https
 
 ## Primary Source repository
 
-The primary source repository of [laskea is at sourcehut](https://git.sr.ht/~sthagen/laskea)
-a collection of tools useful for software development.
+The primary source of `laskea` lives somewhere on a mountain in Central Switzerland.
+But, we use decentralized version control (git), so any clone can become the source to everyone's benefit, no central only code.
+Anyway, the preferred public clones of `laskea` are:
+
+* [on codeberg](https://codeberg.org/sthagen/laskea) - a collaboration platform and git hosting for free and open source software, content and projects.
+* [at sourcehut](https://git.sr.ht/~sthagen/laskea) - a collection of tools useful for software development.
