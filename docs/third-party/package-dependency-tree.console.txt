@@ -1,4 +1,4 @@
-atlassian-python-api==3.25.0
+atlassian-python-api==3.27.0
   - deprecated [required: Any, installed: 1.2.13]
     - wrapt [required: >=1.10,<2, installed: 1.14.1]
   - oauthlib [required: Any, installed: 3.2.0]
@@ -17,7 +17,7 @@ atlassian-python-api==3.25.0
   - six [required: Any, installed: 1.16.0]
 cogapp==3.3.0
 jmespath==1.0.1
-pydantic==1.9.1
+pydantic==1.9.2
   - typing-extensions [required: >=3.7.4.3, installed: 4.3.0]
 requests-cache==0.9.5
   - appdirs [required: >=1.4.4,<2.0.0, installed: 1.4.4]
@@ -35,5 +35,5 @@ requests-cache==0.9.5
     - six [required: Any, installed: 1.16.0]
   - urllib3 [required: >=1.25.5,<2.0.0, installed: 1.26.9]
 scooby==0.6.0
-typer==0.4.2
+typer==0.6.1
   - click [required: >=7.1.1,<9.0.0, installed: 8.1.3]

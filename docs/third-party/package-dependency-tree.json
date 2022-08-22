@@ -2,8 +2,8 @@
     {
         "key": "atlassian-python-api",
         "package_name": "atlassian-python-api",
-        "installed_version": "3.25.0",
-        "required_version": "3.25.0",
+        "installed_version": "3.27.0",
+        "required_version": "3.27.0",
         "dependencies": [
             {
                 "key": "deprecated",
@@ -140,8 +140,8 @@
     {
         "key": "pydantic",
         "package_name": "pydantic",
-        "installed_version": "1.9.1",
-        "required_version": "1.9.1",
+        "installed_version": "1.9.2",
+        "required_version": "1.9.2",
         "dependencies": [
             {
                 "key": "typing-extensions",
@@ -271,8 +271,8 @@
     {
         "key": "typer",
         "package_name": "typer",
-        "installed_version": "0.4.2",
-        "required_version": "0.4.2",
+        "installed_version": "0.6.1",
+        "required_version": "0.6.1",
         "dependencies": [
             {
                 "key": "click",
