@@ -155,28 +155,28 @@
     {
         "key": "requests-cache",
         "package_name": "requests-cache",
-        "installed_version": "0.9.5",
-        "required_version": "0.9.5",
+        "installed_version": "0.9.6",
+        "required_version": "0.9.6",
         "dependencies": [
             {
                 "key": "appdirs",
                 "package_name": "appdirs",
                 "installed_version": "1.4.4",
-                "required_version": ">=1.4.4,<2.0.0",
+                "required_version": ">=1.4.4",
                 "dependencies": []
             },
             {
                 "key": "attrs",
                 "package_name": "attrs",
                 "installed_version": "21.4.0",
-                "required_version": ">=21.2,<22.0",
+                "required_version": ">=21.2",
                 "dependencies": []
             },
             {
                 "key": "cattrs",
                 "package_name": "cattrs",
                 "installed_version": "22.1.0",
-                "required_version": ">=1.8,<=22.2",
+                "required_version": ">=1.8",
                 "dependencies": [
                     {
                         "key": "attrs",
@@ -195,17 +195,10 @@
                 ]
             },
             {
-                "key": "exceptiongroup",
-                "package_name": "exceptiongroup",
-                "installed_version": "1.0.0rc8",
-                "required_version": ">=1.0.0-rc.3",
-                "dependencies": []
-            },
-            {
                 "key": "requests",
                 "package_name": "requests",
                 "installed_version": "2.28.1",
-                "required_version": ">=2.22,<3.0",
+                "required_version": ">=2.22",
                 "dependencies": [
                     {
                         "key": "certifi",
@@ -241,7 +234,7 @@
                 "key": "url-normalize",
                 "package_name": "url-normalize",
                 "installed_version": "1.4.3",
-                "required_version": ">=1.4,<2.0",
+                "required_version": ">=1.4",
                 "dependencies": [
                     {
                         "key": "six",
@@ -256,7 +249,7 @@
                 "key": "urllib3",
                 "package_name": "urllib3",
                 "installed_version": "1.26.9",
-                "required_version": ">=1.25.5,<2.0.0",
+                "required_version": ">=1.25.5",
                 "dependencies": []
             }
         ]
