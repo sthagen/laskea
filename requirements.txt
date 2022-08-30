@@ -1,7 +1,7 @@
 atlassian-python-api==3.27.0
 cogapp==3.3.0
 jmespath==1.0.1
-pydantic==1.9.2
+pydantic==1.10.0
 requests-cache==0.9.6
 scooby==0.6.0
 typer==0.6.1
