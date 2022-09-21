@@ -4,10 +4,20 @@ from typing import Dict, Union, no_type_check
 from atlassian import Jira  # type: ignore # noqa
 
 import laskea
+import laskea.api.excel as exc
 import laskea.api.jira as api
 import laskea.api.tabulator as tab
 
 DB: Dict[str, Union[None, Jira]] = {'handle': None}
+
+
+@no_type_check
+def mbom_table(configuration=None) -> None:
+    """Public document interface."""
+    if configuration is None:
+        configuration = laskea.EXCEL['mbom']
+
+    print(exc.mbom_table(configuration))
 
 
 @no_type_check

@@ -55,6 +55,9 @@ TEMPLATE_EXAMPLE = """\
     "verbose": false,
     "strict": false
   },
+  "excel": {
+    "mbom": "mbom.xlsm"
+  },
   "tabulator": {
     "overview": {
         "base_url": "https://example.com/metrics/",

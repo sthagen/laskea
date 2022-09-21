@@ -1,6 +1,13 @@
 """Calculate (Finnish: laskea) some parts."""
 import os
 
+# [[[fill git_describe()]]]
+__version__ = '2022.7.27+parent.c14c701a'
+# [[[end]]] (checksum: 671f166ab0af35bbdbbe4105bf83922d)
+__version_info__ = tuple(
+    e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
+)
+
 APP_NAME = 'Calculate (Finnish: laskea) some parts.'
 APP_ALIAS = 'laskea'
 APP_ENV = 'LASKEA'
@@ -22,6 +29,7 @@ BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
 BASE_LF_ONLY = bool(os.getenv(f'{APP_ENV}_LF_ONLY', DEFAULT_LF_ONLY))
 BASE_JOIN_STRING = os.getenv(f'{APP_ENV}_JOIN_STRING', DEFAULT_JOIN_STRING)
 MASK_DISPLAY = '*' * 13
+EXCEL = {'mbom': 'mbom.xlsm'}
 TABULATOR = {
     'overview': {
         'base_url': 'https://example.com/metrics/',
@@ -62,6 +70,7 @@ TABULATOR = {
     },
 }
 
+from laskea.api.excel import mbom_table  # noqa
 from laskea.api.jira import (  # noqa
     login,
     markdown_heading,
@@ -70,14 +79,23 @@ from laskea.api.jira import (  # noqa
     parent_children_sections,
     query,
 )
-from laskea.embed import dl, h1, h2, h3, h4, h5, h6, kpi_table, metrics_table, ol, table, test_plans, ul  # noqa
-
-# [[[fill git_describe()]]]
-__version__ = '2022.7.27+parent.c14c701a'
-# [[[end]]] (checksum: 671f166ab0af35bbdbbe4105bf83922d)
-__version_info__ = tuple(
-    e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
+from laskea.embed import (  # noqa
+    dl,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    kpi_table,
+    mbom_table,
+    metrics_table,
+    ol,
+    table,
+    test_plans,
+    ul,
 )
+
 __all__ = [
     'h1',
     'h2',
@@ -95,6 +113,7 @@ __all__ = [
     'table',
     'ul',
     'kpi_table',
+    'mbom_table',
     'metrics_table',
     'parent_children_sections',
     'test_plans',
