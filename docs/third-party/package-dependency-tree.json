@@ -131,6 +131,13 @@
         "dependencies": []
     },
     {
+        "key": "defusedxml",
+        "package_name": "defusedxml",
+        "installed_version": "0.7.1",
+        "required_version": "0.7.1",
+        "dependencies": []
+    },
+    {
         "key": "jmespath",
         "package_name": "jmespath",
         "installed_version": "1.0.1",

@@ -16,6 +16,7 @@ atlassian-python-api==3.28.1
       - urllib3 [required: >=1.21.1,<1.27, installed: 1.26.9]
   - six [required: Any, installed: 1.16.0]
 cogapp==3.3.0
+defusedxml==0.7.1
 jmespath==1.0.1
 openpyxl==3.0.10
   - et-xmlfile [required: Any, installed: 1.1.0]
