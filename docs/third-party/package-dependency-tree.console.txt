@@ -1,4 +1,4 @@
-atlassian-python-api==3.27.0
+atlassian-python-api==3.28.1
   - deprecated [required: Any, installed: 1.2.13]
     - wrapt [required: >=1.10,<2, installed: 1.14.1]
   - oauthlib [required: Any, installed: 3.2.0]
@@ -17,8 +17,10 @@ atlassian-python-api==3.27.0
   - six [required: Any, installed: 1.16.0]
 cogapp==3.3.0
 jmespath==1.0.1
-pydantic==1.9.2
-  - typing-extensions [required: >=3.7.4.3, installed: 4.3.0]
+openpyxl==3.0.10
+  - et-xmlfile [required: Any, installed: 1.1.0]
+pydantic==1.10.2
+  - typing-extensions [required: >=4.1.0, installed: 4.3.0]
 requests-cache==0.9.6
   - appdirs [required: >=1.4.4, installed: 1.4.4]
   - attrs [required: >=21.2, installed: 21.4.0]
