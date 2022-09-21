@@ -42,7 +42,7 @@ Source-Code = "https://git.sr.ht/~sthagen/laskea"
 Test-Coverage = "https://codes.dilettant.life/coverage/laskea"
 
 [project.scripts]
-laskea = "laskea.cli:main"
+laskea = "laskea.cli:app"
 
 [tool.setuptools.packages.find]
 include = ["laskea"]
