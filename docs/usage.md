@@ -42,7 +42,7 @@ $ laskea report
   Python 3.10.5 (main, Jun 17 2022, 17:48:58) [Clang 13.0.0
   (clang-1300.0.29.30)]
 
-            laskea : 2022.9.21+parent.5187d766
+            laskea : 2022.9.22+parent.222fc8ca
          atlassian : 3.28.1
      cogapp.cogapp : 3.3.0
           jmespath : 1.0.1
@@ -266,5 +266,5 @@ Options:
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.9.21+parent.5187d766
+Calculate (Finnish: laskea) some parts. version 2022.9.22+parent.222fc8ca
 ```
