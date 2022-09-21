@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.9.22
+
+* Hotfix to enable the console script again
+
 ## 2022.9.21
 
 * Added API to read MBOM from office table file per convention
