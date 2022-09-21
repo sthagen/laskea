@@ -1,9 +1,11 @@
 SHELL = /bin/bash
-package = shagen/laskea
 
 .DEFAULT_GOAL := all
+black = black -S -l 120 --target-version py310 laskea test
+flake8 = flake8 laskea test
 isort = isort laskea test
-black = black -S -l 120 --target-version py38 laskea test
+pytest = pytest --asyncio-mode=strict --cov=laskea --cov-report term-missing:skip-covered --cov-branch --log-format="%(levelname)s %(message)s"
+types = mypy laskea
 
 .PHONY: install
 install:
@@ -34,11 +36,11 @@ lint:
 
 .PHONY: types
 types:
-	mypy laskea
+	$(types)
 
 .PHONY: test
 test: clean
-	pytest --cov=laskea --log-format="%(levelname)s %(message)s" --asyncio-mode=strict
+	$(pytest)
 
 .PHONY: testcov
 testcov: test
