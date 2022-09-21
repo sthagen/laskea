@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.9.21
+
+* Added API to read MBOM from office table file per convention
+
 ## 2022.7.27
 
 * Bumped dependencies
