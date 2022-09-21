@@ -1,13 +1,88 @@
-[tool.pyflow]
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
 name = "laskea"
-py_version = "3.8"
-# [[[fill version_sync()]]]
-version = "2022.7.27"
-# [[[end]]] (checksum: b6bee3369dbbcc28dd6f983ed9d2acf9)
-authors = ["Stefan Hagen <stefan@hagen.link>"]
+version = "2022.9.21"
+description = "Calculate (Finnish: laskea) some parts."
+readme = "README.md"
+authors = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
+maintainers = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+keywords = ["code-generation", "developer-tools", "markdown", "validation", "erification"]
+dependencies = [
+    "atlassian-python-api >= 3.28.1",
+    "cogapp >= 3.3.0",
+    "defusedxml >= 0.7.1",
+    "jmespath >= 1.0.1",
+    "openpyxl >= 3.0.10",
+    "pydantic >= 1.10.2",
+    "requests-cache >= 0.9.6",
+    "scooby >= 0.6.0",
+    "typer >= 0.6.1",
+]
+requires-python = ">=3.8"
 
-[tool.pyflow.scripts]
+[project.optional-dependencies]
+dev = ["black", "coverage", "flake8", "hypothesis", "mypy", "pytest", "pytest-cov", "pytest-flake8", "types-jmespath"]
 
-[tool.pyflow.dependencies]
+[project.urls]
+Homepage = "https://git.sr.ht/~sthagen/laskea"
+Bug-Tracker = "https://todo.sr.ht/~sthagen/laskea"
+Documentation = "https://codes.dilettant.life/docs/laskea"
+Source-Code = "https://git.sr.ht/~sthagen/laskea"
+Test-Coverage = "https://codes.dilettant.life/coverage/laskea"
 
-[tool.pyflow.dev-dependencies]
+[project.scripts]
+laskea = "laskea.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["laskea"]
+exclude = ["test*"]
+
+[bdist_wheel]
+universal = true
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+target-version = ["py38", "py39", "py310"]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+precision = 2
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+    "@overload",
+]
+omit = [
+    "*/__main__.py",
+]
+
+[tool.isort]
+line_length = 120
+known_first_party = "laskea"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+combine_as_imports = true
+
+[tool.mypy]
+strict = true
+implicit_reexport = true
+
+[tool.pytest]
+testpaths = "test"
+filterwarnings = "error"
