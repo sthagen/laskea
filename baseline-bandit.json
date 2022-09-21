@@ -1,6 +1,6 @@
 {
   "errors": [],
-  "generated_at": "2022-08-28T16:18:34Z",
+  "generated_at": "2022-09-21T16:27:01Z",
   "metrics": {
     "_totals": {
       "CONFIDENCE.HIGH": 0,
@@ -11,7 +11,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 1272,
+      "loc": 1301,
       "nosec": 3,
       "skipped_tests": 0
     },
@@ -24,7 +24,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 96,
+      "loc": 98,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -51,6 +51,19 @@
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
       "loc": 0,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "laskea/api/excel.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 17,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -102,7 +115,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 353,
+      "loc": 356,
       "nosec": 2,
       "skipped_tests": 0
     },
@@ -115,7 +128,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 103,
+      "loc": 110,
       "nosec": 0,
       "skipped_tests": 0
     },
