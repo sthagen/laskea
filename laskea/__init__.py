@@ -2,8 +2,8 @@
 import os
 
 # [[[fill git_describe()]]]
-__version__ = '2022.9.21+parent.5187d766'
-# [[[end]]] (checksum: 0e99719500ba864e5a56b7cdd35e9ddd)
+__version__ = '2022.9.22+parent.222fc8ca'
+# [[[end]]] (checksum: 06eeb450e70dd9504d5a7b974122631e)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
