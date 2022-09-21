@@ -29,22 +29,25 @@ Commands:
 $ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Thu Jul 28 04:47:55 2022 UTC
+  Date: Wed Sep 21 20:30:11 2022 CEST
 
-                OS : Linux
-            CPU(s) : 1
-           Machine : x86_64
+                OS : Darwin
+            CPU(s) : 8
+           Machine : arm64
       Architecture : 64bit
+               RAM : 16.0 GiB
        Environment : Python
+       File system : apfs
 
-  Python 3.9.13 (main, May 25 2022, 05:23:35)  [GCC 9.4.0]
+  Python 3.10.5 (main, Jun 17 2022, 17:48:58) [Clang 13.0.0
+  (clang-1300.0.29.30)]
 
-            laskea : 2022.7.27+parent.c14c701a
-         atlassian : 3.25.0
+            laskea : 2022.9.21+parent.5187d766
+         atlassian : 3.28.1
      cogapp.cogapp : 3.3.0
           jmespath : 1.0.1
-          pydantic : 1.9.1
-    requests_cache : 0.9.5
+          pydantic : 1.10.2
+    requests_cache : 0.9.6
             scooby : 0.5.12
              typer : 0.6.1
 --------------------------------------------------------------------------------
@@ -263,5 +266,5 @@ Options:
 
 ```console
 $ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.7.27+parent.c14c701a
+Calculate (Finnish: laskea) some parts. version 2022.9.21+parent.5187d766
 ```
