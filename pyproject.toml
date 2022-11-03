@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "laskea"
-version = "2022.9.22"
+version = "2022.11.3"
 description = "Calculate (Finnish: laskea) some parts."
 readme = "README.md"
 authors = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
@@ -25,8 +25,8 @@ dependencies = [
     "jmespath >= 1.0.1",
     "openpyxl >= 3.0.10",
     "pydantic >= 1.10.2",
-    "requests-cache >= 0.9.6",
-    "scooby >= 0.6.0",
+    "requests-cache >= 0.9.7",
+    "scooby >= 0.7.0",
     "typer >= 0.6.1",
 ]
 requires-python = ">=3.8"
