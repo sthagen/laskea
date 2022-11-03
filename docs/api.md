@@ -22,6 +22,10 @@ The following functions produce markdown constructs that receive sequences:
 * `ol(query_text)` - an ordered list
 * `ul(query_text)` - an unordered list
 
+The following function produces separated values lists from JQL queries:
+
+* `svl(query_text, key_magic=False, field_sep='|')` - a separated values list from a REST interface defined per configuration
+
 ## Single Item Returning Functions
 
 * `h1(query_text)` - a level 1 heading
@@ -55,5 +59,40 @@ This should yield the following output:
 ```markdown
 - [A](https://remote-jira-instance.example.com/browse/A) - B
 - [C](https://remote-jira-instance.example.com/browse/C) - D
+
+```
+
+Using the svl function (that implements the csv command of the app:
+
+```python
+from laskea import *
+data = {'rows': [{'key': 'A', 'summary': 'B'}, {'key': 'C', 'summary': 'D'}]}
+svl('', field_sep='x', data=data)
+```
+
+This should yield the following output:
+
+```csv
+keyxsummary
+AxB
+CxD
+
+```
+
+Using a field separator / delimiter that is contained within one of more values
+like e.g. here the letter `u`:
+
+```python
+from laskea import *
+data = {'rows': [{'key': 'A', 'summary': 'B'}, {'key': 'C', 'summary': 'D'}]}
+svl('', field_sep='u', data=data)
+```
+
+Yields:
+
+```csv
+keyus$FIELD_SEPARATOR$mmary
+AuB
+CuD
 
 ```
