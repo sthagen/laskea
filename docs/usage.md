@@ -46,7 +46,7 @@ may be helpful temporarily.
   Python 3.10.5 (main, Jun 17 2022, 17:48:58) [Clang 13.0.0
   (clang-1300.0.29.30)]
 
-            laskea : 2022.9.22+parent.222fc8ca
+            laskea : 2022.11.3+parent.b2476c33
          atlassian : 3.28.1
      cogapp.cogapp : 3.3.0
           jmespath : 1.0.1
@@ -361,5 +361,5 @@ The resulting markdown inject after update will look like:
 
 ```console
 ❯ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.9.22+parent.222fc8ca
+Calculate (Finnish: laskea) some parts. version 2022.11.3+parent.b2476c33
 ```
