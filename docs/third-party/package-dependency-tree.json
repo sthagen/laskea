@@ -177,8 +177,8 @@
     {
         "key": "requests-cache",
         "package_name": "requests-cache",
-        "installed_version": "0.9.6",
-        "required_version": "0.9.6",
+        "installed_version": "0.9.7",
+        "required_version": "0.9.7",
         "dependencies": [
             {
                 "key": "appdirs",
@@ -197,8 +197,8 @@
             {
                 "key": "cattrs",
                 "package_name": "cattrs",
-                "installed_version": "22.1.0",
-                "required_version": ">=1.8",
+                "installed_version": "22.2.0",
+                "required_version": ">=22.2",
                 "dependencies": [
                     {
                         "key": "attrs",
@@ -210,7 +210,7 @@
                     {
                         "key": "exceptiongroup",
                         "package_name": "exceptiongroup",
-                        "installed_version": "1.0.0rc8",
+                        "installed_version": "1.0.0",
                         "required_version": "Any",
                         "dependencies": []
                     }
@@ -279,8 +279,8 @@
     {
         "key": "scooby",
         "package_name": "scooby",
-        "installed_version": "0.6.0",
-        "required_version": "0.6.0",
+        "installed_version": "0.7.0",
+        "required_version": "0.7.0",
         "dependencies": []
     },
     {
