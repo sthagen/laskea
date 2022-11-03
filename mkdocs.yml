@@ -3,6 +3,9 @@ site_description: "Calculate (Finnish: laskea) some parts."
 
 theme:
   name: 'material'
+  features:
+    - navigation.expand
+    - toc.integrate
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
