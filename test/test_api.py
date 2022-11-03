@@ -71,6 +71,21 @@ def test_impl_uo_lists(kind, marker):
         assert items[slot] == f'{marker}{UO_LIST_PAYLOAD_POSTFIXES[slot]}'
 
 
+def test_impl_svl():
+    text = impl.separated_values_list(
+        impl.Jira(''), jql_text='', column_fields=tuple(), field_sep='x', data=D_LIST_FIXTURE
+    )
+    assert text == (
+        'keyxsummary\nABC-42xFirst issue to show off the definition lists\n'
+        'ABC-1001xSecond issue to show off the definition lists\n'
+    )
+
+
+def test_impl_svl_empty():
+    kwargs = dict(jql_text='', column_fields=tuple(), field_sep='x', data={'rows': []})
+    assert impl.separated_values_list(impl.Jira(''), **kwargs) == ''
+
+
 def test_impl_d_list():
     impl.BASE_URL = URL_FIXTURE
     text = impl.markdown_list(impl.Jira(''), jql_text='', column_fields=tuple(), list_type='dl', data=D_LIST_FIXTURE)

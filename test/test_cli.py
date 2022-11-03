@@ -26,3 +26,11 @@ def test_update_command(capsys):
     out, err = capsys.readouterr()
     assert not out
     assert not err
+
+
+def test_csv_command(capsys):
+    with pytest.raises(TypeError):
+        cli.svl_cmd(jql_query='')
+    out, err = capsys.readouterr()
+    assert not out
+    assert not err

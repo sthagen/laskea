@@ -156,6 +156,14 @@ def test_embed_table(capsys):
     assert out.strip() == expected
 
 
+def test_embed_svl(capsys):
+    expected = 'key|summary\nABC-42|First issue to show off the tables\nABC-1001|Second issue to show off the tables'
+    assert emb.svl(query_text='', data=TABLE_FIXTURE) is None
+    out, err = capsys.readouterr()
+    assert not err
+    assert out.strip() == expected
+
+
 def test_embed_table_no_result_strict(capsys):
     impl.BASE_URL = URL_FIXTURE
     strictness = laskea.STRICT
