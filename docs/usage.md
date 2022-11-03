@@ -7,35 +7,39 @@ may be helpful temporarily.
 ## Help
 
 ```console
-$ laskea
-Usage: laskea [OPTIONS] COMMAND [ARGS]...
+❯ laskea
 
-  Calculate (Finnish: laskea) some parts.
+ Usage: laskea [OPTIONS] COMMAND [ARGS]...
 
-Options:
-  -V, --version  Display the laskea version and exit
-  -h, --help     Show this message and exit.
+ Calculate (Finnish: laskea) some parts.
 
-Commands:
-  report    Write a report of the environment for bug reports to standard...
-  template  Write a template of a well-formed JSON configuration to...
-  update    Fill in some parts of the input document.
-  version   Display the laskea version and exit.
+╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --version  -V        Display the laskea version and exit                                                                  │
+│ --help     -h        Show this message and exit.                                                                          │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ csv        Export query result as separated values list.                                                                  │
+│ report     Output either text options for the user to report her env or the report of the environment for support.        │
+│ template   Write a template of a well-formed JSON configuration to standard out and exit                                  │
+│ update     Fill in some parts of the input document.                                                                      │
+│ version    Display the laskea version and exit.                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
 ```
 
 ## Report
 
 ```console
-$ laskea report
+❯ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Wed Sep 21 20:30:11 2022 CEST
+  Date: Thu Nov 03 20:13:54 2022 CET
 
                 OS : Darwin
-            CPU(s) : 8
+            CPU(s) : 128
            Machine : arm64
       Architecture : 64bit
-               RAM : 16.0 GiB
+               RAM : 16384.0 GiB
        Environment : Python
        File system : apfs
 
@@ -47,8 +51,8 @@ $ laskea report
      cogapp.cogapp : 3.3.0
           jmespath : 1.0.1
           pydantic : 1.10.2
-    requests_cache : 0.9.6
-            scooby : 0.5.12
+    requests_cache : 0.9.7
+            scooby : 0.7.0
              typer : 0.6.1
 --------------------------------------------------------------------------------
 ```
@@ -56,20 +60,22 @@ $ laskea report
 ### Help
 
 ```console
-Usage: laskea report [OPTIONS]
 
-  Output either text options for the user to report her env or the report of
-  the environment for support.
+ Usage: laskea report [OPTIONS]
 
-Options:
-  -s, --shallow  Shallow reporting - no setuptools required (default is False)
-  -h, --help     Show this message and exit.
+ Output either text options for the user to report her env or the report of the environment for support.
+
+╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --shallow  -s        Shallow reporting - no setuptools required (default is False)                                        │
+│ --help     -h        Show this message and exit.                                                                          │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
 ```
 
 ## Template
 
 ```console
-$ laskea template
+❯ laskea template
 {
   "table": {
     "column": {
@@ -112,6 +118,46 @@ $ laskea template
     "quiet": false,
     "verbose": false,
     "strict": false
+  },
+  "excel": {
+    "mbom": "mbom.xlsm"
+  },
+  "tabulator": {
+    "overview": {
+        "base_url": "https://example.com/metrics/",
+        "path": "$year$/kpi-table-$year$.json",
+        "years": [2022],
+        "matrix": [
+            ["section", "Section", False, "L"],
+            ["name", "Name", False, "L"],
+            ["unit", "Unit", False, "C"],
+            ["all", "ALL", True, "R"],
+            ["pr1", "PR1", True, "R"],
+            ["pr2", "PR2", True, "R"],
+            ["pr3", "PR3", True, "R"],
+            ["description", "Description", False, "L"]
+        ]
+    },
+    "metrics": {
+        "base_url": "https://example.com/metrics/",
+        "paths": {
+            "review_effectivity": "$year$/review_effectivity/kpi-review_effectivity-per_product-report-$year$.json",
+            "sprint_effectivity": "$year$/sprint_effectivity/kpi-sprint_effectivity-per_product-report-$year$.json",
+            "task_traceability": "$year$/task_traceability/kpi-task_traceability-per_product-report-$year$.json",
+        },
+        "years": [2021, 2022],
+        "matrix": [
+            ["month", "Month", False, "L"],
+            ["all", "ALL", True, "R"],
+            ["pr1", "PR1", True, "R"],
+            ["pr2", "PR2", True, "R"],
+            ["pr3", "PR3", True, "R"],
+            ["trend_all", "±ALL", True, "R"],
+            ["trend_pr1", "±PR1", True, "R"],
+            ["trend_pr2", "±PR2", True, "R"],
+            ["trend_pr3", "±PR3", True, "R"]
+        ]
+    }
   }
 }
 ```
@@ -119,27 +165,79 @@ $ laskea template
 ### Help
 
 ```console
-$ laskea template --help
-Usage: laskea template [OPTIONS]
+❯ laskea template --help
 
-  Write a template of a well-formed JSON configuration to standard out and
-  exit
+ Usage: laskea template [OPTIONS]
 
-  The strategy for looking up configurations is to start at the current
-  working directory trying to read a file with the name `.laskea.json` else
-  try to read same named file in the user folder (home).
+ Write a template of a well-formed JSON configuration to standard out and exit
+ The strategy for looking up configurations is to start at the current working directory trying to read a file with the name
+ `.laskea.json` else try to read same named file in the user folder (home).
+ In case an explicit path is given to the config option of commands that offer it, only that path is considered.
 
-  In case an explicit path is given to the config option of commands that
-  offer it, only that path is considered.
+╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --help  -h        Show this message and exit.                                                                             │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
-Options:
-  -h, --help  Show this message and exit.
+```
+## CSV (Separated Values List)
+
+```console
+❯ laskea csv -h
+
+ Usage: laskea csv [OPTIONS] JQL_QUERY_POS...
+
+ Export query result as separated values list.
+ You can set some options per evironment variables:
+ * LASKEA_USER='remote-user'
+ * LASKEA_TOKEN='remote-secret'
+ * LASKEA_BASE_URL='https://remote-jira-instance.example.com/'
+ * LASKEA_CACHE_EXPIRY_SECONDS=180
+ * LASKEA_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+ * LASKEA_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
+ "custom field name": ["customfield_123", "fields.customfield_123"]}'
+ * LASKEA_JOIN_STRING=' <br>'
+ * LASKEA_LF_ONLY='AnythingTruthy'
+ * LASKEA_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
+ * LASKEA_MARKERS='[[[fill ]]] [[[end]]]'
+ * LASKEA_DEBUG='AnythingTruthy'
+ * LASKEA_VERBOSE='AnythingTruthy'
+ * LASKEA_STRICT='AnythingTruthy'
+
+ The quiet option (if given) disables any conflicting verbosity setting.
+
+╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    jql_query_pos      JQL_QUERY_POS...  [default: None] [required]                               │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────╮
+│ --jql-query             -j      <jql-query>        The query in JQL format. For example given a    │
+│                                                    project YES and two issues 123 and 124:         │
+│                                                    --jql-query 'project = YES and key in (YES-123, │
+│                                                    YES-124) order by created DESC'                 │
+│ --config                -c      <configpath>       Path to config file (default is                 │
+│                                                    $HOME/.laskea.json)                             │
+│ --key-magic             -k                         Apply magic to key by replacing with markdown   │
+│                                                    like link (default is False)                    │
+│ --delimiter             -d      <field-separator>  Delimiter / field separator (default is |) On   │
+│                                                    output, header and data cell values will have   │
+│                                                    any occurences of the field separator replaced  │
+│                                                    with the text '$FIELD_SEPARATOR$'               │
+│                                                    [default: |]                                    │
+│ --dry-run               -n                         Dry run (default is False)                      │
+│ --verbose               -v                         Verbose output (default is False)               │
+│ --strict                -s                         Ouput noisy warnings on console and in the      │
+│                                                    processed document (default is False)           │
+│ --cache-expiry-seconds  -x      INTEGER            Request cache expiry in seconds (default is     │
+│                                                    180)                                            │
+│                                                    [default: 180]                                  │
+│ --help                  -h                         Show this message and exit.                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
 ```
 
 ## Update
 
 ```console
-$ laskea update tests/fixtures/basic/empty.md
+❯ laskea update test/fixtures/basic/empty.md
 Reading from discovered configuration path /home/ofsomeone/.laskea.json
 Configuration interface combined file, environment, and commandline values!
 Effective configuration combining /home/ofsomeone/.laskea.json, environment variables, and defaults:
@@ -189,7 +287,6 @@ Effective configuration combining /home/ofsomeone/.laskea.json, environment vari
   }
 }
 # --- E N D ---
-INFO: Upstream JIRA instance is addressed per cloud rules
 Cogging tests/fixtures/basic/empty.md
 ```
 
@@ -220,51 +317,49 @@ The resulting markdown inject after update will look like:
 ### Help
 
 ```console
-$ laskea update -h
-Usage: laskea update [OPTIONS] SOURCE...
+❯ laskea update -h
 
-  Fill in some parts of the input document.
+ Usage: laskea update [OPTIONS] SOURCE...
 
-  You can set some options per evironment variables:
+ Fill in some parts of the input document.
+ You can set some options per evironment variables:
+ * LASKEA_USER='remote-user'
+ * LASKEA_TOKEN='remote-secret'
+ * LASKEA_BASE_URL='https://remote-jira-instance.example.com/'
+ * LASKEA_CACHE_EXPIRY_SECONDS=180
+ * LASKEA_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+ * LASKEA_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
+   "custom field name": ["customfield_123", "fields.customfield_123"]}'
+ * LASKEA_JOIN_STRING=' <br>'
+ * LASKEA_LF_ONLY='AnythingTruthy'
+ * LASKEA_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
+ * LASKEA_MARKERS='[[[fill ]]] [[[end]]]'
+ * LASKEA_DEBUG='AnythingTruthy'
+ * LASKEA_VERBOSE='AnythingTruthy'
+ * LASKEA_STRICT='AnythingTruthy'
 
-  * LASKEA_USER='remote-user'
-  * LASKEA_TOKEN='remote-secret'
-  * LASKEA_BASE_URL='https://remote-jira-instance.example.com/'
-  * LASKEA_CACHE_EXPIRY_SECONDS=180
-  * LASKEA_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-  * LASKEA_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
-    "custom field name": ["customfield_123", "fields.customfield_123"]}'
-  * LASKEA_JOIN_STRING=' <br>'
-  * LASKEA_LF_ONLY='AnythingTruthy'
-  * LASKEA_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
-  * LASKEA_MARKERS='[[[fill ]]] [[[end]]]'
-  * LASKEA_DEBUG='AnythingTruthy'
-  * LASKEA_VERBOSE='AnythingTruthy'
-  * LASKEA_STRICT='AnythingTruthy'
+ The quiet option (if given) disables any conflicting verbosity setting.
 
-  The quiet option (if given) disables any conflicting verbosity setting.
+╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    source      SOURCE...  [default: None] [required]                                                                    │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --input                 -i      <sourcepath>  Path to input file                                                          │
+│ --config                -c      <configpath>  Path to config file (default is $HOME/.laskea.json)                         │
+│ --dry-run               -n                    Dry run (default is False)                                                  │
+│ --verbose               -v                    Verbose output (default is False)                                           │
+│ --quiet                 -q                    Minimal output (default is False)                                           │
+│ --strict                -s                    Ouput noisy warnings on console and in the processed document (default is   │
+│                                               False)                                                                      │
+│ --cache-expiry-seconds  -x      INTEGER       Request cache expiry in seconds (default is 180) [default: 180]             │
+│ --help                  -h                    Show this message and exit.                                                 │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
-Arguments:
-  SOURCE...  [required]
-
-Options:
-  -i, --input <sourcepath>        Path to input file
-  -c, --config <configpath>       Path to config file (default is
-                                  $HOME/.laskea.json)
-  -n, --dry-run                   Dry run (default is False)
-  -v, --verbose                   Verbose output (default is False)
-  -q, --quiet                     Minimal output (default is False)
-  -s, --strict                    Ouput noisy warnings on console and in the
-                                  processed document (default is False)
-  -x, --cache-expiry-seconds INTEGER
-                                  Request cache expiry in seconds (default is
-                                  180)  [default: 180]
-  -h, --help                      Show this message and exit.
 ```
 
 ## Version
 
 ```console
-$ laskea version
+❯ laskea version
 Calculate (Finnish: laskea) some parts. version 2022.9.22+parent.222fc8ca
 ```
