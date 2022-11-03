@@ -166,6 +166,123 @@ def update(  # noqa
     return sys.exit(fill.process(command, transaction_mode, paths, options))
 
 
+@app.command('csv')
+def svl_cmd(  # noqa
+    jql_query_pos: list[str],
+    jql_query: str = typer.Option(
+        '',
+        '-j',
+        '--jql-query',
+        help=(
+            'The query in JQL format.'
+            '\nFor example given a project YES and two issues 123 and 124:'
+            "\n--jql-query 'project = YES and key in (YES-123, YES-124) order by created DESC'"
+        ),
+        metavar='<jql-query>',
+    ),
+    conf: str = typer.Option(
+        '',
+        '-c',
+        '--config',
+        help=f'Path to config file (default is $HOME/{laskea.DEFAULT_CONFIG_NAME})',
+        metavar='<configpath>',
+    ),
+    key_magic: bool = typer.Option(
+        False,
+        '-k',
+        '--key-magic',
+        help='Apply magic to key by replacing with markdown like link (default is False)',
+    ),
+    field_sep: str = typer.Option(
+        laskea.PIPE,
+        '-d',
+        '--delimiter',
+        help=(
+            f'Delimiter / field separator (default is {laskea.PIPE})'
+            '\nOn output, header and data cell values will have any occurences'
+            "\nof the field separator replaced with the text '$FIELD_SEPARATOR$'"
+        ),
+        metavar='<field-separator>',
+    ),
+    verify: bool = typer.Option(
+        False,
+        '-n',
+        '--dry-run',
+        help='Dry run (default is False)',
+    ),
+    verbose: bool = typer.Option(
+        False,
+        '-v',
+        '--verbose',
+        help='Verbose output (default is False)',
+    ),
+    strict: bool = typer.Option(
+        False,
+        '-s',
+        '--strict',
+        help='Ouput noisy warnings on console and in the processed document (default is False)',
+    ),
+    expires: int = typer.Option(
+        180,
+        '-x',
+        '--cache-expiry-seconds',
+        help='Request cache expiry in seconds (default is 180)',
+    ),
+) -> int:
+    """
+    Export query result as separated values list.
+
+    You can set some options per evironment variables:
+
+    \b
+    * LASKEA_USER='remote-user'
+    * LASKEA_TOKEN='remote-secret'
+    * LASKEA_BASE_URL='https://remote-jira-instance.example.com/'
+    * LASKEA_CACHE_EXPIRY_SECONDS=180
+    * LASKEA_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
+    * LASKEA_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
+    "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * LASKEA_JOIN_STRING=' <br>'
+    * LASKEA_LF_ONLY='AnythingTruthy'
+    * LASKEA_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
+    * LASKEA_MARKERS='[[[fill ]]] [[[end]]]'
+    * LASKEA_DEBUG='AnythingTruthy'
+    * LASKEA_VERBOSE='AnythingTruthy'
+    * LASKEA_STRICT='AnythingTruthy'
+
+    The quiet option (if given) disables any conflicting verbosity setting.
+    """
+    transaction_mode = 'commit' if not verify else 'dry-run'
+    if not jql_query and jql_query_pos:
+        jql_query = jql_query_pos[0].strip()
+    if not jql_query.strip():
+        print('JQL query required.', file=sys.stderr)
+        return sys.exit(2)
+    quiet = True
+    laskea.QUIET = True
+    laskea.DEBUG = False
+    laskea.VERBOSE = False
+    if verbose:
+        laskea.VERBOSE = True
+
+    if strict:
+        laskea.STRICT = True
+
+    if transaction_mode == 'dry-run':
+        laskea.DRY_RUN = True
+
+    requests_cache.install_cache(cache_name='.laskea_cache', backend='sqlite', expire_after=expires)
+    laskea.CACHE_EXPIRY_SECONDS = expires
+    options = {
+        'quiet': quiet,
+        'strict': strict,
+        'verbose': verbose,
+    }
+    cfg.process(conf, options)
+
+    return sys.exit(laskea.svl(jql_query, key_magic=key_magic, field_sep=field_sep))
+
+
 @app.command('version')
 def app_version() -> None:
     """

@@ -12,6 +12,22 @@ APP_NAME = 'Calculate (Finnish: laskea) some parts.'
 APP_ALIAS = 'laskea'
 APP_ENV = 'LASKEA'
 CACHE_EXPIRY_SECONDS = int(os.getenv(f'{APP_ENV}_CACHE_EXPIRY_SECONDS', '180'))
+
+FIELD_SEPARATORS = (
+    CARET := '^',
+    COLON := ':',
+    COMMA := ',',
+    DASH := '-',
+    DOT := '.',
+    PIPE := '|',
+    PLUS := '+',
+    RS := '\x1e',
+    SEMI := ';',
+    SPACE := ' ',
+    TAB := '\t',
+    USCORE := '_',
+)
+
 DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
 DRY_RUN = False
 VERBOSE = bool(os.getenv(f'{APP_ENV}_VERBOSE', ''))
@@ -78,6 +94,7 @@ from laskea.api.jira import (  # noqa
     markdown_table,
     parent_children_sections,
     query,
+    separated_values_list,
 )
 from laskea.embed import (  # noqa
     dl,
@@ -91,6 +108,7 @@ from laskea.embed import (  # noqa
     mbom_table,
     metrics_table,
     ol,
+    svl,
     table,
     test_plans,
     ul,
@@ -110,6 +128,7 @@ __all__ = [
     'markdown_list',
     'query',
     'ol',
+    'svl',
     'table',
     'ul',
     'kpi_table',

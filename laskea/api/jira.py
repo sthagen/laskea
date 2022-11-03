@@ -128,6 +128,47 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
 
 
 @no_type_check
+def separated_values_list(
+    handle: Jira,
+    jql_text: str,
+    column_fields=None,
+    key_magic: bool = False,
+    field_sep: str = laskea.PIPE,
+    data: Mapping[str, Union[object, Iterable, Sized]] = None,
+) -> str:
+    """Yes we can ... document later."""
+    if data is None:
+        data = query(handle, jql_text, column_fields)
+    if data.get('error', ''):
+        return json.dumps(data, indent=2)
+
+    fs = field_sep  # alias
+    slug = '$FIELD_SEPARATOR$'
+    if not data['rows']:
+        if laskea.STRICT:
+            fs_disp = 'RS' if fs == laskea.RS else fs
+            message = f'WARNING: received 0 results for JQL ({jql_text}) and ({fs_disp}) separated values list'
+            if not laskea.DRY_RUN:
+                print(message, file=sys.stderr)
+            return message
+        return ''
+
+    table = copy.deepcopy(data['rows'])
+    header_cells = list(table[0].keys())  # noqa
+    for slot, record in enumerate(table):
+        for key, cell in record.items():
+            if key_magic and key.lower() == 'key':
+                table[slot][key] = f'[{cell}]({BASE_URL.strip("/")}/browse/{cell})'  # noqa
+            if not isinstance(cell, str):
+                table[slot][key] = BASE_JOIN_STRING.join(cell)  # noqa
+
+    header = f'{fs.join(cell.replace(fs, slug) for cell in header_cells)}'
+    rows = [f'{fs.join(str(v).replace(fs, slug) for v in line.values())}' for line in table]
+    the_sv_list = '\n'.join([header] + rows) + '\n'
+    return the_sv_list.replace('\r', '') if BASE_LF_ONLY else the_sv_list
+
+
+@no_type_check
 def markdown_table(
     handle: Jira, jql_text: str, column_fields=None, data: Mapping[str, Union[object, Iterable, Sized]] = None
 ) -> str:

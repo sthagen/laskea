@@ -393,7 +393,8 @@ def process(conf: str, options: Mapping[str, bool]) -> None:
             f'Effective configuration combining {cp}, environment variables, and defaults:'
         )
 
-    print(
-        f'INFO: Upstream JIRA instance is addressed per {"cloud" if api.BASE_IS_CLOUD else "server"} rules',
-        file=sys.stderr,
-    )
+    if laskea.DEBUG or verbose:
+        print(
+            f'INFO: Upstream JIRA instance is addressed per {"cloud" if api.BASE_IS_CLOUD else "server"} rules',
+            file=sys.stderr,
+        )
