@@ -36,17 +36,17 @@ may be helpful temporarily.
   Date: Sun Nov 06 19:58:24 2022 CET
 
                 OS : Darwin
-            CPU(s) : 8
+            CPU(s) : 8196
            Machine : arm64
       Architecture : 64bit
-               RAM : 16.0 GiB
+               RAM : 1234.0 GiB
        Environment : Python
        File system : apfs
 
   Python 3.10.5 (main, Jun 17 2022, 17:48:58) [Clang 13.0.0
   (clang-1300.0.29.30)]
 
-            laskea : 2022.11.3+parent.b2476c33
+            laskea : 2022.11.6+parent.27e0b876
          atlassian : 3.28.1
      cogapp.cogapp : 3.3.0
           jmespath : 1.0.1
@@ -370,5 +370,5 @@ The resulting markdown inject after update will look like:
 
 ```console
 ❯ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.11.6+parent.abadcafe
+Calculate (Finnish: laskea) some parts. version 2022.11.6+parent.27e0b876
 ```
