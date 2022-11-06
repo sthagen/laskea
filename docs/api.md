@@ -80,18 +80,18 @@ CxD
 ```
 
 Using a field separator / delimiter that is contained within one of more values
-like e.g. here the letter `u`:
+like e.g. here the letter `u` and a replacement text `xoxo`:
 
 ```python
 from laskea import *
 data = {'rows': [{'key': 'A', 'summary': 'B'}, {'key': 'C', 'summary': 'D'}]}
-svl('', field_sep='u', data=data)
+svl('', field_sep='u', replacement='xoxo', data=data)
 ```
 
 Yields:
 
 ```csv
-keyus$FIELD_SEPARATOR$mmary
+keyusxoxommary
 AuB
 CuD
 

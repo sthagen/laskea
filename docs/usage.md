@@ -33,13 +33,13 @@ may be helpful temporarily.
 ❯ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Thu Nov 03 20:13:54 2022 CET
+  Date: Sun Nov 06 19:58:24 2022 CET
 
                 OS : Darwin
-            CPU(s) : 128
+            CPU(s) : 8
            Machine : arm64
       Architecture : 64bit
-               RAM : 16384.0 GiB
+               RAM : 16.0 GiB
        Environment : Python
        File system : apfs
 
@@ -184,7 +184,7 @@ may be helpful temporarily.
 ```console
 ❯ laskea csv -h
 
- Usage: laskea csv [OPTIONS] JQL_QUERY_POS...
+ Usage: laskea csv [OPTIONS]
 
  Export query result as separated values list.
  You can set some options per evironment variables:
@@ -205,32 +205,40 @@ may be helpful temporarily.
 
  The quiet option (if given) disables any conflicting verbosity setting.
 
-╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    jql_query_pos      JQL_QUERY_POS...  [default: None] [required]                               │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────╮
-│ --jql-query             -j      <jql-query>        The query in JQL format. For example given a    │
-│                                                    project YES and two issues 123 and 124:         │
-│                                                    --jql-query 'project = YES and key in (YES-123, │
-│                                                    YES-124) order by created DESC'                 │
-│ --config                -c      <configpath>       Path to config file (default is                 │
-│                                                    $HOME/.laskea.json)                             │
-│ --key-magic             -k                         Apply magic to key by replacing with markdown   │
-│                                                    like link (default is False)                    │
-│ --delimiter             -d      <field-separator>  Delimiter / field separator (default is |) On   │
-│                                                    output, header and data cell values will have   │
-│                                                    any occurences of the field separator replaced  │
-│                                                    with the text '$FIELD_SEPARATOR$'               │
-│                                                    [default: |]                                    │
-│ --dry-run               -n                         Dry run (default is False)                      │
-│ --verbose               -v                         Verbose output (default is False)               │
-│ --strict                -s                         Ouput noisy warnings on console and in the      │
-│                                                    processed document (default is False)           │
-│ --cache-expiry-seconds  -x      INTEGER            Request cache expiry in seconds (default is     │
-│                                                    180)                                            │
-│                                                    [default: 180]                                  │
-│ --help                  -h                         Show this message and exit.                     │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────╮
+│ --jql-query-pos                 TEXT                                                             │
+│ --jql-query             -j      <jql-query>                    The query in JQL format. For      │
+│                                                                example given a project YES and   │
+│                                                                two issues 123 and 124: 'project  │
+│                                                                = YES and key in (YES-123,        │
+│                                                                YES-124) order by created DESC'   │
+│ --config                -c      <configpath>                   Path to config file (default is   │
+│                                                                $HOME/.laskea.json)               │
+│ --key-magic             -k                                     Apply magic to key by replacing   │
+│                                                                with markdown like link (default  │
+│                                                                is False)                         │
+│ --delimiter             -d      <field-separator>              Delimiter / field separator On    │
+│                                                                output, header and data cell      │
+│                                                                values will have any occurences   │
+│                                                                of the field separator replaced   │
+│                                                                with the replacement string       │
+│                                                                [default: |]                      │
+│ --replacement           -r      <field-separator-replacement>  Replacement string for occurences │
+│                                                                of FS in text                     │
+│                                                                On output, header and data cell   │
+│                                                                values will have any occurences   │
+│                                                                of the field separator replaced   │
+│                                                                with the replacement string       │
+│                                                                [default: $FIELD_SEPARATOR$]      │
+│ --dry-run               -n                                     Dry run (default is False)        │
+│ --verbose               -v                                     Verbose output (default is False) │
+│ --strict                -s                                     Ouput noisy warnings on console   │
+│                                                                and in the processed document     │
+│                                                                (default is False)                │
+│ --cache-expiry-seconds  -x      INTEGER                        Request cache expiry in seconds   │
+│                                                                [default: 180]                    │
+│ --help                  -h                                     Show this message and exit.       │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 ```
 
@@ -340,20 +348,21 @@ The resulting markdown inject after update will look like:
 
  The quiet option (if given) disables any conflicting verbosity setting.
 
-╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    source      SOURCE...  [default: None] [required]                                                                    │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --input                 -i      <sourcepath>  Path to input file                                                          │
-│ --config                -c      <configpath>  Path to config file (default is $HOME/.laskea.json)                         │
-│ --dry-run               -n                    Dry run (default is False)                                                  │
-│ --verbose               -v                    Verbose output (default is False)                                           │
-│ --quiet                 -q                    Minimal output (default is False)                                           │
-│ --strict                -s                    Ouput noisy warnings on console and in the processed document (default is   │
-│                                               False)                                                                      │
-│ --cache-expiry-seconds  -x      INTEGER       Request cache expiry in seconds (default is 180) [default: 180]             │
-│ --help                  -h                    Show this message and exit.                                                 │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────╮
+│ *    source      SOURCE...  [default: None] [required]                                           │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────╮
+│ --input                 -i      <sourcepath>  Path to input file                                 │
+│ --config                -c      <configpath>  Path to config file (default is                    │
+│                                               $HOME/.laskea.json)                                │
+│ --dry-run               -n                    Dry run (default is False)                         │
+│ --verbose               -v                    Verbose output (default is False)                  │
+│ --quiet                 -q                    Minimal output (default is False)                  │
+│ --strict                -s                    Ouput noisy warnings on console and in the         │
+│                                               processed document (default is False)              │
+│ --cache-expiry-seconds  -x      INTEGER       Request cache expiry in seconds [default: 180]     │
+│ --help                  -h                    Show this message and exit.                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 ```
 
@@ -361,5 +370,5 @@ The resulting markdown inject after update will look like:
 
 ```console
 ❯ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.11.3+parent.b2476c33
+Calculate (Finnish: laskea) some parts. version 2022.11.6+parent.abadcafe
 ```
