@@ -1,6 +1,6 @@
 # Change History
 
-## 2022.11.3
+## 2022.11.6
 
 * Added replacement option to the csv command that extracts separated values lists ...
 
