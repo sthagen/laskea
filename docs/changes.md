@@ -2,6 +2,10 @@
 
 ## 2022.11.3
 
+* Added replacement option to the csv command that extracts separated values lists ...
+
+## 2022.11.3
+
 * Added csv command to extract separated values lists from ticket systems per queries in JQL
 
 ## 2022.9.22
