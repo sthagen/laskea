@@ -57,15 +57,29 @@ def test_plans(
 
 
 @no_type_check
-def svl(query_text: str = '', key_magic: bool = False, field_sep: str = laskea.PIPE, data=None) -> None:
+def svl(
+    query_text: str = '',
+    key_magic: bool = False,
+    field_sep: str = laskea.PIPE,
+    replacement: str = laskea.FS_SLUG,
+    data=None,
+) -> None:
     """Public separated values list interface."""
     if data is None:
         if not DB.get('handle', None):
             DB['handle'] = api.login()
 
-        print(api.separated_values_list(DB['handle'], query_text, key_magic=key_magic, field_sep=field_sep))
+        print(
+            api.separated_values_list(
+                DB['handle'], query_text, key_magic=key_magic, field_sep=field_sep, replacement=replacement
+            )
+        )
     else:
-        print(api.separated_values_list(DB['handle'], query_text, key_magic=key_magic, field_sep=field_sep, data=data))
+        print(
+            api.separated_values_list(
+                DB['handle'], query_text, key_magic=key_magic, field_sep=field_sep, replacement=replacement, data=data
+            )
+        )
 
 
 @no_type_check

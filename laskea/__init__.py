@@ -27,6 +27,7 @@ FIELD_SEPARATORS = (
     TAB := '\t',
     USCORE := '_',
 )
+FS_SLUG = '$FIELD_SEPARATOR$'
 
 DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
 DRY_RUN = False

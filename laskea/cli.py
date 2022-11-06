@@ -112,7 +112,7 @@ def update(  # noqa
         180,
         '-x',
         '--cache-expiry-seconds',
-        help='Request cache expiry in seconds (default is 180)',
+        help='Request cache expiry in seconds',
     ),
 ) -> int:
     """
@@ -168,7 +168,7 @@ def update(  # noqa
 
 @app.command('csv')
 def svl_cmd(  # noqa
-    jql_query_pos: list[str],
+    jql_query_pos: list[str] = [''],
     jql_query: str = typer.Option(
         '',
         '-j',
@@ -176,7 +176,7 @@ def svl_cmd(  # noqa
         help=(
             'The query in JQL format.'
             '\nFor example given a project YES and two issues 123 and 124:'
-            "\n--jql-query 'project = YES and key in (YES-123, YES-124) order by created DESC'"
+            "\n'project = YES and key in (YES-123, YES-124) order by created DESC'"
         ),
         metavar='<jql-query>',
     ),
@@ -198,11 +198,22 @@ def svl_cmd(  # noqa
         '-d',
         '--delimiter',
         help=(
-            f'Delimiter / field separator (default is {laskea.PIPE})'
+            'Delimiter / field separator'
             '\nOn output, header and data cell values will have any occurences'
-            "\nof the field separator replaced with the text '$FIELD_SEPARATOR$'"
+            '\nof the field separator replaced with the replacement string'
         ),
         metavar='<field-separator>',
+    ),
+    replacement: str = typer.Option(
+        laskea.FS_SLUG,
+        '-r',
+        '--replacement',
+        help=(
+            'Replacement string for occurences of FS in text\n'
+            '\nOn output, header and data cell values will have any occurences'
+            '\nof the field separator replaced with the replacement string'
+        ),
+        metavar='<field-separator-replacement>',
     ),
     verify: bool = typer.Option(
         False,
@@ -226,7 +237,7 @@ def svl_cmd(  # noqa
         180,
         '-x',
         '--cache-expiry-seconds',
-        help='Request cache expiry in seconds (default is 180)',
+        help='Request cache expiry in seconds',
     ),
 ) -> int:
     """
@@ -280,7 +291,7 @@ def svl_cmd(  # noqa
     }
     cfg.process(conf, options)
 
-    return sys.exit(laskea.svl(jql_query, key_magic=key_magic, field_sep=field_sep))
+    return sys.exit(laskea.svl(jql_query, key_magic=key_magic, field_sep=field_sep, replacement=replacement))
 
 
 @app.command('version')

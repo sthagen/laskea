@@ -134,6 +134,7 @@ def separated_values_list(
     column_fields=None,
     key_magic: bool = False,
     field_sep: str = laskea.PIPE,
+    replacement: str = laskea.FS_SLUG,
     data: Mapping[str, Union[object, Iterable, Sized]] = None,
 ) -> str:
     """Yes we can ... document later."""
@@ -143,7 +144,6 @@ def separated_values_list(
         return json.dumps(data, indent=2)
 
     fs = field_sep  # alias
-    slug = '$FIELD_SEPARATOR$'
     if not data['rows']:
         if laskea.STRICT:
             fs_disp = 'RS' if fs == laskea.RS else fs
@@ -162,8 +162,8 @@ def separated_values_list(
             if not isinstance(cell, str):
                 table[slot][key] = BASE_JOIN_STRING.join(cell)  # noqa
 
-    header = f'{fs.join(cell.replace(fs, slug) for cell in header_cells)}'
-    rows = [f'{fs.join(str(v).replace(fs, slug) for v in line.values())}' for line in table]
+    header = f'{fs.join(cell.replace(fs, replacement) for cell in header_cells)}'
+    rows = [f'{fs.join(str(v).replace(fs, replacement) for v in line.values())}' for line in table]
     the_sv_list = '\n'.join([header] + rows) + '\n'
     return the_sv_list.replace('\r', '') if BASE_LF_ONLY else the_sv_list
 
