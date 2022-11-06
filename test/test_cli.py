@@ -29,8 +29,8 @@ def test_update_command(capsys):
 
 
 def test_csv_command(capsys):
-    with pytest.raises(TypeError):
+    with pytest.raises(SystemExit):
         cli.svl_cmd(jql_query='')
     out, err = capsys.readouterr()
     assert not out
-    assert not err
+    assert 'JQL query required.' in err
