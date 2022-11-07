@@ -374,7 +374,7 @@ def create_and_report_effective_configuration(header: str) -> None:
 
 def process(conf: str, options: Mapping[str, bool]) -> None:
     """SPOC."""
-    configuration, cp = discover_configuration(conf)
+    configuration, cp = discover_configuration(conf if isinstance(conf, str) else '')
 
     verbose = bool(options.get('verbose', ''))
     if configuration is not None:

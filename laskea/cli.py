@@ -168,7 +168,7 @@ def update(  # noqa
 
 @app.command('csv')
 def svl_cmd(  # noqa
-    query: List[str] = typer.Argument(None),
+    query: str =  typer.Argument(''),
     jql_query: str = typer.Option(
         '',
         '-j',
@@ -266,7 +266,7 @@ def svl_cmd(  # noqa
     transaction_mode = 'commit' if not verify else 'dry-run'
     jql = jql_query.strip()
     if not jql and query:
-        jql = query[0].strip()
+        jql = query
     if not jql:
         print('JQL query required.', file=sys.stderr)
         return sys.exit(2)
@@ -290,7 +290,8 @@ def svl_cmd(  # noqa
         'strict': strict,
         'verbose': verbose,
     }
-    cfg.process(conf, options)
+    if conf:
+        cfg.process(conf, options)
 
     return sys.exit(laskea.svl(jql, key_magic=key_magic, field_sep=field_sep, replacement=replacement))
 
