@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "laskea"
-version = "2022.11.6"
+version = "2022.11.7"
 description = "Calculate (Finnish: laskea) some parts."
 readme = "README.md"
 authors = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
