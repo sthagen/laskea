@@ -1,3 +1,5 @@
+import re
+
 import pytest
 
 import laskea
@@ -29,8 +31,24 @@ def test_update_command(capsys):
 
 
 def test_csv_command(capsys):
-    with pytest.raises(SystemExit):
-        cli.svl_cmd(jql_query='')
+    message = r"svl_cmd() missing 1 required positional argument: 'query'"
+    with pytest.raises(TypeError, match=re.escape(message)):
+        cli.svl_cmd(jql_query='')  # type: ignore
     out, err = capsys.readouterr()
     assert not out
-    assert 'JQL query required.' in err
+    assert not err
+
+
+def test_version_command(capsys):
+    with pytest.raises(Exception):
+        cli.callback(version=True)
+    out, err = capsys.readouterr()
+    assert 'Calculate (Finnish: laskea) some parts' in out
+    assert f'version {laskea.__version__}' in out
+    assert not err
+    with pytest.raises(Exception):
+        cli.callback()
+    out, err = capsys.readouterr()
+    assert 'Calculate (Finnish: laskea) some parts' in out
+    assert f'version {laskea.__version__}' in out
+    assert not err
