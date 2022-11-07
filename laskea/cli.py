@@ -168,7 +168,7 @@ def update(  # noqa
 
 @app.command('csv')
 def svl_cmd(  # noqa
-    jql_query_pos: list[str] = [''],
+    query: List[str],
     jql_query: str = typer.Option(
         '',
         '-j',
@@ -213,7 +213,7 @@ def svl_cmd(  # noqa
             '\nOn output, header and data cell values will have any occurences'
             '\nof the field separator replaced with the replacement string'
         ),
-        metavar='<field-separator-replacement>',
+        metavar='<replacement-text>',
     ),
     verify: bool = typer.Option(
         False,
@@ -264,9 +264,10 @@ def svl_cmd(  # noqa
     The quiet option (if given) disables any conflicting verbosity setting.
     """
     transaction_mode = 'commit' if not verify else 'dry-run'
-    if not jql_query and jql_query_pos:
-        jql_query = jql_query_pos[0].strip()
-    if not jql_query.strip():
+    jql = jql_query.strip()
+    if not jql and query:
+        jql = query[0].strip()
+    if not jql:
         print('JQL query required.', file=sys.stderr)
         return sys.exit(2)
     quiet = True
@@ -291,7 +292,7 @@ def svl_cmd(  # noqa
     }
     cfg.process(conf, options)
 
-    return sys.exit(laskea.svl(jql_query, key_magic=key_magic, field_sep=field_sep, replacement=replacement))
+    return sys.exit(laskea.svl(jql, key_magic=key_magic, field_sep=field_sep, replacement=replacement))
 
 
 @app.command('version')
