@@ -31,12 +31,11 @@ def test_update_command(capsys):
 
 
 def test_csv_command(capsys):
-    message = r"svl_cmd() missing 1 required positional argument: 'query'"
-    with pytest.raises(TypeError, match=re.escape(message)):
+    with pytest.raises(SystemExit):
         cli.svl_cmd(jql_query='')  # type: ignore
     out, err = capsys.readouterr()
     assert not out
-    assert not err
+    assert 'JQL query required.' in err
 
 
 def test_version_command(capsys):
