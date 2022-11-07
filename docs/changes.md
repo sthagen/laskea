@@ -1,5 +1,8 @@
 # Change History
 
+## 2022.11.7
+
+* Fixed positional argument (query) handling for the csv command
 ## 2022.11.6
 
 * Added replacement option to the csv command that extracts separated values lists ...
