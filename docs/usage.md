@@ -184,7 +184,7 @@ may be helpful temporarily.
 ```console
 ❯ laskea csv -h
 
- Usage: laskea csv [OPTIONS]
+ Usage: laskea csv [OPTIONS] QUERY...
 
  Export query result as separated values list.
  You can set some options per evironment variables:
@@ -205,40 +205,32 @@ may be helpful temporarily.
 
  The quiet option (if given) disables any conflicting verbosity setting.
 
-╭─ Options ────────────────────────────────────────────────────────────────────────────────────────╮
-│ --jql-query-pos                 TEXT                                                             │
-│ --jql-query             -j      <jql-query>                    The query in JQL format. For      │
-│                                                                example given a project YES and   │
-│                                                                two issues 123 and 124: 'project  │
-│                                                                = YES and key in (YES-123,        │
-│                                                                YES-124) order by created DESC'   │
-│ --config                -c      <configpath>                   Path to config file (default is   │
-│                                                                $HOME/.laskea.json)               │
-│ --key-magic             -k                                     Apply magic to key by replacing   │
-│                                                                with markdown like link (default  │
-│                                                                is False)                         │
-│ --delimiter             -d      <field-separator>              Delimiter / field separator On    │
-│                                                                output, header and data cell      │
-│                                                                values will have any occurences   │
-│                                                                of the field separator replaced   │
-│                                                                with the replacement string       │
-│                                                                [default: |]                      │
-│ --replacement           -r      <field-separator-replacement>  Replacement string for occurences │
-│                                                                of FS in text                     │
-│                                                                On output, header and data cell   │
-│                                                                values will have any occurences   │
-│                                                                of the field separator replaced   │
-│                                                                with the replacement string       │
-│                                                                [default: $FIELD_SEPARATOR$]      │
-│ --dry-run               -n                                     Dry run (default is False)        │
-│ --verbose               -v                                     Verbose output (default is False) │
-│ --strict                -s                                     Ouput noisy warnings on console   │
-│                                                                and in the processed document     │
-│                                                                (default is False)                │
-│ --cache-expiry-seconds  -x      INTEGER                        Request cache expiry in seconds   │
-│                                                                [default: 180]                    │
-│ --help                  -h                                     Show this message and exit.       │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    query      QUERY...  [default: None] [required]                                                          │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --jql-query             -j      <jql-query>         The query in JQL format. For example given a project YES  │
+│                                                     and two issues 123 and 124: 'project = YES and key in     │
+│                                                     (YES-123, YES-124) order by created DESC'                 │
+│ --config                -c      <configpath>        Path to config file (default is $HOME/.laskea.json)       │
+│ --key-magic             -k                          Apply magic to key by replacing with markdown like link   │
+│                                                     (default is False)                                        │
+│ --delimiter             -d      <field-separator>   Delimiter / field separator On output, header and data    │
+│                                                     cell values will have any occurences of the field         │
+│                                                     separator replaced with the replacement string            │
+│                                                     [default: |]                                              │
+│ --replacement           -r      <replacement-text>  Replacement string for occurences of FS in text           │
+│                                                     On output, header and data cell values will have any      │
+│                                                     occurences of the field separator replaced with the       │
+│                                                     replacement string                                        │
+│                                                     [default: $FIELD_SEPARATOR$]                              │
+│ --dry-run               -n                          Dry run (default is False)                                │
+│ --verbose               -v                          Verbose output (default is False)                         │
+│ --strict                -s                          Ouput noisy warnings on console and in the processed      │
+│                                                     document (default is False)                               │
+│ --cache-expiry-seconds  -x      INTEGER             Request cache expiry in seconds [default: 180]            │
+│ --help                  -h                          Show this message and exit.                               │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 ```
 
