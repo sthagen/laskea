@@ -127,8 +127,8 @@ def test_embed_headings_too_few_strict(level, capsys):
     query_text = ''
     assert hx[level](query_text=query_text, data=HEADING_WARN_TOO_FEW_FIXTURE) is None
     out, err = capsys.readouterr()
-    assert not err  # f'WARNING: received 0 results instead of 1 for JQL ({query_text}) and h{level}' in err
-    assert out == f'WARNING: received 0 results instead of 1 for JQL () and h{level}\n'
+    assert f'WARNING: received 0 results instead of 1 for JQL ({query_text}) and h{level}' in err
+    assert f'WARNING: received 0 results instead of 1 for JQL () and h{level}\n' in out
     laskea.STRICT = strictness
 
 
@@ -139,10 +139,10 @@ def test_embed_headings_too_many_strict(level, capsys):
     laskea.STRICT = True
     hx = [None, emb.h1, emb.h2, emb.h3, emb.h4, emb.h5, emb.h6]
     query_text = ''
-    # mis_count = HEADING_WARN_TOO_MANY_FIXTURE_COUNT
+    mis_count = HEADING_WARN_TOO_MANY_FIXTURE_COUNT
     assert hx[level](query_text=query_text, data=HEADING_WARN_TOO_MANY_FIXTURE) is None
     out, err = capsys.readouterr()
-    assert not err  # f'WARNING: received {mis_count} results instead of 1 for JQL ({query_text}) and h{level}' in err
+    assert f'WARNING: received {mis_count} results instead of 1 for JQL ({query_text}) and h{level}' in err
     assert out
     laskea.STRICT = strictness
 
@@ -180,7 +180,7 @@ def test_embed_table_no_result_strict(capsys):
     expected = f'WARNING: received 0 results for JQL ({query_text}) and table'
     assert emb.table(query_text=query_text, data=HEADING_WARN_TOO_FEW_FIXTURE) is None
     out, err = capsys.readouterr()
-    assert not err  # == 'WARNING: received 0 results for JQL () and table\n'
+    assert 'WARNING: received 0 results for JQL () and table\n' in err
     assert out.strip() == expected
     laskea.STRICT = strictness
 
