@@ -3,6 +3,7 @@ import pathlib
 
 import pytest
 
+import laskea.api.excel as xls
 import laskea.api.jira as impl
 
 URL_FIXTURE = ''
@@ -52,7 +53,21 @@ D_LIST_PAYLOADS = tuple(
 )
 
 P_C_L_FIXTURE_PATH = pathlib.Path('test', 'fixtures', 'basic', 'p_c_jira.json')
-
+EMPTY_FIXTURE_PATH = pathlib.Path('test', 'fixtures', 'basic', 'empty.md')
+EMPTY_SHA512_HEX = (
+    'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce'
+    '47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
+)
+MBOM_FIXTURE_PATH = pathlib.Path('test', 'fixtures', 'basic', 'mbom.xlsx')
+MBOM_TABLE = f"""\
+<!-- anchor: ('0', '1233333', 'asdasd', '')-->
+| Level | P/N | Item Name | SW Version |
+|:------|:----|:----------|:-----------|
+| 1     | 124 | a a       | 1          |
+| 2     | 123 | b b       | 2          |
+<!-- source: {MBOM_FIXTURE_PATH}-->
+<!-- s-hash: sha512:98f49a212325387c2a800c000f6892879a38cae9fde357cca3de57bfcc18bb28\
+5d34ad81f19fae1df735ec85e8ada40e7f4ae06ffb5bfb4f89bc7592c8d63111-->"""
 
 @pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
 def test_impl_headings(level):
@@ -83,7 +98,7 @@ def test_impl_svl():
 
 def test_impl_svl_empty():
     kwargs = dict(jql_text='', column_fields=tuple(), field_sep='x', data={'rows': []})
-    assert impl.separated_values_list(impl.Jira(''), **kwargs) == ''
+    assert impl.separated_values_list(impl.Jira(''), **kwargs) == ''  # type: ignore
 
 
 def test_impl_d_list():
@@ -100,7 +115,7 @@ def test_impl_login_no_user():
 
 
 def test_impl_login_no_token():
-    impl.BASE_TOKEN = ''
+    impl.BASE_PASS = ''
     message = 'User, Token, and URL are all required for login.'
     with pytest.raises(ValueError, match=message):
         _ = impl.login(user='not-relevant-as-token-is-missing')
@@ -142,3 +157,11 @@ def test_parent_children_sections():
 
     doc = impl.parent_children_sections(impl.Jira(''), 'parent_jql', 'children_jql', 'Test Plan', 'Test Case', data)
     assert '## First summary' in doc
+
+
+def test_xls_hash_file_empty():
+    assert xls.hash_file(EMPTY_FIXTURE_PATH) == EMPTY_SHA512_HEX
+
+
+def test_xls_mbom_table_basic():
+    assert xls.mbom_table(str(MBOM_FIXTURE_PATH)) == MBOM_TABLE
