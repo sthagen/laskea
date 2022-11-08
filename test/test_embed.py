@@ -1,3 +1,5 @@
+import pathlib
+
 import pytest
 
 import laskea
@@ -85,6 +87,17 @@ TABLE_FIXTURE_PAYLOADS = (
     '',
     '2 issues',
 )
+
+MBOM_FIXTURE_PATH = pathlib.Path('test', 'fixtures', 'basic', 'mbom.xlsx')
+MBOM_TABLE = f"""\
+<!-- anchor: ('0', '1233333', 'asdasd', '')-->
+| Level | P/N | Item Name | SW Version |
+|:------|:----|:----------|:-----------|
+| 1     | 124 | a a       | 1          |
+| 2     | 123 | b b       | 2          |
+<!-- source: {MBOM_FIXTURE_PATH}-->
+<!-- s-hash: sha512:98f49a212325387c2a800c000f6892879a38cae9fde357cca3de57bfcc18bb28\
+5d34ad81f19fae1df735ec85e8ada40e7f4ae06ffb5bfb4f89bc7592c8d63111-->"""
 
 
 @pytest.mark.parametrize('level', [lv for lv in range(1, 6 + 1)])
@@ -224,3 +237,10 @@ def test_embed_headings_too_many_non_strict(level, capsys):
     assert not err
     assert not out.strip()
     laskea.STRICT = strictness
+
+
+def test_embed_mbom_table_basic(capsys):
+    assert emb.mbom_table(str(MBOM_FIXTURE_PATH)) is None
+    out, err = capsys.readouterr()
+    assert not err
+    assert MBOM_TABLE in out
