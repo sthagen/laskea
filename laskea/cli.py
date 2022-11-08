@@ -168,7 +168,7 @@ def update(  # noqa
 
 @app.command('csv')
 def svl_cmd(  # noqa
-    query: str =  typer.Argument(''),
+    query: str = typer.Argument(''),
     jql_query: str = typer.Option(
         '',
         '-j',
