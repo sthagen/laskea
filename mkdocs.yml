@@ -3,6 +3,8 @@ site_description: "Calculate (Finnish: laskea) some parts."
 
 theme:
   name: 'material'
+  logo: assets/logo.png
+  favicon: images/favicon.ico
   features:
     - navigation.expand
     - toc.integrate
