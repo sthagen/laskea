@@ -13,9 +13,9 @@ classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.9",
 ]
 keywords = ["code-generation", "developer-tools", "markdown", "validation", "erification"]
 dependencies = [
@@ -29,10 +29,10 @@ dependencies = [
     "scooby >= 0.7.0",
     "typer >= 0.7.0",
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 
 [project.optional-dependencies]
-dev = ["black", "coverage", "flake8", "hypothesis", "mypy", "pytest", "pytest-cov", "pytest-flake8", "types-jmespath"]
+dev = ["black", "coverage", "hypothesis", "mypy", "pytest", "pytest-cov", "pytest-flake8", "ruff", "types-jmespath"]
 
 [project.urls]
 Homepage = "https://git.sr.ht/~sthagen/laskea"
@@ -54,7 +54,7 @@ universal = true
 [tool.black]
 line-length = 120
 skip-string-normalization = true
-target-version = ["py38", "py39", "py310"]
+target-version = ["py39", "py310", "py311"]
 
 [tool.coverage.run]
 branch = true
@@ -71,13 +71,51 @@ omit = [
     "*/__main__.py",
 ]
 
-[tool.isort]
-line_length = 120
-known_first_party = "laskea"
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-combine_as_imports = true
+[tool.ruff]
+line-length = 120
+select = ["E", "F", "Q"]
+ignore = []
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+target-version = "py310"
+unfixable = ["F401"]
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "single"
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["E402"]
+
+[tool.ruff.flake8-import-conventions.aliases]
+altair = "alt"
+"matplotlib.pyplot" = "plt"
+numpy = "np"
+pandas = "pd"
+seaborn = "sns"
+
+[tool.ruff.mccabe]
+max-complexity = 42  # default is 10
 
 [tool.mypy]
 strict = true
@@ -86,3 +124,4 @@ implicit_reexport = true
 [tool.pytest]
 testpaths = "test"
 filterwarnings = "error"
+
