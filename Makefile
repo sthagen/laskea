@@ -1,9 +1,6 @@
-SHELL = /bin/bash
-
 .DEFAULT_GOAL := all
 black = black -S -l 120 --target-version py310 laskea test
-flake8 = flake8 laskea test
-isort = isort laskea test
+lint = ruff laskea test
 pytest = pytest --asyncio-mode=strict --cov=laskea --cov-report term-missing:skip-covered --cov-branch --log-format="%(levelname)s %(message)s"
 types = mypy laskea
 
@@ -19,7 +16,7 @@ install-all: install
 
 .PHONY: format
 format:
-	$(isort)
+	$(lint) --fix
 	$(black)
 
 .PHONY: init
@@ -30,8 +27,7 @@ init:
 .PHONY: lint
 lint:
 	python setup.py check -ms
-	flake8 laskea/ test/
-	$(isort) --check-only --df
+	$(lint) --diff
 	$(black) --check --diff
 
 .PHONY: types
