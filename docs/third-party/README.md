@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([14e0e0a9 ...](https://git.sr.ht/~sthagen/laskea/blob/default/sbom.json.sha256 "sha256:14e0e0a9c8c9e7ed1678f3527fe246fd0ffc0566479f8193958008f5cdea98a2")).
-<!--[[[end]]] (checksum: 0071aa71ccc38bf579242f59d859dce5)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/sbom.json) with SHA256 checksum ([222ed8a8 ...](https://git.sr.ht/~sthagen/laskea/blob/default/sbom.json.sha256 "sha256:222ed8a8f483ff4975fbc621abb194920e58011aadc7e42c5ddc4990a607e7d6")).
+<!--[[[end]]] (checksum: edfd6dd0e4a74f25dc67c2c5a572141d)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -17,11 +17,11 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [defusedxml](https://github.com/tiran/defusedxml)                             | [0.7.1](https://pypi.org/project/defusedxml/0.7.1/)             | Python Software Foundation License | Christian Heimes                                                    | XML bomb protection for Python stdlib modules                           |
 | [jmespath](https://github.com/jmespath/jmespath.py)                           | [1.0.1](https://pypi.org/project/jmespath/1.0.1/)               | MIT License                        | James Saryerwinnie                                                  | JSON Matching Expressions                                               |
 | [openpyxl](https://openpyxl.readthedocs.io)                                   | [3.0.10](https://pypi.org/project/openpyxl/3.0.10/)             | MIT License                        | See AUTHORS                                                         | A Python library to read/write Excel 2010 xlsx/xlsm files               |
-| [pydantic](https://github.com/pydantic/pydantic)                              | [1.10.3](https://pypi.org/project/pydantic/1.10.3/)             | MIT License                        | Samuel Colvin                                                       | Data validation and settings management using python type hints         |
+| [pydantic](https://github.com/pydantic/pydantic)                              | [1.10.4](https://pypi.org/project/pydantic/1.10.4/)             | MIT License                        | Samuel Colvin                                                       | Data validation and settings management using python type hints         |
 | [requests-cache](https://github.com/requests-cache/requests-cache)            | [0.9.7](https://pypi.org/project/requests-cache/0.9.7/)         | BSD License                        | Roman Haritonov                                                     | A transparent persistent cache for the requests library                 |
 | [scooby](https://github.com/banesullivan/scooby)                              | [0.7.0](https://pypi.org/project/scooby/0.7.0/)                 | MIT License                        | Dieter Werthmüller, Bane Sullivan, Alex Kaszynski, and contributors | A Great Dane turned Python environment detective                        |
 | [typer](https://github.com/tiangolo/typer)                                    | [0.7.0](https://pypi.org/project/typer/0.7.0/)                  | MIT License                        | Sebastián Ramírez                                                   | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
-<!--[[[end]]] (checksum: 086fd23b2edc126952a464cbbd3e8a9a)-->
+<!--[[[end]]] (checksum: 1198565a804f29eede07aaa8e8e46fea)-->
 
 ### Indirect Dependencies
 
@@ -83,8 +83,8 @@ defusedxml==0.7.1
 jmespath==1.0.1
 openpyxl==3.0.10
   - et-xmlfile [required: Any, installed: 1.1.0]
-pydantic==1.10.3
-  - typing-extensions [required: >=4.1.0, installed: 4.4.0]
+pydantic==1.10.4
+  - typing-extensions [required: >=4.2.0, installed: 4.4.0]
 requests-cache==0.9.7
   - appdirs [required: >=1.4.4, installed: 1.4.4]
   - attrs [required: >=21.2, installed: 22.2.0]
@@ -103,4 +103,4 @@ scooby==0.7.0
 typer==0.7.0
   - click [required: >=7.1.1,<9.0.0, installed: 8.1.3]
 ````
-<!--[[[end]]] (checksum: 1205f455a2e24520ce049b45219d7ae4)-->
+<!--[[[end]]] (checksum: 66b3d0c30511dab0051f3a40ee1270cd)-->

@@ -20,8 +20,8 @@ defusedxml==0.7.1
 jmespath==1.0.1
 openpyxl==3.0.10
   - et-xmlfile [required: Any, installed: 1.1.0]
-pydantic==1.10.3
-  - typing-extensions [required: >=4.1.0, installed: 4.4.0]
+pydantic==1.10.4
+  - typing-extensions [required: >=4.2.0, installed: 4.4.0]
 requests-cache==0.9.7
   - appdirs [required: >=1.4.4, installed: 1.4.4]
   - attrs [required: >=21.2, installed: 22.2.0]
