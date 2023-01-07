@@ -54,7 +54,7 @@ sbom:
 
 .PHONY: version
 version:
-	@cog -I. -P -c -r --check --markers="[[fill ]]] [[[end]]]" -p "from gen_version import *" pyproject.toml $(package)/__init__.py
+	@cog -I. -P -c -r --check --markers="[[fill ]]] [[[end]]]" -p "from gen_version import *" $(package)/__init__.py
 
 .PHONY: secure
 secure:
@@ -66,14 +66,18 @@ baseline:
 	@bandit --output baseline-bandit.json --format json --recursive --quiet --exclude ./test,./build $(package)
 	@cat baseline-bandit.json; printf "\n^ The new baseline ^^ ^^ ^^ ^^ ^^ ^^. OK?\n"
 
+.PHONY: clocal
+clocal:
+	@rm -f .laskea_cache.sqlite
+
 .PHONY: clean
-clean:
+clean: clocal
 	@rm -rf `find . -name __pycache__`
 	@rm -f `find . -type f -name '*.py[co]' `
 	@rm -f `find . -type f -name '*~' `
 	@rm -f `find . -type f -name '.*~' `
 	@rm -rf .cache htmlcov *.egg-info build dist/*
-	@rm -f .coverage .coverage.* *.log current-bandit.json .laskea_cache.sqlite
+	@rm -f .coverage .coverage.* *.log
 	@echo skipping not yet working pip uninstall $(package)
 	@rm -fr site/*
 
