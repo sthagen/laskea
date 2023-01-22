@@ -4,7 +4,7 @@ Calculate (Finnish: laskea) some parts.
 
 [License: MIT](https://git.sr.ht/~sthagen/laskea/tree/default/item/LICENSE)
 
-Third party dependencies are documented in the folder [docs/third-party](docs/third-party/README.md).
+Third party dependencies are documented in the folder [docs/third-party](docs/docs/third-party/README.md).
 
 [![version](https://img.shields.io/pypi/v/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 [![downloads](https://pepy.tech/badge/laskea/month)](https://pepy.tech/project/laskea)
