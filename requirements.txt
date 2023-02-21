@@ -1,9 +1,9 @@
-atlassian-python-api==3.32.2
+atlassian-python-api==3.33.0
 cogapp==3.3.0
 defusedxml==0.7.1
 jmespath==1.0.1
-openpyxl==3.0.10
-pydantic==1.10.4
-requests-cache==0.9.7
-scooby==0.7.0
+openpyxl==3.1.1
+pydantic==1.10.5
+requests-cache==0.9.8
+scooby==0.7.1
 typer==0.7.0
