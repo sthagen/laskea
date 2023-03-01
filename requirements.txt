@@ -1,4 +1,4 @@
-atlassian-python-api==3.33.0
+atlassian-python-api==3.34.0
 cogapp==3.3.0
 defusedxml==0.7.1
 jmespath==1.0.1
