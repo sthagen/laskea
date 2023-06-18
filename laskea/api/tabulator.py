@@ -38,12 +38,13 @@ def tabulator_overview_table(configuration: Mapping[str, object]) -> str:
     """Because we can ... document later."""
     m = parse_matrix(configuration)
     over_view = f'{configuration["base_url"]}{configuration["path"]}'
+    http_options = {'timeout': laskea.REQUESTS_TIMEOUT_SECS}
 
     data = []
     data_version = ''
     for year in configuration['years']:  # noqa
         source = over_view.replace('$year$', str(year))
-        r = requests.get(source, verify=configuration['verify_server_certificate'])  # noqa
+        r = requests.get(source, verify=configuration['verify_server_certificate'], **http_options)  # noqa
         as_json = r.json()
         data_version = jmespath.search('data_version', as_json)
         for entry in jmespath.search('data[]', as_json):
@@ -111,13 +112,13 @@ def tabulator_overview_table(configuration: Mapping[str, object]) -> str:
 def tabulator_kpi_table(configuration: Mapping[str, object], selected: str) -> str:
     """Because we can too ... document later."""
     m = parse_matrix(configuration)
-
+    http_options = {'timeout': laskea.REQUESTS_TIMEOUT_SECS}
     data = []
     data_version = ''
     for year in configuration['years']:  # noqa
         the_path = configuration['paths'][selected].replace('$year$', str(year))  # noqa
         source = f'{configuration["base_url"]}{the_path}'
-        r = requests.get(source, configuration['verify_server_certificate'])  # noqa
+        r = requests.get(source, configuration['verify_server_certificate'], **http_options)  # noqa
         as_json = r.json()
         data_version = jmespath.search('data_version', as_json)
         for entry in jmespath.search('data[]', as_json):

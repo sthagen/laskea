@@ -12,6 +12,7 @@ APP_NAME = 'Calculate (Finnish: laskea) some parts.'
 APP_ALIAS = 'laskea'
 APP_ENV = 'LASKEA'
 CACHE_EXPIRY_SECONDS = int(os.getenv(f'{APP_ENV}_CACHE_EXPIRY_SECONDS', '180'))
+REQUESTS_TIMEOUT_SECS = 30
 
 FIELD_SEPARATORS = (
     CARET := '^',
@@ -116,6 +117,7 @@ from laskea.embed import (  # noqa
 )
 
 __all__ = [
+    'REQUESTS_TIMEOUT_SECS',
     'h1',
     'h2',
     'h3',
