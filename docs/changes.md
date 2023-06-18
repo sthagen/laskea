@@ -3,6 +3,7 @@
 2023.6.18
 :    * Added timeout to http requests (<https://todo.sr.ht/~sthagen/laskea/1>)
 * Moved SBOM noise into folder and added SPDX SBOM (derived) in multiple file formats
+* Updated dependencies
 
 ## 2022
 
