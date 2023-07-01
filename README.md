@@ -11,6 +11,7 @@ Third party dependencies are documented in the folder [docs/third-party](docs/do
 [![wheel](https://img.shields.io/pypi/wheel/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 [![supported-versions](https://img.shields.io/pypi/pyversions/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 [![supported-implementations](https://img.shields.io/pypi/implementation/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
+[![maintenance-status](https://img.shields.io/github/commit-activity/y/sthagen/laskea.svg?style=flat)](https://git.sr.ht/~sthagen/laskea/log)
 
 ## Documentation
 
