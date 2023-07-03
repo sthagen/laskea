@@ -1,5 +1,7 @@
 site_name: Laskea
 site_description: "Calculate (Finnish: laskea) some parts."
+docs_dir: ../docs
+site_dir: ../site
 
 theme:
   name: 'material'
