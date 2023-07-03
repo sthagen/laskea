@@ -1,5 +1,6 @@
 """Calculate (Finnish: laskea) some parts."""
 import os
+import pathlib
 
 # [[[fill git_describe()]]]
 __version__ = '2023.6.18+parent.e984ef8f'
@@ -8,9 +9,17 @@ __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
 
-APP_NAME = 'Calculate (Finnish: laskea) some parts.'
-APP_ALIAS = 'laskea'
-APP_ENV = 'LASKEA'
+APP_ALIAS = str(pathlib.Path(__file__).parent.name)
+APP_ENV: str = APP_ALIAS.upper()
+APP_NAME = locals()['__doc__']
+DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
+VERBOSE = bool(os.getenv(f'{APP_ENV}_VERBOSE', ''))
+QUIET = False
+STRICT = bool(os.getenv(f'{APP_ENV}_STRICT', ''))
+ENCODING = 'utf-8'
+ENCODING_ERRORS_POLICY = 'ignore'
+DEFAULT_CONFIG_NAME = f'.{APP_ALIAS}.json'
+
 CACHE_EXPIRY_SECONDS = int(os.getenv(f'{APP_ENV}_CACHE_EXPIRY_SECONDS', '180'))
 REQUESTS_TIMEOUT_SECS = 30
 
@@ -30,14 +39,7 @@ FIELD_SEPARATORS = (
 )
 FS_SLUG = '$FIELD_SEPARATOR$'
 
-DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
 DRY_RUN = False
-VERBOSE = bool(os.getenv(f'{APP_ENV}_VERBOSE', ''))
-QUIET = False
-STRICT = bool(os.getenv(f'{APP_ENV}_STRICT', ''))
-ENCODING = 'utf-8'
-ENCODING_ERRORS_POLICY = 'ignore'
-DEFAULT_CONFIG_NAME = '.laskea.json'
 OPEN_BRACKET = '['
 CLOSE_BRACKET = ']'
 DEFAULT_MARKERS = f'{OPEN_BRACKET * 3}fill {CLOSE_BRACKET * 3} {OPEN_BRACKET * 3}end{CLOSE_BRACKET * 3}'
