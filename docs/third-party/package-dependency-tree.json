@@ -162,8 +162,8 @@
     {
         "key": "pydantic",
         "package_name": "pydantic",
-        "installed_version": "1.10.9",
-        "required_version": "1.10.9",
+        "installed_version": "1.10.10",
+        "required_version": "1.10.10",
         "dependencies": [
             {
                 "key": "typing-extensions",

@@ -39,7 +39,7 @@ digraph {
 	openpyxl [label="openpyxl\n3.1.2"]
 	platformdirs [label="platformdirs\n2.6.0"]
 	pydantic -> "typing-extensions" [label=">=4.2.0"]
-	pydantic [label="pydantic\n1.10.9"]
+	pydantic [label="pydantic\n1.10.10"]
 	requests -> "charset-normalizer" [label=">=2,<3"]
 	requests -> certifi [label=">=2017.4.17"]
 	requests -> idna [label=">=2.5,<4"]

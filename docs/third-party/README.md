@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json) with SHA256 checksum ([f1e2915c ...](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json.sha256 "sha256:f1e2915c8c97baccdb3d99fb0f376858232193a826045dce4d2a6ba78cb943f9")).
-<!--[[[end]]] (checksum: 23dc7ca59ed1ce7f0bbb22f2d3b62323)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json) with SHA256 checksum ([7e32c3df ...](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json.sha256 "sha256:7e32c3df53f2769acc95365c096ca662fa9fc6b7ca8c1643f0c8779a7c4167fd")).
+<!--[[[end]]] (checksum: e79483603025a8f91ee30d360ee8e7a4)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -17,11 +17,11 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [defusedxml](https://github.com/tiran/defusedxml)                             | [0.7.1](https://pypi.org/project/defusedxml/0.7.1/)             | Python Software Foundation License | Christian Heimes                                                    | XML bomb protection for Python stdlib modules                           |
 | [jmespath](https://github.com/jmespath/jmespath.py)                           | [1.0.1](https://pypi.org/project/jmespath/1.0.1/)               | MIT License                        | James Saryerwinnie                                                  | JSON Matching Expressions                                               |
 | [openpyxl](https://openpyxl.readthedocs.io)                                   | [3.1.2](https://pypi.org/project/openpyxl/3.1.2/)               | MIT License                        | See AUTHORS                                                         | A Python library to read/write Excel 2010 xlsx/xlsm files               |
-| [pydantic](https://github.com/pydantic/pydantic)                              | [1.10.9](https://pypi.org/project/pydantic/1.10.9/)             | MIT License                        | Samuel Colvin                                                       | Data validation and settings management using python type hints         |
+| [pydantic](https://github.com/pydantic/pydantic)                              | [1.10.10](https://pypi.org/project/pydantic/1.10.10/)           | MIT License                        | Samuel Colvin                                                       | Data validation and settings management using python type hints         |
 | [requests-cache](https://github.com/requests-cache/requests-cache)            | [1.0.1](https://pypi.org/project/requests-cache/1.0.1/)         | BSD License                        | Roman Haritonov                                                     | A persistent cache for python requests                                  |
 | [scooby](https://github.com/banesullivan/scooby)                              | [0.7.2](https://pypi.org/project/scooby/0.7.2/)                 | MIT License                        | Dieter Werthmüller, Bane Sullivan, Alex Kaszynski, and contributors | A Great Dane turned Python environment detective                        |
 | [typer](https://github.com/tiangolo/typer)                                    | [0.9.0](https://pypi.org/project/typer/0.9.0/)                  | MIT License                        | Sebastián Ramírez                                                   | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
-<!--[[[end]]] (checksum: 253873c78f55ff57afeb6d99b4417dd8)-->
+<!--[[[end]]] (checksum: b0d3005b91a8edee7d23f61c5913a500)-->
 
 ### Indirect Dependencies
 
@@ -84,7 +84,7 @@ defusedxml==0.7.1
 jmespath==1.0.1
 openpyxl==3.1.2
 └── et-xmlfile [required: Any, installed: 1.1.0]
-pydantic==1.10.9
+pydantic==1.10.10
 └── typing-extensions [required: >=4.2.0, installed: 4.4.0]
 requests-cache==1.0.1
 ├── attrs [required: >=21.2, installed: 23.1.0]
@@ -106,4 +106,4 @@ typer==0.9.0
 ├── click [required: >=7.1.1,<9.0.0, installed: 8.1.3]
 └── typing-extensions [required: >=3.7.4.3, installed: 4.4.0]
 ````
-<!--[[[end]]] (checksum: d698228db03288122e6b1a97827340f0)-->
+<!--[[[end]]] (checksum: 0384ac4c8769f012f0f6649ab13ea673)-->
