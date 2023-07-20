@@ -46,7 +46,7 @@ Test-Coverage = "https://codes.dilettant.life/coverage/laskea"
 laskea = "laskea.cli:app"
 
 [tool.setuptools.packages.find]
-include = ["laskea"]
+include = ["laskea", "laskea.api"]
 exclude = ["test*"]
 
 [tool.black]
@@ -95,7 +95,7 @@ exclude = [
     "venv",
 ]
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-target-version = "py310"
+target-version = "py311"
 unfixable = ["F401"]
 
 [tool.ruff.flake8-quotes]
