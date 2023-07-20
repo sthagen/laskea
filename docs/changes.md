@@ -1,5 +1,9 @@
 # Change History
 
+2023.7.20
+:    * Fixed the broken packaging - api is missing in 2023.6.18 (<https://todo.sr.ht/~sthagen/laskea/2>)
+* Implemented a per embed table call configurable column head renaming (<https://todo.sr.ht/~sthagen/laskea/3>)
+
 2023.6.18
 :    * Added timeout to http requests (<https://todo.sr.ht/~sthagen/laskea/1>)
 * Moved SBOM noise into folder and added SPDX SBOM (derived) in multiple file formats
