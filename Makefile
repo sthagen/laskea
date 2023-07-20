@@ -73,10 +73,12 @@ clocal:
 .PHONY: clean
 clean: clocal
 	@rm -rf `find . -name __pycache__`
+	@rm -rf `find . -name .benchmarks`
 	@rm -f `find . -type f -name '*.py[co]' `
 	@rm -f `find . -type f -name '*~' `
 	@rm -f `find . -type f -name '.*~' `
 	@rm -rf .cache htmlcov *.egg-info build dist/*
+	@rm -rf .hypothesis .*_cache
 	@rm -f .coverage .coverage.* *.log
 	@echo skipping not yet working pip uninstall $(package)
 	@rm -fr site/*
