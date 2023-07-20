@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json) with SHA256 checksum ([26110ea0 ...](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json.sha256 "sha256:26110ea02b43559d408a27d14d7008d4bb1347f405cacfbe782352c92f4aa2ea")).
-<!--[[[end]]] (checksum: 23747e41dc3478d687e34c87bf340911)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json) with SHA256 checksum ([1d8d2815 ...](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json.sha256 "sha256:1d8d281531e34d6800de3805e478cb92940e527c0ae86e9025d3a2c425e0fcc3")).
+<!--[[[end]]] (checksum: 8eb5c16a4a885b68549d96406dd347f8)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -39,7 +39,7 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [exceptiongroup](https://github.com/agronholm/exceptiongroup/blob/main/CHANGES.rst) | [1.1.0](https://pypi.org/project/exceptiongroup/1.1.0/)     | MIT License                          | Alex Grönholm <alex.gronholm@nextday.fi>                                              | Backport of PEP 654 (exception groups)                                                                  |
 | [idna](https://github.com/kjd/idna)                                                 | [3.4](https://pypi.org/project/idna/3.4/)                   | BSD License                          | Kim Davies <kim@cynosure.com.au>                                                      | Internationalized Domain Names in Applications (IDNA)                                                   |
 | [oauthlib](https://github.com/oauthlib/oauthlib)                                    | [3.2.2](https://pypi.org/project/oauthlib/3.2.2/)           | BSD License                          | The OAuthlib Community                                                                | A generic, spec-compliant, thorough implementation of the OAuth request-signing logic                   |
-| [platformdirs](https://github.com/platformdirs/platformdirs)                        | [2.6.0](https://pypi.org/project/platformdirs/2.6.0/)       | MIT License                          | UNKNOWN                                                                               | A small Python package for determining appropriate platform-specific dirs, e.g. a "user data dir".      |
+| [platformdirs](https://github.com/platformdirs/platformdirs)                        | [2.6.0](https://pypi.org/project/platformdirs/2.6.0/)       | MIT License                          | Bernát Gábor                                                                          | A small Python package for determining appropriate platform-specific dirs, e.g. a "user data dir".      |
 | [requests-oauthlib](https://github.com/requests/requests-oauthlib)                  | [1.3.1](https://pypi.org/project/requests-oauthlib/1.3.1/)  | BSD License                          | Kenneth Reitz                                                                         | OAuthlib authentication support for Requests.                                                           |
 | [requests](https://requests.readthedocs.io)                                         | [2.31.0](https://pypi.org/project/requests/2.31.0/)         | Apache Software License              | Kenneth Reitz                                                                         | Python HTTP for Humans.                                                                                 |
 | [six](https://github.com/benjaminp/six)                                             | [1.16.0](https://pypi.org/project/six/1.16.0/)              | MIT License                          | Benjamin Peterson                                                                     | Python 2 and 3 compatibility utilities                                                                  |
@@ -47,7 +47,7 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [url-normalize](https://github.com/niksite/url-normalize)                           | [1.4.3](https://pypi.org/project/url-normalize/1.4.3/)      | MIT License                          | Nikolay Panov                                                                         | URL normalization for Python                                                                            |
 | [urllib3](https://urllib3.readthedocs.io/)                                          | [1.26.13](https://pypi.org/project/urllib3/1.26.13/)        | MIT License                          | Andrey Petrov                                                                         | HTTP library with thread-safe connection pooling, file post, and more.                                  |
 | [wrapt](https://github.com/GrahamDumpleton/wrapt)                                   | [1.14.1](https://pypi.org/project/wrapt/1.14.1/)            | BSD License                          | Graham Dumpleton                                                                      | Module for decorators, wrappers and monkey patching.                                                    |
- <!--[[[end]]] (checksum: eff71be3d2d9536dcb7b8e5245e6f7ee)-->
+ <!--[[[end]]] (checksum: 6178fda190ee3153ea36f7741cb690e7)-->
 
 ## Dependency Tree(s)
 
