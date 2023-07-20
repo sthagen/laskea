@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json) with SHA256 checksum ([7e32c3df ...](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json.sha256 "sha256:7e32c3df53f2769acc95365c096ca662fa9fc6b7ca8c1643f0c8779a7c4167fd")).
-<!--[[[end]]] (checksum: e79483603025a8f91ee30d360ee8e7a4)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json) with SHA256 checksum ([eb2180d8 ...](https://git.sr.ht/~sthagen/laskea/blob/default/sbom/cdx.json.sha256 "sha256:eb2180d82f0d39aab82fa91d66f696d110e58e8c375df047d6a722721935e0ce")).
+<!--[[[end]]] (checksum: d30212e788a2849ef4ca02b6c3e3e47d)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -18,10 +18,10 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [jmespath](https://github.com/jmespath/jmespath.py)                           | [1.0.1](https://pypi.org/project/jmespath/1.0.1/)               | MIT License                        | James Saryerwinnie                                                  | JSON Matching Expressions                                               |
 | [openpyxl](https://openpyxl.readthedocs.io)                                   | [3.1.2](https://pypi.org/project/openpyxl/3.1.2/)               | MIT License                        | See AUTHORS                                                         | A Python library to read/write Excel 2010 xlsx/xlsm files               |
 | [pydantic](https://github.com/pydantic/pydantic)                              | [1.10.10](https://pypi.org/project/pydantic/1.10.10/)           | MIT License                        | Samuel Colvin                                                       | Data validation and settings management using python type hints         |
-| [requests-cache](https://github.com/requests-cache/requests-cache)            | [1.0.1](https://pypi.org/project/requests-cache/1.0.1/)         | BSD License                        | Roman Haritonov                                                     | A persistent cache for python requests                                  |
+| [requests-cache](https://github.com/requests-cache/requests-cache)            | [1.1.0](https://pypi.org/project/requests-cache/1.1.0/)         | BSD License                        | Roman Haritonov                                                     | A persistent cache for python requests                                  |
 | [scooby](https://github.com/banesullivan/scooby)                              | [0.7.2](https://pypi.org/project/scooby/0.7.2/)                 | MIT License                        | Dieter Werthmüller, Bane Sullivan, Alex Kaszynski, and contributors | A Great Dane turned Python environment detective                        |
 | [typer](https://github.com/tiangolo/typer)                                    | [0.9.0](https://pypi.org/project/typer/0.9.0/)                  | MIT License                        | Sebastián Ramírez                                                   | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
-<!--[[[end]]] (checksum: b0d3005b91a8edee7d23f61c5913a500)-->
+<!--[[[end]]] (checksum: 3d12c0bf24e85b9c73561d4a9f408f45)-->
 
 ### Indirect Dependencies
 
@@ -40,13 +40,13 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [idna](https://github.com/kjd/idna)                                                 | [3.4](https://pypi.org/project/idna/3.4/)                   | BSD License                          | Kim Davies <kim@cynosure.com.au>                                                      | Internationalized Domain Names in Applications (IDNA)                                                   |
 | [oauthlib](https://github.com/oauthlib/oauthlib)                                    | [3.2.2](https://pypi.org/project/oauthlib/3.2.2/)           | BSD License                          | The OAuthlib Community                                                                | A generic, spec-compliant, thorough implementation of the OAuth request-signing logic                   |
 | [requests-oauthlib](https://github.com/requests/requests-oauthlib)                  | [1.3.1](https://pypi.org/project/requests-oauthlib/1.3.1/)  | BSD License                          | Kenneth Reitz                                                                         | OAuthlib authentication support for Requests.                                                           |
-| [requests](https://requests.readthedocs.io)                                         | [2.28.1](https://pypi.org/project/requests/2.28.1/)         | Apache Software License              | Kenneth Reitz                                                                         | Python HTTP for Humans.                                                                                 |
+| [requests](https://requests.readthedocs.io)                                         | [2.31.0](https://pypi.org/project/requests/2.31.0/)         | Apache Software License              | Kenneth Reitz                                                                         | Python HTTP for Humans.                                                                                 |
 | [six](https://github.com/benjaminp/six)                                             | [1.16.0](https://pypi.org/project/six/1.16.0/)              | MIT License                          | Benjamin Peterson                                                                     | Python 2 and 3 compatibility utilities                                                                  |
 | [typing_extensions](https://github.com/python/typing_extensions)                    | [4.4.0](https://pypi.org/project/typing_extensions/4.4.0/)  | Python Software Foundation License   | "Guido van Rossum, Jukka Lehtosalo, Łukasz Langa, Michael Lee" <levkivskyi@gmail.com> | Backported and Experimental Type Hints for Python 3.7+                                                  |
 | [url-normalize](https://github.com/niksite/url-normalize)                           | [1.4.3](https://pypi.org/project/url-normalize/1.4.3/)      | MIT License                          | Nikolay Panov                                                                         | URL normalization for Python                                                                            |
 | [urllib3](https://urllib3.readthedocs.io/)                                          | [1.26.13](https://pypi.org/project/urllib3/1.26.13/)        | MIT License                          | Andrey Petrov                                                                         | HTTP library with thread-safe connection pooling, file post, and more.                                  |
 | [wrapt](https://github.com/GrahamDumpleton/wrapt)                                   | [1.14.1](https://pypi.org/project/wrapt/1.14.1/)            | BSD License                          | Graham Dumpleton                                                                      | Module for decorators, wrappers and monkey patching.                                                    |
- <!--[[[end]]] (checksum: dabf64d6063b3a0abe553cc7691ac357)-->
+ <!--[[[end]]] (checksum: 55c256f257a2b7a8835e46f6ed96558f)-->
 
 ## Dependency Tree(s)
 
@@ -66,18 +66,18 @@ atlassian-python-api==3.39.0
 ├── Deprecated [required: Any, installed: 1.2.13]
 │   └── wrapt [required: >=1.10,<2, installed: 1.14.1]
 ├── oauthlib [required: Any, installed: 3.2.2]
-├── requests [required: Any, installed: 2.28.1]
+├── requests [required: Any, installed: 2.31.0]
 │   ├── certifi [required: >=2017.4.17, installed: 2022.12.7]
-│   ├── charset-normalizer [required: >=2,<3, installed: 2.1.1]
+│   ├── charset-normalizer [required: >=2,<4, installed: 2.1.1]
 │   ├── idna [required: >=2.5,<4, installed: 3.4]
-│   └── urllib3 [required: >=1.21.1,<1.27, installed: 1.26.13]
+│   └── urllib3 [required: >=1.21.1,<3, installed: 1.26.13]
 ├── requests-oauthlib [required: Any, installed: 1.3.1]
 │   ├── oauthlib [required: >=3.0.0, installed: 3.2.2]
-│   └── requests [required: >=2.0.0, installed: 2.28.1]
+│   └── requests [required: >=2.0.0, installed: 2.31.0]
 │       ├── certifi [required: >=2017.4.17, installed: 2022.12.7]
-│       ├── charset-normalizer [required: >=2,<3, installed: 2.1.1]
+│       ├── charset-normalizer [required: >=2,<4, installed: 2.1.1]
 │       ├── idna [required: >=2.5,<4, installed: 3.4]
-│       └── urllib3 [required: >=1.21.1,<1.27, installed: 1.26.13]
+│       └── urllib3 [required: >=1.21.1,<3, installed: 1.26.13]
 └── six [required: Any, installed: 1.16.0]
 cogapp==3.3.0
 defusedxml==0.7.1
@@ -86,18 +86,18 @@ openpyxl==3.1.2
 └── et-xmlfile [required: Any, installed: 1.1.0]
 pydantic==1.10.10
 └── typing-extensions [required: >=4.2.0, installed: 4.4.0]
-requests-cache==1.0.1
+requests-cache==1.1.0
 ├── attrs [required: >=21.2, installed: 23.1.0]
 ├── cattrs [required: >=22.2, installed: 23.1.2]
 │   ├── attrs [required: >=20, installed: 23.1.0]
 │   ├── exceptiongroup [required: Any, installed: 1.1.0]
 │   └── typing-extensions [required: >=4.1.0, installed: 4.4.0]
 ├── platformdirs [required: >=2.5, installed: 2.6.0]
-├── requests [required: >=2.22, installed: 2.28.1]
+├── requests [required: >=2.22, installed: 2.31.0]
 │   ├── certifi [required: >=2017.4.17, installed: 2022.12.7]
-│   ├── charset-normalizer [required: >=2,<3, installed: 2.1.1]
+│   ├── charset-normalizer [required: >=2,<4, installed: 2.1.1]
 │   ├── idna [required: >=2.5,<4, installed: 3.4]
-│   └── urllib3 [required: >=1.21.1,<1.27, installed: 1.26.13]
+│   └── urllib3 [required: >=1.21.1,<3, installed: 1.26.13]
 ├── url-normalize [required: >=1.4, installed: 1.4.3]
 │   └── six [required: Any, installed: 1.16.0]
 └── urllib3 [required: >=1.25.5, installed: 1.26.13]
@@ -106,4 +106,4 @@ typer==0.9.0
 ├── click [required: >=7.1.1,<9.0.0, installed: 8.1.3]
 └── typing-extensions [required: >=3.7.4.3, installed: 4.4.0]
 ````
-<!--[[[end]]] (checksum: 0384ac4c8769f012f0f6649ab13ea673)-->
+<!--[[[end]]] (checksum: c353e8843db1ec3f5b2b012e2f0e8f86)-->
