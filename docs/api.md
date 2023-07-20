@@ -16,11 +16,17 @@ The following functions produce markdown constructs that receive sequences:
 
 * `mbom_table(filename)` - a markdown GFM table from an excel workbook `filename`
 * `metrics_table(configuration)` - a markdown GFM table from a REST interface defined per configuration
-* `table(query_text)` - a markdown GFM table
-* `table(query_text)` - a markdown GFM table
+* `table(query_text, column_fields=None)` - a markdown GFM table
 * `dl(query_text)` - a definition (description) list
 * `ol(query_text)` - an ordered list
 * `ul(query_text)` - an unordered list
+
+**Note**: the table function allows to change the column labels by adding entries that are tuples or lists with two ordered members: `key` and `label`. 
+The following example will change the displayed column label for column `Summary` to only show `S`:
+
+```python
+table('project = FOO AND labels = BAR', column_fields=('Key', ('Summary', 'S'), 'Baz', 'Quux'))
+```
 
 The following function produces separated values lists from JQL queries:
 
