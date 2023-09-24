@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json) with SHA256 checksum ([7f919a5b ...](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json.sha256 "sha256:7f919a5ba76dab2e30477bc4b5900f24b8f52e0c22ee8d49580ae7428ed6218e")).
-<!--[[[end]]] (checksum: 51d609a4aa1ef948ee710663b257bd4b)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json) with SHA256 checksum ([a12fa031 ...](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json.sha256 "sha256:a12fa0312eb43fa368dc90b65e91eaa2800f42c4e3d57c9d1860136ab1f61247")).
+<!--[[[end]]] (checksum: 92090529a7080d613672b1433adda43b)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -19,9 +19,9 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [openpyxl](https://openpyxl.readthedocs.io)                                   | [3.1.2](https://pypi.org/project/openpyxl/3.1.2/)               | MIT License                        | See AUTHORS                                                                                                                                                                                                                                                   | A Python library to read/write Excel 2010 xlsx/xlsm files               |
 | [pydantic](https://github.com/pydantic/pydantic)                              | [2.3.0](https://pypi.org/project/pydantic/2.3.0/)               | MIT License                        | Samuel Colvin <s@muelcolvin.com>, Eric Jolibois <em.jolibois@gmail.com>, Hasan Ramezani <hasan.r67@gmail.com>, Adrian Garcia Badaracco <1755071+adriangb@users.noreply.github.com>, Terrence Dorsey <terry@pydantic.dev>, David Montague <david@pydantic.dev> | Data validation using Python type hints                                 |
 | [requests-cache](https://github.com/requests-cache/requests-cache)            | [1.1.0](https://pypi.org/project/requests-cache/1.1.0/)         | BSD License                        | Roman Haritonov                                                                                                                                                                                                                                               | A persistent cache for python requests                                  |
-| [scooby](https://github.com/banesullivan/scooby)                              | [0.7.2](https://pypi.org/project/scooby/0.7.2/)                 | MIT License                        | Dieter Werthmüller, Bane Sullivan, Alex Kaszynski, and contributors                                                                                                                                                                                           | A Great Dane turned Python environment detective                        |
+| [scooby](https://github.com/banesullivan/scooby)                              | [0.7.3](https://pypi.org/project/scooby/0.7.3/)                 | MIT License                        | Dieter Werthmüller, Bane Sullivan, Alex Kaszynski, and contributors                                                                                                                                                                                           | A Great Dane turned Python environment detective                        |
 | [typer](https://github.com/tiangolo/typer)                                    | [0.9.0](https://pypi.org/project/typer/0.9.0/)                  | MIT License                        | Sebastián Ramírez                                                                                                                                                                                                                                             | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
-<!--[[[end]]] (checksum: 12738ff1aa239a00a9fdc21c7ad7cfbb)-->
+<!--[[[end]]] (checksum: 8a226c8b4efcf4470277d49d093b17a9)-->
 
 ### Indirect Dependencies
 
@@ -104,9 +104,9 @@ requests-cache==1.1.0
 ├── url-normalize [required: >=1.4, installed: 1.4.3]
 │   └── six [required: Any, installed: 1.16.0]
 └── urllib3 [required: >=1.25.5, installed: 2.0.4]
-scooby==0.7.2
+scooby==0.7.3
 typer==0.9.0
 ├── click [required: >=7.1.1,<9.0.0, installed: 8.1.6]
 └── typing-extensions [required: >=3.7.4.3, installed: 4.7.1]
 ````
-<!--[[[end]]] (checksum: a9fa6130b57bd6e2e36e30c9137aedc8)-->
+<!--[[[end]]] (checksum: 8be85d8c7ae0479b4ade0bb22a89151e)-->
