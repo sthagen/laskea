@@ -216,7 +216,7 @@
 <title>pydantic</title>
 <ellipse fill="none" stroke="black" cx="1243.8" cy="-229.55" rx="44.19" ry="25.81"/>
 <text text-anchor="middle" x="1243.8" y="-230.5" font-family="Times,serif" font-size="14.00">pydantic</text>
-<text text-anchor="middle" x="1243.8" y="-216.25" font-family="Times,serif" font-size="14.00">2.3.0</text>
+<text text-anchor="middle" x="1243.8" y="-216.25" font-family="Times,serif" font-size="14.00">2.4.0</text>
 </g>
 <!-- annotated&#45;types -->
 <g id="node18" class="node">
@@ -237,14 +237,14 @@
 <title>pydantic&#45;core</title>
 <ellipse fill="none" stroke="black" cx="1243.8" cy="-127.68" rx="63.82" ry="25.81"/>
 <text text-anchor="middle" x="1243.8" y="-128.63" font-family="Times,serif" font-size="14.00">pydantic&#45;core</text>
-<text text-anchor="middle" x="1243.8" y="-114.38" font-family="Times,serif" font-size="14.00">2.6.3</text>
+<text text-anchor="middle" x="1243.8" y="-114.38" font-family="Times,serif" font-size="14.00">2.10.0</text>
 </g>
 <!-- pydantic&#45;&gt;pydantic&#45;core -->
 <g id="edge15" class="edge">
 <title>pydantic&#45;&gt;pydantic&#45;core</title>
 <path fill="none" stroke="black" d="M1243.8,-203.35C1243.8,-191.75 1243.8,-177.79 1243.8,-165.08"/>
 <polygon fill="black" stroke="black" points="1247.3,-165.38 1243.8,-155.38 1240.3,-165.38 1247.3,-165.38"/>
-<text text-anchor="middle" x="1265.93" y="-172.44" font-family="Times,serif" font-size="14.00">==2.6.3</text>
+<text text-anchor="middle" x="1269.3" y="-172.44" font-family="Times,serif" font-size="14.00">==2.10.0</text>
 </g>
 <!-- typing&#45;extensions -->
 <g id="node20" class="node">
@@ -256,9 +256,9 @@
 <!-- pydantic&#45;&gt;typing&#45;extensions -->
 <g id="edge16" class="edge">
 <title>pydantic&#45;&gt;typing&#45;extensions</title>
-<path fill="none" stroke="black" d="M1270.94,-208.79C1287.29,-195.23 1306.82,-175.71 1316.8,-153.49 1332.25,-119.08 1344.86,-104.2 1329.8,-69.62 1328.04,-65.57 1325.68,-61.73 1322.97,-58.14"/>
+<path fill="none" stroke="black" d="M1272.53,-209.61C1281.61,-202.78 1291.24,-194.55 1298.8,-185.74 1309.49,-173.28 1311.22,-168.92 1316.8,-153.49 1329.62,-118.01 1344.86,-104.2 1329.8,-69.62 1328.04,-65.57 1325.68,-61.73 1322.97,-58.14"/>
 <polygon fill="black" stroke="black" points="1325.82,-56.09 1316.6,-50.87 1320.56,-60.7 1325.82,-56.09"/>
-<text text-anchor="middle" x="1358.93" y="-121.5" font-family="Times,serif" font-size="14.00">&gt;=4.6.1</text>
+<text text-anchor="middle" x="1357.93" y="-121.5" font-family="Times,serif" font-size="14.00">&gt;=4.6.1</text>
 </g>
 <!-- pydantic&#45;core&#45;&gt;typing&#45;extensions -->
 <g id="edge17" class="edge">
