@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json) with SHA256 checksum ([9a9a0804 ...](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json.sha256 "sha256:9a9a080451dab6703f1f9e774f5a4c004e38a601e9237eab95f76c050b07e3e4")).
-<!--[[[end]]] (checksum: a6bce6bbaea22c90528e2c50c90d911c)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json) with SHA256 checksum ([6494a01d ...](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json.sha256 "sha256:6494a01da7e153943b930e0dce0c48ec4536083f85ca08f898c29c6a4e7c81e2")).
+<!--[[[end]]] (checksum: 9483431e61da82943ecf4bfa184a9105)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -17,11 +17,11 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [defusedxml](https://github.com/tiran/defusedxml)                             | [0.7.1](https://pypi.org/project/defusedxml/0.7.1/)             | Python Software Foundation License | Christian Heimes                                                                                                                                                                                                                                              | XML bomb protection for Python stdlib modules                           |
 | [jmespath](https://github.com/jmespath/jmespath.py)                           | [1.0.1](https://pypi.org/project/jmespath/1.0.1/)               | MIT License                        | James Saryerwinnie                                                                                                                                                                                                                                            | JSON Matching Expressions                                               |
 | [openpyxl](https://openpyxl.readthedocs.io)                                   | [3.1.2](https://pypi.org/project/openpyxl/3.1.2/)               | MIT License                        | See AUTHORS                                                                                                                                                                                                                                                   | A Python library to read/write Excel 2010 xlsx/xlsm files               |
-| [pydantic](https://github.com/pydantic/pydantic)                              | [2.4.1](https://pypi.org/project/pydantic/2.4.1/)               | MIT License                        | Samuel Colvin <s@muelcolvin.com>, Eric Jolibois <em.jolibois@gmail.com>, Hasan Ramezani <hasan.r67@gmail.com>, Adrian Garcia Badaracco <1755071+adriangb@users.noreply.github.com>, Terrence Dorsey <terry@pydantic.dev>, David Montague <david@pydantic.dev> | Data validation using Python type hints                                 |
+| [pydantic](https://github.com/pydantic/pydantic)                              | [2.4.2](https://pypi.org/project/pydantic/2.4.2/)               | MIT License                        | Samuel Colvin <s@muelcolvin.com>, Eric Jolibois <em.jolibois@gmail.com>, Hasan Ramezani <hasan.r67@gmail.com>, Adrian Garcia Badaracco <1755071+adriangb@users.noreply.github.com>, Terrence Dorsey <terry@pydantic.dev>, David Montague <david@pydantic.dev> | Data validation using Python type hints                                 |
 | [requests-cache](https://github.com/requests-cache/requests-cache)            | [1.1.0](https://pypi.org/project/requests-cache/1.1.0/)         | BSD License                        | Roman Haritonov                                                                                                                                                                                                                                               | A persistent cache for python requests                                  |
 | [scooby](https://github.com/banesullivan/scooby)                              | [0.7.3](https://pypi.org/project/scooby/0.7.3/)                 | MIT License                        | Dieter Werthmüller, Bane Sullivan, Alex Kaszynski, and contributors                                                                                                                                                                                           | A Great Dane turned Python environment detective                        |
 | [typer](https://github.com/tiangolo/typer)                                    | [0.9.0](https://pypi.org/project/typer/0.9.0/)                  | MIT License                        | Sebastián Ramírez                                                                                                                                                                                                                                             | Typer, build great CLIs. Easy to code. Based on Python type hints.      |
-<!--[[[end]]] (checksum: b13bdda18e6a2df35d6527fef4db6085)-->
+<!--[[[end]]] (checksum: 7b10ea628dd2a6dc387d5f5dad183079)-->
 
 ### Indirect Dependencies
 
@@ -84,7 +84,7 @@ defusedxml==0.7.1
 jmespath==1.0.1
 openpyxl==3.1.2
 └── et-xmlfile [required: Any, installed: 1.1.0]
-pydantic==2.4.1
+pydantic==2.4.2
 ├── annotated-types [required: >=0.4.0, installed: 0.5.0]
 ├── pydantic-core [required: ==2.10.1, installed: 2.10.1]
 │   └── typing-extensions [required: >=4.6.0,!=4.7.0, installed: 4.7.1]
@@ -109,4 +109,4 @@ typer==0.9.0
 ├── click [required: >=7.1.1,<9.0.0, installed: 8.1.6]
 └── typing-extensions [required: >=3.7.4.3, installed: 4.7.1]
 ````
-<!--[[[end]]] (checksum: d0b430e5ed1d14a8ab43636c6bc297b8)-->
+<!--[[[end]]] (checksum: 88dd10fe7d0cc42df653718ac607c70d)-->

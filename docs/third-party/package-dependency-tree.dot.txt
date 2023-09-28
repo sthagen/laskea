@@ -44,7 +44,7 @@ digraph {
 	pydantic -> "annotated-types" [label=">=0.4.0"]
 	pydantic -> "pydantic-core" [label="==2.10.1"]
 	pydantic -> "typing-extensions" [label=">=4.6.1"]
-	pydantic [label="pydantic\n2.4.1"]
+	pydantic [label="pydantic\n2.4.2"]
 	requests -> "charset-normalizer" [label=">=2,<4"]
 	requests -> certifi [label=">=2017.4.17"]
 	requests -> idna [label=">=2.5,<4"]
