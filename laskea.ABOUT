@@ -1,13 +1,13 @@
 name: laskea
 description: Calculate (Finnish: laskea) some parts.
 license_spdx: MIT
-version: 2023.7.20
+version: 2023.10.7
 spec_version: 1.0
 home_url: https://git.sr.ht/~sthagen/laskea
 news_url: https://libraries.io/pypi/laskea/versions.atom
-date: 2023-07-20
+date: 2023-10-07
 about_resource: ./
-libraries_io_url: https://libraries.io/pypi/laskea?number=2023.7.20
+libraries_io_url: https://libraries.io/pypi/laskea?number=2023.10.7
 vcs_tool: git
 vcs_repository: https://git.sr.ht/~sthagen/laskea
 vcs_branch: default
