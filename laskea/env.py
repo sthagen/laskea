@@ -2,7 +2,7 @@
 import sys
 from typing import List, no_type_check
 
-import scooby  # type: ignore
+import scooby
 
 
 @no_type_check
@@ -29,7 +29,7 @@ def report(shallow: bool = False) -> str:
         monkey_atl = [p.version for p in packages if p.project_name == 'atlassian-python-api'][0]  # noqa
         atlassian.__version__ = monkey_atl
 
-    class Report(scooby.Report):  # type: ignore
+    class Report(scooby.Report):
         def __init__(self, additional=None, ncol=3, text_width=80, sort=False):
             """Initiate a scooby.Report instance."""
 
