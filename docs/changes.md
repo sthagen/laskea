@@ -1,5 +1,8 @@
 # Change History
 
+2023.10.7
+:    * Fixed the field names config handling to allow per config renaming of columns (<https://todo.sr.ht/~sthagen/laskea/4>)
+
 2023.7.20
 :    * Fixed the broken packaging - api is missing in 2023.6.18 (<https://todo.sr.ht/~sthagen/laskea/2>)
 * Implemented a per embed table call configurable column head renaming (<https://todo.sr.ht/~sthagen/laskea/3>)
