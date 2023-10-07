@@ -113,7 +113,7 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
 
     source_of = {}
 
-    column_fields = jmespath.search('table.column.fields[]', configuration)
+    column_fields = jmespath.search('table.column.fields', configuration)
     if column_fields:
         source_of['column_fields'] = 'config'
         api.BASE_COL_FIELDS = copy.deepcopy(column_fields)
