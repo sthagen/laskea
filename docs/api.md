@@ -16,7 +16,7 @@ The following functions produce markdown constructs that receive sequences:
 
 * `mbom_table(filename)` - a markdown GFM table from an excel workbook `filename`
 * `metrics_table(configuration)` - a markdown GFM table from a REST interface defined per configuration
-* `table(query_text, column_fields=None)` - a markdown GFM table
+* `table(query_text, show_summary=False, column_fields=None)` - a markdown GFM table
 * `dl(query_text)` - a definition (description) list
 * `ol(query_text)` - an ordered list
 * `ul(query_text)` - an unordered list
