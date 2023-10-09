@@ -1,5 +1,8 @@
 # Change History
 
+2023.10.9
+:    * Made summary in tables optional and false as default (<https://todo.sr.ht/~sthagen/laskea/5>)
+
 2023.10.7
 :    * Fixed the field names config handling to allow per config renaming of columns (<https://todo.sr.ht/~sthagen/laskea/4>)
 

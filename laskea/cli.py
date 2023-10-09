@@ -18,20 +18,69 @@ app = typer.Typer(
     no_args_is_help=True,
 )
 
+Version = typer.Option(
+    False,
+    '-V',
+    '--version',
+    help='Display the laskea version and exit',
+    is_eager=True,
+)
+
+Input = typer.Option(
+    '',
+    '-i',
+    '--input',
+    help='Path to input file',
+    metavar='<sourcepath>',
+)
+
+ConfigurationPath = typer.Option(
+    '',
+    '-c',
+    '--config',
+    help=f'Path to config file (default is $HOME/{laskea.DEFAULT_CONFIG_NAME})',
+    metavar='<configpath>',
+)
+
+Dryness = typer.Option(
+    False,
+    '-n',
+    '--dry-run',
+    help='Dry run (default is False)',
+)
+
+Verbosity = typer.Option(
+    False,
+    '-v',
+    '--verbose',
+    help='Verbose output (default is False)',
+)
+
+Quietness = typer.Option(
+    False,
+    '-q',
+    '--quiet',
+    help='Minimal output (default is False)',
+)
+
+Strictness = typer.Option(
+    False,
+    '-s',
+    '--strict',
+    help='Ouput noisy warnings on console and in the processed document (default is False)',
+)
+
+CacheExpiry = typer.Option(
+    180,
+    '-x',
+    '--cache-expiry-seconds',
+    help='Request cache expiry in seconds',
+)
+
 
 @app.callback(invoke_without_command=True)
-def callback(
-    version: bool = typer.Option(
-        False,
-        '-V',
-        '--version',
-        help='Display the laskea version and exit',
-        is_eager=True,
-    )
-) -> None:
-    """
-    Calculate (Finnish: laskea) some parts.
-    """
+def callback(version: bool = Version) -> None:
+    """Calculate (Finnish: laskea) some parts."""
     if version:
         typer.echo(f'{laskea.APP_NAME} version {laskea.__version__}')
         raise typer.Exit()
@@ -70,50 +119,13 @@ def report(
 @app.command('update')
 def update(  # noqa
     source: List[str],
-    inp: str = typer.Option(
-        '',
-        '-i',
-        '--input',
-        help='Path to input file',
-        metavar='<sourcepath>',
-    ),
-    conf: str = typer.Option(
-        '',
-        '-c',
-        '--config',
-        help=f'Path to config file (default is $HOME/{laskea.DEFAULT_CONFIG_NAME})',
-        metavar='<configpath>',
-    ),
-    verify: bool = typer.Option(
-        False,
-        '-n',
-        '--dry-run',
-        help='Dry run (default is False)',
-    ),
-    verbose: bool = typer.Option(
-        False,
-        '-v',
-        '--verbose',
-        help='Verbose output (default is False)',
-    ),
-    quiet: bool = typer.Option(
-        False,
-        '-q',
-        '--quiet',
-        help='Minimal output (default is False)',
-    ),
-    strict: bool = typer.Option(
-        False,
-        '-s',
-        '--strict',
-        help='Ouput noisy warnings on console and in the processed document (default is False)',
-    ),
-    expires: int = typer.Option(
-        180,
-        '-x',
-        '--cache-expiry-seconds',
-        help='Request cache expiry in seconds',
-    ),
+    inp: str = Input,
+    conf: str = ConfigurationPath,
+    verify: bool = Dryness,
+    verbose: bool = Verbosity,
+    quiet: bool = Quietness,
+    strict: bool = Strictness,
+    expires: int = CacheExpiry,
 ) -> int:
     """
     Fill in some parts of the input document.
@@ -180,13 +192,7 @@ def svl_cmd(  # noqa
         ),
         metavar='<jql-query>',
     ),
-    conf: str = typer.Option(
-        '',
-        '-c',
-        '--config',
-        help=f'Path to config file (default is $HOME/{laskea.DEFAULT_CONFIG_NAME})',
-        metavar='<configpath>',
-    ),
+    conf: str = ConfigurationPath,
     key_magic: bool = typer.Option(
         False,
         '-k',
@@ -215,30 +221,15 @@ def svl_cmd(  # noqa
         ),
         metavar='<replacement-text>',
     ),
-    verify: bool = typer.Option(
-        False,
-        '-n',
-        '--dry-run',
-        help='Dry run (default is False)',
-    ),
+    verify: bool = Dryness,
     verbose: bool = typer.Option(
         False,
         '-v',
         '--verbose',
         help='Verbose output (default is False)',
     ),
-    strict: bool = typer.Option(
-        False,
-        '-s',
-        '--strict',
-        help='Ouput noisy warnings on console and in the processed document (default is False)',
-    ),
-    expires: int = typer.Option(
-        180,
-        '-x',
-        '--cache-expiry-seconds',
-        help='Request cache expiry in seconds',
-    ),
+    strict: bool = Strictness,
+    expires: int = CacheExpiry,
 ) -> int:
     """
     Export query result as separated values list.

@@ -163,7 +163,7 @@ def test_embed_headings_too_many_strict(level, capsys):
 def test_embed_table(capsys):
     impl.BASE_URL = URL_FIXTURE
     expected = '\n'.join(TABLE_FIXTURE_PAYLOADS)
-    assert emb.table(query_text='', data=TABLE_FIXTURE) is None
+    assert emb.table(query_text='', show_summary=True, data=TABLE_FIXTURE) is None
     out, err = capsys.readouterr()
     assert not err
     assert out.strip() == expected

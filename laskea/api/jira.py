@@ -170,7 +170,11 @@ def separated_values_list(
 
 @no_type_check
 def markdown_table(
-    handle: Jira, jql_text: str, column_fields=None, data: Mapping[str, Union[object, Iterable, Sized]] = None
+    handle: Jira,
+    jql_text: str,
+    show_summary: bool = False,
+    column_fields=None,
+    data: Mapping[str, Union[object, Iterable, Sized]] = None,
 ) -> str:
     """Yes we can ... document later."""
     if data is None:
@@ -205,7 +209,7 @@ def markdown_table(
 
     rows = [f'| {" | ".join(str(v).ljust(col_wid[k]) for k, v in line.items())} |' for line in table]
     issues = len(table)
-    summary = f'\n\n{issues} issue{"" if issues == 1 else "s"}'
+    summary = f'\n\n{issues} issue{"" if issues == 1 else "s"}' if show_summary else ''
     the_table = '\n'.join([header] + [separator] + rows) + summary
     return the_table.replace('\r', '') if BASE_LF_ONLY else the_table
 
