@@ -3,7 +3,8 @@
 Calculate (Finnish: laskea) some parts.
 
 [License: MIT](https://git.sr.ht/~sthagen/laskea/tree/default/item/LICENSE) | 
-[Country of origin: Switzerland](https://git.sr.ht/~sthagen/laskea/tree/default/item/COUNTRY-OF-ORIGIN)
+[Country of origin: Switzerland](https://git.sr.ht/~sthagen/laskea/tree/default/item/COUNTRY-OF-ORIGIN) | 
+[Export control classification number(ECCN): EAR99](https://git.sr.ht/~sthagen/laskea/tree/default/item/EXPORT-CONTROL-CLASSIFICATION-NUMBER)
 
 Third party dependencies are documented in the folder [docs/third-party](docs/docs/third-party/README.md).
 
