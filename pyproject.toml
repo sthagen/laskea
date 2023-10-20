@@ -20,7 +20,7 @@ classifiers = [
 ]
 keywords = ["code-generation", "developer-tools", "markdown", "validation", "erification"]
 dependencies = [
-    "atlassian-python-api >= 3.41.2",
+    "atlassian-python-api >= 3.41.3",
     "cogapp >= 3.3.0",
     "defusedxml >= 0.7.1",
     "jmespath >= 1.0.1",
