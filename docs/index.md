@@ -2,18 +2,15 @@
 
 Calculate (Finnish: laskea) some parts.
 
-[License: MIT](https://git.sr.ht/~sthagen/laskea/tree/default/item/LICENSE) |
-[Country of origin: Switzerland](https://git.sr.ht/~sthagen/laskea/tree/default/item/COUNTRY-OF-ORIGIN) |
-[Export control classification number(ECCN): EAR99](https://git.sr.ht/~sthagen/laskea/tree/default/item/EXPORT-CONTROL-CLASSIFICATION-NUMBER)
+[![license](badges/license-spdx-mit.svg)](https://git.sr.ht/~sthagen/laskea/tree/default/item/LICENSE)
+[![Country of Origin](badges/country-of-origin-name-switzerland-neutral.svg)](https://git.sr.ht/~sthagen/laskea/tree/default/item/COUNTRY-OF-ORIGIN)
+[![Export Classification Control Number (ECCN)](badges/export-control-classification-number_eccn-ear99-neutral.svg)](https://git.sr.ht/~sthagen/laskea/tree/default/item/EXPORT-CONTROL-CLASSIFICATION-NUMBER)
+[![Configuration](badges/configuration-sbom.svg)](third-party/index.html)
 
-Third party dependencies are documented in the folder [third-party](third-party/README.md).
-
-[![version](https://img.shields.io/pypi/v/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
-[![downloads](https://static.pepy.tech/badge/laskea/month)](https://pepy.tech/project/laskea)
-[![wheel](https://img.shields.io/pypi/wheel/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
-[![supported-versions](https://img.shields.io/pypi/pyversions/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
-[![supported-implementations](https://img.shields.io/pypi/implementation/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
-[![maintenance-status](https://img.shields.io/github/commit-activity/y/sthagen/laskea.svg?style=flat)](https://git.sr.ht/~sthagen/laskea/log)
+[![Version](https://img.shields.io/pypi/v/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
+[![Downloads](https://static.pepy.tech/badge/laskea/month)](https://pepy.tech/project/laskea)
+[![Supported Versions](https://img.shields.io/pypi/pyversions/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
+[![Maintenance Status](https://img.shields.io/github/commit-activity/y/sthagen/laskea.svg?style=flat)](https://git.sr.ht/~sthagen/laskea/log)
 
 ## Bug Tracker
 
