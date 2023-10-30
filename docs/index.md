@@ -10,7 +10,7 @@ Calculate (Finnish: laskea) some parts.
 [![Version](https://img.shields.io/pypi/v/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 [![Downloads](https://static.pepy.tech/badge/laskea/month)](https://pepy.tech/project/laskea)
 [![Supported Versions](https://img.shields.io/pypi/pyversions/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
-[![Maintenance Status](docs/badges/downloads-per-month.svg)](https://git.sr.ht/~sthagen/laskea/log)
+[![Maintenance Status](docs/badges/commits-per-year.svg)](https://git.sr.ht/~sthagen/laskea/log)
 
 ## Bug Tracker
 
