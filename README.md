@@ -8,7 +8,7 @@ Calculate (Finnish: laskea) some parts.
 [![Configuration](docs/badges/configuration-sbom.svg)](https://git.sr.ht/~sthagen/laskea/tree/default/item/docs/third-party/README.md)
 
 [![Version](https://img.shields.io/pypi/v/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
-[![Downloads](https://static.pepy.tech/badge/laskea/month)](https://pepy.tech/project/laskea)
+[![Downloads](docs/badges/downloads-per-month.svg)](https://pepy.tech/project/laskea)
 [![Supported Versions](https://img.shields.io/pypi/pyversions/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)
 [![Maintenance Status](docs/badges/commits-per-year.svg)](https://git.sr.ht/~sthagen/laskea/log)
 
