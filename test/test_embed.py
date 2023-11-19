@@ -85,7 +85,7 @@ TABLE_FIXTURE_PAYLOADS = (
     '| [ABC-42](https://remote-jira-instance.example.com/browse/ABC-42)     | First issue to show off the tables  |',
     '| [ABC-1001](https://remote-jira-instance.example.com/browse/ABC-1001) | Second issue to show off the tables |',
     '',
-    '2 issues',
+    "Table: Search '' resulted in 2 issues",
 )
 
 MBOM_FIXTURE_PATH = pathlib.Path('test', 'fixtures', 'basic', 'mbom.xlsx')
