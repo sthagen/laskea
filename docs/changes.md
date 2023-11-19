@@ -1,5 +1,8 @@
 # Change History
 
+2023.11.19
+:    * Made summary into self documenting useful markdown table caption (warning may change again)
+
 2023.10.9
 :    * Made summary in tables optional and false as default (<https://todo.sr.ht/~sthagen/laskea/5>)
 
