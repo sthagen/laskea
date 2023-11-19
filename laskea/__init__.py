@@ -3,8 +3,8 @@ import os
 import pathlib
 
 # [[[fill git_describe()]]]
-__version__ = '2023.11.19+parent.dirty'
-# [[[end]]] (checksum: 8c203a752903e02914c21843c251102d)
+__version__ = '2023.11.19+parent.g09044323'
+# [[[end]]] (checksum: 213730650d869280eeee38f769463111)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
