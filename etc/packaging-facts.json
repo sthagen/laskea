@@ -12,7 +12,7 @@
       "Programming Language :: Python :: 3.12",
       "Programming Language :: Python :: 3.9"
     ],
-    "description": "# Laskea\n\nCalculate (Finnish: laskea) some parts.\n\n[License: MIT](https://git.sr.ht/~sthagen/laskea/tree/default/item/LICENSE)\n\nThird party dependencies are documented in the folder [docs/third-party](docs/docs/third-party/README.md).\n\n[![version](https://img.shields.io/pypi/v/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)\n[![downloads](https://static.pepy.tech/badge/laskea/month)](https://pepy.tech/project/laskea)\n[![wheel](https://img.shields.io/pypi/wheel/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)\n[![supported-versions](https://img.shields.io/pypi/pyversions/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)\n[![supported-implementations](https://img.shields.io/pypi/implementation/laskea.svg?style=flat)](https://pypi.python.org/pypi/laskea/)\n[![maintenance-status](https://img.shields.io/github/commit-activity/y/sthagen/laskea.svg?style=flat)](https://git.sr.ht/~sthagen/laskea/log)\n\n## Documentation\n\nUser and developer [documentation of laskea](https://codes.dilettant.life/docs/laskea).\n\n## Bug Tracker\n\nAny feature requests or bug reports shall go to the [todos of laskea](https://todo.sr.ht/~sthagen/laskea).\n\n## Primary Source repository\n\nThe main source of `laskea` is on a mountain in central Switzerland.\nWe use distributed version control (git).\nThere is no central hub.\nEvery clone can become a new source for the benefit of all.\nThe preferred public clones of `laskea` are:\n\n* [on codeberg](https://codeberg.org/sthagen/laskea) - a democratic community-driven, non-profit software development platform operated by Codeberg e.V.\n* [at sourcehut](https://git.sr.ht/~sthagen/laskea) - a collection of tools useful for software development.\n\n## Contributions\n\nPlease do not submit \"pull requests\" (I found no way to disable that \"feature\" on GitHub).\nIf you like to share small changes under the repositories license please kindly do so by sending a patchset.\nYou can either send such a patchset per email using [git send-email](https://git-send-email.io) or \nif you are a sourcehut user by selecting \"Prepare a patchset\" on the summary page of your fork at [sourcehut](https://git.sr.ht/).\n\n## Status\n\nProduction/Stable.\n\n**Note**: The default branch is `default`.\n",
+    "description": "# Laskea\n\nCalculate (Finnish: laskea) some parts.\n\n[![License](docs/badges/license-spdx-mit.svg)](https://git.sr.ht/~sthagen/laskea/tree/default/item/LICENSE)\n[![Country of Origin](docs/badges/country-of-origin-name-switzerland-neutral.svg)](https://git.sr.ht/~sthagen/laskea/tree/default/item/COUNTRY-OF-ORIGIN)\n[![Export Classification Control Number (ECCN)](docs/badges/export-control-classification-number_eccn-ear99-neutral.svg)](https://git.sr.ht/~sthagen/laskea/tree/default/item/EXPORT-CONTROL-CLASSIFICATION-NUMBER)\n[![Configuration](docs/badges/configuration-sbom.svg)](https://git.sr.ht/~sthagen/laskea/tree/default/item/docs/third-party/README.md)\n\n[![Version](docs/badges/latest-release.svg)](https://pypi.python.org/pypi/laskea/)\n[![Downloads](docs/badges/downloads-per-month.svg)](https://pepy.tech/project/laskea)\n[![Python](docs/badges/python-versions.svg)](https://pypi.python.org/pypi/laskea/)\n[![Maintenance Status](docs/badges/commits-per-year.svg)](https://git.sr.ht/~sthagen/laskea/log)\n\n## Documentation\n\nUser and developer [documentation of laskea](https://codes.dilettant.life/docs/laskea).\n\n## Bug Tracker\n\nAny feature requests or bug reports shall go to the [todos of laskea](https://todo.sr.ht/~sthagen/laskea).\n\n## Primary Source repository\n\nThe main source of `laskea` is on a mountain in central Switzerland.\nWe use distributed version control (git).\nThere is no central hub.\nEvery clone can become a new source for the benefit of all.\nThe preferred public clones of `laskea` are:\n\n* [on codeberg](https://codeberg.org/sthagen/laskea) - a democratic community-driven, non-profit software development platform operated by Codeberg e.V.\n* [at sourcehut](https://git.sr.ht/~sthagen/laskea) - a collection of tools useful for software development.\n\n## Contributions\n\nPlease do not submit \"pull requests\" (I found no way to disable that \"feature\" on GitHub).\nIf you like to share small changes under the repositories license please kindly do so by sending a patchset.\nYou can either send such a patchset per email using [git send-email](https://git-send-email.io) or \nif you are a sourcehut user by selecting \"Prepare a patchset\" on the summary page of your fork at [sourcehut](https://git.sr.ht/).\n\n## Support\n\nPlease kindly submit issues at https://todo.sr.ht/~sthagen/laskea or write plain text email to ~sthagen/laskea@lists.sr.ht to submit patches and request support. Thanks.\n\n## Status\n\nProduction/Stable.\n\n**Note**: The default branch is `default`.\n",
     "description_content_type": "text/markdown",
     "docs_url": null,
     "download_url": "",
@@ -37,16 +37,16 @@
       "Source-Code": "https://git.sr.ht/~sthagen/laskea",
       "Test-Coverage": "https://codes.dilettant.life/coverage/laskea"
     },
-    "release_url": "https://pypi.org/project/laskea/2023.10.9/",
+    "release_url": "https://pypi.org/project/laskea/2023.11.19/",
     "requires_dist": [
-      "atlassian-python-api >=3.41.2",
+      "atlassian-python-api >=3.41.3",
       "cogapp >=3.3.0",
       "defusedxml >=0.7.1",
       "jmespath >=1.0.1",
       "openpyxl >=3.1.2",
-      "pydantic >=2.4.2",
+      "pydantic >=2.5.1",
       "requests-cache >=1.1.0",
-      "scooby >=0.7.4",
+      "scooby >=0.9.2",
       "typer >=0.9.0",
       "black ; extra == 'dev'",
       "coverage ; extra == 'dev'",
@@ -60,11 +60,11 @@
     ],
     "requires_python": ">=3.9",
     "summary": "Calculate (Finnish: laskea) some parts.",
-    "version": "2023.10.9",
+    "version": "2023.11.19",
     "yanked": false,
     "yanked_reason": null
   },
-  "last_serial": 20090921,
+  "last_serial": 20702619,
   "releases": {
     "2022.11.3": [
       {
@@ -1386,6 +1386,50 @@
         "yanked_reason": null
       }
     ],
+    "2023.11.19": [
+      {
+        "comment_text": "",
+        "digests": {
+          "blake2b_256": "37b37f0b4b04798c487dc65253650ce0db53344821fe268d4b8218c677814e29",
+          "md5": "a291f589ca3b0ff684c90aab1114dedb",
+          "sha256": "540ef560e373c4775e7b0253b33ef364add5011ad06e8960ad82789215dfb22d"
+        },
+        "downloads": -1,
+        "filename": "laskea-2023.11.19-py3-none-any.whl",
+        "has_sig": false,
+        "md5_digest": "a291f589ca3b0ff684c90aab1114dedb",
+        "packagetype": "bdist_wheel",
+        "python_version": "py3",
+        "requires_python": ">=3.9",
+        "size": 22094,
+        "upload_time": "2023-11-19T14:20:33",
+        "upload_time_iso_8601": "2023-11-19T14:20:33.860072Z",
+        "url": "https://files.pythonhosted.org/packages/37/b3/7f0b4b04798c487dc65253650ce0db53344821fe268d4b8218c677814e29/laskea-2023.11.19-py3-none-any.whl",
+        "yanked": false,
+        "yanked_reason": null
+      },
+      {
+        "comment_text": "",
+        "digests": {
+          "blake2b_256": "a219d560a91daf122006a915568ecf2a5e00a55b661fbdcdaff56e0e90d11e68",
+          "md5": "19e37f7d8339941f220fae7a2166cb9b",
+          "sha256": "4a3423b6e3fbf922d95d1d9a8d25a73364644db96509d4abcdb338d3f3331db7"
+        },
+        "downloads": -1,
+        "filename": "laskea-2023.11.19.tar.gz",
+        "has_sig": false,
+        "md5_digest": "19e37f7d8339941f220fae7a2166cb9b",
+        "packagetype": "sdist",
+        "python_version": "source",
+        "requires_python": ">=3.9",
+        "size": 25312,
+        "upload_time": "2023-11-19T14:20:35",
+        "upload_time_iso_8601": "2023-11-19T14:20:35.675688Z",
+        "url": "https://files.pythonhosted.org/packages/a2/19/d560a91daf122006a915568ecf2a5e00a55b661fbdcdaff56e0e90d11e68/laskea-2023.11.19.tar.gz",
+        "yanked": false,
+        "yanked_reason": null
+      }
+    ],
     "2023.6.18": [
       {
         "comment_text": "",
@@ -1479,42 +1523,42 @@
     {
       "comment_text": "",
       "digests": {
-        "blake2b_256": "e82876ba7d9295bfd069029b1f816ae5da268aa312ba655d856c37ec17438bee",
-        "md5": "32ef6c8c688f61704fa670e657cbe322",
-        "sha256": "b7572dc705430d1a3011c113ee0a698ee9a5b2190757ce7d9e77b9ea4c1d136b"
+        "blake2b_256": "37b37f0b4b04798c487dc65253650ce0db53344821fe268d4b8218c677814e29",
+        "md5": "a291f589ca3b0ff684c90aab1114dedb",
+        "sha256": "540ef560e373c4775e7b0253b33ef364add5011ad06e8960ad82789215dfb22d"
       },
       "downloads": -1,
-      "filename": "laskea-2023.10.9-py3-none-any.whl",
+      "filename": "laskea-2023.11.19-py3-none-any.whl",
       "has_sig": false,
-      "md5_digest": "32ef6c8c688f61704fa670e657cbe322",
+      "md5_digest": "a291f589ca3b0ff684c90aab1114dedb",
       "packagetype": "bdist_wheel",
       "python_version": "py3",
       "requires_python": ">=3.9",
-      "size": 21913,
-      "upload_time": "2023-10-09T20:44:21",
-      "upload_time_iso_8601": "2023-10-09T20:44:21.214428Z",
-      "url": "https://files.pythonhosted.org/packages/e8/28/76ba7d9295bfd069029b1f816ae5da268aa312ba655d856c37ec17438bee/laskea-2023.10.9-py3-none-any.whl",
+      "size": 22094,
+      "upload_time": "2023-11-19T14:20:33",
+      "upload_time_iso_8601": "2023-11-19T14:20:33.860072Z",
+      "url": "https://files.pythonhosted.org/packages/37/b3/7f0b4b04798c487dc65253650ce0db53344821fe268d4b8218c677814e29/laskea-2023.11.19-py3-none-any.whl",
       "yanked": false,
       "yanked_reason": null
     },
     {
       "comment_text": "",
       "digests": {
-        "blake2b_256": "b943a366e2112cb2965dc34fa0891a0e664863381dc0d26b9db88cc79d4dfc87",
-        "md5": "44df1d2580958e6226e250bbd7508e38",
-        "sha256": "784764eaec3d59e50fe157aaf6f20360a9d9f0698f4b9515601a96eafedca173"
+        "blake2b_256": "a219d560a91daf122006a915568ecf2a5e00a55b661fbdcdaff56e0e90d11e68",
+        "md5": "19e37f7d8339941f220fae7a2166cb9b",
+        "sha256": "4a3423b6e3fbf922d95d1d9a8d25a73364644db96509d4abcdb338d3f3331db7"
       },
       "downloads": -1,
-      "filename": "laskea-2023.10.9.tar.gz",
+      "filename": "laskea-2023.11.19.tar.gz",
       "has_sig": false,
-      "md5_digest": "44df1d2580958e6226e250bbd7508e38",
+      "md5_digest": "19e37f7d8339941f220fae7a2166cb9b",
       "packagetype": "sdist",
       "python_version": "source",
       "requires_python": ">=3.9",
-      "size": 24939,
-      "upload_time": "2023-10-09T20:44:22",
-      "upload_time_iso_8601": "2023-10-09T20:44:22.959915Z",
-      "url": "https://files.pythonhosted.org/packages/b9/43/a366e2112cb2965dc34fa0891a0e664863381dc0d26b9db88cc79d4dfc87/laskea-2023.10.9.tar.gz",
+      "size": 25312,
+      "upload_time": "2023-11-19T14:20:35",
+      "upload_time_iso_8601": "2023-11-19T14:20:35.675688Z",
+      "url": "https://files.pythonhosted.org/packages/a2/19/d560a91daf122006a915568ecf2a5e00a55b661fbdcdaff56e0e90d11e68/laskea-2023.11.19.tar.gz",
       "yanked": false,
       "yanked_reason": null
     }
