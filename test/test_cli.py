@@ -9,7 +9,7 @@ runner = CliRunner()
 def test_report_command():
     result = runner.invoke(app, ['report'])
     assert result.exit_code == 0
-    assert f'laskea : {laskea.__version__}' in result.stdout
+    assert f'laskea : {laskea.__version__.split("+")[0]}' in result.stdout
 
 
 def test_template_command():
