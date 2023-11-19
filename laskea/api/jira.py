@@ -209,7 +209,11 @@ def markdown_table(
 
     rows = [f'| {" | ".join(str(v).ljust(col_wid[k]) for k, v in line.items())} |' for line in table]
     issues = len(table)
-    summary = f'\n\n{issues} issue{"" if issues == 1 else "s"}' if show_summary else ''
+    summary = (
+        f'\n\nTable: Search \'{jql_text}\' resulted in {issues} issue{"" if issues == 1 else "s"}'
+        if show_summary
+        else ''
+    )
     the_table = '\n'.join([header] + [separator] + rows) + summary
     return the_table.replace('\r', '') if BASE_LF_ONLY else the_table
 
