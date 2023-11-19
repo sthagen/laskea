@@ -25,12 +25,12 @@ pydantic==2.5.1
 ├── pydantic-core [required: ==2.14.3, installed: 2.14.3]
 │   └── typing-extensions [required: >=4.6.0,!=4.7.0, installed: 4.7.1]
 └── typing-extensions [required: >=4.6.1, installed: 4.7.1]
-requests-cache==1.1.0
+requests-cache==1.1.1
 ├── attrs [required: >=21.2, installed: 23.1.0]
-├── cattrs [required: >=22.2, installed: 23.1.2]
-│   ├── attrs [required: >=20, installed: 23.1.0]
-│   ├── exceptiongroup [required: Any, installed: 1.1.2]
-│   └── typing-extensions [required: >=4.1.0, installed: 4.7.1]
+├── cattrs [required: >=22.2, installed: 23.2.1]
+│   ├── attrs [required: >=23.1.0, installed: 23.1.0]
+│   ├── exceptiongroup [required: >=1.1.1, installed: 1.1.2]
+│   └── typing-extensions [required: >=4.1.0,!=4.6.3, installed: 4.7.1]
 ├── platformdirs [required: >=2.5, installed: 3.10.0]
 ├── requests [required: >=2.22, installed: 2.31.0]
 │   ├── certifi [required: >=2017.4.17, installed: 2023.7.22]
