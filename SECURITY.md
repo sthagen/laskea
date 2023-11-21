@@ -6,8 +6,8 @@ Versions of laskea currently being supported with security updates.
 
 | Version(s)   | Supported |
 |:-------------|:----------|
-| 2023.11.19   | yes       |
-| < 2023.11.19 | no        |
+| 2023.11.21   | yes       |
+| < 2023.11.21 | no        |
 
 ## Reporting a Vulnerability
 
