@@ -163,7 +163,8 @@ def test_embed_headings_too_many_strict(level, capsys):
 def test_embed_table(capsys):
     impl.BASE_URL = URL_FIXTURE
     expected = '\n'.join(TABLE_FIXTURE_PAYLOADS)
-    assert emb.table(query_text='', show_summary=True, data=TABLE_FIXTURE) is None
+    a_caption = "$NL$$NL$Table: Search '$QUERY_TEXT$' resulted in $ISSUE_COUNT$ issue$SINGULAR$$PLURAL$s$"
+    assert emb.table(query_text='', caption=a_caption, data=TABLE_FIXTURE) is None
     out, err = capsys.readouterr()
     assert not err
     assert out.strip() == expected

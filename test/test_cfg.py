@@ -35,10 +35,10 @@ def test_report_context(capsys):
     out, err = capsys.readouterr()
     assert not out
     lines = err.strip().split('\n')
-    assert len(lines) == 21
+    assert len(lines) == 23
     assert lines[:3] == ['Command: (-)', '- Transaction mode: (+)', 'Environment(variable values):']
-    assert lines[11] == 'Effective(variable values):'
-    for line in lines[3:11]:
+    assert lines[12] == 'Effective(variable values):'
+    for line in lines[3:12]:
         assert line.startswith(f'- {laskea.APP_ENV}_')
     assert lines[-1] == "- CallVector: (['42'])"
     laskea.QUIET = quiet_flag_restore
@@ -116,7 +116,7 @@ def test_create_and_report_effective_configuration(capsys):
     out, err = capsys.readouterr()
     assert not out
     lines = err.strip().split('\n')
-    assert len(lines) == 47
+    assert len(lines) == 48
     assert lines[:2] == ['42', '# --- BEGIN ---']
     assert lines[-1] == '# --- E N D ---'
     print(lines)

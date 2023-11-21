@@ -35,6 +35,7 @@ BASE_COL_FIELDS = json.loads(os.getenv(f'{laskea.APP_ENV}_COL_FIELDS', json.dump
 BASE_COL_MAPS = json.loads(os.getenv(f'{laskea.APP_ENV}_COL_MAPS', json.dumps(KNOWN_CI_FIELDS)))
 BASE_JOIN_STRING = os.getenv(f'{laskea.APP_ENV}_JOIN_STRING', ' <br>')
 BASE_LF_ONLY = bool(os.getenv(f'{laskea.APP_ENV}_LF_ONLY', 'YES'))
+BASE_CAPTION = bool(os.getenv(f'{laskea.APP_ENV}_CAPTION', laskea.DEFAULT_CAPTION))
 LF = '\n'
 
 
@@ -172,7 +173,7 @@ def separated_values_list(
 def markdown_table(
     handle: Jira,
     jql_text: str,
-    show_summary: bool = False,
+    caption: str = '',
     column_fields=None,
     data: Mapping[str, Union[object, Iterable, Sized]] = None,
 ) -> str:
@@ -209,11 +210,17 @@ def markdown_table(
 
     rows = [f'| {" | ".join(str(v).ljust(col_wid[k]) for k, v in line.items())} |' for line in table]
     issues = len(table)
-    summary = (
-        f'\n\nTable: Search \'{jql_text}\' resulted in {issues} issue{"" if issues == 1 else "s"}'
-        if show_summary
-        else ''
-    )
+    # TODO(sthagen) - spike only
+    if caption:
+        summary = (
+            caption.replace('$QUERY_TEXT$', jql_text)
+            .replace('$NL$', '\n')
+            .replace('$ISSUE_COUNT$', str(issues))
+            .replace('$SINGULAR$$PLURAL$s$', '' if issues == 1 else 's')
+        )
+    else:
+        summary = ''
+
     the_table = '\n'.join([header] + [separator] + rows) + summary
     return the_table.replace('\r', '') if BASE_LF_ONLY else the_table
 

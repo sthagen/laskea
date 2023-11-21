@@ -41,7 +41,8 @@ TEMPLATE_EXAMPLE = """\
       },
       "lf_only": true,
       "join_string": " <br>"
-    }
+    },
+    "caption": "$NL$$NL$Table: Search '$QUERY_TEXT$' resulted in $ISSUE_COUNT$ issue$SINGULAR$$PLURAL$s$"
   },
   "remote": {
     "is_cloud": false,
@@ -148,6 +149,15 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
     if join_string:
         source_of['join_string'] = 'env'
         api.BASE_JOIN_STRING = join_string
+
+    caption = jmespath.search('table.caption', configuration)
+    if caption:
+        source_of['caption'] = 'config'
+        api.BASE_CAPTION = lf_only
+    caption = os.getenv(f'{laskea.APP_ENV}_CAPTION', '')
+    if caption:
+        source_of['caption'] = 'env'
+        api.BASE_CAPTION = caption
 
     remote_user = jmespath.search('remote.user', configuration)
     if remote_user:
@@ -292,6 +302,7 @@ def report_context(command: str, transaction_mode: str, vector: List[str]) -> No
     app_env_col_maps = f'{laskea.APP_ENV}_COL_MAPS'
     app_env_markers = f'{laskea.APP_ENV}_MARKERS'
     app_env_lf_only = f'{laskea.APP_ENV}_LF_ONLY'
+    app_env_caption = f'{laskea.APP_ENV}_CAPTION'
     app_env_join_string = f'{laskea.APP_ENV}_JOIN_STRING'
     empty = ''
     print(f'- {laskea.APP_ENV}_USER: ({os.getenv(app_env_user, empty)})', file=sys.stderr)
@@ -304,6 +315,7 @@ def report_context(command: str, transaction_mode: str, vector: List[str]) -> No
     print(f'- {laskea.APP_ENV}_COL_MAPS: ({os.getenv(app_env_col_maps, empty)})', file=sys.stderr)
     print(f'- {laskea.APP_ENV}_MARKERS: ({os.getenv(app_env_markers, empty)})', file=sys.stderr)
     print(f'- {laskea.APP_ENV}_LF_ONLY: ({os.getenv(app_env_lf_only, empty)})', file=sys.stderr)
+    print(f'- {laskea.APP_ENV}_CAPTION: ({os.getenv(app_env_caption, empty)})', file=sys.stderr)
     print(f'- {laskea.APP_ENV}_JOIN_STRING: ({os.getenv(app_env_join_string, empty)})', file=sys.stderr)
     print('Effective(variable values):', file=sys.stderr)
     print(f'- RemoteUser: ({api.BASE_USER})', file=sys.stderr)
@@ -313,6 +325,7 @@ def report_context(command: str, transaction_mode: str, vector: List[str]) -> No
     print(f'- ColumnMaps(remote->table): ({api.BASE_COL_MAPS})', file=sys.stderr)
     print(f'- Markers(pattern): ({laskea.BASE_MARKERS})', file=sys.stderr)
     print(f'- lf_only: ({laskea.BASE_LF_ONLY})', file=sys.stderr)
+    print(f'- caption: ({laskea.BASE_CAPTION})', file=sys.stderr)
     print(f'- join_string: ({laskea.BASE_JOIN_STRING})', file=sys.stderr)
     print(f'- CallVector: ({vector})', file=sys.stderr)
 
@@ -355,6 +368,7 @@ def create_and_report_effective_configuration(header: str) -> None:
                 'lf_only': api.BASE_LF_ONLY,
                 'join_string': api.BASE_JOIN_STRING,
             },
+            'caption': api.BASE_CAPTION,
         },
         'remote': {
             'is_cloud': api.BASE_IS_CLOUD,

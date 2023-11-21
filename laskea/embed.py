@@ -83,19 +83,15 @@ def svl(
 
 
 @no_type_check
-def table(query_text: str = '', show_summary: bool = False, column_fields=None, data=None) -> None:
+def table(query_text: str = '', caption: str = '', column_fields=None, data=None) -> None:
     """Public document interface."""
     if data is None:
         if not DB.get('handle', None):
             DB['handle'] = api.login()
 
-        print(api.markdown_table(DB['handle'], query_text, show_summary=show_summary, column_fields=column_fields))
+        print(api.markdown_table(DB['handle'], query_text, caption=caption, column_fields=column_fields))
     else:
-        print(
-            api.markdown_table(
-                DB['handle'], query_text, show_summary=show_summary, column_fields=column_fields, data=data
-            )
-        )
+        print(api.markdown_table(DB['handle'], query_text, caption=caption, column_fields=column_fields, data=data))
 
 
 @no_type_check

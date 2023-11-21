@@ -3,8 +3,8 @@ import os
 import pathlib
 
 # [[[fill git_describe()]]]
-__version__ = '2023.11.19+parent.gd1e4e3d7'
-# [[[end]]] (checksum: 85331593eb7ff20e838b3d03ac73ead6)
+__version__ = '2023.11.21+parent.dirty'
+# [[[end]]] (checksum: 6b94a815c2d21ad5353bbf63c869444d)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
@@ -44,9 +44,11 @@ OPEN_BRACKET = '['
 CLOSE_BRACKET = ']'
 DEFAULT_MARKERS = f'{OPEN_BRACKET * 3}fill {CLOSE_BRACKET * 3} {OPEN_BRACKET * 3}end{CLOSE_BRACKET * 3}'
 DEFAULT_LF_ONLY = 'YES'
+DEFAULT_CAPTION = "$NL$$NL$Table: Search '$QUERY_TEXT$' resulted in $ISSUE_COUNT$ issue$SINGULAR$$PLURAL$s$"
 DEFAULT_JOIN_STRING = ' <br>'
 BASE_MARKERS = os.getenv(f'{APP_ENV}_MARKERS', DEFAULT_MARKERS)
 BASE_LF_ONLY = bool(os.getenv(f'{APP_ENV}_LF_ONLY', DEFAULT_LF_ONLY))
+BASE_CAPTION = bool(os.getenv(f'{APP_ENV}_CAPTION', DEFAULT_CAPTION))
 BASE_JOIN_STRING = os.getenv(f'{APP_ENV}_JOIN_STRING', DEFAULT_JOIN_STRING)
 MASK_DISPLAY = '*' * 13
 EXCEL = {'mbom': 'mbom.xlsm'}
