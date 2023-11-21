@@ -212,7 +212,7 @@
             {
                 "key": "cattrs",
                 "package_name": "cattrs",
-                "installed_version": "23.2.1",
+                "installed_version": "23.2.2",
                 "required_version": ">=22.2",
                 "dependencies": [
                     {
