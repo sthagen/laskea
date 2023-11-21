@@ -1,5 +1,8 @@
 # Change History
 
+2023.11.21
+:    * Implemented make summary / caption a DSL / configuration target (<https://todo.sr.ht/~sthagen/laskea/6>)
+
 2023.11.19
 :    * Made summary into self documenting useful markdown table caption (warning may change again)
 
