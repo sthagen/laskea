@@ -153,7 +153,7 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
     caption = jmespath.search('table.caption', configuration)
     if caption:
         source_of['caption'] = 'config'
-        api.BASE_CAPTION = lf_only
+        api.BASE_CAPTION = caption
     caption = os.getenv(f'{laskea.APP_ENV}_CAPTION', '')
     if caption:
         source_of['caption'] = 'env'
