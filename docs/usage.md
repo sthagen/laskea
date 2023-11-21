@@ -33,27 +33,26 @@ may be helpful temporarily.
 ❯ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Mon Nov 07 23:30:02 2022 CET
+  Date: Tue Nov 21 22:06:59 2023 CET
 
                 OS : Darwin
-            CPU(s) : 4096
+            CPU(s) : 8
            Machine : arm64
       Architecture : 64bit
-               RAM : 1234.0 GiB
+               RAM : 16.0 GiB
        Environment : Python
        File system : apfs
 
-  Python 3.10.5 (main, Jun 17 2022, 17:48:58) [Clang 13.0.0
-  (clang-1300.0.29.30)]
+  Python 3.10.12 (main, Jul 16 2023, 10:40:08) [Clang 16.0.6 ]
 
-            laskea : 2022.11.7+parent.a947952e
-         atlassian : 3.28.1
+            laskea : 2023.11.21
+         atlassian : 3.41.3
      cogapp.cogapp : 3.3.0
           jmespath : 1.0.1
-          pydantic : 1.10.2
-    requests_cache : 0.9.7
-            scooby : 0.7.0
-             typer : 0.6.1
+          pydantic : 2.5.1
+    requests_cache : 1.1.1
+            scooby : 0.9.2
+             typer : 0.9.0
 --------------------------------------------------------------------------------
 ```
 
@@ -105,7 +104,8 @@ may be helpful temporarily.
       },
       "lf_only": true,
       "join_string": " <br>"
-    }
+    },
+    "caption": "$NL$$NL$Table: Search '$QUERY_TEXT$' resulted in $ISSUE_COUNT$ issue$SINGULAR$$PLURAL$s$"
   },
   "remote": {
     "is_cloud": false,
@@ -197,6 +197,7 @@ may be helpful temporarily.
  "custom field name": ["customfield_123", "fields.customfield_123"]}'
  * LASKEA_JOIN_STRING=' <br>'
  * LASKEA_LF_ONLY='AnythingTruthy'
+ * LASKEA_CAPTION='empty or special DSL'
  * LASKEA_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
  * LASKEA_MARKERS='[[[fill ]]] [[[end]]]'
  * LASKEA_DEBUG='AnythingTruthy'
@@ -271,7 +272,8 @@ Effective configuration combining /home/ofsomeone/.laskea.json, environment vari
       },
       "lf_only": false,
       "join_string": " <br>"
-    }
+    },
+    "caption": "$NL$$NL$Table: Search '$QUERY_TEXT$' resulted in $ISSUE_COUNT$ issue$SINGULAR$$PLURAL$s$"
   },
   "remote": {
     "is_cloud": true,
@@ -332,6 +334,7 @@ The resulting markdown inject after update will look like:
    "custom field name": ["customfield_123", "fields.customfield_123"]}'
  * LASKEA_JOIN_STRING=' <br>'
  * LASKEA_LF_ONLY='AnythingTruthy'
+ * LASKEA_CAPTION='empty or special DSL'
  * LASKEA_IS_CLOUD='WhenNotConnectingToJiraServerButJiraCloud'
  * LASKEA_MARKERS='[[[fill ]]] [[[end]]]'
  * LASKEA_DEBUG='AnythingTruthy'
@@ -362,5 +365,5 @@ The resulting markdown inject after update will look like:
 
 ```console
 ❯ laskea version
-Calculate (Finnish: laskea) some parts. version 2022.11.7+parent.a947952e
+Calculate (Finnish: laskea) some parts. version 2023.11.21+parent.dirty
 ```

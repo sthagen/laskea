@@ -16,10 +16,36 @@ The following functions produce markdown constructs that receive sequences:
 
 * `mbom_table(filename)` - a markdown GFM table from an excel workbook `filename`
 * `metrics_table(configuration)` - a markdown GFM table from a REST interface defined per configuration
-* `table(query_text, show_summary=False, column_fields=None)` - a markdown GFM table
+* `table(query_text, caption='', column_fields=None)` - a markdown GFM table
 * `dl(query_text)` - a definition (description) list
 * `ol(query_text)` - an ordered list
 * `ul(query_text)` - an unordered list
+
+Since version 2023.11.21 the caption string offers a mini DSL to transform the summary information
+into the form expected for the documents.
+
+An example value is provided by `laskea.DEFAULT_CAPTION`:
+
+```python
+DEFAULT_CAPTION = "$NL$$NL$Table: Search '$QUERY_TEXT$' resulted in $ISSUE_COUNT$ issue$SINGULAR$$PLURAL$s$"
+``` 
+
+the table call will replace any:
+
+* `$NL$` with a newline (`\n`)
+* `$QUERY_TEXT$` with the JQL query text
+* `$ISSUE_COUNT$` with the count of issues found that match the search (the JQL query)
+* `$SINGULAR$$PLURAL$s$` with `s` if the issue count is not 1 else an empty string
+
+The above default template will result in a table caption as expected by pandoc like e.g.
+
+```
+...
+| A-1 | b |
+
+Table: Search 'key = A-1' resulted in 1 issue
+<!--...
+```
 
 **Note**: the table function allows to change the column labels by adding entries that are tuples or lists with two ordered members: `key` and `label`. 
 The following example will change the displayed column label for column `Summary` to only show `S`:
