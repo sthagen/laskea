@@ -70,11 +70,14 @@ def login(user: str = '', token: str = '', url: str = '', is_cloud: bool = False
 
 
 @no_type_check
-def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
+def query(handle: Jira, jql_text: str, column_fields=None, column_filters=None) -> dict:
     """EggLayingWoolMilkDear."""
 
     if not column_fields:
         column_fields = BASE_COL_FIELDS
+
+    if not column_filters:
+        column_filters = BASE_COL_FILTERS
 
     if not jql_text.strip():
         return {
@@ -94,6 +97,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
                 return {
                     'jql_text': jql_text,
                     'column_fields': column_fields,
+                    'column_filters': column_filters,
                     'parsed_columns': completed_column_fields,
                     'error': f'The column ({entry}) is neither a string nor a pair of (concept, label)',
                 }
@@ -114,6 +118,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
         return {
             'jql_text': jql_text,
             'column_fields': column_fields,
+            'column_filters': column_filters,
             'error': 'Completed column fields empty (no known fields?)',
         }
 
@@ -123,6 +128,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
         return {
             'jql_text': jql_text,
             'column_fields': column_fields,
+            'column_filters': column_filters,
             'parsed_columns': completed_column_fields,
             'error': str(err),
         }
@@ -132,6 +138,7 @@ def query(handle: Jira, jql_text: str, column_fields=None) -> dict:
     return {
         'jql_text': jql_text,
         'column_fields': column_fields,
+        'column_filters': column_filters,
         'parsed_columns': completed_column_fields,
         'error': None,
         'rows': rows,
@@ -143,6 +150,7 @@ def separated_values_list(
     handle: Jira,
     jql_text: str,
     column_fields=None,
+    column_filters=None,
     key_magic: bool = False,
     field_sep: str = laskea.PIPE,
     replacement: str = laskea.FS_SLUG,
@@ -185,6 +193,7 @@ def markdown_table(
     jql_text: str,
     caption: str = '',
     column_fields=None,
+    column_filters=None,
     data: Mapping[str, Union[object, Iterable, Sized]] = None,
 ) -> str:
     """Yes we can ... document later."""
