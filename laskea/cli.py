@@ -77,6 +77,49 @@ CacheExpiry = typer.Option(
     help='Request cache expiry in seconds',
 )
 
+JqlQuery = typer.Option(
+    '',
+    '-j',
+    '--jql-query',
+    help=(
+        'The query in JQL format.'
+        '\nFor example given a project YES and two issues 123 and 124:'
+        "\n'project = YES and key in (YES-123, YES-124) order by created DESC'"
+    ),
+    metavar='<jql-query>',
+)
+
+KeyMagic = typer.Option(
+    False,
+    '-k',
+    '--key-magic',
+    help='Apply magic to key by replacing with markdown like link (default is False)',
+)
+
+FieldSeparator = typer.Option(
+    laskea.PIPE,
+    '-d',
+    '--delimiter',
+    help=(
+        'Delimiter / field separator'
+        '\nOn output, header and data cell values will have any occurences'
+        '\nof the field separator replaced with the replacement string'
+    ),
+    metavar='<field-separator>',
+)
+
+Replacement = typer.Option(
+    laskea.FS_SLUG,
+    '-r',
+    '--replacement',
+    help=(
+        'Replacement string for occurences of FS in text\n'
+        '\nOn output, header and data cell values will have any occurences'
+        '\nof the field separator replaced with the replacement string'
+    ),
+    metavar='<replacement-text>',
+)
+
 
 @app.callback(invoke_without_command=True)
 def callback(version: bool = Version) -> None:
@@ -182,53 +225,13 @@ def update(  # noqa
 @app.command('csv')
 def svl_cmd(  # noqa
     query: str = typer.Argument(''),
-    jql_query: str = typer.Option(
-        '',
-        '-j',
-        '--jql-query',
-        help=(
-            'The query in JQL format.'
-            '\nFor example given a project YES and two issues 123 and 124:'
-            "\n'project = YES and key in (YES-123, YES-124) order by created DESC'"
-        ),
-        metavar='<jql-query>',
-    ),
+    jql_query: str = JqlQuery,
     conf: str = ConfigurationPath,
-    key_magic: bool = typer.Option(
-        False,
-        '-k',
-        '--key-magic',
-        help='Apply magic to key by replacing with markdown like link (default is False)',
-    ),
-    field_sep: str = typer.Option(
-        laskea.PIPE,
-        '-d',
-        '--delimiter',
-        help=(
-            'Delimiter / field separator'
-            '\nOn output, header and data cell values will have any occurences'
-            '\nof the field separator replaced with the replacement string'
-        ),
-        metavar='<field-separator>',
-    ),
-    replacement: str = typer.Option(
-        laskea.FS_SLUG,
-        '-r',
-        '--replacement',
-        help=(
-            'Replacement string for occurences of FS in text\n'
-            '\nOn output, header and data cell values will have any occurences'
-            '\nof the field separator replaced with the replacement string'
-        ),
-        metavar='<replacement-text>',
-    ),
+    key_magic: bool = KeyMagic,
+    field_sep: str = FieldSeparator,
+    replacement: str = Replacement,
     verify: bool = Dryness,
-    verbose: bool = typer.Option(
-        False,
-        '-v',
-        '--verbose',
-        help='Verbose output (default is False)',
-    ),
+    verbose: bool = Verbosity,
     strict: bool = Strictness,
     expires: int = CacheExpiry,
 ) -> int:
