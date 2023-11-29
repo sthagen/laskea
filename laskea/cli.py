@@ -180,9 +180,48 @@ def update(  # noqa
     * LASKEA_TOKEN='remote-secret'
     * LASKEA_BASE_URL='https://remote-jira-instance.example.com/'
     * LASKEA_CACHE_EXPIRY_SECONDS=180
-    * LASKEA_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * LASKEA_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
-      "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * LASKEA_COL_FIELDS: '[
+        "Key",
+        "Summary",
+        "Custom Field Name",
+        ["Custom Field Other", "Display Name"]
+      ]'
+    * LASKEA_COL_MAPS='{
+        "key": [
+          "key",
+          "key"
+        ],
+        "summary": [
+          "summary",
+          "fields.summary"
+        ],
+        "custom field name": [
+          "customfield_11501",
+          "fields.customfield_11501"
+        ],
+        "custom field other": [
+          "customfield_13901",
+          "fields.customfield_13901[].value"
+        ]
+      }'
+    * LASKEA_COL_FILTERS='"filter_map": {
+        "key": {},
+        "summary": {},
+        "custom field name": {
+          "first": "keep",
+          "keep": [
+            ["startswith", "ABC-"],
+            ["contains", "Z"],
+            ["icontains", "m"],
+            ["equals", "DEF-42"],
+            ["endswith", "-123"]
+          ],
+          "drop": [
+            ["matches", "[A-Z]+-\\d+"]
+          ]
+        ],
+        "custom field other": {}
+      }'
     * LASKEA_JOIN_STRING=' <br>'
     * LASKEA_LF_ONLY='AnythingTruthy'
     * LASKEA_CAPTION='empty or special DSL'
@@ -245,9 +284,48 @@ def svl_cmd(  # noqa
     * LASKEA_TOKEN='remote-secret'
     * LASKEA_BASE_URL='https://remote-jira-instance.example.com/'
     * LASKEA_CACHE_EXPIRY_SECONDS=180
-    * LASKEA_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
-    * LASKEA_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
-    "custom field name": ["customfield_123", "fields.customfield_123"]}'
+    * LASKEA_COL_FIELDS: '[
+        "Key",
+        "Summary",
+        "Custom Field Name",
+        ["Custom Field Other", "Display Name"]
+      ]'
+    * LASKEA_COL_MAPS='{
+        "key": [
+          "key",
+          "key"
+        ],
+        "summary": [
+          "summary",
+          "fields.summary"
+        ],
+        "custom field name": [
+          "customfield_11501",
+          "fields.customfield_11501"
+        ],
+        "custom field other": [
+          "customfield_13901",
+          "fields.customfield_13901[].value"
+        ]
+      }'
+    * LASKEA_COL_FILTERS='"filter_map": {
+        "key": {},
+        "summary": {},
+        "custom field name": {
+          "first": "keep",
+          "keep": [
+            ["startswith", "ABC-"],
+            ["contains", "Z"],
+            ["icontains", "m"],
+            ["equals", "DEF-42"],
+            ["endswith", "-123"]
+          ],
+          "drop": [
+            ["matches", "[A-Z]+-\\d+"]
+          ]
+        ],
+        "custom field other": {}
+      }'
     * LASKEA_JOIN_STRING=' <br>'
     * LASKEA_LF_ONLY='AnythingTruthy'
     * LASKEA_CAPTION='empty or special DSL'

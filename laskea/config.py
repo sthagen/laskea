@@ -19,7 +19,7 @@ TEMPLATE_EXAMPLE = """\
         "Key",
         "Summary",
         "Custom Field Name",
-        "Custom Field Other"
+        ["Custom Field Other", "Display Name"]
       ],
       "field_map": {
         "key": [
@@ -39,7 +39,7 @@ TEMPLATE_EXAMPLE = """\
           "fields.customfield_13901[].value"
         ]
       },
-      "field_filter_map": {
+      "filter_map": {
         "key": {},
         "summary": {},
         "custom field name": {
@@ -149,6 +149,15 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
     if field_map:
         source_of['field_map'] = 'env'
         api.BASE_COL_MAPS = json.loads(field_map)
+
+    filter_map = jmespath.search('table.column.filter_map', configuration)
+    if filter_map:
+        source_of['filter_map'] = 'config'
+        api.BASE_COL_MAPS = copy.deepcopy(filter_map)
+    filter_map = os.getenv(f'{laskea.APP_ENV}_COL_FILTERS', '')
+    if filter_map:
+        source_of['filter_map'] = 'env'
+        api.BASE_COL_MAPS = json.loads(filter_map)
 
     lf_only = jmespath.search('table.column.lf_only', configuration)
     if lf_only:
