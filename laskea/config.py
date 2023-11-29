@@ -39,6 +39,24 @@ TEMPLATE_EXAMPLE = """\
           "fields.customfield_13901[].value"
         ]
       },
+      "field_filter_map": {
+        "key": {},
+        "summary": {},
+        "custom field name": {
+          "first": "keep",
+          "keep": [
+            ["startswith", "ABC-"],
+            ["contains", "Z"],
+            ["icontains", "m"],
+            ["equals", "DEF-42"],
+            ["endswith", "-123"]
+          ],
+          "drop": [
+            ["matches", "[A-Z]+-\\d+"]
+          ]
+        ],
+        "custom field other": {}
+      },
       "lf_only": true,
       "join_string": " <br>"
     },
