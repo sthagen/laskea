@@ -153,11 +153,11 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
     filter_map = jmespath.search('table.column.filter_map', configuration)
     if filter_map:
         source_of['filter_map'] = 'config'
-        api.BASE_COL_MAPS = copy.deepcopy(filter_map)
+        api.BASE_COL_FILTERS = copy.deepcopy(filter_map)
     filter_map = os.getenv(f'{laskea.APP_ENV}_COL_FILTERS', '')
     if filter_map:
         source_of['filter_map'] = 'env'
-        api.BASE_COL_MAPS = json.loads(filter_map)
+        api.BASE_COL_FILTERS = json.loads(filter_map)
 
     lf_only = jmespath.search('table.column.lf_only', configuration)
     if lf_only:

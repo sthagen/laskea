@@ -12,6 +12,7 @@ from requests.exceptions import HTTPError
 
 import laskea
 
+FilterMapType = dict[str, Union[dict[str, Union[str, list[list[str]]]]]]
 API_BASE_URL = 'https://example.com'
 
 DEFAULT_COLUMN_FIELDS = ['Key', 'Summary', ['Priority', 'P'], 'Status', 'Custom Field Wun', 'Custom Field Other (CFO)']
@@ -26,6 +27,14 @@ KNOWN_CI_FIELDS = {
     'custom field name': [WUN_ID, f'fields.{WUN_ID}'],
     'custom field other': [ANOTHER_ID, f'fields.{ANOTHER_ID}[].value'],
 }
+KNOWN_CI_FIELD_FILTERS: FilterMapType = {
+    'key': {},
+    'summary': {},
+    'priority': {},
+    'status': {},
+    'custom field name': {},
+    'custom field other': {},
+}
 
 BASE_USER = os.getenv(f'{laskea.APP_ENV}_USER', '')
 BASE_PASS = os.getenv(f'{laskea.APP_ENV}_TOKEN', '')
@@ -33,6 +42,7 @@ BASE_URL = os.getenv(f'{laskea.APP_ENV}_BASE_URL', '')
 BASE_IS_CLOUD = bool(os.getenv(f'{laskea.APP_ENV}_IS_CLOUD', ''))
 BASE_COL_FIELDS = json.loads(os.getenv(f'{laskea.APP_ENV}_COL_FIELDS', json.dumps(DEFAULT_COLUMN_FIELDS)))
 BASE_COL_MAPS = json.loads(os.getenv(f'{laskea.APP_ENV}_COL_MAPS', json.dumps(KNOWN_CI_FIELDS)))
+BASE_COL_FILTERS = json.loads(os.getenv(f'{laskea.APP_ENV}_COL_FILTERS', json.dumps(KNOWN_CI_FIELD_FILTERS)))
 BASE_JOIN_STRING = os.getenv(f'{laskea.APP_ENV}_JOIN_STRING', ' <br>')
 BASE_LF_ONLY = bool(os.getenv(f'{laskea.APP_ENV}_LF_ONLY', 'YES'))
 BASE_CAPTION = bool(os.getenv(f'{laskea.APP_ENV}_CAPTION', laskea.DEFAULT_CAPTION))
