@@ -17,7 +17,6 @@ Typical filter data comes in as JSON and maps column keys to filter tasks:
   "replace": [
     ["DEF-", "definition-"]
   ]
-]
 }
 
 """
@@ -164,7 +163,7 @@ class FilterMap:
         self.filter_data: FILTER_MAP_TYPE = filter_data
 
         self.order = self.filter_data[ORDER] if self.filter_data.get(ORDER, []) else FilterMap.ORDER
-        log.info(f'{self.order=}')
+        log.debug(f'{self.order=}')
 
         self.keeps: FILTER_PAYLOAD_TYPE = self.filter_data.get(KEEP, [])  # type: ignore
         self.drops: FILTER_PAYLOAD_TYPE = self.filter_data.get(DROP, [])  # type: ignore
@@ -200,16 +199,16 @@ class FilterMap:
                     transformed = transformed.replace(this, with_that)
 
         for kind, tasks in self.operations:
-            log.warning(f'+ applying kind ({kind})')
+            log.debug(f'+ applying kind ({kind})')
             if kind in (KEEP, DROP):
                 if tasks:
                     for key, parameter in tasks:
-                        log.warning(f'  - applying key ({key}) with parameter ({parameter}) for kind ({kind})')
+                        log.debug(f'  - applying key ({key}) with parameter ({parameter}) for kind ({kind})')
                         if key.lower() not in ACTION_KEYS:
                             log.warning(f'skipping action with unknown key ({key}) for operation type ({kind})')
                             continue
                         hit = ACTION_MAP[key.lower()](transformed, parameter)
-                        log.warning(f'    ==> {"hit" if hit else "miss"}')
+                        log.debug(f'    ==> {"hit" if hit else "miss"}')
                         if hit:
                             if kind == DROP:
                                 return ''

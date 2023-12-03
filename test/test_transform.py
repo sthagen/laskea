@@ -98,6 +98,11 @@ def test_apply_drop_that():
     assert c_filter.apply('that') == ''
 
 
+def test_apply_drop_that_miss():
+    c_filter = tr.FilterMap('c', {'drop': [['equals', 'that']]})
+    assert c_filter.apply('else') == 'else'
+
+
 def test_apply_keep_drop_that():
     c_filter = tr.FilterMap('c', {'keep': [['iequals', 'that']], 'drop': [['equals', 'THAT']]})
     assert c_filter.apply('THAT') == 'THAT'
@@ -114,3 +119,16 @@ def test_apply_replace_keep_drop_that():
         },
     )
     assert c_filter.apply('THAT') == ''
+
+
+def test_apply_multiple_replace_keep_drop_that():
+    c_filter = tr.FilterMap(
+        'c',
+        {
+            'order': ['replace', 'keep', 'drop'],
+            'replace': [['THAT', 'that'], ['that', 'SOMETHING_COMPLETELY_DIFFERENT']],
+            'keep': [['equals', 'THAT']],
+            'drop': [['equals', 'that']],
+        },
+    )
+    assert c_filter.apply('THAT') == 'SOMETHING_COMPLETELY_DIFFERENT'
