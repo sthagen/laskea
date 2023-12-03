@@ -4,6 +4,130 @@ The API provides simple functions for embeddings in markdown documents.
 
 Currently, there are three distinct kinds of embeddings: Section/subsection partial document embeddings, sequence like embeddings, and single item embeddings.
 
+## Configuration
+
+The configuration per `.laskea.json` as well via environment variables allows for simplifying the 
+embedded function calls.
+
+### Column Filter Map
+
+Either as `.laskea.json` values from key `filter_map` or by setting the environment variable `LASKEA_COL_FILTERS`
+to the JSON object accordingly a column filter map can be defined to process the values in cells of columns
+as returned by the data source before transforming into the layout representation.
+
+Example for a filter map only applying filters to entries retrieved for the `"custom field name"` column:
+
+```json
+{
+  "key": {},
+  "summary": {},
+  "custom field name": {
+    "order": ["keep", "drop", "replace"],
+    "keep": [
+      ["startswith", "ABC-"],
+      ["contains", "Z"],
+      ["icontains", "m"],
+      ["equals", "DEF-42"],
+      ["endswith", "-123"]
+    ],
+    "drop": [
+      ["matches", "[A-Z]+-\\d+"]
+    ],
+    "replace": [
+      ["DEF-", "definition-"]
+    ]
+  },
+  "custom field other": {}
+}
+```
+
+#### Domain Specific Language
+
+Known operations are:
+
+- drop
+- keep
+- replace
+
+A meta operation is:
+
+- order
+
+This "operation" is optional but if present must fully specify the order of application of the "real" operations.
+
+The default order of application is
+
+1. keep
+2. drop
+3. replace
+
+Real operation JSON member values are a list of list of strings (the payloads).
+The payloads have length two with semantics depending on the operation.
+
+Operations keep amd drop both iterate over all payloads in the order given
+by applying the action encoded in the first list item and using the second item as parameter
+on the cell content (list of strings) elements.
+
+The encoding of actions is as follows (for cell entry `entry` and payload parameter `that`):
+
+contains - `that in entry`
+endswith - `entry.endswith(that)`
+equals - `that == entry`
+icontains - `that.lower() in entry.lower()`
+iendswith - `entry.lower().endswith(that.lower())`
+iequals - `that.lower() == entry.lower()`
+istartswith - `entry.lower().startswith(that.lower())`
+matches - `re.compile(that).match(entry)`
+startswith - `entry.startswith(that)`
+
+The third operation (replace) is delegated to the string replace function as action.
+In this case a payload pair like \["this", "with that"] is applied as `entry.replace('this', 'with that')`.
+
+##### Examples of Transform Application
+
+Sub minimal:
+
+```python
+import laskea.transform as tr
+c_filter = tr.FilterMap('c', {})
+assert c_filter.apply('foo') == 'foo'
+```
+
+Minimal:
+
+```python
+import laskea.transform as tr
+c_filter = tr.FilterMap('c', {'drop': [['equals', 'that']]})
+assert c_filter.apply('that') == ''
+```
+
+Order impact:
+
+```python
+import laskea.transform as tr
+c_filter = tr.FilterMap('c', {'keep': [['iequals', 'that']], 'drop': [['equals', 'THAT']]})
+assert c_filter.apply('THAT') == 'THAT'
+```
+
+
+Example with pre replace effect:
+
+```python
+import laskea.transform as tr
+c_filter = tr.FilterMap(
+    'c',
+    {
+        'order': ['replace', 'keep', 'drop'],
+        'replace': [['THAT', 'that']],
+        'keep': [['equals', 'THAT']],
+        'drop': [['equals', 'that']],
+    },
+)
+assert c_filter.apply('THAT') == ''
+```
+
+Further examples can be found at the end of the `test/test_transform.py` file.
+
 ## Document Part Functions
 
 The following function produces markdown constructs that map parent issues with children issues onto subsections and subsubsections:
