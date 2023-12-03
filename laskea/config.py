@@ -43,7 +43,7 @@ TEMPLATE_EXAMPLE = """\
         "key": {},
         "summary": {},
         "custom field name": {
-          "first": "keep",
+          "order": ["keep", "drop", "replace"],
           "keep": [
             ["startswith", "ABC-"],
             ["contains", "Z"],
@@ -53,6 +53,9 @@ TEMPLATE_EXAMPLE = """\
           ],
           "drop": [
             ["matches", "[A-Z]+-\\d+"]
+          ],
+          "replace": [
+            ["DEF-", "definition-"]
           ]
         ],
         "custom field other": {}
