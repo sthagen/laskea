@@ -9,21 +9,23 @@ may be helpful temporarily.
 ```console
 ❯ laskea
 
+
  Usage: laskea [OPTIONS] COMMAND [ARGS]...
 
  Calculate (Finnish: laskea) some parts.
 
-╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --version  -V        Display the laskea version and exit                                                                  │
-│ --help     -h        Show this message and exit.                                                                          │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Commands ────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ csv        Export query result as separated values list.                                                                  │
-│ report     Output either text options for the user to report her env or the report of the environment for support.        │
-│ template   Write a template of a well-formed JSON configuration to standard out and exit                                  │
-│ update     Fill in some parts of the input document.                                                                      │
-│ version    Display the laskea version and exit.                                                                           │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --version  -V        Display the laskea version and exit                                                 │
+│ --help     -h        Show this message and exit.                                                         │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────╮
+│ csv       Export query result as separated values list.                                                  │
+│ report    Output either text options for the user to report her env or the report of the environment for │
+│           support.                                                                                       │
+│ template  Write a template of a well-formed JSON configuration to standard out and exit                  │
+│ update    Fill in some parts of the input document.                                                      │
+│ version   Display the laskea version and exit.                                                           │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 ```
 
@@ -33,7 +35,7 @@ may be helpful temporarily.
 ❯ laskea report
 
 --------------------------------------------------------------------------------
-  Date: Tue Nov 21 22:06:59 2023 CET
+  Date: Sun Dec 03 21:11:11 2023 CET
 
                 OS : Darwin
             CPU(s) : 8
@@ -45,11 +47,11 @@ may be helpful temporarily.
 
   Python 3.10.12 (main, Jul 16 2023, 10:40:08) [Clang 16.0.6 ]
 
-            laskea : 2023.11.21
-         atlassian : 3.41.3
+            laskea : 2023.12.3
+         atlassian : 3.41.4
      cogapp.cogapp : 3.3.0
           jmespath : 1.0.1
-          pydantic : 2.5.1
+          pydantic : 2.5.2
     requests_cache : 1.1.1
             scooby : 0.9.2
              typer : 0.9.0
@@ -59,15 +61,16 @@ may be helpful temporarily.
 ### Help
 
 ```console
+❯ laskea report --help
 
  Usage: laskea report [OPTIONS]
 
  Output either text options for the user to report her env or the report of the environment for support.
 
-╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --shallow  -s        Shallow reporting - no setuptools required (default is False)                                        │
-│ --help     -h        Show this message and exit.                                                                          │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --shallow  -s        Shallow reporting - no setuptools required (default is False)                       │
+│ --help     -h        Show this message and exit.                                                         │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 ```
 
@@ -82,7 +85,7 @@ may be helpful temporarily.
         "Key",
         "Summary",
         "Custom Field Name",
-        "Custom Field Other"
+        ["Custom Field Other", "Display Name"]
       ],
       "field_map": {
         "key": [
@@ -101,6 +104,27 @@ may be helpful temporarily.
           "customfield_13901",
           "fields.customfield_13901[].value"
         ]
+      },
+      "filter_map": {
+        "key": {},
+        "summary": {},
+        "custom field name": {
+          "order": ["keep", "drop", "replace"],
+          "keep": [
+            ["startswith", "ABC-"],
+            ["contains", "Z"],
+            ["icontains", "m"],
+            ["equals", "DEF-42"],
+            ["endswith", "-123"]
+          ],
+          "drop": [
+            ["matches", "[A-Z]+-\d+"]
+          ],
+          "replace": [
+            ["DEF-", "definition-"]
+          ]
+        },
+        "custom field other": {}
       },
       "lf_only": true,
       "join_string": " <br>"
@@ -170,13 +194,10 @@ may be helpful temporarily.
  Usage: laskea template [OPTIONS]
 
  Write a template of a well-formed JSON configuration to standard out and exit
- The strategy for looking up configurations is to start at the current working directory trying to read a file with the name
- `.laskea.json` else try to read same named file in the user folder (home).
- In case an explicit path is given to the config option of commands that offer it, only that path is considered.
 
-╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --help  -h        Show this message and exit.                                                                             │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --help  -h        Show this message and exit.                                                            │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 ```
 ## CSV (Separated Values List)
@@ -192,9 +213,51 @@ may be helpful temporarily.
  * LASKEA_TOKEN='remote-secret'
  * LASKEA_BASE_URL='https://remote-jira-instance.example.com/'
  * LASKEA_CACHE_EXPIRY_SECONDS=180
- * LASKEA_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
- * LASKEA_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
- "custom field name": ["customfield_123", "fields.customfield_123"]}'
+ * LASKEA_COL_FIELDS: '[
+     "Key",
+     "Summary",
+     "Custom Field Name",
+     ["Custom Field Other", "Display Name"]
+   ]'
+ * LASKEA_COL_MAPS='{
+     "key": [
+       "key",
+       "key"
+     ],
+     "summary": [
+       "summary",
+       "fields.summary"
+     ],
+     "custom field name": [
+       "customfield_11501",
+       "fields.customfield_11501"
+     ],
+     "custom field other": [
+       "customfield_13901",
+       "fields.customfield_13901[].value"
+     ]
+   }'
+ * LASKEA_COL_FILTERS='{
+     "key": {},
+     "summary": {},
+     "custom field name": {
+       "order": ["keep", "drop", "replace"],
+       "keep": [
+         ["startswith", "ABC-"],
+         ["contains", "Z"],
+         ["icontains", "m"],
+         ["equals", "DEF-42"],
+         ["endswith", "-123"]
+       ],
+       "drop": [
+         ["matches", "[A-Z]+-\d+"]
+       ],
+       "replace": [
+         ["DEF-", "definition-"]
+       ]
+     },
+     "custom field other": {}
+   }'
  * LASKEA_JOIN_STRING=' <br>'
  * LASKEA_LF_ONLY='AnythingTruthy'
  * LASKEA_CAPTION='empty or special DSL'
@@ -206,33 +269,32 @@ may be helpful temporarily.
 
  The quiet option (if given) disables any conflicting verbosity setting.
 
-╭─ Arguments ─────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│   query      [QUERY]                                                                                            │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --jql-query             -j      <jql-query>         The query in JQL format. For example given a project YES    │
-│                                                     and two issues 123 and 124: 'project = YES and key in       │
-│                                                     (YES-123, YES-124) order by created DESC'                   │
-│ --config                -c      <configpath>        Path to config file (default is $HOME/.laskea.json)         │
-│ --key-magic             -k                          Apply magic to key by replacing with markdown like link     │
-│                                                     (default is False)                                          │
-│ --delimiter             -d      <field-separator>   Delimiter / field separator On output, header and data cell │
-│                                                     values will have any occurences of the field separator      │
-│                                                     replaced with the replacement string                        │
-│                                                     [default: |]                                                │
-│ --replacement           -r      <replacement-text>  Replacement string for occurences of FS in text             │
-│                                                     On output, header and data cell values will have any        │
-│                                                     occurences of the field separator replaced with the         │
-│                                                     replacement string                                          │
-│                                                     [default: $FIELD_SEPARATOR$]                                │
-│ --dry-run               -n                          Dry run (default is False)                                  │
-│ --verbose               -v                          Verbose output (default is False)                           │
-│ --strict                -s                          Ouput noisy warnings on console and in the processed        │
-│                                                     document (default is False)                                 │
-│ --cache-expiry-seconds  -x      INTEGER             Request cache expiry in seconds [default: 180]              │
-│ --help                  -h                          Show this message and exit.                                 │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────╮
+│   query      [QUERY]                                                                                     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --jql-query             -j      <jql-query>         The query in JQL format. For example given a project │
+│                                                     YES and two issues 123 and 124: 'project = YES and   │
+│                                                     key in (YES-123, YES-124) order by created DESC'     │
+│ --config                -c      <configpath>        Path to config file (default is $HOME/.laskea.json)  │
+│ --key-magic             -k                          Apply magic to key by replacing with markdown like   │
+│                                                     link (default is False)                              │
+│ --delimiter             -d      <field-separator>   Delimiter / field separator On output, header and    │
+│                                                     data cell values will have any occurences of the     │
+│                                                     field separator replaced with the replacement string │
+│                                                     [default: |]                                         │
+│ --replacement           -r      <replacement-text>  Replacement string for occurences of FS in text      │
+│                                                     On output, header and data cell values will have any │
+│                                                     occurences of the field separator replaced with the  │
+│                                                     replacement string                                   │
+│                                                     [default: $FIELD_SEPARATOR$]                         │
+│ --dry-run               -n                          Dry run (default is False)                           │
+│ --verbose               -v                          Verbose output (default is False)                    │
+│ --strict                -s                          Ouput noisy warnings on console and in the processed │
+│                                                     document (default is False)                          │
+│ --cache-expiry-seconds  -x      INTEGER             Request cache expiry in seconds [default: 180]       │
+│ --help                  -h                          Show this message and exit.                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ## Update
@@ -250,7 +312,10 @@ Effective configuration combining /home/ofsomeone/.laskea.json, environment vari
         "Key",
         "Summary",
         "Custom Field Name",
-        "Custom Field Other"
+        [
+          "Custom Field Other",
+          "Display Name"
+        ]
       ],
       "field_map": {
         "key": [
@@ -270,7 +335,7 @@ Effective configuration combining /home/ofsomeone/.laskea.json, environment vari
           "fields.customfield_13901[].value"
         ]
       },
-      "lf_only": false,
+      "lf_only": true,
       "join_string": " <br>"
     },
     "caption": "$NL$$NL$Table: Search '$QUERY_TEXT$' resulted in $ISSUE_COUNT$ issue$SINGULAR$$PLURAL$s$"
@@ -279,7 +344,7 @@ Effective configuration combining /home/ofsomeone/.laskea.json, environment vari
     "is_cloud": true,
     "user": "someuser",
     "token": "",
-    "base_url": "https://some.server.example.com/"
+    "base_url": "https://some.example.com"
   },
   "local": {
     "markers": "[[[fill ]]] [[[end]]]",
@@ -289,7 +354,7 @@ Effective configuration combining /home/ofsomeone/.laskea.json, environment vari
   }
 }
 # --- E N D ---
-Cogging tests/fixtures/basic/empty.md
+Cogging test/fixtures/basic/empty.md
 ```
 
 Using the `mbom_table('mbom.xlsx')` feature requires an excel workbook `mbom.xlsx` with 
@@ -329,9 +394,51 @@ The resulting markdown inject after update will look like:
  * LASKEA_TOKEN='remote-secret'
  * LASKEA_BASE_URL='https://remote-jira-instance.example.com/'
  * LASKEA_CACHE_EXPIRY_SECONDS=180
- * LASKEA_COL_FIELDS: '["Key", "Summary", "Custom Field Name"]'
- * LASKEA_COL_MAPS='{"key": ["key", "key"], "summary": ["summary", "fields.summary"],
-   "custom field name": ["customfield_123", "fields.customfield_123"]}'
+ * LASKEA_COL_FIELDS: '[
+     "Key",
+     "Summary",
+     "Custom Field Name",
+     ["Custom Field Other", "Display Name"]
+   ]'
+ * LASKEA_COL_MAPS='{
+     "key": [
+       "key",
+       "key"
+     ],
+     "summary": [
+       "summary",
+       "fields.summary"
+     ],
+     "custom field name": [
+       "customfield_11501",
+       "fields.customfield_11501"
+     ],
+     "custom field other": [
+       "customfield_13901",
+       "fields.customfield_13901[].value"
+     ]
+   }'
+ * LASKEA_COL_FILTERS='{
+     "key": {},
+     "summary": {},
+     "custom field name": {
+       "order": ["keep", "drop", "replace"],
+       "keep": [
+         ["startswith", "ABC-"],
+         ["contains", "Z"],
+         ["icontains", "m"],
+         ["equals", "DEF-42"],
+         ["endswith", "-123"]
+       ],
+       "drop": [
+         ["matches", "[A-Z]+-\d+"]
+       ],
+       "replace": [
+         ["DEF-", "definition-"]
+       ]
+     },
+     "custom field other": {}
+   }'
  * LASKEA_JOIN_STRING=' <br>'
  * LASKEA_LF_ONLY='AnythingTruthy'
  * LASKEA_CAPTION='empty or special DSL'
@@ -343,27 +450,25 @@ The resulting markdown inject after update will look like:
 
  The quiet option (if given) disables any conflicting verbosity setting.
 
-╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────╮
-│ *    source      SOURCE...  [default: None] [required]                                           │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ────────────────────────────────────────────────────────────────────────────────────────╮
-│ --input                 -i      <sourcepath>  Path to input file                                 │
-│ --config                -c      <configpath>  Path to config file (default is                    │
-│                                               $HOME/.laskea.json)                                │
-│ --dry-run               -n                    Dry run (default is False)                         │
-│ --verbose               -v                    Verbose output (default is False)                  │
-│ --quiet                 -q                    Minimal output (default is False)                  │
-│ --strict                -s                    Ouput noisy warnings on console and in the         │
-│                                               processed document (default is False)              │
-│ --cache-expiry-seconds  -x      INTEGER       Request cache expiry in seconds [default: 180]     │
-│ --help                  -h                    Show this message and exit.                        │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
-
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    source      SOURCE...  [default: None] [required]                                                   │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --input                 -i      <sourcepath>  Path to input file                                         │
+│ --config                -c      <configpath>  Path to config file (default is $HOME/.laskea.json)        │
+│ --dry-run               -n                    Dry run (default is False)                                 │
+│ --verbose               -v                    Verbose output (default is False)                          │
+│ --quiet                 -q                    Minimal output (default is False)                          │
+│ --strict                -s                    Ouput noisy warnings on console and in the processed       │
+│                                               document (default is False)                                │
+│ --cache-expiry-seconds  -x      INTEGER       Request cache expiry in seconds [default: 180]             │
+│ --help                  -h                    Show this message and exit.                                │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ## Version
 
 ```console
 ❯ laskea version
-Calculate (Finnish: laskea) some parts. version 2023.11.21+parent.dirty
+Calculate (Finnish: laskea) some parts. version 2023.12.3+parent.dirty
 ```
