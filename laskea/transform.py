@@ -21,7 +21,13 @@ Typical filter data comes in as JSON and maps column keys to filter tasks:
 }
 
 """
-from laskea import FILTER_MAP_TYPE, FILTER_ORDER_TYPE, FILTER_PAYLOAD_TYPE
+from laskea import FILTER_MAP_TYPE, FILTER_ORDER_TYPE, FILTER_PAYLOAD_TYPE, log
+
+
+DROP = 'drop'
+KEEP = 'keep'
+ORDER = 'order'
+REPLACE = 'replace'
 
 
 class FilterMap:
@@ -69,12 +75,34 @@ class FilterMap:
 
     """
 
-    ORDER: FILTER_ORDER_TYPE = ['keep', 'drop', 'replace']
+    ORDER: FILTER_ORDER_TYPE = [KEEP, DROP, REPLACE]
 
     def __init__(self, column: str, filter_data: FILTER_MAP_TYPE):
         self.column = column
         self.filter_data: FILTER_MAP_TYPE = filter_data
-        self.order = self.filter_data['order'] if self.filter_data.get('order', []) else FilterMap.ORDER
-        self.keeps: FILTER_PAYLOAD_TYPE = self.filter_data.get('keep', None)
-        self.drops: FILTER_PAYLOAD_TYPE = self.filter_data.get('drop', None)
-        self.replaces: FILTER_PAYLOAD_TYPE = self.filter_data.get('replace', None)
+        self.order = self.filter_data[ORDER] if self.filter_data.get(ORDER, []) else FilterMap.ORDER
+        self.keeps: FILTER_PAYLOAD_TYPE = self.filter_data.get(KEEP, [[]])  # type: ignore
+        self.drops: FILTER_PAYLOAD_TYPE = self.filter_data.get(DROP, [[]])  # type: ignore
+        self.replaces: FILTER_PAYLOAD_TYPE = self.filter_data.get(REPLACE, [[]])  # type: ignore
+        self.tasks = []
+        for operation in self.order:
+            if operation == KEEP:
+                self.tasks.append((KEEP, self.keeps))
+            elif operation == DROP:
+                self.tasks.append((DROP, self.drops))
+            elif operation == REPLACE:
+                self.tasks.append((REPLACE, self.replaces))
+            else:
+                log.warning(f'ignored order element ({operation}) - please verify your filter data')
+
+    def apply(self, entry: str) -> str:
+        """Initial naive application during stage 1 implementation of transformer."""
+        if not entry.strip():  # TODO(sthagen) - this may exclude use cases of manipulating space ;-)
+            return ''
+        if not self.tasks:
+            return entry
+        transformed = entry
+        for kind, task in self.tasks:
+            pass
+
+        return transformed
