@@ -1,8 +1,5 @@
-#! /usr/bin/env python3
-# -*- coding: utf-8 -*-
 """Commandline API gateway for laskea."""
 import sys
-from typing import List
 
 import requests_cache
 import typer
@@ -161,7 +158,7 @@ def report(
 
 @app.command('update')
 def update(  # noqa
-    source: List[str],
+    source: list[str],
     inp: str = Input,
     conf: str = ConfigurationPath,
     verify: bool = Dryness,
