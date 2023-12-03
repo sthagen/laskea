@@ -11,6 +11,8 @@ from atlassian import Jira  # type: ignore # noqa
 from requests.exceptions import HTTPError
 
 import laskea
+from laskea import log
+import laskea.transform as tr
 
 FilterMapType = dict[str, Union[dict[str, Union[str, list[list[str]]]]]]
 API_BASE_URL = 'https://example.com'
@@ -133,8 +135,36 @@ def query(handle: Jira, jql_text: str, column_fields=None, column_filters=None) 
             'error': str(err),
         }
 
-    pairs = [(col['label'], col['path']) for col in completed_column_fields]
-    rows = [{label: jmespath.search(path, issue) or [''] for label, path in pairs} for issue in issues['issues']]
+    transformer = {k: tr.FilterMap(k, v) for k, v in column_filters.items()} if column_filters else {}
+    log.debug(f'{transformer=}')
+    triplets = [(col['label'], col['path'], col['field']) for col in completed_column_fields]
+    rows = []
+    for issue in issues['issues']:
+        row = {}
+        for label, path, field in triplets:
+            log.debug(f'{field=}, {path=} ...')
+            entries_read = jmespath.search(path, issue) or ['']
+            entries = []
+            if isinstance(entries_read, list):
+                for entry in entries_read:
+                    trx = transformer.get(field)
+                    if trx:
+                        log.debug(f'{trx=}:({entry=}) -> ({trx.apply(entry)})')
+                    else:
+                        log.debug(f'no transform for {entry=}')
+                    entries.append(trx.apply(entry) if trx else entry)
+            else:
+                entry = entries_read
+                trx = transformer.get(field)
+                if trx:
+                    log.debug(f'{trx=}:({entry=}) -> ({trx.apply(entry)})')
+                else:
+                    log.debug(f'no transform for {entry=}')
+                entries.append(trx.apply(entry) if trx else entry)
+
+            row[label] = entries
+        rows.append(row)
+
     return {
         'jql_text': jql_text,
         'column_fields': column_fields,
