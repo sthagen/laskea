@@ -1,5 +1,5 @@
 """Calculate (Finnish: laskea) some parts - embeddings."""
-from typing import Dict, Union, no_type_check
+from typing import Union, no_type_check
 
 from atlassian import Jira  # type: ignore # noqa
 
@@ -8,7 +8,7 @@ import laskea.api.excel as exc
 import laskea.api.jira as api
 import laskea.api.tabulator as tab
 
-DB: Dict[str, Union[None, Jira]] = {'handle': None}
+DB: dict[str, Union[None, Jira]] = {'handle': None}
 
 
 @no_type_check
