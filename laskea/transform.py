@@ -141,15 +141,15 @@ class FilterMap:
 
     The encoding of actions is as follows (for cell entry `entry` and payload parameter `that`):
 
-    contains - `that in entry`
-    endswith - `entry.endswith(that)`
-    equals - `that == entry`
-    icontains - `that.lower() in entry.lower()`
-    iendswith - `entry.lower().endswith(that.lower())`
-    iequals - `that.lower() == entry.lower()`
-    istartswith - `entry.lower().startswith(that.lower())`
-    matches - `re.compile(that).match(entry)`
-    startswith - `entry.startswith(that)`
+    - contains - `that in entry`
+    - endswith - `entry.endswith(that)`
+    - equals - `that == entry`
+    - icontains - `that.lower() in entry.lower()`
+    - iendswith - `entry.lower().endswith(that.lower())`
+    - iequals - `that.lower() == entry.lower()`
+    - istartswith - `entry.lower().startswith(that.lower())`
+    - matches - `re.compile(that).match(entry)`
+    - startswith - `entry.startswith(that)`
 
     The third operation (replace) is delegated to the string replace function as action.
     In this case a payload pair like ["this", "with that"] is applied as `entry.replace('this', 'with that')`.
