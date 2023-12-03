@@ -26,9 +26,73 @@ def test_apply_drop_that():
     assert c_filter.apply('that') == ''
 
 
+def test_op_contains_hits():
+    assert tr.op_contains('entry', 'nt')
+
+
+def test_op_contains_misses():
+    assert not tr.op_contains('entry', 'NT')
+
+
+def test_op_endswith_hits():
+    assert tr.op_endswith('entry', 'try')
+
+
+def test_op_endswith_misses():
+    assert not tr.op_endswith('entry', 'different')
+
+
 def test_op_equals_hits():
     assert tr.op_equals('entry', 'entry')
 
 
 def test_op_equals_misses():
     assert not tr.op_equals('entry', 'different')
+
+
+def test_op_icontains_hits():
+    assert tr.op_icontains('entry', 'NT')
+
+
+def test_op_icontains_misses():
+    assert not tr.op_icontains('entry', 'different')
+
+
+def test_op_iendswith_hits():
+    assert tr.op_iendswith('entry', 'TRY')
+
+
+def test_op_iendswith_misses():
+    assert not tr.op_iendswith('entry', 'different')
+
+
+def test_op_iequals_hits():
+    assert tr.op_iequals('entry', 'ENTRY')
+
+
+def test_op_iequals_misses():
+    assert not tr.op_iequals('entry', 'different')
+
+
+def test_op_istartswith_hits():
+    assert tr.op_istartswith('entry', 'EN')
+
+
+def test_op_istartswith_misses():
+    assert not tr.op_istartswith('entry', 'different')
+
+
+def test_op_matches_hits():
+    assert tr.op_matches('entry', 'e.*')
+
+
+def test_op_matches_misses():
+    assert not tr.op_matches('entry', 'd.*')
+
+
+def test_op_startswith_hits():
+    assert tr.op_startswith('entry', 'en')
+
+
+def test_op_startswith_misses():
+    assert not tr.op_startswith('entry', 'different')
