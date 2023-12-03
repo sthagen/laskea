@@ -27,7 +27,7 @@ digraph {
 	cattrs -> "typing-extensions" [label=">=4.1.0,!=4.6.3"]
 	cattrs -> attrs [label=">=23.1.0"]
 	cattrs -> exceptiongroup [label=">=1.1.1"]
-	cattrs [label="cattrs\n23.2.2"]
+	cattrs [label="cattrs\n23.2.3"]
 	certifi [label="certifi\n2023.7.22"]
 	click [label="click\n8.1.6"]
 	cogapp [label="cogapp\n3.3.0"]

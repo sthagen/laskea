@@ -27,7 +27,7 @@ pydantic==2.5.2
 └── typing-extensions [required: >=4.6.1, installed: 4.7.1]
 requests-cache==1.1.1
 ├── attrs [required: >=21.2, installed: 23.1.0]
-├── cattrs [required: >=22.2, installed: 23.2.2]
+├── cattrs [required: >=22.2, installed: 23.2.3]
 │   ├── attrs [required: >=23.1.0, installed: 23.1.0]
 │   ├── exceptiongroup [required: >=1.1.1, installed: 1.1.2]
 │   └── typing-extensions [required: >=4.1.0,!=4.6.3, installed: 4.7.1]

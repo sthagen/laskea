@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json) with SHA256 checksum ([0da3c840 ...](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json.sha256 "sha256:0da3c840805a4f11faf399121bc483e7a5252d0dc2415ebcbf1c81291d75b52b")).
-<!--[[[end]]] (checksum: 3bf48071a5d13ff8dc90915dd176c963)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json) with SHA256 checksum ([9f74275b ...](https://git.sr.ht/~sthagen/laskea/blob/default/etc/sbom/cdx.json.sha256 "sha256:9f74275b3133f32357b5e990bfd8ecf447fa849f83610bc4aaa9f9413dcc4b9d")).
+<!--[[[end]]] (checksum: 94b03f58e903e9c6525d8f4e79274ba9)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -31,7 +31,7 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [Deprecated](https://github.com/tantale/deprecated)                                 | [1.2.14](https://pypi.org/project/Deprecated/1.2.14/)       | MIT License                          | Laurent LAPORTE                                                                       | Python @deprecated decorator to deprecate old python classes, functions or methods.                     |
 | [appdirs](http://github.com/ActiveState/appdirs)                                    | [1.4.4](https://pypi.org/project/appdirs/1.4.4/)            | MIT License                          | Trent Mick                                                                            | A small Python module for determining appropriate platform-specific dirs, e.g. a "user data dir".       |
 | [attrs](https://www.attrs.org/en/stable/changelog.html)                             | [23.1.0](https://pypi.org/project/attrs/23.1.0/)            | MIT License                          | Hynek Schlawack <hs@ox.cx>                                                            | Classes Without Boilerplate                                                                             |
-| [cattrs](https://catt.rs)                                                           | [23.2.2](https://pypi.org/project/cattrs/23.2.2/)           | MIT License                          | Tin Tvrtkovic <tinchester@gmail.com>                                                  | Composable complex class support for attrs and dataclasses.                                             |
+| [cattrs](https://catt.rs)                                                           | [23.2.3](https://pypi.org/project/cattrs/23.2.3/)           | MIT License                          | Tin Tvrtkovic <tinchester@gmail.com>                                                  | Composable complex class support for attrs and dataclasses.                                             |
 | [certifi](https://github.com/certifi/python-certifi)                                | [2023.7.22](https://pypi.org/project/certifi/2023.7.22/)    | Mozilla Public License 2.0 (MPL 2.0) | Kenneth Reitz                                                                         | Python package for providing Mozilla's CA Bundle.                                                       |
 | [charset-normalizer](https://github.com/Ousret/charset_normalizer)                  | [3.2.0](https://pypi.org/project/charset-normalizer/3.2.0/) | MIT License                          | Ahmed TAHRI                                                                           | The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet. |
 | [click](https://palletsprojects.com/p/click/)                                       | [8.1.6](https://pypi.org/project/click/8.1.6/)              | BSD License                          | Pallets <contact@palletsprojects.com>                                                 | Composable command line interface toolkit                                                               |
@@ -47,7 +47,7 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [url-normalize](https://github.com/niksite/url-normalize)                           | [1.4.3](https://pypi.org/project/url-normalize/1.4.3/)      | MIT License                          | Nikolay Panov                                                                         | URL normalization for Python                                                                            |
 | [urllib3](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)                 | [2.0.4](https://pypi.org/project/urllib3/2.0.4/)            | MIT License                          | Andrey Petrov <andrey.petrov@shazow.net>                                              | HTTP library with thread-safe connection pooling, file post, and more.                                  |
 | [wrapt](https://github.com/GrahamDumpleton/wrapt)                                   | [1.15.0](https://pypi.org/project/wrapt/1.15.0/)            | BSD License                          | Graham Dumpleton                                                                      | Module for decorators, wrappers and monkey patching.                                                    |
- <!--[[[end]]] (checksum: dcd8d152accaa8b905889e473db1c81a)-->
+ <!--[[[end]]] (checksum: 1e41208560c33c66338534612f53501f)-->
 
 ## Dependency Tree(s)
 
@@ -92,7 +92,7 @@ pydantic==2.5.2
 └── typing-extensions [required: >=4.6.1, installed: 4.7.1]
 requests-cache==1.1.1
 ├── attrs [required: >=21.2, installed: 23.1.0]
-├── cattrs [required: >=22.2, installed: 23.2.2]
+├── cattrs [required: >=22.2, installed: 23.2.3]
 │   ├── attrs [required: >=23.1.0, installed: 23.1.0]
 │   ├── exceptiongroup [required: >=1.1.1, installed: 1.1.2]
 │   └── typing-extensions [required: >=4.1.0,!=4.6.3, installed: 4.7.1]
@@ -110,4 +110,4 @@ typer==0.9.0
 ├── click [required: >=7.1.1,<9.0.0, installed: 8.1.6]
 └── typing-extensions [required: >=3.7.4.3, installed: 4.7.1]
 ````
-<!--[[[end]]] (checksum: de13bac6afcb274be4e0f9708924e7f6)-->
+<!--[[[end]]] (checksum: 49730e2f36fa137ed2a07557a6609974)-->

@@ -307,7 +307,7 @@
 <title>cattrs</title>
 <ellipse fill="none" stroke="black" cx="643.8" cy="-139.47" rx="35.71" ry="28.99"/>
 <text text-anchor="middle" x="643.8" y="-142.67" font-family="Times,serif" font-size="14.00">cattrs</text>
-<text text-anchor="middle" x="643.8" y="-126.17" font-family="Times,serif" font-size="14.00">23.2.2</text>
+<text text-anchor="middle" x="643.8" y="-126.17" font-family="Times,serif" font-size="14.00">23.2.3</text>
 </g>
 <!-- requests&#45;cache&#45;&gt;cattrs -->
 <g id="edge19" class="edge">
