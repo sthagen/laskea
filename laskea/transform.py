@@ -164,7 +164,7 @@ class FilterMap:
         self.filter_data: FILTER_MAP_TYPE = filter_data
 
         self.order = self.filter_data[ORDER] if self.filter_data.get(ORDER, []) else FilterMap.ORDER
-        log.debug(f'{self.order=}')
+        log.info(f'{self.order=}')
 
         self.keeps: FILTER_PAYLOAD_TYPE = self.filter_data.get(KEEP, [])  # type: ignore
         self.drops: FILTER_PAYLOAD_TYPE = self.filter_data.get(DROP, [])  # type: ignore
@@ -192,18 +192,21 @@ class FilterMap:
             return entry
         transformed = entry
         for kind, tasks in self.operations:
+            log.warning(f'+ applying kind ({kind})')
             if kind in (KEEP, DROP):
                 if tasks:
                     for key, parameter in tasks:
+                        log.warning(f'  - applying key ({key}) with parameter ({parameter}) for kind ({kind})')
                         if key.lower() not in ACTION_KEYS:
                             log.warning(f'skipping action with unknown key ({key}) for operation type ({kind})')
                             continue
                         hit = ACTION_MAP[key.lower()](transformed, parameter)
+                        log.warning(f'    ==> {"hit" if hit else "miss"}')
                         if hit:
                             if kind == DROP:
                                 return ''
                             if kind == KEEP:
-                                break
+                                return transformed
             else:  # REPLACE
                 if tasks:
                     for this, with_that in tasks:
