@@ -441,6 +441,4 @@ def process(conf: str, options: Mapping[str, bool]) -> None:
         )
 
     if laskea.DEBUG or verbose:
-        log.info(
-            f'Upstream JIRA instance is addressed per {"cloud" if api.BASE_IS_CLOUD else "server"} rules'
-        )
+        log.info(f'Upstream JIRA instance is addressed per {"cloud" if api.BASE_IS_CLOUD else "server"} rules')
