@@ -21,6 +21,9 @@ The following functions produce markdown constructs that receive sequences:
 * `ol(query_text)` - an ordered list
 * `ul(query_text)` - an unordered list
 
+
+### Table Caption DSL
+
 Since version 2023.11.21 the caption string offers a mini DSL to transform the summary information
 into the form expected for the documents.
 
