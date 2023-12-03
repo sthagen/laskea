@@ -130,13 +130,6 @@ def callback(version: bool = Version) -> None:
 def app_template() -> int:
     """
     Write a template of a well-formed JSON configuration to standard out and exit
-
-    The strategy for looking up configurations is to start at the current working
-    directory trying to read a file with the name `.laskea.json` else try to read
-    same named file in the user folder (home).
-
-    In case an explicit path is given to the config option of commands that offer
-    it, only that path is considered.
     """
     sys.stdout.write(cfg.generate_template())
     return sys.exit(0)
@@ -201,7 +194,7 @@ def update(  # noqa
           "fields.customfield_13901[].value"
         ]
       }'
-    * LASKEA_COL_FILTERS='"filter_map": {
+    * LASKEA_COL_FILTERS='{
         "key": {},
         "summary": {},
         "custom field name": {
@@ -219,7 +212,7 @@ def update(  # noqa
           "replace": [
             ["DEF-", "definition-"]
           ]
-        ],
+        },
         "custom field other": {}
       }'
     * LASKEA_JOIN_STRING=' <br>'
@@ -308,7 +301,7 @@ def svl_cmd(  # noqa
           "fields.customfield_13901[].value"
         ]
       }'
-    * LASKEA_COL_FILTERS='"filter_map": {
+    * LASKEA_COL_FILTERS='{
         "key": {},
         "summary": {},
         "custom field name": {
@@ -326,7 +319,7 @@ def svl_cmd(  # noqa
           "replace": [
             ["DEF-", "definition-"]
           ]
-        ],
+        },
         "custom field other": {}
       }'
     * LASKEA_JOIN_STRING=' <br>'

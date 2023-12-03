@@ -57,7 +57,7 @@ TEMPLATE_EXAMPLE = """\
           "replace": [
             ["DEF-", "definition-"]
           ]
-        ],
+        },
         "custom field other": {}
       },
       "lf_only": true,
