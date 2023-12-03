@@ -1,5 +1,8 @@
 # Change History
 
+2023.12.3
+:    * Made summary / caption per DSL / configuration target more versatile (<https://todo.sr.ht/~sthagen/laskea/7>)
+
 2023.11.29
 :    * Added filtering on table cell content to table function (<https://todo.sr.ht/~sthagen/laskea/8>)
 
