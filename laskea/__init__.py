@@ -1,10 +1,11 @@
 """Calculate (Finnish: laskea) some parts."""
 import os
 import pathlib
+from typing import Union
 
 # [[[fill git_describe()]]]
-__version__ = '2023.11.29+parent.g91c52132'
-# [[[end]]] (checksum: 65503485cd331c029272a92eca9512a8)
+__version__ = '2023.12.3+parent.dirty'
+# [[[end]]] (checksum: 19f306bad12a106f1b3a378b9d3e8ffb)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
@@ -19,6 +20,10 @@ STRICT = bool(os.getenv(f'{APP_ENV}_STRICT', ''))
 ENCODING = 'utf-8'
 ENCODING_ERRORS_POLICY = 'ignore'
 DEFAULT_CONFIG_NAME = f'.{APP_ALIAS}.json'
+
+FILTER_ORDER_TYPE = Union[list[str], None]
+FILTER_PAYLOAD_TYPE = Union[list[str], None]
+FILTER_MAP_TYPE = dict[str, Union[FILTER_ORDER_TYPE, FILTER_PAYLOAD_TYPE]]
 
 CACHE_EXPIRY_SECONDS = int(os.getenv(f'{APP_ENV}_CACHE_EXPIRY_SECONDS', '180'))
 REQUESTS_TIMEOUT_SECS = 30
@@ -121,6 +126,9 @@ from laskea.embed import (  # noqa
 )
 
 __all__ = [
+    'FILTER_MAP_TYPE',
+    'FILTER_ORDER_TYPE',
+    'FILTER_PAYLOAD_TYPE',
     'REQUESTS_TIMEOUT_SECS',
     'h1',
     'h2',

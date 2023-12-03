@@ -208,7 +208,7 @@ def update(  # noqa
         "key": {},
         "summary": {},
         "custom field name": {
-          "first": "keep",
+          "order": ["keep", "drop", "replace"],
           "keep": [
             ["startswith", "ABC-"],
             ["contains", "Z"],
@@ -218,6 +218,9 @@ def update(  # noqa
           ],
           "drop": [
             ["matches", "[A-Z]+-\\d+"]
+          ],
+          "replace": [
+            ["DEF-", "definition-"]
           ]
         ],
         "custom field other": {}
@@ -312,7 +315,7 @@ def svl_cmd(  # noqa
         "key": {},
         "summary": {},
         "custom field name": {
-          "first": "keep",
+          "order": ["keep", "drop", "replace"],
           "keep": [
             ["startswith", "ABC-"],
             ["contains", "Z"],
@@ -322,6 +325,9 @@ def svl_cmd(  # noqa
           ],
           "drop": [
             ["matches", "[A-Z]+-\\d+"]
+          ],
+          "replace": [
+            ["DEF-", "definition-"]
           ]
         ],
         "custom field other": {}
