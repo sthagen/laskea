@@ -1,6 +1,6 @@
 """Report environment to support resolution of user issues."""
 import sys
-from typing import List, no_type_check
+from typing import no_type_check
 
 import scooby
 
@@ -46,7 +46,7 @@ def report(shallow: bool = False) -> str:
             ]
 
             # Optional packages.
-            optional: List[str] = []
+            optional: list[str] = []
 
             scooby.Report.__init__(
                 self, additional=additional, core=core, optional=optional, ncol=ncol, text_width=text_width, sort=sort
