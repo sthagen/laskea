@@ -4,7 +4,7 @@ import json
 import os
 import pathlib
 import sys
-from typing import Dict, List, Mapping, Tuple, no_type_check
+from typing import Mapping, no_type_check
 
 import jmespath
 
@@ -127,7 +127,7 @@ def generate_template() -> str:
 
 
 @no_type_check
-def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
+def load_configuration(configuration: dict[str, object]) -> dict[str, str]:
     """LaterAlligator."""
     if not configuration:
         print('Warning: Requested load from empty configuration', file=sys.stderr)
@@ -272,7 +272,7 @@ def load_configuration(configuration: Dict[str, object]) -> Dict[str, str]:
 
 
 @no_type_check
-def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
+def discover_configuration(conf: str) -> tuple[dict[str, object], str]:
     """Try to retrieve the configuration following the "(explicit, local, parents, home)
     first wun wins" strategy."""
     configuration = None
@@ -318,7 +318,7 @@ def discover_configuration(conf: str) -> Tuple[Dict[str, object], str]:
 
 
 @no_type_check
-def report_context(command: str, transaction_mode: str, vector: List[str]) -> None:
+def report_context(command: str, transaction_mode: str, vector: list[str]) -> None:
     """DRY."""
     if laskea.QUIET:
         return
@@ -361,7 +361,7 @@ def report_context(command: str, transaction_mode: str, vector: List[str]) -> No
 
 
 @no_type_check
-def report_sources_of_effective_configuration(source_of: Dict[str, str], header: str) -> None:
+def report_sources_of_effective_configuration(source_of: dict[str, str], header: str) -> None:
     """DRY."""
     if laskea.QUIET:
         return
@@ -372,7 +372,7 @@ def report_sources_of_effective_configuration(source_of: Dict[str, str], header:
 
 
 @no_type_check
-def safe_report_configuration(configuration: Dict[str, object], header: str) -> None:
+def safe_report_configuration(configuration: dict[str, object], header: str) -> None:
     """DRY."""
     if laskea.QUIET:
         return
