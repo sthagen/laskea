@@ -9,6 +9,7 @@ from typing import Mapping, no_type_check
 import jmespath
 
 import laskea
+from laskea import log
 import laskea.api.jira as api
 
 TEMPLATE_EXAMPLE = """\
@@ -130,7 +131,7 @@ def generate_template() -> str:
 def load_configuration(configuration: dict[str, object]) -> dict[str, str]:
     """LaterAlligator."""
     if not configuration:
-        print('Warning: Requested load from empty configuration', file=sys.stderr)
+        log.warning('Warning: Requested load from empty configuration')
         return {}
 
     source_of = {}
@@ -353,6 +354,7 @@ def report_context(command: str, transaction_mode: str, vector: list[str]) -> No
     print(f'- RemoteBaseURL: ({api.BASE_URL})', file=sys.stderr)
     print(f'- ColumnFields(table): ({api.BASE_COL_FIELDS})', file=sys.stderr)
     print(f'- ColumnMaps(remote->table): ({api.BASE_COL_MAPS})', file=sys.stderr)
+    print(f'- ColumnFilters(remote->table): ({api.BASE_COL_FILTERS})', file=sys.stderr)
     print(f'- Markers(pattern): ({laskea.BASE_MARKERS})', file=sys.stderr)
     print(f'- lf_only: ({laskea.BASE_LF_ONLY})', file=sys.stderr)
     print(f'- caption: ({laskea.BASE_CAPTION})', file=sys.stderr)
@@ -395,6 +397,7 @@ def create_and_report_effective_configuration(header: str) -> None:
             'column': {
                 'fields': copy.deepcopy(api.BASE_COL_FIELDS),
                 'field_map': copy.deepcopy(api.BASE_COL_MAPS),
+                'filter_map': copy.deepcopy(api.BASE_COL_FILTERS),
                 'lf_only': api.BASE_LF_ONLY,
                 'join_string': api.BASE_JOIN_STRING,
             },
@@ -438,7 +441,6 @@ def process(conf: str, options: Mapping[str, bool]) -> None:
         )
 
     if laskea.DEBUG or verbose:
-        print(
-            f'INFO: Upstream JIRA instance is addressed per {"cloud" if api.BASE_IS_CLOUD else "server"} rules',
-            file=sys.stderr,
+        log.info(
+            f'Upstream JIRA instance is addressed per {"cloud" if api.BASE_IS_CLOUD else "server"} rules'
         )
