@@ -191,6 +191,14 @@ class FilterMap:
         if not self.operations:
             return entry
         transformed = entry
+        pre_replace = False
+        if self.operations:
+            kind, tasks = self.operations[0]
+            if kind == REPLACE and tasks:
+                pre_replace = True
+                for this, with_that in tasks:
+                    transformed = transformed.replace(this, with_that)
+
         for kind, tasks in self.operations:
             log.warning(f'+ applying kind ({kind})')
             if kind in (KEEP, DROP):
@@ -207,7 +215,7 @@ class FilterMap:
                                 return ''
                             if kind == KEEP:
                                 return transformed
-            else:  # REPLACE
+            elif not pre_replace:  # REPLACE
                 if tasks:
                     for this, with_that in tasks:
                         transformed = transformed.replace(this, with_that)

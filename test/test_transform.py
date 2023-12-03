@@ -101,3 +101,16 @@ def test_apply_drop_that():
 def test_apply_keep_drop_that():
     c_filter = tr.FilterMap('c', {'keep': [['iequals', 'that']], 'drop': [['equals', 'THAT']]})
     assert c_filter.apply('THAT') == 'THAT'
+
+
+def test_apply_replace_keep_drop_that():
+    c_filter = tr.FilterMap(
+        'c',
+        {
+            'order': ['replace', 'keep', 'drop'],
+            'replace': [['THAT', 'that']],
+            'keep': [['equals', 'THAT']],
+            'drop': [['equals', 'that']],
+        },
+    )
+    assert c_filter.apply('THAT') == ''
