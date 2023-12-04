@@ -4,6 +4,22 @@ The API provides simple functions for embeddings in markdown documents.
 
 Currently, there are three distinct kinds of embeddings: Section/subsection partial document embeddings, sequence like embeddings, and single item embeddings.
 
+## Debugging / Tracing
+
+To follow the flow of code generation you can change the log levels by including the following 
+markdown comment (and adhering to your configured trigger token convention) ideally at the to of the mrkdown document:
+
+```markdown
+<!--[[[fill import logging; logging.getLogger().setLevel(logging.DEBUG)]]]-->
+<!--[[[end]]]-->
+# My First Heading
+
+Other text and later some code generator triggering blocks ...
+```
+
+Currently the `logging.INFO` will not be very informative and when we settle on proven message level segregation 
+that change will be documented here.
+
 ## Configuration
 
 The configuration per `.laskea.json` as well via environment variables allows for simplifying the 
