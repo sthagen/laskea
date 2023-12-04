@@ -196,19 +196,23 @@ class FilterMap:
             if kind == REPLACE and tasks:
                 pre_replace = True
                 for this, with_that in tasks:
+                    log.debug(f'before replace("{this}", "{with_that}") call on content({transformed})')
                     transformed = transformed.replace(this, with_that)
+                    log.debug(f'       replace("{this}", "{with_that}")   -->   content({transformed})')
 
         for kind, tasks in self.operations:
-            log.debug(f'+ applying kind ({kind})')
+            log.debug(f'+ applying ({kind}) operations to ({transformed})')
             if kind in (KEEP, DROP):
                 if tasks:
                     for key, parameter in tasks:
-                        log.debug(f'  - applying key ({key}) with parameter ({parameter}) for kind ({kind})')
+                        log.debug(
+                            f'  - applying action ({key})({parameter}) for operation type ({kind}) on ({transformed})'
+                        )
                         if key.lower() not in ACTION_KEYS:
                             log.warning(f'skipping action with unknown key ({key}) for operation type ({kind})')
                             continue
                         hit = ACTION_MAP[key.lower()](transformed, parameter)
-                        log.debug(f'    ==> {"hit" if hit else "miss"}')
+                        log.debug(f'    ==> {"hit" if hit else "miss"} for ({transformed})')
                         if hit:
                             if kind == DROP:
                                 return ''
