@@ -145,21 +145,27 @@ def query(handle: Jira, jql_text: str, column_fields=None, column_filters=None) 
             log.debug(f'{field=}, {path=} ...')
             entries_read = jmespath.search(path, issue) or ['']
             entries = []
+            trx = transformer.get(field)
+            if trx is not None:
+                log.debug(f'{field}:->{trx.operations=} for column ({trx.column})')
+            else:
+                log.debug(f'transformer class is None for column ({field})')
             if isinstance(entries_read, list):
                 for entry in entries_read:
                     trx = transformer.get(field)
                     if trx:
-                        log.debug(f'{trx=}:({entry=}) -> ({trx.apply(entry)})')
+                        log.debug(f'sequence::{trx=}:({entry=}) -> ({trx.apply(entry)})')
                     else:
-                        log.debug(f'no transform for {entry=}')
-                    entries.append(trx.apply(entry) if trx else entry)
+                        log.debug(f'no transform for sequence::{entry=}')
+                    processed = trx.apply(entry) if trx else entry
+                    if processed:
+                        entries.append(processed)
             else:
                 entry = entries_read
-                trx = transformer.get(field)
                 if trx:
-                    log.debug(f'{trx=}:({entry=}) -> ({trx.apply(entry)})')
+                    log.debug(f'scalar::{trx=}:({entry=}) -> ({trx.apply(entry)})')
                 else:
-                    log.debug(f'no transform for {entry=}')
+                    log.debug(f'no transform for scalar::{entry=}')
                 entries.append(trx.apply(entry) if trx else entry)
 
             row[label] = entries
