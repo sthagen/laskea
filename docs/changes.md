@@ -1,5 +1,10 @@
 # Change History
 
+2923.12.4
+:    * Amended the debug logs with more context info (<https://todo.sr.ht/~sthagen/laskea/12>)
+* Documented how to change log levels (<https://todo.sr.ht/~sthagen/laskea/9>)
+* Removed filtered out entries from sequence cell content (<https://todo.sr.ht/~sthagen/laskea/13>)
+
 2023.12.3
 :    * Added filtering on table cell content to table function (<https://todo.sr.ht/~sthagen/laskea/8>)
 * Made summary / caption per DSL / configuration target more versatile (<https://todo.sr.ht/~sthagen/laskea/7>)
