@@ -37,7 +37,7 @@
       "Source-Code": "https://git.sr.ht/~sthagen/laskea",
       "Test-Coverage": "https://codes.dilettant.life/coverage/laskea"
     },
-    "release_url": "https://pypi.org/project/laskea/2023.12.3/",
+    "release_url": "https://pypi.org/project/laskea/2023.12.4/",
     "requires_dist": [
       "atlassian-python-api >=3.41.3",
       "cogapp >=3.3.0",
@@ -60,11 +60,11 @@
     ],
     "requires_python": ">=3.9",
     "summary": "Calculate (Finnish: laskea) some parts.",
-    "version": "2023.12.3",
+    "version": "2023.12.4",
     "yanked": false,
     "yanked_reason": null
   },
-  "last_serial": 20896407,
+  "last_serial": 20910855,
   "releases": {
     "2022.11.3": [
       {
@@ -1518,6 +1518,50 @@
         "yanked_reason": null
       }
     ],
+    "2023.12.4": [
+      {
+        "comment_text": "",
+        "digests": {
+          "blake2b_256": "e2003bc82bc824a3590d4d726161b1bd5d0c0e846aa682ffa72207cd320808f2",
+          "md5": "8c4c72316c404b7a46ce4bfe425d42e2",
+          "sha256": "29bff609712234e62f4eda41d326cabb60d979bd885a83bd3036d958157806f2"
+        },
+        "downloads": -1,
+        "filename": "laskea-2023.12.4-py3-none-any.whl",
+        "has_sig": false,
+        "md5_digest": "8c4c72316c404b7a46ce4bfe425d42e2",
+        "packagetype": "bdist_wheel",
+        "python_version": "py3",
+        "requires_python": ">=3.9",
+        "size": 25902,
+        "upload_time": "2023-12-04T21:23:16",
+        "upload_time_iso_8601": "2023-12-04T21:23:16.340823Z",
+        "url": "https://files.pythonhosted.org/packages/e2/00/3bc82bc824a3590d4d726161b1bd5d0c0e846aa682ffa72207cd320808f2/laskea-2023.12.4-py3-none-any.whl",
+        "yanked": false,
+        "yanked_reason": null
+      },
+      {
+        "comment_text": "",
+        "digests": {
+          "blake2b_256": "4a4f54faee1fa6a7bb04d9d169ac4a48718888a92dbc4412744a37549fb1b99c",
+          "md5": "6b045d61cb408b19070ce88068f24359",
+          "sha256": "03b4e258e77a1e7a7d64cd1b146931bd83930959e152fdcf994c6769ea226176"
+        },
+        "downloads": -1,
+        "filename": "laskea-2023.12.4.tar.gz",
+        "has_sig": false,
+        "md5_digest": "6b045d61cb408b19070ce88068f24359",
+        "packagetype": "sdist",
+        "python_version": "source",
+        "requires_python": ">=3.9",
+        "size": 29171,
+        "upload_time": "2023-12-04T21:23:18",
+        "upload_time_iso_8601": "2023-12-04T21:23:18.019083Z",
+        "url": "https://files.pythonhosted.org/packages/4a/4f/54faee1fa6a7bb04d9d169ac4a48718888a92dbc4412744a37549fb1b99c/laskea-2023.12.4.tar.gz",
+        "yanked": false,
+        "yanked_reason": null
+      }
+    ],
     "2023.6.18": [
       {
         "comment_text": "",
@@ -1611,42 +1655,42 @@
     {
       "comment_text": "",
       "digests": {
-        "blake2b_256": "2732fe70dee0e6b86550e4b4cf553351dc14b273f7a350d996799790d8f9a325",
-        "md5": "bfe85931f9507c62c5da9d32b5dd303f",
-        "sha256": "d1222f3e4fc880a61469cea93114c2b41849b2126d39fb123855548109a28fb8"
+        "blake2b_256": "e2003bc82bc824a3590d4d726161b1bd5d0c0e846aa682ffa72207cd320808f2",
+        "md5": "8c4c72316c404b7a46ce4bfe425d42e2",
+        "sha256": "29bff609712234e62f4eda41d326cabb60d979bd885a83bd3036d958157806f2"
       },
       "downloads": -1,
-      "filename": "laskea-2023.12.3-py3-none-any.whl",
+      "filename": "laskea-2023.12.4-py3-none-any.whl",
       "has_sig": false,
-      "md5_digest": "bfe85931f9507c62c5da9d32b5dd303f",
+      "md5_digest": "8c4c72316c404b7a46ce4bfe425d42e2",
       "packagetype": "bdist_wheel",
       "python_version": "py3",
       "requires_python": ">=3.9",
-      "size": 25734,
-      "upload_time": "2023-12-03T22:01:15",
-      "upload_time_iso_8601": "2023-12-03T22:01:15.153751Z",
-      "url": "https://files.pythonhosted.org/packages/27/32/fe70dee0e6b86550e4b4cf553351dc14b273f7a350d996799790d8f9a325/laskea-2023.12.3-py3-none-any.whl",
+      "size": 25902,
+      "upload_time": "2023-12-04T21:23:16",
+      "upload_time_iso_8601": "2023-12-04T21:23:16.340823Z",
+      "url": "https://files.pythonhosted.org/packages/e2/00/3bc82bc824a3590d4d726161b1bd5d0c0e846aa682ffa72207cd320808f2/laskea-2023.12.4-py3-none-any.whl",
       "yanked": false,
       "yanked_reason": null
     },
     {
       "comment_text": "",
       "digests": {
-        "blake2b_256": "03443c85920f107f6391a85658e791f4c7f75e5bbbc5e1e30e78a500b5694117",
-        "md5": "f89debf8324ca57cac3b2539e2c19646",
-        "sha256": "17d334298b2aa86b93df1f782174b2f8c9f48d6dde01e64e5aab9f50355dc004"
+        "blake2b_256": "4a4f54faee1fa6a7bb04d9d169ac4a48718888a92dbc4412744a37549fb1b99c",
+        "md5": "6b045d61cb408b19070ce88068f24359",
+        "sha256": "03b4e258e77a1e7a7d64cd1b146931bd83930959e152fdcf994c6769ea226176"
       },
       "downloads": -1,
-      "filename": "laskea-2023.12.3.tar.gz",
+      "filename": "laskea-2023.12.4.tar.gz",
       "has_sig": false,
-      "md5_digest": "f89debf8324ca57cac3b2539e2c19646",
+      "md5_digest": "6b045d61cb408b19070ce88068f24359",
       "packagetype": "sdist",
       "python_version": "source",
       "requires_python": ">=3.9",
-      "size": 28991,
-      "upload_time": "2023-12-03T22:01:16",
-      "upload_time_iso_8601": "2023-12-03T22:01:16.720805Z",
-      "url": "https://files.pythonhosted.org/packages/03/44/3c85920f107f6391a85658e791f4c7f75e5bbbc5e1e30e78a500b5694117/laskea-2023.12.3.tar.gz",
+      "size": 29171,
+      "upload_time": "2023-12-04T21:23:18",
+      "upload_time_iso_8601": "2023-12-04T21:23:18.019083Z",
+      "url": "https://files.pythonhosted.org/packages/4a/4f/54faee1fa6a7bb04d9d169ac4a48718888a92dbc4412744a37549fb1b99c/laskea-2023.12.4.tar.gz",
       "yanked": false,
       "yanked_reason": null
     }
