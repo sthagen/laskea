@@ -1,6 +1,9 @@
 # Change History
 
-2923.12.4
+2023.12.10
+:    * Breaking change: Added an option to enable the checksum feature (<https://todo.sr.ht/~sthagen/laskea/14>)
+
+2023.12.4
 :    * Amended the debug logs with more context info (<https://todo.sr.ht/~sthagen/laskea/12>)
 * Documented how to change log levels (<https://todo.sr.ht/~sthagen/laskea/9>)
 * Removed filtered out entries from sequence cell content (<https://todo.sr.ht/~sthagen/laskea/13>)
