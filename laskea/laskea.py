@@ -18,15 +18,18 @@ def process(command: str, transaction_mode: str, paths: Sequence[str], options: 
 
     quiet = bool(options.get('quiet', ''))
     verbose = bool(options.get('verbose', ''))
+    checksums = bool(options.get('checksums', ''))
 
-    vector = [
-        laskea.APP_ALIAS,
-        '-P',
-        '-c',
-        f'--markers={laskea.BASE_MARKERS}',
-        '-p',
-        'from laskea import *',
-    ]
+    vector = [laskea.APP_ALIAS, '-P']
+    if checksums:
+        vector.append('-c')
+    vector.extend(
+        [
+            f'--markers={laskea.BASE_MARKERS}',
+            '-p',
+            'from laskea import *',
+        ]
+    )
     if transaction_mode == 'commit':
         vector.append('-r')
     if quiet:
