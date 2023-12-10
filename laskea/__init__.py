@@ -5,8 +5,8 @@ import pathlib
 from typing import Union, no_type_check
 
 # [[[fill git_describe()]]]
-__version__ = '2023.12.4+parent.g0a7b0dd4'
-# [[[end]]] (checksum: 9292942ca3359173faa7007f070b73a8)
+__version__ = '2023.12.10+parent.dirty'
+# [[[end]]] (checksum: 0416cd46a10ca2ed3d61f28203cace17)
 __version_info__ = tuple(
     e if '-' not in e else e.split('-')[0] for part in __version__.split('+') for e in part.split('.') if e != 'parent'
 )
@@ -18,6 +18,7 @@ DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
 VERBOSE = bool(os.getenv(f'{APP_ENV}_VERBOSE', ''))
 QUIET = False
 STRICT = bool(os.getenv(f'{APP_ENV}_STRICT', ''))
+CHECKSUMS = bool(os.getenv(f'{APP_ENV}_CHECKSUMS', ''))
 ENCODING = 'utf-8'
 ENCODING_ERRORS_POLICY = 'ignore'
 DEFAULT_CONFIG_NAME = f'.{APP_ALIAS}.json'

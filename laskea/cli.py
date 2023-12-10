@@ -67,6 +67,13 @@ Strictness = typer.Option(
     help='Ouput noisy warnings on console and in the processed document (default is False)',
 )
 
+Checksums = typer.Option(
+    False,
+    '-C',
+    '--checksums',
+    help='Enable checksums (default is False)',
+)
+
 CacheExpiry = typer.Option(
     180,
     '-x',
@@ -158,6 +165,7 @@ def update(  # noqa
     verbose: bool = Verbosity,
     quiet: bool = Quietness,
     strict: bool = Strictness,
+    checksums: bool = Checksums,
     expires: int = CacheExpiry,
 ) -> int:
     """
@@ -223,6 +231,7 @@ def update(  # noqa
     * LASKEA_DEBUG='AnythingTruthy'
     * LASKEA_VERBOSE='AnythingTruthy'
     * LASKEA_STRICT='AnythingTruthy'
+    * LASKEA_CHECKSUMS='AnythingTruthy'
 
     The quiet option (if given) disables any conflicting verbosity setting.
     """
@@ -238,6 +247,9 @@ def update(  # noqa
     if strict:
         laskea.STRICT = True
 
+    if checksums:
+        laskea.CHECKSUMS = True
+
     if transaction_mode == 'dry-run':
         laskea.DRY_RUN = True
 
@@ -247,6 +259,7 @@ def update(  # noqa
         'quiet': quiet,
         'strict': strict,
         'verbose': verbose,
+        'checksums': checksums,
     }
     cfg.process(conf, options)
 
@@ -265,6 +278,7 @@ def svl_cmd(  # noqa
     verify: bool = Dryness,
     verbose: bool = Verbosity,
     strict: bool = Strictness,
+    checksums: bool = Checksums,
     expires: int = CacheExpiry,
 ) -> int:
     """
@@ -330,6 +344,7 @@ def svl_cmd(  # noqa
     * LASKEA_DEBUG='AnythingTruthy'
     * LASKEA_VERBOSE='AnythingTruthy'
     * LASKEA_STRICT='AnythingTruthy'
+    * LASKEA_CHECKSUMS='AnythingTruthy'
 
     The quiet option (if given) disables any conflicting verbosity setting.
     """
@@ -350,6 +365,9 @@ def svl_cmd(  # noqa
     if strict:
         laskea.STRICT = True
 
+    if checksums:
+        laskea.CHECKSUMS = True
+
     if transaction_mode == 'dry-run':
         laskea.DRY_RUN = True
 
@@ -359,6 +377,7 @@ def svl_cmd(  # noqa
         'quiet': quiet,
         'strict': strict,
         'verbose': verbose,
+        'checksums': checksums,
     }
     if conf:
         cfg.process(conf, options)

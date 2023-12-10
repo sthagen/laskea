@@ -116,7 +116,7 @@ def test_create_and_report_effective_configuration(capsys):
     out, err = capsys.readouterr()
     assert not out
     lines = err.strip().split('\n')
-    assert len(lines) == 56
+    assert len(lines) == 57
     assert lines[:2] == ['42', '# --- BEGIN ---']
     assert lines[-1] == '# --- E N D ---'
     print(lines)

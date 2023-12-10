@@ -76,7 +76,8 @@ TEMPLATE_EXAMPLE = """\
     "markers": "[[[fill ]]] [[[end]]]",
     "quiet": false,
     "verbose": false,
-    "strict": false
+    "strict": false,
+    "checksums": false
   },
   "excel": {
     "mbom": "mbom.xlsm"
@@ -253,6 +254,15 @@ def load_configuration(configuration: dict[str, object]) -> dict[str, str]:
         source_of['strict'] = 'env'
         laskea.STRICT = strict
 
+    checksums = bool(jmespath.search('local.checksums', configuration))
+    if checksums:
+        source_of['checksums'] = 'config'
+        laskea.CHECKSUMS = checksums
+    checksums = bool(os.getenv(f'{laskea.APP_ENV}_CHECKSUMS', ''))
+    if checksums:
+        source_of['checksums'] = 'env'
+        laskea.CHECKSUMS = checksums
+
     quiet = bool(jmespath.search('local.quiet', configuration))
     if quiet:
         source_of['quiet'] = 'config'
@@ -414,6 +424,7 @@ def create_and_report_effective_configuration(header: str) -> None:
             'quiet': laskea.QUIET,
             'verbose': laskea.DEBUG,
             'strict': laskea.STRICT,
+            'checksums': laskea.CHECKSUMS,
         },
     }
     safe_report_configuration(effective, header)
