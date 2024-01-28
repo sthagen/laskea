@@ -7,6 +7,7 @@ name = "laskea"
 version = "2023.12.10"
 description = "Calculate (Finnish: laskea) some parts."
 readme = "README.md"
+license = {file = "LICENSE"}
 authors = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
 maintainers = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
 classifiers = [
