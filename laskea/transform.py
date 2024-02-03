@@ -20,6 +20,7 @@ Typical filter data comes in as JSON and maps column keys to filter tasks:
 }
 
 """
+
 import re
 from laskea import FILTER_MAP_TYPE, FILTER_ORDER_TYPE, FILTER_PAYLOAD_TYPE, log
 

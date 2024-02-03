@@ -1,4 +1,5 @@
 """Commandline API gateway for laskea."""
+
 import sys
 
 import requests_cache

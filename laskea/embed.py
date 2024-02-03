@@ -1,4 +1,5 @@
 """Calculate (Finnish: laskea) some parts - embeddings."""
+
 from typing import Union, no_type_check
 
 from atlassian import Jira  # type: ignore # noqa

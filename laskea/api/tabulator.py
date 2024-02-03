@@ -71,12 +71,14 @@ def tabulator_overview_table(configuration: Mapping[str, object]) -> str:
                 widths[i] = max(widths[i], len(s))
 
     header_cells = [
-        m['labels'][key].rjust(widths[key])  # noqa
-        if m['align'][key] == 'R'  # noqa
-        else (
-            m['labels'][key].ljust(widths[key])  # noqa
-            if m['align'][key] == 'L'  # noqa
-            else m['labels'][key].center(widths[key])  # noqa
+        (
+            m['labels'][key].rjust(widths[key])  # noqa
+            if m['align'][key] == 'R'  # noqa
+            else (
+                m['labels'][key].ljust(widths[key])  # noqa
+                if m['align'][key] == 'L'  # noqa
+                else m['labels'][key].center(widths[key])  # noqa
+            )
         )  # noqa
         for key in range(len(m['column_fields']))  # noqa
     ]
@@ -93,9 +95,11 @@ def tabulator_overview_table(configuration: Mapping[str, object]) -> str:
     for row in selection:
         rows.append(
             [
-                str(v).rjust(widths[k])
-                if m['align'][k] == 'R'  # noqa
-                else (str(v).ljust(widths[k]) if m['align'][k] == 'L' else str(v).center(widths[k]))  # noqa
+                (
+                    str(v).rjust(widths[k])
+                    if m['align'][k] == 'R'  # noqa
+                    else (str(v).ljust(widths[k]) if m['align'][k] == 'L' else str(v).center(widths[k]))
+                )  # noqa
                 for k, v in enumerate(row)
             ]
         )

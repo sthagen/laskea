@@ -1,4 +1,5 @@
 """Configuration API for laskea."""
+
 import copy
 import json
 import os

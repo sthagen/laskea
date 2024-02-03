@@ -1,4 +1,5 @@
 """Calculate (Finnish: laskea) some parts."""
+
 import sys
 from typing import Mapping, Sequence
 

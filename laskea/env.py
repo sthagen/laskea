@@ -1,4 +1,5 @@
 """Report environment to support resolution of user issues."""
+
 import sys
 from typing import no_type_check
 

@@ -1,4 +1,5 @@
 """Calculate (Finnish: laskea) some parts."""
+
 import logging
 import os
 import pathlib
