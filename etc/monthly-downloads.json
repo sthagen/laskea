@@ -33,7 +33,7 @@
     {
       "category": "3.10",
       "date": "2024-02",
-      "downloads": 179
+      "downloads": 187
     },
     {
       "category": "3.11",
@@ -68,7 +68,7 @@
     {
       "category": "3.11",
       "date": "2024-02",
-      "downloads": 352
+      "downloads": 387
     },
     {
       "category": "3.12",
@@ -78,7 +78,7 @@
     {
       "category": "3.12",
       "date": "2024-02",
-      "downloads": 176
+      "downloads": 184
     },
     {
       "category": "3.3",
@@ -133,7 +133,7 @@
     {
       "category": "3.8",
       "date": "2024-02",
-      "downloads": 100
+      "downloads": 108
     },
     {
       "category": "3.9",
@@ -158,7 +158,7 @@
     {
       "category": "null",
       "date": "2023-08",
-      "downloads": 70
+      "downloads": 7
     },
     {
       "category": "null",
@@ -188,7 +188,7 @@
     {
       "category": "null",
       "date": "2024-02",
-      "downloads": 13
+      "downloads": 15
     }
   ],
   "package": "laskea",
