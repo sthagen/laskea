@@ -172,7 +172,7 @@ def update(  # noqa
     """
     Fill in some parts of the input document.
 
-    You can set some options per evironment variables:
+    You can set some options per environment variables:
 
     \b
     * LASKEA_USER='remote-user'
@@ -238,21 +238,7 @@ def update(  # noqa
     """
     command = 'update'
     transaction_mode = 'commit' if not verify else 'dry-run'
-    if quiet:
-        laskea.QUIET = True
-        laskea.DEBUG = False
-        laskea.VERBOSE = False
-    elif verbose:
-        laskea.VERBOSE = True
-
-    if strict:
-        laskea.STRICT = True
-
-    if checksums:
-        laskea.CHECKSUMS = True
-
-    if transaction_mode == 'dry-run':
-        laskea.DRY_RUN = True
+    _push_upstream(checksums, quiet, strict, transaction_mode, verbose)
 
     requests_cache.install_cache(cache_name='.laskea_cache', backend='sqlite', expire_after=expires)
     laskea.CACHE_EXPIRY_SECONDS = expires
@@ -268,6 +254,22 @@ def update(  # noqa
     return sys.exit(fill.process(command, transaction_mode, paths, options))
 
 
+def _push_upstream(checksums: bool, quiet: bool, strict: bool, transaction_mode: str, verbose: bool) -> None:
+    """Consistent push up of the usual attributes."""
+    if quiet:
+        laskea.QUIET = True
+        laskea.DEBUG = False
+        laskea.VERBOSE = False
+    elif verbose:
+        laskea.VERBOSE = True
+    if strict:
+        laskea.STRICT = True
+    if checksums:
+        laskea.CHECKSUMS = True
+    if transaction_mode == 'dry-run':
+        laskea.DRY_RUN = True
+
+
 @app.command('csv')
 def svl_cmd(  # noqa
     query: str = typer.Argument(''),
@@ -278,6 +280,7 @@ def svl_cmd(  # noqa
     replacement: str = Replacement,
     verify: bool = Dryness,
     verbose: bool = Verbosity,
+    quiet: bool = Quietness,
     strict: bool = Strictness,
     checksums: bool = Checksums,
     expires: int = CacheExpiry,
@@ -285,7 +288,7 @@ def svl_cmd(  # noqa
     """
     Export query result as separated values list.
 
-    You can set some options per evironment variables:
+    You can set some options per environment variables:
 
     \b
     * LASKEA_USER='remote-user'
@@ -356,21 +359,7 @@ def svl_cmd(  # noqa
     if not jql:
         print('JQL query required.', file=sys.stderr)
         return sys.exit(2)
-    quiet = True
-    laskea.QUIET = True
-    laskea.DEBUG = False
-    laskea.VERBOSE = False
-    if verbose:
-        laskea.VERBOSE = True
-
-    if strict:
-        laskea.STRICT = True
-
-    if checksums:
-        laskea.CHECKSUMS = True
-
-    if transaction_mode == 'dry-run':
-        laskea.DRY_RUN = True
+    _push_upstream(checksums, quiet, strict, transaction_mode, verbose)
 
     requests_cache.install_cache(cache_name='.laskea_cache', backend='sqlite', expire_after=expires)
     laskea.CACHE_EXPIRY_SECONDS = expires
