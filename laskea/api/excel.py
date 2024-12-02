@@ -11,11 +11,11 @@ CHUNK_SIZE = 2 << 15
 
 def hash_file(path: pathlib.Path) -> str:
     """Return the SHA512 hex digest of the data from file."""
-    hash = hashlib.sha512()
+    the_hash = hashlib.sha512()
     with open(path, 'rb') as handle:
         while chunk := handle.read(CHUNK_SIZE):
-            hash.update(chunk)
-    return hash.hexdigest()
+            the_hash.update(chunk)
+    return the_hash.hexdigest()
 
 
 @no_type_check
