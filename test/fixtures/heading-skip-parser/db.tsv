@@ -1,0 +1,13 @@
+ID 	Foo bar baz quux                 	Object Type     	The. Relation			
+1	Revision Record                  	Revision Record 				
+2	SCOPE                              	Heading           				
+3	This document lists : multi-line 	Information     				
+4	IDENTIFICATION                     	Heading           				
+27	Data rcv and snd                   	Heading           				
+85	The flowers shall receive water  	Requirement     	"S_19
+S_61
+S_68"			
+86	The earth shall spin.            	Requirement     	"S_57
+S_788"			
+20	PERFORMANCE YES                  	Heading           				
+29	Quux latency                     	Heading           				
