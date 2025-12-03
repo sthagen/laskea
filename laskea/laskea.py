@@ -44,9 +44,13 @@ def process(command: str, transaction_mode: str, paths: Sequence[str], options: 
     for path in paths:
         single_vector = vector + [path]
         try:
-            cog.callableMain(single_vector)
+            cog.callable_main(single_vector)
         except CogUsageError as err:
             print('CodeGen processing usage error:', file=sys.stderr)
+            print(str(err))
+            return 1
+        except FileNotFoundError as err:
+            print('CodeGen processing file error:', file=sys.stderr)
             print(str(err))
             return 1
     return 0

@@ -21,14 +21,14 @@ def test_template_command():
 def test_update_command():
     result = runner.invoke(app, ['update', 'not-present'])
     assert result.exit_code == 1
-    assert 'Reading from discovered configuration path' in result.stdout
+    assert 'Reading from discovered configuration path' in result.stderr
     assert 'Cogging not-present' in result.stdout
 
 
 def test_csv_command():
     result = runner.invoke(app, ['csv', '--jql-query', ''])
     assert result.exit_code == 2
-    assert 'JQL query required.' in result.stdout
+    assert 'JQL query required.' in result.stderr
 
 
 def test_version_command():
